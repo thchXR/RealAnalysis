@@ -1,0 +1,393 @@
+\documentclass{ctexbook}
+\usepackage{ctex}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{booktabs}
+\usepackage[paper=a4paper, left=1.5cm, right=1.5cm, top=3cm, bottom=3cm]{geometry}
+\usepackage{enumitem}
+\usepackage{tikz}
+
+\newcommand{\no}{\noindent}
+\newcommand{\pro}{\no{\bf 证明：}}
+
+
+\newcommand{\ITEMS}{\begin{enumerate}[leftmargin=4em]}
+\newcommand{\ITEME}{\end{enumerate}}
+
+
+\title{实变函数论}
+\author{thchXR}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\chapter{前言}
+
+在黎曼积分的应用中，我们发现黎曼积分存在很大的限制，往往连简单的函数都无法积分。为了克服黎曼积分的局限性，在实变函数论中我们需要在黎曼积分的基础上进行推广，建立一种新的积分
+
+% 具体描述黎曼积分的缺陷
+
+\section{预备知识：数学分析}
+
+\subsection{上下极限}
+
+\subsubsection{上下确界的定义}
+
+对于$A \subseteq \mathbb{R}$，$A$的上确界即为$A$的最小上界,记作
+\[
+\sup A
+\]
+同理，$A$的下确界为$A$的最大下界，记作
+\[
+\inf A
+\]
+\smallskip
+
+% 数学分析九大定理之一，作为定理使用
+\subsubsection{单调有界序列必收敛}
+设$\{a_n \}_{n\ge 1}$为单调数列，现在对其单调性进行分类讨论：当$\{a_n \}_{n\ge 1}$单调递增时，若数列有界，则数列极限为上确界，即$\lim\limits_{n\to\infty} a_n = \sup\{a_n\}$，反之，若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = +\infty$；当$\{a_n \}_{n\ge 1}$单调递减时，若数列有界，则数列极限为下确界，即$\lim\limits_{n\to\infty} a_n = \inf\{a_n\}$，反之，若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = -\infty$
+\smallskip
+
+\subsubsection{上下极限的定义}
+
+\no {\bf 定义1}
+
+设$\{a_n \}_{n\ge 1}$为一数列，其所有极限点（收敛子列的极限）的上确界（最大值，上下极限一定存在于所有极限点中）定义为上极限，记作
+\[
+	\varlimsup _{n\rightarrow \infty }a_{n}
+\]
+同样的，所有极限点的下确界为下极限，记作
+\[
+	\varliminf _{n\rightarrow \infty }a_{n}
+\]
+\smallskip
+
+\no {\bf 定义2}
+
+构造$\{b_m\}_{m\ge1}$，令$b_m = \sup\{a_m,a_{m+1},\cdots\}$，显然可知$\{b_m\}$单调递减，原数列的上极限可以写为
+\[
+\begin{aligned}
+	\varlimsup _{n\rightarrow \infty }a_{n} &= \lim_{m\to\infty} b_m = \inf\{b_m\}\\
+	&= \lim_{m\to\infty}\left(\sup_{n\ge m}{\{a_n\}}\right)\\
+	&= \inf_{m\ge1}\left(\sup_{n\ge m}{\{a_n\}}\right)\\
+	&= \limsup _{n\rightarrow \infty }\{a_{n}\}
+\end{aligned}
+\]
+相似的，我们可以构建$\{c_m\}_{m\ge1}$，并将下极限写为
+\[
+\begin{aligned}
+	\varliminf _{n\rightarrow \infty }a_{n} &= \lim_{m\to\infty} c_m = \sup\{c_m\}\\
+	&= \lim_{m\to\infty}\left(\inf_{n\ge m}{\{a_n\}}\right)\\
+	&= \sup_{m\ge1}\left(\inf_{n\ge m}{\{a_n\}}\right)\\
+	&= \liminf _{n\rightarrow \infty }\{a_{n}\}
+\end{aligned}
+\]
+
+\subsubsection{上下极限的性质}
+
+\no{\bf 性质1}
+
+设$\{d_k\}$是$\{a_n\}$的收敛子序列，则有
+\[
+	\varliminf _{n\rightarrow \infty}a_{n} \le \lim_{k\to\infty}d_k \le \varlimsup _{n\rightarrow \infty}a_{n}
+\]
+
+\no{\bf 性质2}
+
+数列$\{a_n\}$收敛的充要条件是，数列的上下极限相等，且为有限实数，即
+\[
+	\lim_{n\to\infty}a_n = L \iff \varliminf _{n\rightarrow \infty}a_{n} = \varlimsup _{n\rightarrow \infty}a_{n} = L \in \mathbb{R}
+\]
+
+\subsubsection{函数列的上下极限}
+
+对于在区间$I$上的函数列，上极限是一个在区间$I$上的函数，记作
+\[
+	\varlimsup_{n\to\infty} f_n(x)
+\]
+而其函数取值如下，其中$\left\{f_1(x),f_2(x),\cdots\right\}$是将自变量$x$带入函数列得到的数列
+\[
+	\varlimsup_{n\to\infty} f_n(x) = \varlimsup\left\{f_1(x),f_2(x),\cdots\right\}
+\]
+同理我们也可以得到如下的下极限
+\[
+	\varliminf_{n\to\infty} f_n(x) = \varliminf\left\{f_1(x),f_2(x),\cdots\right\}
+\]
+\smallskip
+
+与数列极限的性质相似，我们可以得到
+\[
+	\varliminf_{n\to\infty} f_n(x) \le \varlimsup_{n\to\infty} f_n(x)
+\]
+\bigskip
+
+\section{预备知识：集合论}
+
+\subsection{集合基本概念}
+
+\subsubsection{基本集合}
+
+% 在课上的全集使用的是X 而空集是\Phi
+我们将用$U$表示全集，$\emptyset$表示空集
+
+\subsubsection{集合簇}
+
+我们称由集合组成的集合为集合簇，记作
+\[
+	\{A_\alpha\}_{\alpha\in I}
+\]
+其中$A_\alpha \subseteq U$，$I$是指标集（指标集不一定是$\mathbb{N}_+$也可以是$\mathbb{R}$）
+
+\subsection{集合运算}
+
+\subsubsection{基础运算}
+
+交集记作$A\cap B$，并集记作$A\cup B$，补集记作$A^c$
+
+\subsubsection{减法运算}
+
+集合减法记作$A\setminus B = A\cap B^c$
+
+\subsubsection{对称差}
+
+对称差记作$A\triangle B = A\oplus B = (A\setminus B)\cup(B\setminus A)$
+
+\subsubsection{大型运算}
+
+\[
+\begin{aligned}
+	\bigcap_{n=1}^\infty\left(a+\frac1n,\infty\right)=[a+1,+\infty)\\
+	\bigcup_{n=1}^\infty\left(a+\frac1n,\infty\right)=(a+1,+\infty)
+\end{aligned}
+\]
+
+\subsection{集合列的上下极限}
+
+设$\{A_n\}_{n\ge1}$为集合列，其中$\forall A_n\subseteq U$，为求集合列的上极限，我们构造集合列$\{B_m\}$满足
+\[
+	B_m = \sup_{n\ge m}\{A_n\} = \bigcup_{n\ge m} A_n
+\]
+显然$B_1\ge B_2\ge \cdots$，可得
+\[
+	\varlimsup_{n\to\infty}\{A_n\}=\lim_{m\ge 1}\{B_m\}=\bigcap_{m\ge1}B_m=\bigcap_{m\ge1}\bigcup_{n\ge m} A_n
+\]
+相似的，我们可以构造$\{C_n\}$，可得
+\[
+	\varliminf_{n\to\infty}\{A_n\}=\lim_{m\ge 1}\{C_m\}=\bigcup_{m\ge1}C_m=\bigcup_{m\ge1}\bigcap_{n\ge m} A_n
+\]
+我们也可以将上下极限定义为
+\[
+	\{x\in U: x\in \mbox{无穷多个}A_n\}
+\]
+\[
+	\{x\in U: \exists\,N\in\mathbb{N}\ s.t.\ x\in A_n,\ n>N\}
+\]
+显然可知
+\[
+	\varliminf_{n\to\infty}\{A_n\} \subseteq \varlimsup_{n\to\infty}\{A_n\}
+\]
+\subsection{映射}
+设$X$是两个集合$Y$，如果$X$的每一个元素$x$都按照某种规律$f$与$Y$的唯一元素相对应，我们称其为一个映射，通常用以下符号表示映射
+\[
+	f:X\rightarrow Y
+\]
+对于$\forall A\subseteq X$，我们称$f(A)=\{f(x):x\in A\} $为$A$的像；对于$\forall B\subseteq Y$，我们称$f^{-1}(B)=\{x\in X:f(x)\in B\} $为$B$的原像
+\subsubsection{单射}
+满足以下条件的映射称为单射
+\[
+	(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2)
+\]
+\subsubsection{满射}
+满足以下条件的映射称为满射
+\[
+	f(X)=Y
+\]
+\subsubsection{双射}
+
+即是单射又是满射的映射的映射是双射
+\subsubsection{逆映射}
+
+当映射是双射的时候，存在$f:X\rightarrow Y$的逆映射，记为
+\[
+	f^{-1}:Y\rightarrow X
+\]
+
+\subsubsection{映射集合运算}
+
+对于任何映射$f:X\rightarrow Y$，有集合列$\{A_\alpha\subseteq X\}_{\alpha\in I}$，$\{B_\alpha\subseteq X\}_{\alpha\in I}$，我们有
+\[f\left(\bigcup_{\alpha\in I} A_\alpha\right) = \bigcup_{\alpha\in I}f(A_\alpha)\]
+\[f\left(\bigcap_{\alpha\in I} A_\alpha\right) \subseteq \bigcap_{\alpha\in I}f(A_\alpha)\]
+\[f^{-1}\left(\bigcup_{\alpha\in I} A_\alpha\right) = \bigcup_{\alpha\in I}f^{-1}(A_\alpha)\]
+\[f^{-1}\left(\bigcap_{\alpha\in I} A_\alpha\right) = \bigcap_{\alpha\in I}f^{-1}(A_\alpha)\]
+\[f^{-1}\left(B_\alpha^c\right) = \left(f^{-1}(B_\alpha)\right)^c\]
+
+
+\subsubsection{基数（势）}
+
+如果集合$X$到集合$Y$的双射存在，则称两个集合等势，记作$X\sim Y$，我们把集合$X$的势记作$\lvert X \rvert$或$\mathrm{card}\ X$，显然如果$X\sim Y$，那么$\lvert X \rvert = \lvert Y \rvert$
+\[
+	\begin{aligned}
+		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert Z \rvert)\Rightarrow (\lvert X \rvert\le \lvert Z \rvert)\\
+		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert X \rvert)\Rightarrow (\lvert X \rvert = \lvert Y \rvert)\\
+		&\forall X \forall Y(\lvert X \rvert \le \lvert Y \rvert) \lor (\lvert Y \rvert \le \lvert X \rvert)
+	\end{aligned}
+\]
+如果集合$X$到集合$Y$的单射存在，那么
+\[
+	\lvert A \rvert \le \lvert B \rvert
+\]
+% 我们称与自然数集$\mathbb{N}$等势的集合为可数集，并称自然数集的势为$\aleph _{0}$，如果我们知道一个集合要么是有限集要么是可数集，我们称之为至多可数集
+
+% 希尔伯特的旅馆
+\subsubsection{基数基本定理}
+\ITEMS
+	\item 可数集的无穷子集是可数集
+	\item 由可数集组成的有限集或可数集是可数集
+\ITEME
+\subsubsection{幂集}
+称一个集合$A$的所有子集组成的集合称为集合$A$的幂集，记为
+\[
+	P(A)
+\]
+显然
+\[
+	\lvert P(A) \rvert = 2^{\lvert A \rvert}
+\]
+
+\subsubsection{无最大基数定理}
+
+对于任何集合，都可以构建幂集使得幂集的势大于该集合的势
+\smallskip
+
+\pro
+
+应用反证法，首先假设集合的幂集与其本身等势
+\[
+\lvert A\rvert = \lvert P(A)\rvert
+\]
+那么，代表我们可以在$A$与$P(A)$之间构建双射$f$
+\[
+	f:A\rightarrow P(A)
+\]
+定义一个$A$的子集合$B$，由不属于其本身经过映射$f$产生的像$f(x)$的元素组成，为%似乎这里的条件有点问题
+\[
+B = \{x\in A: x\notin f(x)\}
+\]
+如果$f(x)$是满射，使得存在一个元素$y\in A$使得
+\[
+f(y) = B
+\]
+那么考虑$y$与$B$的关系，发现无论如何都会矛盾
+\[
+\begin{aligned}
+	y\in B \iff y\notin B
+\end{aligned}
+\]
+
+\subsubsection{连续统假设}
+
+连续统假设认为过渡的势不存在，即不存在介于可数集的势与连续统（实数集）的势之间的势，那么把连续统的势记为$\aleph_1$，在1963年被柯恩证明此假设不可证
+
+\subsubsection{实数集的势}
+
+\pro
+
+为了求实数集的解，先把范围缩小为
+\[
+	\lvert \mathbb{R}\rvert =\lvert (0,1]\rvert  
+\]
+显然这一步映射满足双射，然后我们用二进制表示$(0,1]$上的实数
+\[
+	\begin{aligned}
+		\frac{1}{2}_{10} & = 0.100000\cdots_2\\
+		&= 0.011111\cdots_2
+	\end{aligned}
+\]
+假如我们想用二进制表示任何一个实数的，首先要使用二分法将该实数和$\frac12$相比较，若该实数大于$\frac12$则小数第一位为$1$，反之为零
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (7,0);
+	\coordinate (C) at (1,0);
+	\coordinate (D) at (6,0);
+	\coordinate (E) at (3.5,0);
+	\draw[thick] (A) -- (B);
+	\fill[black] (C) circle (1pt) node[above] {$0$};
+	\fill[black] (D) circle (1pt) node[above] {$1$};
+	\fill[black] (E) circle (1pt) node[above] {$\frac12$};
+\end{tikzpicture}
+\end{figure}
+
+\no 并重复以上过程，以确定二进制小数的下一位
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+	\coordinate (A) at (0,0);
+	\coordinate (B) at (7,0);
+	\coordinate (C) at (1,0);
+	\coordinate (D) at (6,0);
+	\coordinate (E) at (3.5,0);
+	\coordinate (F) at (2.25,0);
+	\coordinate (G) at (4.75,0);
+	\draw[thick] (A) -- (B);
+	\fill[black] (C) circle (1pt) node[above] {$0$};
+	\fill[black] (D) circle (1pt) node[above] {$1$};
+	\fill[black] (E) circle (1pt) node[above] {$\frac12$};
+	\fill[black] (F) circle (1pt) node[above] {$\frac14$};
+	\fill[black] (G) circle (1pt) node[above] {$\frac34$};
+\end{tikzpicture}
+\end{figure}
+
+\no 若将以上过程无限次的重复下去，则可以将二进制小数与$(0,1]$上的实数建立双射关系，并得出实数集的势
+\[
+	\lvert \mathbb{R}\rvert =2^{\aleph_0}
+\]
+若我们接受连续统假设可得
+\[
+\aleph_1=2^{\aleph_0}
+\]
+
+\section{$\mathbb{R}^n$上的拓扑}
+
+% 新章节
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
