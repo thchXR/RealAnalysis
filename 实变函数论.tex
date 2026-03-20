@@ -17,7 +17,6 @@
 
 
 \title{实变函数论}
-\author{thchXR}
 
 \begin{document}
 
@@ -25,9 +24,9 @@
 
 \tableofcontents
 
-\chapter{前言}
+\chapter{预备知识}
 
-在黎曼积分的应用中，我们发现黎曼积分存在很大的限制，往往连简单的函数都无法积分。为了克服黎曼积分的局限性，在实变函数论中我们需要在黎曼积分的基础上进行推广，建立一种新的积分
+在黎曼积分的应用中，我们发现黎曼积分存在很大的限制，往往连简单的函数都无法积分。为了克服黎曼积分的局限性，我们需要在黎曼积分的基础上进行推广，建立一种新的积分
 
 % 具体描述黎曼积分的缺陷
 
@@ -353,6 +352,32 @@ f(y) = B
 \]
 
 \section{$\mathbb{R}^n$上的拓扑}
+%这一部分的概念还不完整
+
+\subsection{开集与闭集}
+
+\subsubsection{开球}
+
+我们把在$\mathbb{R}^n$空间上的开球定义为
+\[
+	B(x,r)=\{y\in\mathbb{R}^n:\lvert y-x\rvert<r\}
+\]
+我们可以把开球组成的集合视为一组基
+
+\subsubsection{开闭集}
+对于$A\subseteq\mathbb{R}^n$，如果
+\[
+	A = \bigcup_{\alpha\in I} B_\alpha(x_\alpha,r_\alpha)
+\]
+我们就称$A$是开集，而$A^c\subseteq\mathbb{R}^n$是闭集，用$U$和$F$分别表示开集和闭集；特别的，空集$\varnothing$和全集$\mathbb{R}^n$互补，它们既是开集也是闭集
+\subsubsection{开闭集的运算}
+我们称开集组成的集合为开集簇，闭集组成的集合为闭集簇
+\[
+	\{U_\alpha\subseteq\mathbb{R}^n\}_{\alpha\in I}\qquad\{F_\alpha\subseteq\mathbb{R}^n\}_{\alpha\in I}
+\]
+\subsubsection{内点与边界点}
+对于$A\subseteq\mathbb{R}^n$，$x\in A$，存在包含于$A$的开球$B(x,r)\subseteq A$，使得$x\in B(x,r)$则我们称$x$是$A$的内点；如果对于任意包含$x$的开球$B(x,r)\ni x$，都有$B(x,r)$既包含$A$的点，也包含$A^c$的点，即$(B\cap A)\supset \{x\}$且$(B\cap A^c)\supset \{x\}$则称$x$是$A$的边界点
+
 
 % 新章节
 
