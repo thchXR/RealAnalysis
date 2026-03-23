@@ -26,21 +26,21 @@
 
 \chapter{预备知识}
 
-在黎曼积分的应用中，我们发现黎曼积分存在很大的限制，往往连简单的函数都无法积分。为了克服黎曼积分的局限性，我们需要在黎曼积分的基础上进行推广，建立一种新的积分
+尽管黎曼积分很有用，但也存在很大的局限，我们旨在建立一种新的积分，其应用范围更广，并希望它可以看作黎曼积分的推广。
 
 % 具体描述黎曼积分的缺陷
 
 \section{预备知识：数学分析}
 
-\subsection{上下极限}
+\subsection{数列的上、下极限}
 
-\subsubsection{上下确界的定义}
+\subsubsection{上、下确界的定义}
 
-对于$A \subseteq \mathbb{R}$，$A$的上确界即为$A$的最小上界,记作
+粗略地讲，对于$A \subseteq \mathbb{R}$，$A$ 的上确界即为$A$的最小上界,记作
 \[
 \sup A
 \]
-同理，$A$的下确界为$A$的最大下界，记作
+$A$的下确界为$A$的最大下界，记作
 \[
 \inf A
 \]
@@ -48,14 +48,19 @@
 
 % 数学分析九大定理之一，作为定理使用
 \subsubsection{单调有界序列必收敛}
-设$\{a_n \}_{n\ge 1}$为单调数列，现在对其单调性进行分类讨论：当$\{a_n \}_{n\ge 1}$单调递增时，若数列有界，则数列极限为上确界，即$\lim\limits_{n\to\infty} a_n = \sup\{a_n\}$，反之，若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = +\infty$；当$\{a_n \}_{n\ge 1}$单调递减时，若数列有界，则数列极限为下确界，即$\lim\limits_{n\to\infty} a_n = \inf\{a_n\}$，反之，若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = -\infty$
+设$\{a_n \}_{n\ge 1}$为单调数列，现在对其单调性进行分类讨论：
+\ITEMS
+	\item 当$\{a_n \}_{n\ge 1}$单调递增时：若数列有界，则数列极限为上确界，即$\lim\limits_{n\to\infty} a_n = \sup\{a_n\}$；若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = +\infty$。
+	\item 当$\{a_n \}_{n\ge 1}$单调递减时：若数列有界，则数列极限为下确界，即$\lim\limits_{n\to\infty} a_n = \inf\{a_n\}$；若数列无界，数列极限不存在，即$\lim\limits_{n\to\infty} a_n = -\infty$。
+\ITEME
+
 \smallskip
 
-\subsubsection{上下极限的定义}
+\subsubsection{上、下极限的定义}
 
 \no {\bf 定义1}
 
-设$\{a_n \}_{n\ge 1}$为一数列，其所有极限点（收敛子列的极限）的上确界（最大值，上下极限一定存在于所有极限点中）定义为上极限，记作
+设$\{a_n \}_{n\ge 1}$为一数列，其所有极限点（收敛子列的极限） 的上确界定义为上极限，记作
 \[
 	\varlimsup _{n\rightarrow \infty }a_{n}
 \]
@@ -67,7 +72,7 @@
 
 \no {\bf 定义2}
 
-构造$\{b_m\}_{m\ge1}$，令$b_m = \sup\{a_m,a_{m+1},\cdots\}$，显然可知$\{b_m\}$单调递减，原数列的上极限可以写为
+构造$\{b_m\}_{m\ge1}$，令$b_m = \sup\{a_m,a_{m+1},\cdots\}$，显然可知$\{b_m\}$单调递减，原数列的上极限可以定义为
 \[
 \begin{aligned}
 	\varlimsup _{n\rightarrow \infty }a_{n} &= \lim_{m\to\infty} b_m = \inf\{b_m\}\\
@@ -76,7 +81,7 @@
 	&= \limsup _{n\rightarrow \infty }\{a_{n}\}
 \end{aligned}
 \]
-相似的，我们可以构建$\{c_m\}_{m\ge1}$，并将下极限写为
+类似的，我们可以构建$\{c_m\}_{m\ge1}$，令$c_m = \inf\{a_m,a_{m+1},\cdots\}$，显然可知$\{c_m\}$单调递增，原数列的下极限可以定义为
 \[
 \begin{aligned}
 	\varliminf _{n\rightarrow \infty }a_{n} &= \lim_{m\to\infty} c_m = \sup\{c_m\}\\
@@ -86,7 +91,7 @@
 \end{aligned}
 \]
 
-\subsubsection{上下极限的性质}
+\subsubsection{上、下极限的性质}
 
 \no{\bf 性质1}
 
@@ -102,7 +107,7 @@
 	\lim_{n\to\infty}a_n = L \iff \varliminf _{n\rightarrow \infty}a_{n} = \varlimsup _{n\rightarrow \infty}a_{n} = L \in \mathbb{R}
 \]
 
-\subsubsection{函数列的上下极限}
+\subsection{函数列的上、下极限}
 
 对于在区间$I$上的函数列，上极限是一个在区间$I$上的函数，记作
 \[
@@ -131,7 +136,7 @@
 \subsubsection{基本集合}
 
 % 在课上的全集使用的是X 而空集是\Phi
-我们将用$U$表示全集，$\emptyset$表示空集
+我们将用$X$表示全集，$\emptyset$表示空集
 
 \subsubsection{集合簇}
 
@@ -139,7 +144,7 @@
 \[
 	\{A_\alpha\}_{\alpha\in I}
 \]
-其中$A_\alpha \subseteq U$，$I$是指标集（指标集不一定是$\mathbb{N}_+$也可以是$\mathbb{R}$）
+其中$A_\alpha \subseteq X$，$I$是指标集（指标集不一定是$\mathbb{N}_+$也可以是$\mathbb{R}$，或其他任意集合）
 
 \subsection{集合运算}
 
@@ -159,40 +164,48 @@
 
 \[
 \begin{aligned}
-	\bigcap_{n=1}^\infty\left(a+\frac1n,\infty\right)&=(a+1,+\infty)\\
 	\bigcup_{n=1}^\infty\left(a+\frac1n,\infty\right)&=(a,+\infty)\\
+	\bigcap_{n=1}^\infty\left(-\infty,a+\frac1n\right]&=(-\infty,a]\\
 	\bigcap_{n=1}^\infty\left(a-\frac1n,\infty\right)&=[a,+\infty)\\
-	\bigcup_{n=1}^\infty\left(a-\frac1n,\infty\right)&=(a-1,+\infty)
+	\bigcup_{n=1}^\infty\left(-\infty,a-\frac1n\right]&=(-\infty,a)
 \end{aligned}
 \]
 
-\subsection{集合列的上下极限}
+\subsection{集合列的上、下极限}
 
-设$\{A_n\}_{n\ge1}$为集合列，其中$\forall A_n\subseteq U$，为求集合列的上极限，我们构造集合列$\{B_m\}$满足
+设$\{A_n\}_{n\ge1}$为集合列，其中$\forall A_n\subseteq X$。为定义集合列的上极限，我们构造集合列$\{B_m\}$如下：
 \[
 	B_m = \sup_{n\ge m}\{A_n\} = \bigcup_{n\ge m} A_n
 \]
-显然$B_1\ge B_2\ge \cdots$，可得
+按包含关系，显然$B_1\ge B_2\ge \cdots$，可定义
 \[
 	\varlimsup_{n\to\infty}\{A_n\}=\lim_{m\ge 1}\{B_m\}=\bigcap_{m\ge1}B_m=\bigcap_{m\ge1}\bigcup_{n\ge m} A_n
 \]
-相似的，我们可以构造$\{C_n\}$，可得
+类似的，我们可以构造集合列$\{C_m\}$ 如下：
+\[
+C_m = \inf_{n\ge m}\{A_n\} = \bigcap_{n\ge m} A_n
+\]
+按包含关系，显然$C_1\le C_2\le \cdots$，可定义
 \[
 	\varliminf_{n\to\infty}\{A_n\}=\lim_{m\ge 1}\{C_m\}=\bigcup_{m\ge1}C_m=\bigcup_{m\ge1}\bigcap_{n\ge m} A_n
 \]
-我们也可以将上下极限定义为
+我们也可以将上、下极限分别定义为
 \[
-	\{x\in U: x\in \mbox{无穷多个}A_n\}
+	\varlimsup_{n\to\infty}\{A_n\}=\{x\in X: x\in \mbox{无穷多个}A_n\}
 \]
 \[
-	\{x\in U: \exists\,N\in\mathbb{N}\ s.t.\ x\in A_n,\ n>N\}
+	\varliminf_{n\to\infty}\{A_n\}=\{x\in X: \exists\,N\in\mathbb{N}\ s.t.\ x\in A_n,\forall n\ge N\}
 \]
-显然可知
+这里我们只给出两种下极限定义等价性的证明（上极限的情况留给大家作思考题）: 
+\[ 
+    x\in\varliminf_{n\to\infty}\{A_n\}=\bigcup_{m\ge1}C_m\Leftrightarrow \exists\,N\in\mathbb{N}\ s.t.\ x\in C_N=\bigcap_{n\ge N} A_n \Leftrightarrow x\in A_n,\forall n\ge N
+\]
+显然
 \[
 	\varliminf_{n\to\infty}\{A_n\} \subseteq \varlimsup_{n\to\infty}\{A_n\}
 \]
 \subsection{映射}
-设$X$是两个集合$Y$，如果$X$的每一个元素$x$都按照某种规律$f$与$Y$的唯一元素相对应，我们称其为一个映射，通常用以下符号表示映射
+设$X$、$Y$是两个集合，如果$X$中任一个元素$x$都按照某种规律$f$对应到$Y$的某一元素（记为$f(x)$），我们则称$f$为一从$X$到$Y$的映射，通常记为：
 \[
 	f:X\rightarrow Y
 \]
@@ -200,7 +213,7 @@
 \subsubsection{单射}
 满足以下条件的映射称为单射
 \[
-	(f(x_1) = f(x_2)) \Rightarrow(x_1=x_2)
+	x_1 \ne x_2 \Rightarrow f(x_1) \ne f(x_2)
 \]
 \subsubsection{满射}
 满足以下条件的映射称为满射
@@ -209,15 +222,15 @@
 \]
 \subsubsection{双射}
 
-即是单射又是满射的映射的映射是双射
+既是单射又是满射的映射称为双射（或一一对应）
 \subsubsection{逆映射}
 
-当映射是双射的时候，存在$f:X\rightarrow Y$的逆映射，记为
+当映射$f:X\rightarrow Y$是双射时，$f^{-1}$ 成为映射，称为 $f$ 的逆映射，记为
 \[
 	f^{-1}:Y\rightarrow X
 \]
 
-\subsubsection{映射集合运算}
+\subsubsection{映射与集合运算}
 
 对于任何映射$f:X\rightarrow Y$，有集合列$\{A_\alpha\subseteq X\}_{\alpha\in I}$，$\{B_\alpha\subseteq X\}_{\alpha\in I}$，我们有
 \[f\left(\bigcup_{\alpha\in I} A_\alpha\right) = \bigcup_{\alpha\in I}f(A_\alpha)\]
@@ -227,134 +240,114 @@
 \[f^{-1}\left(B_\alpha^c\right) = \left(f^{-1}(B_\alpha)\right)^c\]
 
 
-\subsubsection{基数（势）}
+\subsection{集合的基数（势）}
 
-如果集合$X$到集合$Y$的双射存在，则称两个集合等势，记作$X\sim Y$，我们把集合$X$的势记作$\lvert X \rvert$或$\mathrm{card}\ X$，显然如果$X\sim Y$，那么$\lvert X \rvert = \lvert Y \rvert$
+粗略地讲，任一集合 $A$ 的基数或者势，记为 $|A|$，是指 $A$ 所含元素的个数。我们称自然数集
 \[
-	\begin{aligned}
-		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert Z \rvert)\Rightarrow (\lvert X \rvert\le \lvert Z \rvert)\\
-		&(\lvert X \rvert \le \lvert Y \rvert) \land (\lvert Y \rvert \le \lvert X \rvert)\Rightarrow (\lvert X \rvert = \lvert Y \rvert)\\
-		&\forall X \forall Y(\lvert X \rvert \le \lvert Y \rvert) \lor (\lvert Y \rvert \le \lvert X \rvert)
-	\end{aligned}
+	\mathbb{N}=\{1,2,\cdots\}
 \]
-如果集合$X$到集合$Y$的单射存在，那么
-\[
-	\lvert A \rvert \le \lvert B \rvert
-\]
-% 我们称与自然数集$\mathbb{N}$等势的集合为可数集，并称自然数集的势为$\aleph _{0}$，如果我们知道一个集合要么是有限集要么是可数集，我们称之为至多可数集
+的基数为可数无穷，记为 $\aleph_0$（读作：阿列夫0）。
 
-% 希尔伯特的旅馆
-\subsubsection{基数基本定理}
-\ITEMS
-	\item 可数集的无穷子集是可数集
-	\item 由可数集组成的有限集或可数集是可数集
-\ITEME
+在比较任意两个集合 $A$ 和 $B$ 的基数时，我们有下面的定义：
+
+\no {\bf 定义1} 我们称 $\lvert A \rvert \le \lvert B \rvert$，如果存在从 $A$ 到 $B$ 的单射。\\
+\no {\bf 定义2} 我们称 $\lvert A \rvert = \lvert B \rvert$，如果$\lvert A \rvert \le \lvert B \rvert$ 且 $\lvert B \rvert \le \lvert A \rvert$，也就是说，存在从 $A$ 到 $B$ 的双射。\\
+
+\no {\bf 例} 记 $\mathbb{N}_2=\{2,4,\cdots\}$，即所有偶自然数的集合。不难看出 $\lvert\mathbb{N}_2\rvert=\lvert\mathbb{N}\rvert=\aleph_0$，因为每个自然数乘 $2$ 就是一从 $\mathbb{N}$ 到 $\mathbb{N}_2$ 的双射。
+
 \subsubsection{幂集}
-称一个集合$A$的所有子集组成的集合称为集合$A$的幂集，记为
+称任一集合$A$的所有子集构成的集合为集合$A$的幂集，记为$P(A)$。不难看出
 \[
-	P(A)
-\]
-显然
-\[
-	\lvert P(A) \rvert = 2^{\lvert A \rvert}
+\lvert P(A) \rvert = 2^{\lvert A \rvert}
 \]
 
 \subsubsection{无最大基数定理}
 
-对于任何集合，都可以构建幂集使得幂集的势大于该集合的势
+对于任一非空集合 $A$，我们总有 $\lvert A \rvert<\lvert P(A) \rvert$。
 \smallskip
 
 \pro
 
-应用反证法，首先假设集合的幂集与其本身等势
-\[
-\lvert A\rvert = \lvert P(A)\rvert
-\]
-那么，代表我们可以在$A$与$P(A)$之间构建双射$f$
+我们先证明 $\lvert A \rvert \le \lvert P(A) \rvert$：\\
+定义映射 $f:A\rightarrow P(A)$ 如下：
+\[ 
+	g(x)=\{x\}, \forall x \in A
+\] 
+不难看出，$g$ 是单射。
+
+下面我们用反证法证明 $\lvert A \rvert \ne \lvert P(A) \rvert$:
+若相等，则存在双射
 \[
 	f:A\rightarrow P(A)
 \]
-定义一个$A$的子集合$B$，由不属于其本身经过映射$f$产生的像$f(x)$的元素组成，为%似乎这里的条件有点问题
+定义一个$A$的子集合$B$如下：
 \[
 B = \{x\in A: x\notin f(x)\}
 \]
-如果$f(x)$是满射，使得存在一个元素$y\in A$使得
+由于 $f$ 是双射，所以必存在（唯一）元素 $y\in A$ 使得
 \[
 f(y) = B
 \]
-那么考虑$y$与$B$的关系，发现无论如何都会矛盾
+考虑 $y$ 与 $B$ 的关系，发现无论如何都会产生矛盾：
+\ITEMS
+	\item 如果 $y\in B=f(y)$, 由 $B$ 的定义，我们会得到 $y\notin B$；
+	\item 如果 $y\notin B=f(y)$, 由 $B$ 的定义，我们会得到 $y\in B$。
+\ITEME
+
+\no {\bf 注} 我们记 $\aleph_n=2^{\aleph_{n-1}}, n=1, 2, \cdots$。由上述定理，显然我们有 
 \[
-\begin{aligned}
-	y\in B \iff y\notin B
-\end{aligned}
+	\aleph_0 < \aleph_1 < \aleph_2 <\cdots< 
 \]
 
-\subsubsection{连续统假设}
+\subsubsection{关于基数的几个基本定理}
+\ITEMS
+\item 对任意集合 $A$ 和 $B$，若 $A\subseteq B$，则 $\lvert A \rvert \le \lvert B \rvert$。
+\item 设 $A$ 是可数集（有限集或可数无穷集），$B$ 是无穷集，则 $\lvert A\cup B \rvert= \lvert B \rvert$。
+     （例：Hilbert旅馆）
+\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$，则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $。也就是说，可数个可数集的并集还是可数集。 （例：记 $\mathbb{Q}=$ 有理数集，则 $\lvert\mathbb{Q}\rvert=\aleph_0 $） 
+\ITEME
 
-连续统假设认为过渡的势不存在，即不存在介于可数集的势与连续统（实数集）的势之间的势，那么把连续统的势记为$\aleph_1$，在1963年被柯恩证明此假设不可证
 
-\subsubsection{实数集的势}
-
+\subsubsection{实数集的基数}
+实数集 $\mathbb{R}$ 的基数一般记为 $c$。 证明 $c=\aleph_1$。\\
 \pro
 
-为了求实数集的解，先把范围缩小为
-\[
-	\lvert \mathbb{R}\rvert =\lvert (0,1]\rvert  
-\]
-显然这一步映射满足双射，然后我们用二进制表示$(0,1]$上的实数
-\[
-	\begin{aligned}
-		\frac{1}{2}_{10} & = 0.100000\cdots_2\\
-		&= 0.011111\cdots_2
-	\end{aligned}
-\]
-假如我们想用二进制表示任何一个实数的，首先要使用二分法将该实数和$\frac12$相比较，若该实数大于$\frac12$则小数第一位为$1$，反之为零
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}
-	\coordinate (A) at (0,0);
-	\coordinate (B) at (7,0);
-	\coordinate (C) at (1,0);
-	\coordinate (D) at (6,0);
-	\coordinate (E) at (3.5,0);
-	\draw[thick] (A) -- (B);
-	\fill[black] (C) circle (1pt) node[above] {$0$};
-	\fill[black] (D) circle (1pt) node[above] {$1$};
-	\fill[black] (E) circle (1pt) node[above] {$\frac12$};
-\end{tikzpicture}
-\end{figure}
+我们先证明 $\lvert \mathbb{R} \rvert=\lvert (0,1]\rvert $，分三步进行：\\
 
-\no 并重复以上过程，以确定二进制小数的下一位
-\begin{figure}[!h]
-\centering
-\begin{tikzpicture}
-	\coordinate (A) at (0,0);
-	\coordinate (B) at (7,0);
-	\coordinate (C) at (1,0);
-	\coordinate (D) at (6,0);
-	\coordinate (E) at (3.5,0);
-	\coordinate (F) at (2.25,0);
-	\coordinate (G) at (4.75,0);
-	\draw[thick] (A) -- (B);
-	\fill[black] (C) circle (1pt) node[above] {$0$};
-	\fill[black] (D) circle (1pt) node[above] {$1$};
-	\fill[black] (E) circle (1pt) node[above] {$\frac12$};
-	\fill[black] (F) circle (1pt) node[above] {$\frac14$};
-	\fill[black] (G) circle (1pt) node[above] {$\frac34$};
-\end{tikzpicture}
-\end{figure}
+1. $\lvert \mathbb{R}\rvert =\lvert (-1,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow \mathbb{R}$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射。\\
 
-\no 若将以上过程无限次的重复下去，则可以将二进制小数与$(0,1]$上的实数建立双射关系，并得出实数集的势
-\[
-	\lvert \mathbb{R}\rvert =2^{\aleph_0}
-\]
-若我们接受连续统假设可得
-\[
-\aleph_1=2^{\aleph_0}
-\]
+2. $\lvert (-1,1)\rvert=\lvert (0,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow (0,1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射。\\
 
+3. $\lvert (0,1)\rvert=\lvert (0,1]\rvert $： 因为 $(0,1)\subseteq (0,1]\subseteq (-1,1)$。\\
+
+下面我们证明 $\lvert (0,1]\rvert=2^{\aleph_0}$: \\
+1. 把 $(0,1]$ 中的任一实数 $x$ 用二进制表示：更具体地讲，就是找到每项取值是 $0$ 或 $1$ 的无穷数列 $\{a_n\}_{n \ge 1}$ 满足在二进制下 $x=0.a_1 a_2\cdots a_n \cdots$，其中无穷多个 $a_n$ 是 $1$ 。\\
+\ITEMS 
+	\item 第一步: 把区间 $(0,1]$ 二等分为两半开闭子区间：若 $x$ 属于靠左的（称为第一个，后同）子区间 $(0,\frac{1}{2}]$，则 $a_1=0$；若 $x$ 属于靠右的（称为第二个，后同）子区间，则 $a_1=1$；
+	
+	\item 第二步：把 $x$ 所属的第一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间，则 $a_2=0$；若 $x$ 属于第二个子区间，则 $a_2=1$；
+	\item $\vdots$ 
+	\item 第 $n$ 步： 把 $x$ 所属的上一步中的小区间二等分为两半开闭子区间:  若 $x$ 属于第一个子区间，则 $a_n=0$；若 $x$ 属于第二个子区间，则 $a_n=1$；
+	\item $\vdots$
+\ITEME
+    注意到上述 $a_n$ 中，有无穷多个是 $1$ （为什么？）。这样我们就建立了 $(0,1]$ 和集合 $$S=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中无穷多个 $a_n$ 是 $1$} \}$$ 的一一对应关系。\\
+2 决定 $\lvert S\rvert$：令 $$T=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$ 且 其中只有限多个 $a_n$ 是 $1$} \}$$ 和 $$ R=\{(a_1, a_2,\cdots, a_n, \cdots): \mbox{每个 $a_n$ 是 $0$ 或 $1$}\}$$ 
+不难看出 $\lvert R\rvert=2^{\aleph_0}, \lvert T\rvert=\aleph_0$ （为什么？）且 $S\cup T= R$。由上面关于基数的基本定理 $2$，我们有 $$\lvert S\rvert=\lvert S\cup T\rvert =\lvert R\rvert=2^{\aleph_0}=\aleph_1$$
+
+\subsubsection{连续统假设}
+ 
+ \no {\bf 连续统假设} 不存在一个无穷集合，其基数严格介于自然数集的基数 $\aleph_0$ 与实数集的基数 $\aleph_1$（即连续统的基数）之间。 \\
+ \no {\bf 广义连续统假设} 不存在一个无穷集合，其基数严格介于 $\aleph_n$ 与 $\aleph_{n+1}, n=0, 1,2, \cdots $ 之间。
+
+在数学界广泛采用的ZFC集合公理系统下：
+\ITEMS
+\item Godel 证明了该假设的相容性：即不能证明它是错的； 
+\item Cohen 证明了它的独立性：即不能证明它是对的。
+\ITEME
+
+\iffalse 
 \section{$\mathbb{R}^n$上的拓扑}
-%这一部分的概念还不完整
+这一部分的概念还不完整
 
 \subsection{开集与闭集}
 
@@ -390,7 +383,7 @@ f(y) = B
 
 \subsubsection{内点与边界点}
 对于$A\subseteq\mathbb{R}^n$，$x\in A$，存在包含于$A$的开球$B(x,r)\subseteq A$，使得$x\in B(x,r)$则我们称$x$是$A$的内点；如果对于任意包含$x$的开球$B(x,r)\ni x$，都有$B(x,r)$既包含$A$的点，也包含$A^c$的点，即$(B\cap A)\supset \{x\}$且$(B\cap A^c)\supset \{x\}$则称$x$是$A$的边界点
-
+\fi
 
 % 新章节
 
