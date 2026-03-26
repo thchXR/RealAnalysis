@@ -11,6 +11,10 @@
 \newcommand{\no}{\noindent}
 \newcommand{\pro}{\no{\bf 证明：}}
 
+\newcommand{\EXP}{\no {\bf 例}\quad}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\st}{\mathrm{\quad s.t.\quad }}
+%\newcommand{\st}{\mathrm{\ s.t.\ }}
 
 \newcommand{\ITEMS}{\begin{enumerate}[leftmargin=4em]}
 \newcommand{\ITEME}{\end{enumerate}}
@@ -36,7 +40,7 @@
 
 \subsubsection{上、下确界的定义}
 
-粗略地讲，对于$A \subseteq \mathbb{R}$，$A$ 的上确界即为$A$的最小上界,记作
+粗略地讲，对于$A \subseteq \R$，$A$ 的上确界即为$A$的最小上界,记作
 \[
 \sup A
 \]
@@ -104,7 +108,7 @@ $A$的下确界为$A$的最大下界，记作
 
 数列$\{a_n\}$收敛的充要条件是，数列的上下极限相等，且为有限实数，即
 \[
-	\lim_{n\to\infty}a_n = L \iff \varliminf _{n\rightarrow \infty}a_{n} = \varlimsup _{n\rightarrow \infty}a_{n} = L \in \mathbb{R}
+	\lim_{n\to\infty}a_n = L \iff \varliminf _{n\rightarrow \infty}a_{n} = \varlimsup _{n\rightarrow \infty}a_{n} = L \in \R
 \]
 
 \subsection{函数列的上、下极限}
@@ -136,7 +140,7 @@ $A$的下确界为$A$的最大下界，记作
 \subsubsection{基本集合}
 
 % 在课上的全集使用的是X 而空集是\Phi
-我们将用$X$表示全集，$\emptyset$表示空集
+我们将用$X$表示全集，$\Phi$表示空集
 
 \subsubsection{集合簇}
 
@@ -144,7 +148,7 @@ $A$的下确界为$A$的最大下界，记作
 \[
 	\{A_\alpha\}_{\alpha\in I}
 \]
-其中$A_\alpha \subseteq X$，$I$是指标集（指标集不一定是$\mathbb{N}_+$也可以是$\mathbb{R}$，或其他任意集合）
+其中$A_\alpha \subseteq X$，$I$是指标集（指标集不一定是$\mathbb{N}_+$也可以是$\R$，或其他任意集合）
 
 \subsection{集合运算}
 
@@ -194,11 +198,11 @@ C_m = \inf_{n\ge m}\{A_n\} = \bigcap_{n\ge m} A_n
 	\varlimsup_{n\to\infty}\{A_n\}=\{x\in X: x\in \mbox{无穷多个}A_n\}
 \]
 \[
-	\varliminf_{n\to\infty}\{A_n\}=\{x\in X: \exists\,N\in\mathbb{N}\ s.t.\ x\in A_n,\forall n\ge N\}
+	\varliminf_{n\to\infty}\{A_n\}=\{x\in X: \exists\,N\in\mathbb{N} \st x\in A_n,\forall n\ge N\}
 \]
 这里我们只给出两种下极限定义等价性的证明（上极限的情况留给大家作思考题）: 
 \[ 
-    x\in\varliminf_{n\to\infty}\{A_n\}=\bigcup_{m\ge1}C_m\Leftrightarrow \exists\,N\in\mathbb{N}\ s.t.\ x\in C_N=\bigcap_{n\ge N} A_n \Leftrightarrow x\in A_n,\forall n\ge N
+    x\in\varliminf_{n\to\infty}\{A_n\}=\bigcup_{m\ge1}C_m\Leftrightarrow \exists\,N\in\mathbb{N} \st x\in C_N=\bigcap_{n\ge N} A_n \Leftrightarrow x\in A_n,\forall n\ge N
 \]
 显然
 \[
@@ -207,7 +211,7 @@ C_m = \inf_{n\ge m}\{A_n\} = \bigcap_{n\ge m} A_n
 \subsection{映射}
 设$X$、$Y$是两个集合，如果$X$中任一个元素$x$都按照某种规律$f$对应到$Y$的某一元素（记为$f(x)$），我们则称$f$为一从$X$到$Y$的映射，通常记为：
 \[
-	f:X\rightarrow Y
+	f:X\mapsto Y
 \]
 对于$\forall A\subseteq X$，我们称$f(A)=\{f(x):x\in A\} $为$A$的像；对于$\forall B\subseteq Y$，我们称$f^{-1}(B)=\{x\in X:f(x)\in B\} $为$B$的原像
 \subsubsection{单射}
@@ -253,7 +257,7 @@ C_m = \inf_{n\ge m}\{A_n\} = \bigcap_{n\ge m} A_n
 \no {\bf 定义1} 我们称 $\lvert A \rvert \le \lvert B \rvert$，如果存在从 $A$ 到 $B$ 的单射。\\
 \no {\bf 定义2} 我们称 $\lvert A \rvert = \lvert B \rvert$，如果$\lvert A \rvert \le \lvert B \rvert$ 且 $\lvert B \rvert \le \lvert A \rvert$，也就是说，存在从 $A$ 到 $B$ 的双射。\\
 
-\no {\bf 例} 记 $\mathbb{N}_2=\{2,4,\cdots\}$，即所有偶自然数的集合。不难看出 $\lvert\mathbb{N}_2\rvert=\lvert\mathbb{N}\rvert=\aleph_0$，因为每个自然数乘 $2$ 就是一从 $\mathbb{N}$ 到 $\mathbb{N}_2$ 的双射。
+\EXP 记 $\mathbb{N}_2=\{2,4,\cdots\}$，即所有偶自然数的集合。不难看出 $\lvert\mathbb{N}_2\rvert=\lvert\mathbb{N}\rvert=\aleph_0$，因为每个自然数乘 $2$ 就是一从 $\mathbb{N}$ 到 $\mathbb{N}_2$ 的双射。
 
 \subsubsection{幂集}
 称任一集合$A$的所有子集构成的集合为集合$A$的幂集，记为$P(A)$。不难看出
@@ -309,12 +313,12 @@ f(y) = B
 
 
 \subsubsection{实数集的基数}
-实数集 $\mathbb{R}$ 的基数一般记为 $c$。 证明 $c=\aleph_1$。\\
+实数集 $\R$ 的基数一般记为 $c$。 证明 $c=\aleph_1$。\\
 \pro
 
-我们先证明 $\lvert \mathbb{R} \rvert=\lvert (0,1]\rvert $，分三步进行：\\
+我们先证明 $\lvert \R \rvert=\lvert (0,1]\rvert $，分三步进行：\\
 
-1. $\lvert \mathbb{R}\rvert =\lvert (-1,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow \mathbb{R}$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射。\\
+1. $\lvert \R\rvert =\lvert (-1,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow \R$ 满足 $f(x)=\frac {x}{1-x^2}$ 是双射。\\
 
 2. $\lvert (-1,1)\rvert=\lvert (0,1)\rvert $: 不难看出映射  $f:(-1,1)\rightarrow (0,1) $ 满足 $f(x)=\frac {x+1}{2}$ 是双射。\\
 
@@ -345,45 +349,158 @@ f(y) = B
 \item Cohen 证明了它的独立性：即不能证明它是对的。
 \ITEME
 
-\iffalse 
-\section{$\mathbb{R}^n$上的拓扑}
-这一部分的概念还不完整
+
+\section{$\R^n$上的拓扑（Topology）}
+% $n$维的欧氏空间上的拓扑（Topology 地形）
+% 在R^n上类比一维中用绝对值定义距离来用范（绝对值）定义距离	
 
 \subsection{开集与闭集}
 
 \subsubsection{开球}
 
-我们把在$\mathbb{R}^n$空间上的开球定义为
+我们把在$\R^n$空间上的开球定义为 % 这里定义开球所用的距离（模）是否需要提前定义
 \[
-	B(x,r)=\{y\in\mathbb{R}^n:\lvert y-x\rvert<r\}
+	B(x;r)=\{y\in\R^n:\lvert y-x\rvert<r\}
 \]
-我们可以把开球组成的集合视为一组基
+我们称$\R^n$上的所有开球组成的集合称为$\R^n$上的一组拓扑基	% 可以冗余
 
 \subsubsection{开闭集}
-对于$A\subseteq\mathbb{R}^n$，如果
+
+\no {\bf 定义1}
+
+集合$A\subseteq\R^n$是开集，当且仅当集合$A$等于若干开球的并集，即
 \[
 	A = \bigcup_{\alpha\in I} B_\alpha(x_\alpha,r_\alpha)
 \]
-我们就称$A$是开集，而$A^c\subseteq\mathbb{R}^n$是闭集，用$U$和$F$分别表示开集和闭集；特别的，空集$\varnothing$和全集$\mathbb{R}^n$互补，它们既是开集也是闭集
-\subsubsection{开闭集的运算}
-我们称开集组成的集合为开集簇，闭集组成的集合为闭集簇
+
+集合$A\subseteq\R^n$是闭集，当且仅当其补集$A^c$是开集，即
 \[
-	\{U_\alpha\subseteq\mathbb{R}^n\}_{\alpha\in I}\qquad\{F_\alpha\subseteq\mathbb{R}^n\}_{\alpha\in I}
+	A = \left[\bigcup_{\alpha\in I} B_\alpha(x_\alpha,r_\alpha)\right]^c
 \]
 
+\no {\bf 定义2}
+
+在描述开闭集第二种定义之前，我们要先引入以下定义
+
 \ITEMS
-\item $\bigcup\limits_{\alpha\in I} U_\alpha$仍是开集
+	\item {\bf 内点} 点 $x\in A$ 为 $A \subseteq \R^n$ 的内点，当且仅当存在以 $x$ 为球心的开球 $B(x;r)$ 使得该开球包含于 $A$，即
+	\[
+		\exists r > 0 \st B(x;r)\subseteq A
+	\]
+	我们把$A$的所有内点组成的集合称为内部，记为$\mathring{A}$
+	
+	\item {\bf 边界点} 点 $x\in A$ 为 $A \subseteq \R^n$ 的边界点，当且仅当 $x$ 既不是 $A$ 的内点也不是 $A^c$ 的内点，即
+	\[
+		\forall r > 0 \st B(x;r)\mbox{中既有}A\mbox{中的点，也有}A^c\mbox{中的点}
+	\]
 
-\item $\bigcap\limits_{\alpha\in I} F_\alpha$仍是闭集
+	\item {\bf 聚点} 点 $x\in \R^n$ 为 $A \subseteq \R^n$ 的聚点（极限点），当且仅当任意以 $x$ 为球心的开球也有 $A$ 内的非 $x$ 点，即	% 这一部分是根据课上第二种定义写的
+	\[
+		\forall r>0 ,\ \exists a\in B(x;r)\st (a\in A)\land(a\neq x)
+	\]
+	也可以用以下形式表示
+	\[
+		\exists\{x_n\}_{n=1}^\infty,\ \forall x_n\in A \st\lim_{n\to\infty}x_n=x\\
+	\]
+	我们把$A$的所有聚点组成的集合称为$A$的导集，记为$A'$
 
-\item 开集的有限交集仍是开集
-
-\item 闭集的有限并集仍是闭集
+	\item {\bf 孤立点} 点 $x\in A$为$A \subseteq \R^n$的孤立点，当且仅当存在以 $x$ 为球心的开球仅与集合 $A$ 交于点 $x$
+	\[
+		\exists r>0 \st B(x;r)\cap A=\{x\}
+	\]
+	
+	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$ 为集合 $A\subseteq \R^n$ 的闭包，当且仅当 $\overline A$ 是包含 $A$ 的最小闭集,即
+	\[
+		\overline A = A \cup A'
+	\]
 \ITEME
 
-\subsubsection{内点与边界点}
-对于$A\subseteq\mathbb{R}^n$，$x\in A$，存在包含于$A$的开球$B(x,r)\subseteq A$，使得$x\in B(x,r)$则我们称$x$是$A$的内点；如果对于任意包含$x$的开球$B(x,r)\ni x$，都有$B(x,r)$既包含$A$的点，也包含$A^c$的点，即$(B\cap A)\supset \{x\}$且$(B\cap A^c)\supset \{x\}$则称$x$是$A$的边界点
-\fi
+集合 $A\subseteq\R^n$ 是开集，当且仅当集合 $A$ 等于其内部 $\mathring A$ ，即 $A = \mathring A$
+
+集合 $A\subseteq\R^n$ 是闭集，当且仅当集合 $A$ 等于其闭包 $\overline A$ ，即 $A = \overline A$
+
+全集 $\R^n$ 既是开集又是闭集，空集 $\Phi$ 因为是 $\R^n$ 的补集也既是开集又是闭集
+\bigskip
+
+\pro 
+
+	证明以上两种对闭集的定义等价，从定义2推导定义1
+	\[
+		\begin{aligned}
+			A = \overline A &\Rightarrow A = A \cup A'\\ % 闭包的定义
+			& \Rightarrow A' \subseteq A\\
+			& \Rightarrow A^c \cap A' = \Phi % \varnothing
+		\end{aligned}
+	\]
+	可知任意点 $x\in A^c$ 都必不是 $A$ 的聚点，根据聚点的定义我们可以写出
+	\[
+		\begin{aligned}
+			&\quad\forall x\in A^c,\ \exists r>0 \st B(x,r)\cap A = \Phi\\
+			&\Rightarrow \forall x\in A^c,\ \exists r>0 \st B(x,r)\subseteq A^c\\ % 根据内点的定义
+			&\Rightarrow \forall x\in A^c\st x \mbox{为}A^c\mbox{的内点} 
+			% &\Rightarrow A^c = \mathring {A^c}
+			% 本来想写 x\in \mathring{A^c} 但太不明确了
+		\end{aligned}
+	\]
+	即闭集 $A$ 的补集中所有点都是其内点，根据定义2中对开集的定义我们可知闭集 $A$ 的补集为开集
+	
+	% 用定义1推导定义2
+	% 根据开球的定义可知开球$B(x;r)$中一点总能构造一个更小的开球属于$B(x;r)$
+	% 所以开球$B(x;r)$等于$B(x;r)$的内部
+	% => 那么开球的并集也应该等于其内部
+	% => 所以开集等于其内部
+	% => 定义1
+	
+\subsection{开闭集与集合运算}
+我们用$U$和$F$分别表示开集和闭集
+% 我们称开集组成的集合为开集簇，闭集组成的集合为闭集簇
+% \[
+% 	\{U_\alpha\subseteq\R^n\}_{\alpha\in I}\qquad\{F_\alpha\subseteq\R^n\}_{\alpha\in I}
+% \]
+
+\ITEMS
+\item $\bigcup\limits_{\alpha\in I} U_\alpha$ 仍是开集，在 $\R$ 上举例：
+\[
+\bigcup_{n=1}^\infty\left(a+\frac1n,b-\frac1n\right)=(a,b)
+\]
+
+\item $\bigcap\limits_{\alpha\in I} F_\alpha$ 仍是闭集，在 $\R$ 上举例：
+\[
+\bigcup_{n=1}^\infty\left[a-\frac1n,b+\frac1n\right]=[a,b]
+\]
+
+\item 开集的有限交集仍是开集，在 $\R$ 上举反例：
+\[
+\bigcup_{n=1}^\infty\left(a-\frac1n,b+\frac1n\right)=[a,b]
+\]
+
+\item 闭集的有限并集仍是闭集，在 $\R$ 上举反例：
+\[
+\bigcap_{n=1}^\infty\left[a+\frac1n,b-\frac1n\right]=(a,b) % 根据DeMorgan律可从3中推出
+\]
+\ITEME
+
+\subsection{稠密子集}
+\subsubsection{稠密子集}
+
+集合 $A\subseteq\R^n$ 是 $\R^n$ 稠密子集，当且仅当 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$
+\smallskip
+
+\EXP 自然数集为实数集的稠密子集 $\overline{\mathbb{Q}} = \R$ ，在 $\R^n$ 上也同理有 $\overline{\mathbb{ Q}^n} = \R^n$
+
+\subsubsection{可分}
+拓扑空间 $X$ 称为可分的（separable），当且仅当它包含一个可数的稠密子集
+\smallskip
+
+\EXP $\R^n$ 是可分的，因为 $\mathbb{Q}^n$ 的基数为 $\aleph_0$（可数集）
+
+\subsubsection{ $\R^n$ 上的连续性}
+
+对于在 $\R^n$ 上的映射 $f:X\mapsto\R$，其中 $X\subseteq\R^n$，映射 $f$ 在 $X$ 上连续
+
+
+
+
 
 % 新章节
 
