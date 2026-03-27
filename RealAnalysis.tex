@@ -351,174 +351,195 @@ f(y) = B
 \ITEME
 
 \newpage
-\section{$\R^n$上的拓扑}
-在$n$维的欧氏空间上的拓扑学（Topology 地形）
+\section{预备知识：$\R^n$上的拓扑}
+这一部分我们研究 $n$ 维欧氏空间 $\R^n$ 上的拓扑（Topology 地形）
 % 在R^n上类比一维中用绝对值定义距离来用范（绝对值）定义距离	
 
 \subsection{开集与闭集}
 
 \subsubsection{开球}
 
-我们把在$\R^n$空间上的开球定义为 % 这里定义开球所用的距离（模）是否需要提前定义，映射d
+我们把 $\R^n$ 上的开球定义为 % 这里定义开球所用的距离（模）是否需要提前定义，映射d
 \[
 	B(x;r)=\{y\in\R^n:\lvert y-x\rvert<r\}
 \]
-我们称$\R^n$上的所有开球组成的集合称为$\R^n$上的一组拓扑基	% 可以冗余
+也就是以 $x$ 为圆心，半径小于 $r$ 的所有点的集合。粗略地讲，对于$\R^n$ 中任一点 $x$ 附近的地形，我们用开小球 $B(x;r)$（ 半径  $r$ 很小）来刻画。
 
-\subsubsection{开闭集}
+\subsubsection{开集与闭集的第 1 种定义}
 
-\no {\bf 定义1}
-
-集合$A\subseteq\R^n$是开集，当且仅当集合$A$等于若干开球的并集，即
+\ITEMS
+	\item 集合$A\subseteq\R^n$称为开集，如果它是若干开球的并集，即
 \[
 	A = \bigcup_{\alpha\in I} B_\alpha(x_\alpha,r_\alpha)
 \]
 
-集合$A\subseteq\R^n$是闭集，当且仅当其补集$A^c$是开集，即
+	\item 集合 $A\subseteq\R^n$ 称为闭集，如果其补集 $A^c$ 是开集，即
 \[
 	A = \left[\bigcup_{\alpha\in I} B_\alpha(x_\alpha,r_\alpha)\right]^c
 \]
+\ITEME
 
-\no {\bf 定义2}
+\no {\bf 注1} 我们在 $\R^n$ 中引入开集是为了刻画更大范围的地形，自然而然地，我们会想到把其中每一点附近的地形拼起来，于是自然就有了上述开集的定义。\\
 
-在描述开闭集第二种定义之前，我们要先引入以下定义
+\no {\bf 注2} 更一般地，为了定义一非空集合 $X$ 上的拓扑，我们只需定义 $X$ 中的所有开集（或等价地，所有闭集），通常多用开集来定义。自然而然地，我们称这样配备了拓扑的非空集合为拓扑空间。\\
+
+\no {\bf 注3} 设 $B$ 是由拓扑空间 $X$ 上的若干开集构成的集合簇，如果 $X$ 中的任一开集都是 $B$ 中成员的并（可以任意多个），我们则称 $B$ 是为拓扑空间 $X$ 的一拓扑基。显然，$\R^n$ 中所有开球构成的集合是 $\R^n$ 的一拓扑基。\\	% 可以冗余
+
+\no 为了更好地理解开集与闭集，下面我们将讨论它们的第二种定义，为此我们先引入以下定义：\\
+
+对任一集合 $A \subseteq \R^n$  
 
 \ITEMS
-	\item {\bf 内点} 点 $x\in A$ 为 $A \subseteq \R^n$ 的内点，当且仅当存在以 $x$ 为球心的开球 $B(x;r)$ 使得该开球包含于 $A$，即
+	\item {\bf 内点} 点 $x\in A$ 称为 $A$ 的内点，如果存在以 $x$ 为球心的开球 $B(x;r)$ 使得该开球包含于 $A$，即
 	\[
 		\exists r > 0 \st B(x;r)\subseteq A
 	\]
-	我们把$A$的所有内点组成的集合称为内部，记为$\mathring{A}$
+	我们把 $A$ 的所有内点构成的集合称为 $A$ 的内部，记为$\mathring{A}$ 。
 	
-	\item {\bf 边界点} 点 $x\in A$ 为 $A \subseteq \R^n$ 的边界点，当且仅当 $x$ 既不是 $A$ 的内点也不是 $A^c$ 的内点，即
+	\item {\bf 边界点} 点 $x\in \R^n$ 称为 $A$ 的边界点，如果 $x$ 既不是 $A$ 的内点也不是 $A^c$ 的内点，即
 	\[
 		\forall r > 0 \st B(x;r)\mbox{中既有}A\mbox{中的点，也有}A^c\mbox{中的点}
 	\]
 
-	\item {\bf 聚点} 点 $x\in \R^n$ 为 $A \subseteq \R^n$ 的聚点（极限点），当且仅当任意以 $x$ 为球心的开球也有 $A$ 内的非 $x$ 点，即	% 这一部分是根据课上第二种定义写的
+	\item {\bf 聚点} 点 $x\in \R^n$ 称为 $A$ 的聚点（极限点），如果任意以 $x$ 为球心的开球都含 $A$ 内的非 $x$ 点，即	% 这一部分是根据课上第二种定义写的
 	\[
 		\forall r>0 ,\ \exists a\in B(x;r)\st (a\in A)\land(a\neq x)
 	\]
-	也可以用以下形式表示
+	也可以等价定义为
 	\[
 		\exists\{x_n\}_{n=1}^\infty,\ \forall x_n\in A \st\lim_{n\to\infty}x_n=x\\
 	\]
-	我们把$A$的所有聚点组成的集合称为$A$的导集，记为$A'$
+	我们把 $A$ 的所有聚点构成的集合称为 $A$ 的导集，记为 $A'$。
 
-	\item {\bf 孤立点} 点 $x\in A$为$A \subseteq \R^n$的孤立点，当且仅当存在以 $x$ 为球心的开球仅与集合 $A$ 交于点 $x$
+	\item {\bf 孤立点} 点 $x\in A$ 称为 $A$ 的孤立点，如果存在以 $x$ 为球心的开球，仅与集合 $A$ 交于点 $x$，即
 	\[
 		\exists r>0 \st B(x;r)\cap A=\{x\}
 	\]
 	
-	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$ 为集合 $A\subseteq \R^n$ 的闭包，当且仅当 $\overline A$ 是包含 $A$ 的最小闭集,即
+	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$  称为 $A$ 的闭包，如果 $\overline A$ 是包含 $A$ 的最小闭集，等价于
 	\[
 		\overline A = A \cup A'
 	\]
+	
+\EXP 在 $\R$ 中，$(0, 1]$ 的闭包 是 $[0, 1]$ 。
+
 \ITEME
 
-集合 $A\subseteq\R^n$ 是开集，当且仅当集合 $A$ 等于其内部 $\mathring A$ ，即 $A = \mathring A$
+\subsubsection { 开集与闭集的第 2 种定义}
 
-集合 $A\subseteq\R^n$ 是闭集，当且仅当集合 $A$ 等于其闭包 $\overline A$ ，即 $A = \overline A$
+\ITEMS
 
-全集 $\R^n$ 既是开集又是闭集，空集 $\Phi$ 因为是 $\R^n$ 的补集也既是开集又是闭集
+	\item 集合 $A\subseteq\R^n$ 称为开集，如果 $A$ 的所有点都是内点，即 $A = \mathring A$。\\
+
+	\item 集合 $A\subseteq\R^n$ 称为闭集，如果 $A = \overline A$，也就是说 $A$ 的所有聚点都含于 $A$，即 $A' \subseteq A$。特别地，如果 $A'= A$，我们则称 $A$ 为完全集。\\
+
+\ITEME
+
 \bigskip
 
 \pro 
 
-	证明以上两种对闭集的定义等价，从定义2推导定义1
+	两种开集定义的等价性是比较明显的。下面我们给出的两种闭集定义等价性的证明：
 	\[
 		\begin{aligned}
-			A = \overline A &\Rightarrow A = A \cup A'\\ % 闭包的定义
-			& \Rightarrow A' \subseteq A\\
-			& \Rightarrow A^c \cap A' = \Phi % \varnothing
+			A\mbox{是闭集}\Leftrightarrow A = \overline A 
+			& \Leftrightarrow A = A \cup A'\\ % 闭包的定义
+			& \Leftrightarrow A' \subseteq A\\
+			& \Leftrightarrow A^c \cap A' = \Phi % \varnothing
 		\end{aligned}
 	\]
-	可知任意点 $x\in A^c$ 都必不是 $A$ 的聚点，根据聚点的定义我们可以写出
+	也就是说， $A^c$ 中任一点必不是 $A$ 的聚点，这等价于
 	\[
 		\begin{aligned}
-			&\quad\forall x\in A^c,\ \exists r>0 \st B(x,r)\cap A = \Phi\\
-			&\Rightarrow \forall x\in A^c,\ \exists r>0 \st B(x,r)\subseteq A^c\\ % 根据内点的定义
-			&\Rightarrow \forall x\in A^c\st x \mbox{为}A^c\mbox{的内点} 
+			&\quad \forall x\in A^c,\ \exists r>0 \st B(x,r)\cap A = \Phi\\
+			&\Leftrightarrow \forall x\in A^c,\ \exists r>0 \st B(x,r)\subseteq A^c\\ % 根据内点的定义
+			&\Leftrightarrow A^c \mbox{的任一点都是的内点} \\
+			&\Leftrightarrow A\mbox{是闭集}
 			% &\Rightarrow A^c = \mathring {A^c}
 			% 本来想写 x\in \mathring{A^c} 但太不明确了
 		\end{aligned}
 	\]
-	即闭集 $A$ 的补集中所有点都是其内点，根据定义2中对开集的定义我们可知闭集 $A$ 的补集为开集
+\no {\bf 注1} 由上述定义易知：全集 $\R^n$ 既是开集又是闭集，从而其补集空集 $\Phi$ 也既是开集又是闭集。一般地，任一拓扑空间中全集和空集都既是开集又是闭集。\\
+
+\no {\bf 注2} 由上述定义易知：闭集就是对极限运算封闭的点集，也就是说：对该集合内任一柯西序列，其极限点必在该集合内。\\	
 	
-\subsection{开闭集与集合运算}
-我们用$U$和$F$分别表示开集和闭集
+\subsection{开集、闭集与集合运算}
+我们用 $U$ 和 $F$ 分别表示开集和闭集
 % 我们称开集组成的集合为开集簇，闭集组成的集合为闭集簇
 % \[
 % 	\{U_\alpha\subseteq\R^n\}_{\alpha\in I}\qquad\{F_\alpha\subseteq\R^n\}_{\alpha\in I}
 % \]
 
 \ITEMS
-\item $\bigcup\limits_{\alpha\in I} U_\alpha$ 仍是开集，在 $\R$ 上举例：
+\item $\bigcup\limits_{\alpha\in I} U_\alpha$ 仍是开集。在 $\R$ 上举例：
 \[
 \bigcup_{n=1}^\infty\left(a+\frac1n,b-\frac1n\right)=(a,b)
 \]
 
-\item $\bigcap\limits_{\alpha\in I} F_\alpha$ 仍是闭集，在 $\R$ 上举例：
+\item $\bigcap\limits_{\alpha\in I} F_\alpha$ 仍是闭集。在 $\R$ 上举例：
 \[
-\bigcup_{n=1}^\infty\left[a-\frac1n,b+\frac1n\right]=[a,b]
+\bigcap_{n=1}^\infty\left[a-\frac1n,b+\frac1n\right]=[a,b]
 \]
 
-\item 开集的有限交集仍是开集，在 $\R$ 上举反例：
+\item 开集的有限交仍是开集，但开集的无穷交不一定是开集。在 $\R$ 上举反例：
 \[
-\bigcup_{n=1}^\infty\left(a-\frac1n,b+\frac1n\right)=[a,b]
+\bigcap_{n=1}^\infty\left(a-\frac1n,b+\frac1n\right)=[a,b]
 \]
 
-\item 闭集的有限并集仍是闭集，在 $\R$ 上举反例：
+\item 闭集的有限并集仍是闭集，但闭集的无穷并不一定是闭集。在 $\R$ 上举反例：
 \[
-\bigcap_{n=1}^\infty\left[a+\frac1n,b-\frac1n\right]=(a,b) % 根据DeMorgan律可从3中推出
+\bigcup_{n=1}^\infty\left[a+\frac1n,b-\frac1n\right]=(a,b) % 根据DeMorgan律可从3中推出
 \]
 \ITEME
 
 \subsection{稠密子集}
 \subsubsection{稠密子集}
 
-集合 $A\subseteq\R^n$ 是 $\R^n$ 稠密子集，当且仅当 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$
+集合 $A\subseteq\R^n$ 称为 $\R^n$ 的稠密子集，如果 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$
 \bigskip
 
-\EXP 自然数集为实数集的稠密子集 $\overline{\mathbb{Q}} = \R$ ，在 $\R^n$ 上也同理有 $\overline{\mathbb{ Q}^n} = \R^n$
+\EXP 有理数集 $\mathbb{Q}$ 是实数集 $\R$ 的一稠密子集因为 $\overline{\mathbb{Q}} = \R$。同理有 $\overline{\mathbb{Q}^n} = \R^n$，即 $\mathbb{Q}^n$ 是 $\R^n$ 的一稠密子集。
 
 \subsubsection{可分}
-拓扑空间 $X$ 称为可分的，当且仅当它包含一个可数的稠密子集
+拓扑空间 $X$ 称为可分的，如果它存在一个可数的稠密子集。
 \bigskip
 
 \EXP $\R^n$ 是可分的，因为 $\mathbb{Q}^n$ 的基数为 $\aleph_0$（可数集）
 
-\subsection{ $\R^n$ 上的连续性}
+\subsection{连续函数的等价定义}
 
-对于在 $\R^n$ 上的映射 $f:X\to\R$，其中 $X\subseteq\R^n$，我们可以先参考我们在数学分析中使用的 $\varepsilon-\delta$ 语言定义连续性，即：
+考虑函数 $f:X\to\R$，其中 $X\subseteq\R^n$。先回忆下我们在数学分析中是如何用 $\varepsilon-\delta$ 语言来定义 $f$ 的连续性：
 
-映射 $f$ 在 $X$ 上连续，当且仅当对于 $X$ 上的每一点，即 $\forall a\in X$ 我们都有
+我们称函数 $f$ 在 $X$ 上连续，如果 $f$ 在 $X$ 的每一点上连续。也就是说： $\forall a\in X$ 我们都有
 \[
-	\forall \varepsilon > 0,\ \exists \delta > 0,\ \forall x\in X ,\ \lvert x - a\rvert <\delta \Rightarrow \lvert f(x) -f(a)\rvert<\varepsilon
+	\forall \varepsilon > 0,\ \exists \delta > 0\ \mbox{使得}\ \forall x\in X \st \ \lvert x - a\rvert <\delta \Rightarrow \lvert f(x) -f(a)\rvert<\varepsilon
 \]
-则称 $f$ 是连续映射
+上式显然等价于
+\[
+	\forall a \in X,\ \forall \varepsilon > 0,\ \exists \delta > 0\ \mbox{使得}\ \forall x\in X \st \ x\in B(a;\delta)\Rightarrow f(B(a;\delta)) \subseteq B(f(a);\varepsilon)
+\]
+
 \bigskip
 
-在 $\R^n$ 上的拓扑中我们可以写出以下三种等价定义
+下面我们给出连续函数 $f$ 的三种等价定义
 
 \ITEMS
-	\item 映射 $f$ 在 $X$ 上连续，当且仅当
-	\[
-		\forall a \in X,\ \forall \varepsilon > 0,\ \exists \delta > 0 ,\ \forall x\in X ,\ x\in B(a;\delta)\Rightarrow f(x) \in B(f(a);\varepsilon)
-	\]
-	\item 映射 $f$ 在 $X$ 上连续，当且仅当开集在 $f$ 下的原像仍是开集
-	\item 映射 $f$ 在 $X$ 上连续，当且仅当闭集在 $f$ 下的原像仍是闭集
+	\item $f$ 连续的 $\varepsilon-\delta$ 定义（见上）
+    \item $f$ 连续如果 $\R$ 中任一开集在 $f$ 下的原像仍是开集
+	\item $f$ 连续如果 $\R$ 中任一闭集在 $f$ 下的原像仍是闭集
 \ITEME
 
 \pro
 
-证明以上定义是等价的 % 定义2 => 定义1
+注意到 $f^{-1}(A^c)=(f^{-1}(A))^c$，定义2、3 的等价性是比较明显的。\\
 
-根据定义2设 $f$ 满足开集的原像是开集，任取 $a \in X$ 及 $\varepsilon > 0$得到开集 $B(f(a);\varepsilon)$ ，其在 $f$ 下的原像 $f^{-1}\left[B(f(a);\varepsilon)\right]$ 是 $X$ 中的开集，显然可知 $a$ 是原像的内点，根据内点的定义可知
+定义2 $\Rightarrow$ 定义1: 对 $a \in X$ 及 $\varepsilon > 0$，$\R$ 中开集 $B(f(a);\varepsilon)$ 在 $f$ 下的原像 $f^{-1}\left[B(f(a);\varepsilon)\right]$ 是 $X$ 中的开集，从而 $a$ 是其内点，也就是说：
 \[
 	\exists \delta > 0 \st B(a;\delta)\subseteq f^{-1}\left[B(f(a);\varepsilon)\right]
 \]
-由于 $B(a;\delta) \subseteq X$，于是 $\forall x \in B(a;\delta)$，都有 $f(x) \in B(f(a);\varepsilon)$
+这显然等价于 $f(B(a;\delta)) \subseteq B(f(a);\varepsilon)$。\\
+
+定义1 $\Rightarrow$ 定义2: 留作思考题。\\
 
 % 使用 定义1 => 定义2
 
@@ -526,32 +547,35 @@ f(y) = B
 % sigma 代表可数无穷求和
 \subsubsection{$\sigma$-代数}
 
-对于全集 $X$ 有集合 $S$ 为若干（有限或可数无穷） $X$ 的子集合组成的集合，$S$ 为 $X$ 上的 $\sigma$-代数，当且仅当满足以下条件
+对于由全集 $X$ 的若干子集合构成的集合簇 $S$， 我们称 $S$ 为 $X$ 上的一 $\sigma$-代数，如果它满足下述条件：
 \ITEMS
-	\item 全集包含于 $S$，即 $X \in S$
-	\item 任意属于 $S$ 的集合 $A$ 其补集也属于 $S$ ，即 $\forall A\in S \Rightarrow A^c\in S$
-	\item 对于可数无穷集合序列 $\{A_i\}_{i=1}^\infty$ 均属于 $S$ ，其无穷并集属于 $S$ ，即
+	\item 全集 $X \in S$；
+	\item $S$ 对补集运算封闭，即 $\forall A\in S \Rightarrow A^c\in S$
+	\item $S$ 对可数多个集合的并集运算封闭 ，即
 	\[
-		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcap_{i=1}^\infty A_i\in S
+		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcap_{n=1}^\infty A_i\in S
 	\]
-	根据DeMorgan定律和条件2，我们可以把条件3写为以下等价条件
+
+\no {\bf 注1} 显然空集 $\emptyset \in S$。\\	
+\no {\bf 注2} 根据 DeMorgan 定律和上述条件 2，条件 3 与下述条件等价：\\
+$S$ 对可数多个集合的并集运算封闭 ，即
 	\[
-		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcup_{i=1}^\infty A_i\in S
+		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcup_{n=1}^\infty A_i\in S
 	\]
 \ITEME
 
-\subsubsection{博雷尔 $\sigma$-代数（Borel）}
+\subsubsection{波莱尔（Borel） $\sigma$-代数}
 
-我们定义包含 $\R^n$ 中所有开集的最小 $\sigma$ -代数（由所有开集生成的 $\sigma$-代数）为博雷尔 $\sigma$-代数，记作 $\mathcal{B}(\R^n)$ 。对于博雷尔 $\sigma$-代数我们有以下性质
+我们把 $\R^n$ 上含有 $\R^n$ 的所有开集的最小 $\sigma$ -代数（按包含关系）称为 Borel $\sigma$-代数，记作 $\mathcal{B}(\R^n)$ 。关于 Borel $\sigma$-代数，我们有下述性质：
 \ITEMS 
-	\item 博雷尔 $\sigma$-代数 $\mathcal{B}(\R^n)$ 中包含 $\R^n$ 中所有开集
-	\item 博雷尔 $\sigma$-代数 $\mathcal{B}(\R^n)$ 中包含 $\R^n$ 中所有闭集
-	\item 可数多个闭集的并集称为 \(F_\sigma\) 集，若 \(A = \bigcup_{i=1}^\infty F_i\)，其中每个 \(F_i\) 是闭集，则 \(A \in \mathcal{B}(\mathbb{R}^n)\)
-	\item 可数多个开集的交集称为 \(G_\delta\) 集，若 \(B = \bigcap_{i=1}^\infty U_i\)，其中每个 \(U_i\) 是开集，则 \(B \in \mathcal{B}(\mathbb{R}^n)\)
+	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有开集
+	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有闭集
+	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有 \(F_\sigma\) 集，其中我们把可数无穷多个开集的交集称为 \(G_\delta\) 集 
+	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有 \(F_\sigma\) 集，其中我们把可数无穷多个闭集的并集称为 \(F_\sigma\) 集
 	\item[\vdots] \ 其他性质不做展开
 \ITEME
 
-\subsection{距离空间} % 这里是按照课上讲的顺序写的，不知道应不应该放到最开始，开球的定义前
+\subsection{距离空间（度量空间）} % 这里是按照课上讲的顺序写的，不知道应不应该放到最开始，开球的定义前
 
 \subsubsection{距离}
 
@@ -573,18 +597,18 @@ f(y) = B
 % \]
 \bigskip
 
-\EXP 设 $X = C[a,b]$ 为所有从 $[a,b]$ 到 $\R$ 上的连续函数，对于 $\forall f,g \in X$ 我们可以做出如下定义
+\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数的集合。对于 $\forall f, g \in X$，我们定义
 \[
 	d(f,g) = \max_{a\le x\le b}\lvert f(x)-g(x)\rvert
 \]
-那么 $(X,d)$ 是一个距离空间
+不难验证 $(X,d)$ 是一距离空间。
 
-\subsection{康托尔三分集}
-
-
+\subsection{康托（Cantor） 三分集}
 
 
-从闭区间 $I = [0,1]$ 开始，我们把 $I$ 三等分，并去掉中间的开区间 $\left(\frac13,\frac23\right)$，余下如图两个闭区间 $\left[0,\frac13\right]$ 和 $\left[\frac23,1\right]$，分别记为 $I_{11}$ 和 $I_{12}$，然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $I_{21},I_{22},I_{23},I_{24}$ ，接下来不断重复以上过程
+
+
+从闭区间 $I = [0,1]$ 开始，我们把 $I$ 三等分，并去掉中间的开区间 $\left(\frac13,\frac23\right)$，余下如图两个闭区间 $\left[0,\frac13\right]$ 和 $\left[\frac23,1\right]$，分别记为 $I_{11}$ 和 $I_{12}$。然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $I_{21},I_{22},I_{23},I_{24}$ ，接下来不断重复以上过程：
 
 % 用grok生成的三分集图像，稍微修改了下
 \begin{figure}[h]
@@ -660,23 +684,23 @@ f(y) = B
 \end{tikzpicture}	
 \end{figure}
 
-我们定义经过以上过程余下的所有点组成的集合为康托尔三分集（Cantor），记作 $\mathcal{C} \subseteq R$
+我们把经过上述所有过程后剩下的点构成的集合称为康托（ Cantor） 三分集，记作 $\mathcal{C}$，显然
 \[
 	\mathcal{C} = \bigcap_{i=1}^\infty\left(\bigcup_{j=1}^{2^i}I_{ij}\right)
 \]
-显然以上过程中取得的每个端点都属于 $\mathcal{C}$ ，且 $\mathcal{C}$ 是非空闭集
+不难看出，$\mathcal{C}$ 是非空闭集，因为上述每个闭区间 $I$ 的端点必然不会被去掉，从而必属于 $\mathcal{C}$。\\
+ 
+\subsubsection{康托三分集的基数}
 
-\subsubsection{康托尔集的基数}
-
-我们参考求实数集的基数时所用的方法，在康托尔集 $\mathcal{C}$ 与一个三进制小数 $0.a_1a_2a_3\cdots a_n\cdots$ 建立一一对应关系，该三进制小数中有无穷多个 $a_n$ 是2，可知
+不难看出，康托三分集 $\mathcal{C}$ 中每一个数与三进制小数 $0.a_1a_2a_3\cdots a_n\cdots \mbox{每个 $a_n$ 是 $0$ 或 $2$}$ 一一对应，所以
 \[
 	\lvert \mathcal{C}\rvert = 2^{\aleph_0}
 \]
 
+\subsubsection{康托三分集的“长度”}
 
-
-
-
+这里，康托三分集 $\mathcal{C}$ 的 “长度” 理解为总长度 1 减去所有移除的区间的长度。注意到第 $n$ 次移除 $2^{n-1}$ 开区间，每个长度均为 $\frac{1}{3^n}$，从而康托三分集 $\mathcal{C}$ 的 “长度” 等于
+	$$ 1-\sum_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}}=1-\frac{\frac{1}{3}}{1-\frac{2}{3}}=0 $$
 
 \end{document}
 
