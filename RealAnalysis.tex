@@ -584,12 +584,94 @@ f(y) = B
 
 
 
+从闭区间 $I = [0,1]$ 开始，我们把 $I$ 三等分，并去掉中间的开区间 $\left(\frac13,\frac23\right)$，余下如图两个闭区间 $\left[0,\frac13\right]$ 和 $\left[\frac23,1\right]$，分别记为 $I_{11}$ 和 $I_{12}$，然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $I_{21},I_{22},I_{23},I_{24}$ ，接下来不断重复以上过程
 
+% 用grok生成的三分集图像，稍微修改了下
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}
+	\draw[help lines, color=gray!20] (0,-5) grid (9,1);
+	\fill[black] (0,0) circle (2pt) node[below=2pt] {$0$};	
+	\fill[black] (9,0) circle (2pt) node[below=2pt] {$1$};
 
+  % 绘制各层康托尔集（从上到下越来越精细）
+  % 第0层（最上面）
+  \draw[thick] (0,0) -- (9,0);
+  \node[above] at (4.5,0) {$I$};
+  % 第1层
+  \draw[thick] (0,-1) -- (3,-1)
+  	node[left=45pt,above=2pt] {$I_{11}$};
+  \draw[thick] (6,-1) -- (9,-1) 
+    node[left=45pt,above=2pt] {$I_{12}$};
+	\fill[black] (0,-1) circle (2pt) node[below=2pt] {$0$};	
+	\fill[black] (9,-1) circle (2pt) node[below=2pt] {$1$};
+	\fill[black] (3,-1) circle (2pt) node[below=2pt] {$\frac13$};	
+	\fill[black] (6,-1) circle (2pt) node[below=2pt] {$\frac23$};
+	
+  % 第2层
+  \draw[thick] (0,-2)   -- (1,-2)
+  	node[left=15pt,above=2pt] {$I_{21}$};
+  \draw[thick] (2,-2) -- (3,-2)
+  	node[left=15pt,above=2pt] {$I_{22}$};
+  \draw[thick] (6,-2) -- (7,-2)
+  	node[left=15pt,above=2pt] {$I_{23}$};
+  \draw[thick] (8,-2) -- (9,-2) 
+    node[left=15pt,above=2pt] {$I_{24}$};
+    \fill[black] (0,-2) circle (2pt) node[below=2pt] {$0$};	
+	\fill[black] (9,-2) circle (2pt) node[below=2pt] {$1$};
+	\fill[black] (3,-2) circle (2pt) node[below=2pt] {$\frac13$};	
+	\fill[black] (6,-2) circle (2pt) node[below=2pt] {$\frac23$};
+	\fill[black] (1,-2) circle (2pt) node[below=2pt] {$\frac19$};	
+	\fill[black] (2,-2) circle (2pt) node[below=2pt] {$\frac29$};
+	\fill[black] (7,-2) circle (2pt) node[below=2pt] {$\frac79$};	
+	\fill[black] (8,-2) circle (2pt) node[below=2pt] {$\frac89$};
 
+  % 第3层
+  \draw[thick] (0,-3)   -- (0.333,-3);
+  \draw[thick] (0.667,-3) -- (1,-3);
+  \draw[thick] (2,-3) -- (2.333,-3);
+  \draw[thick] (2.667,-3) -- (3,-3);
+  \draw[thick] (6,-3) -- (6.333,-3);
+  \draw[thick] (6.667,-3) -- (7,-3);
+  \draw[thick] (8,-3) -- (8.333,-3);
+  \draw[thick] (8.667,-3) -- (9,-3);
 
+  % 第4层（更精细）
+  \draw[thick] (0,-4)   -- (0.111,-4);
+  \draw[thick] (0.222,-4) -- (0.333,-4);
+  \draw[thick] (0.667,-4) -- (0.778,-4);
+  \draw[thick] (0.889,-4) -- (1,-4);
+  
+  \draw[thick] (2,-4) -- (2.111,-4);
+  \draw[thick] (2.222,-4) -- (2.333,-4);
+  \draw[thick] (2.667,-4) -- (2.778,-4);
+  \draw[thick] (2.889,-4) -- (3,-4);
 
+  \draw[thick] (6,-4) -- (6.111,-4);
+  \draw[thick] (6.222,-4) -- (6.333,-4);
+  \draw[thick] (6.667,-4) -- (6.778,-4);
+  \draw[thick] (6.889,-4) -- (7,-4);
 
+  \draw[thick] (8,-4) -- (8.111,-4);
+  \draw[thick] (8.222,-4) -- (8.333,-4);
+  \draw[thick] (8.667,-4) -- (8.778,-4);
+  \draw[thick] (8.889,-4) -- (9,-4);
+
+\end{tikzpicture}	
+\end{figure}
+
+我们定义经过以上过程余下的所有点组成的集合为康托尔三分集（Cantor），记作 $\mathcal{C} \subseteq R$
+\[
+	\mathcal{C} = \bigcap_{i=1}^\infty\left(\bigcup_{j=1}^{2^i}I_{ij}\right)
+\]
+显然以上过程中取得的每个端点都属于 $\mathcal{C}$ ，且 $\mathcal{C}$ 是非空闭集
+
+\subsubsection{康托尔集的基数}
+
+我们参考求实数集的基数时所用的方法，在康托尔集 $\mathcal{C}$ 与一个三进制小数 $0.a_1a_2a_3\cdots a_n\cdots$ 建立一一对应关系，该三进制小数中有无穷多个 $a_n$ 是2，可知
+\[
+	\lvert \mathcal{C}\rvert = 2^{\aleph_0}
+\]
 
 
 
