@@ -400,6 +400,7 @@ f(y) = B
 	\[
 		\forall r > 0 \st B(x;r)\mbox{中既有}A\mbox{中的点，也有}A^c\mbox{中的点}
 	\]
+	我们把 $A$ 的所有边界点构成的集合称为 $A$ 的边界，记为 $\partial A$
 
 	\item {\bf 聚点} 点 $x\in \R^n$ 称为 $A$ 的聚点（极限点），如果任意以 $x$ 为球心的开球都含 $A$ 内的非 $x$ 点，即	% 这一部分是根据课上第二种定义写的
 	\[
@@ -416,12 +417,13 @@ f(y) = B
 		\exists r>0 \st B(x;r)\cap A=\{x\}
 	\]
 	
-	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$  称为 $A$ 的闭包，如果 $\overline A$ 是包含 $A$ 的最小闭集，等价于
-	\[
-		\overline A = A \cup A'
-	\]
+	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$  称为 $A$ 的闭包，如果 $\overline A = A \cup A'$。
 	
-\EXP 在 $\R$ 中，$(0, 1]$ 的闭包 是 $[0, 1]$ 。
+\no {\bf 例 1} 在 $\R$ 中，$(0, 1]$ 的闭包 是 $[0, 1]$。\\
+
+\no {\bf 例 2} 证明：对 $\R^n$ 中任一子集 $A$，其闭包 $\overline A$ 的闭包仍是 $\overline A$，即 $\overline {\overline A} = \overline A$。该证明我们不作要求，大家可以试一下。\\
+
+\no {\bf 例 3} 证明：对 $\R^n$ 中任一子集 $A$，其闭包 $\overline A = \mathring A \cup \partial A$
 
 \ITEME
 
@@ -443,7 +445,7 @@ f(y) = B
 	\[
 		\begin{aligned}
 			A\mbox{是闭集}\Leftrightarrow A = \overline A 
-			& \Leftrightarrow A = A \cup A'\\ % 闭包的定义
+			&\Leftrightarrow A = A \cup A'\\ % 闭包的定义
 			& \Leftrightarrow A' \subseteq A\\
 			& \Leftrightarrow A^c \cap A' = \Phi % \varnothing
 		\end{aligned}
@@ -454,14 +456,17 @@ f(y) = B
 			&\quad \forall x\in A^c,\ \exists r>0 \st B(x,r)\cap A = \Phi\\
 			&\Leftrightarrow \forall x\in A^c,\ \exists r>0 \st B(x,r)\subseteq A^c\\ % 根据内点的定义
 			&\Leftrightarrow A^c \mbox{的任一点都是的内点} \\
-			&\Leftrightarrow A\mbox{是闭集}
+			&\Leftrightarrow A^c \mbox{是开集}\\
+			&\Leftrightarrow A \mbox{是闭集}
 			% &\Rightarrow A^c = \mathring {A^c}
 			% 本来想写 x\in \mathring{A^c} 但太不明确了
 		\end{aligned}
 	\]
 \no {\bf 注1} 由上述定义易知：全集 $\R^n$ 既是开集又是闭集，从而其补集空集 $\Phi$ 也既是开集又是闭集。一般地，任一拓扑空间中全集和空集都既是开集又是闭集。\\
 
-\no {\bf 注2} 由上述定义易知：闭集就是对极限运算封闭的点集，也就是说：对该集合内任一柯西序列，其极限点必在该集合内。\\	
+\no {\bf 注2} 由上述 {\bf 例 2} 知，$\R^n$ 中任一子集 $A$ 的闭包 $\overline A$ 是闭集。 事实上，$\overline A$ 还是包含 $A$ 的最小闭集：设 $B$ 是任一包含 $A$ 的闭集，显然 $ A' \subseteq B'$，从而 $\overline A = A \cup A'\subseteq B \cup B'= \overline B = B$。\\
+
+\no {\bf 注3} 由上述定义易知：闭集就是对极限运算封闭的点集，也就是说：对该集合内任一柯西序列，其极限点必在该集合内。\\	
 	
 \subsection{开集、闭集与集合运算}
 我们用 $U$ 和 $F$ 分别表示开集和闭集
@@ -495,7 +500,7 @@ f(y) = B
 \subsection{稠密子集}
 \subsubsection{稠密子集}
 
-集合 $A\subseteq\R^n$ 称为 $\R^n$ 的稠密子集，如果 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$
+集合 $A\subseteq\R^n$ 称为 $\R^n$ 的稠密子集，如果 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$\\
 \bigskip
 
 \EXP 有理数集 $\mathbb{Q}$ 是实数集 $\R$ 的一稠密子集因为 $\overline{\mathbb{Q}} = \R$。同理有 $\overline{\mathbb{Q}^n} = \R^n$，即 $\mathbb{Q}^n$ 是 $\R^n$ 的一稠密子集。
@@ -570,7 +575,7 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \ITEMS 
 	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有开集
 	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有闭集
-	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有 \(F_\sigma\) 集，其中我们把可数无穷多个开集的交集称为 \(G_\delta\) 集 
+	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有 \(G_\delta\) 集，其中我们把可数无穷多个开集的交集称为 \(G_\delta\) 集 
 	\item $\mathcal{B}(\R^n)$ 中含 $\R^n$ 中所有 \(F_\sigma\) 集，其中我们把可数无穷多个闭集的并集称为 \(F_\sigma\) 集
 	\item[\vdots] \ 其他性质不做展开
 \ITEME
@@ -608,47 +613,49 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 
 
-从闭区间 $I = [0,1]$ 开始，我们把 $I$ 三等分，并去掉中间的开区间 $\left(\frac13,\frac23\right)$，余下如图两个闭区间 $\left[0,\frac13\right]$ 和 $\left[\frac23,1\right]$，分别记为 $I_{11}$ 和 $I_{12}$。然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $I_{21},I_{22},I_{23},I_{24}$ ，接下来不断重复以上过程：
+从闭区间 $[0,1]$ 开始，我们把该区间三等分，并去掉中间的开区间 $I_{11} = \left(\frac13,\frac23\right)$，余下如图两个闭区间 $F_{11}=\left[0,\frac13\right]$ 和 $F_{2}=\left[\frac23,1\right]$，分别记为 $F_{11}$ 和 $F_{12}$。然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $F_{21},F_{22},F_{23},F_{24}$ ，接下来不断重复以上过程
 
 % 用grok生成的三分集图像，稍微修改了下
 \begin{figure}[h]
 \centering
 \begin{tikzpicture}
 	\draw[help lines, color=gray!20] (0,-5) grid (9,1);
-	\fill[black] (0,0) circle (2pt) node[below=2pt] {$0$};	
-	\fill[black] (9,0) circle (2pt) node[below=2pt] {$1$};
+	\fill[black] (0,0) circle (1pt) node[below=1pt] {$0$};	
+	\fill[black] (9,0) circle (1pt) node[below=1pt] {$1$};
 
   % 绘制各层康托尔集（从上到下越来越精细）
   % 第0层（最上面）
   \draw[thick] (0,0) -- (9,0);
-  \node[above] at (4.5,0) {$I$};
   % 第1层
   \draw[thick] (0,-1) -- (3,-1)
-  	node[left=45pt,above=2pt] {$I_{11}$};
+  	node[left=45pt,above=2pt] {$F_{11}$};
   \draw[thick] (6,-1) -- (9,-1) 
-    node[left=45pt,above=2pt] {$I_{12}$};
-	\fill[black] (0,-1) circle (2pt) node[below=2pt] {$0$};	
-	\fill[black] (9,-1) circle (2pt) node[below=2pt] {$1$};
-	\fill[black] (3,-1) circle (2pt) node[below=2pt] {$\frac13$};	
-	\fill[black] (6,-1) circle (2pt) node[below=2pt] {$\frac23$};
+    node[left=45pt,above=2pt] {$F_{12}$};
+    \node[above] at (4.5,-1) {$I_{11}$};
+	\fill[black] (0,-1) circle (1pt) node[below=1pt] {$0$};	
+	\fill[black] (9,-1) circle (1pt) node[below=1pt] {$1$};
+	\fill[black] (3,-1) circle (1pt) node[below=1pt] {$\frac13$};	
+	\fill[black] (6,-1) circle (1pt) node[below=1pt] {$\frac23$};
 	
   % 第2层
   \draw[thick] (0,-2)   -- (1,-2)
-  	node[left=15pt,above=2pt] {$I_{21}$};
+  	node[left=15pt,above=2pt] {$F_{21}$};
   \draw[thick] (2,-2) -- (3,-2)
-  	node[left=15pt,above=2pt] {$I_{22}$};
+  	node[left=15pt,above=2pt] {$F_{22}$};
   \draw[thick] (6,-2) -- (7,-2)
-  	node[left=15pt,above=2pt] {$I_{23}$};
+  	node[left=15pt,above=2pt] {$F_{23}$};
   \draw[thick] (8,-2) -- (9,-2) 
-    node[left=15pt,above=2pt] {$I_{24}$};
-    \fill[black] (0,-2) circle (2pt) node[below=2pt] {$0$};	
-	\fill[black] (9,-2) circle (2pt) node[below=2pt] {$1$};
-	\fill[black] (3,-2) circle (2pt) node[below=2pt] {$\frac13$};	
-	\fill[black] (6,-2) circle (2pt) node[below=2pt] {$\frac23$};
-	\fill[black] (1,-2) circle (2pt) node[below=2pt] {$\frac19$};	
-	\fill[black] (2,-2) circle (2pt) node[below=2pt] {$\frac29$};
-	\fill[black] (7,-2) circle (2pt) node[below=2pt] {$\frac79$};	
-	\fill[black] (8,-2) circle (2pt) node[below=2pt] {$\frac89$};
+    node[left=15pt,above=2pt] {$F_{24}$};
+    \node[above] at (1.5,-2) {$I_{21}$};
+    \node[above] at (7.5,-2) {$I_{22}$};
+    \fill[black] (0,-2) circle (1pt) node[below=1pt] {$0$};	
+	\fill[black] (9,-2) circle (1pt) node[below=1pt] {$1$};
+	\fill[black] (3,-2) circle (1pt) node[below=1pt] {$\frac13$};	
+	\fill[black] (6,-2) circle (1pt) node[below=1pt] {$\frac23$};
+	\fill[black] (1,-2) circle (1pt) node[below=1pt] {$\frac19$};	
+	\fill[black] (2,-2) circle (1pt) node[below=1pt] {$\frac29$};
+	\fill[black] (7,-2) circle (1pt) node[below=1pt] {$\frac79$};	
+	\fill[black] (8,-2) circle (1pt) node[below=1pt] {$\frac89$};
 
   % 第3层
   \draw[thick] (0,-3)   -- (0.333,-3);
@@ -686,13 +693,13 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 我们把经过上述所有过程后剩下的点构成的集合称为康托（ Cantor） 三分集，记作 $\mathcal{C}$，显然
 \[
-	\mathcal{C} = \bigcap_{i=1}^\infty\left(\bigcup_{j=1}^{2^i}I_{ij}\right)
+	\mathcal{C} = \bigcap_{i=1}^\infty\left(\bigcup_{j=1}^{2^i}F_{ij}\right)
 \]
 不难看出，$\mathcal{C}$ 是非空闭集，因为上述每个闭区间 $I$ 的端点必然不会被去掉，从而必属于 $\mathcal{C}$。\\
  
 \subsubsection{康托三分集的基数}
 
-不难看出，康托三分集 $\mathcal{C}$ 中每一个数与三进制小数 $0.a_1a_2a_3\cdots a_n\cdots \mbox{每个 $a_n$ 是 $0$ 或 $2$}$ 一一对应，所以
+不难看出，康托三分集 $\mathcal{C}$ 中每一个数与三进制小数集 $\{0.a_1a_2a_3\cdots a_n\cdots: \mbox{每个 $a_n$ 是 $0$ 或 $2$}$\} 一一对应，所以
 \[
 	\lvert \mathcal{C}\rvert = 2^{\aleph_0}
 \]
@@ -701,6 +708,77 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 这里，康托三分集 $\mathcal{C}$ 的 “长度” 理解为总长度 1 减去所有移除的区间的长度。注意到第 $n$ 次移除 $2^{n-1}$ 开区间，每个长度均为 $\frac{1}{3^n}$，从而康托三分集 $\mathcal{C}$ 的 “长度” 等于
 	$$ 1-\sum_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}}=1-\frac{\frac{1}{3}}{1-\frac{2}{3}}=0 $$
+
+\subsubsection{$\varphi$ 映射}
+
+建立以下映射 $\varphi:\mathcal{C} \to [0,1]$ ，把康托集的三进制小数映射到二进制，将所有 $2$ 替换为 $1$
+\[
+	x =\ 0.a_1 a_2 a_3 \cdots\ \mapsto\ \varphi(x) =\ 0.b_1 b_2 b_3\cdots \quad \mbox{其中}\ b_i = \frac{a_i}{2}, \forall i \in \mathbb{N}
+\]
+显然可知
+
+\ITEMS
+	\item $\varphi$ 是满射
+	\item $\varphi$ 非严格单调增（不减）
+	
+	\EXP $\varphi(\frac13) = \varphi(\frac23)$
+		
+	\item $\varphi$ 是连续的
+\ITEME
+
+\subsubsection{康托函数}
+
+建立以下映射 $\varPhi:[0,1] \to [0,1]$，有以下对应关系
+\[
+	\varPhi(x) = \begin{cases}
+		\varphi(x) &,x\in\mathcal{C}\\
+		\varphi(I_{mn}\mbox{的左端点}) &,x\in I_{mn}
+	\end{cases}
+\]
+显然可知
+
+\ITEMS
+	\item $\varPhi$ 是满射
+	\item $\varPhi$ 非严格单调增（不减）
+	\item $\varPhi$ 不是常数函数，但其导数处处为 $0$
+	\[
+		\{ x\in [0,1] : \varPhi'(x) = 0 \} \supseteq \bigcup_{m=1}^\infty\bigcup_{n=1}^{2^{n-1}}I_{mn}
+	\] 
+	$\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{n-1}}I_{mn}$ 的长度为 $\sum\limits_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}} = 1$
+	\[
+		\{ x\in [0,1] : \varPhi'(x) \neq 0 \} \subseteq \mathcal{C}
+	\] 
+	$\mathcal{C}$ 的长度为 $0$
+\ITEME
+
+\subsubsection{$\varPsi$ 映射}
+
+由于康托函数并不严格单调增，我们构建如下映射 $\varPsi:[0,1] \to [0,1]$
+\[
+	\varPsi(x) =  \frac{x+\varPhi(x)}{2}
+\]
+
+\subsubsection{康托函数的积分}
+根据课上写的朴素勒贝格积分思想，我们知道康托集的长度为 $0$ ，所以我们只需考虑在 $\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{n-1}}I_{mn}$ 上的积分，我们逐步分类
+\ITEMS
+	\item 考虑 $I_{11}$ 上的积分，其长度为 $\frac{1}{3}$，函数值为 $\varPhi(\frac13) = \frac12$ 积分值应为 $\frac13 \cdot \frac12$
+	\item 考虑 $I_{21}$ 和 $I_{22}$ 上的积分，其长度均为为 $\frac{1}{3^2}$，函数值分别为 $\varPhi(\frac19) = \frac14, \varPhi(\frac79) = \frac34$ 积分值应为 $\frac{1}{3^2} $
+	\item 考虑 $\bigcup\limits_{i=1}^{k^{i-1}} I_{ki}$ 上的积分，每段长度为 $\frac{1}{3^k}$，函数值之和为 $2^{k-2}$ ，积分值为 $\frac{2^{k-2}}{3^k} = \frac14 \left(\frac23\right)^k$
+\ITEME
+显然可以把康托函数的积分写为如下几何级数的形式，并求出值
+
+\[
+	\int_{[0,1]} \varPhi(x) dx = \sum_{i=1}^\infty \frac14 \left(\frac23\right)^i = \frac{\frac16}{1-\frac23}=\frac12
+\]
+
+\subsection{一般的拓扑}
+
+\subsubsection{拓扑空间}
+
+
+
+% 勒贝格测度
+\chapter{勒贝格测度}
 
 \end{document}
 
