@@ -141,7 +141,7 @@ $A$的下确界为$A$的最大下界，记作
 \subsubsection{基本集合}
 
 % 在课上的全集使用的是X 而空集是\Phi
-我们将用$X$表示全集，$\Phi$表示空集
+我们将用$X$表示全集，$\varnothing$表示空集
 
 \subsubsection{集合簇}
 
@@ -561,7 +561,7 @@ f(y) = B
 		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcap_{n=1}^\infty A_i\in S
 	\]
 
-\no {\bf 注1} 显然空集 $\emptyset \in S$。\\	
+\no {\bf 注1} 显然空集 $\varnothing \in S$。\\	
 \no {\bf 注2} 根据 DeMorgan 定律和上述条件 2，条件 3 与下述条件等价：\\
 $S$ 对可数多个集合的并集运算封闭 ，即
 	\[
@@ -753,7 +753,7 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 \subsubsection{$\varPsi$ 映射}
 
-由于康托函数并不严格单调增，我们构建如下映射 $\varPsi:[0,1] \to [0,1]$
+由于康托函数并不严格单调增，我们希望构建一严格单调增的函数，建立如下映射 $\varPsi:[0,1] \to [0,1]$
 \[
 	\varPsi(x) =  \frac{x+\varPhi(x)}{2}
 \]
@@ -771,15 +771,132 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 	\int_{[0,1]} \varPhi(x) dx = \sum_{i=1}^\infty \frac14 \left(\frac23\right)^i = \frac{\frac16}{1-\frac23}=\frac12
 \]
 
-\subsection{一般的拓扑}
+% 这一部分是我想出来的课上作业的解法，不知道是否正确 =======================
+
+\subsubsection{黎曼积分求康托函数}
+
+我一开始的想法是用几何意义求积分，不过最后直接求的函数和的积分。首先想到证明康托函数存在对称的关系，最后证明 $x$ 康托函数与 $1-x$ 的康托函数之和恒为 $1$
+
+对于任意 $x \in \left[ 0, \frac13\right]$ ，我们先把 $x$ 写成三进制
+\[
+	x = 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)},\;\forall a_i\in\{0,1,2\}
+\]
+想到写出 $1-x$ 的三进制
+\[
+\begin{aligned}
+	1-x &= 0.\dot2_{(3)} - 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)}\\
+	&=0.2\ (2-a_1)\ (2-a_2)\ \cdots (2-a_n) \cdots_{(3)}
+\end{aligned}
+\]
+我们再对 $x$ 和 $1-x$ 取康托函数，先考虑 $\varPhi(x)$ ，对于不属于康托集的点，即属于 $I_{mn}$ 的点，我们取 $I_{mn}$ 的左端点，显然对于不属于康托集的点存在 $a_i = 1$ ，不妨设 $k$ 为最小的使 $a_k$ 取 $1$ 的序数 % $k = \min\limits_{i\in I} i, \forall a_i = 1$	这里的符号表述反复修改有点不知道怎么写清楚
+，那么该左端点的三进制应为 $x = 0.0\, a_1\, a_2\, \cdots a_{k-1} 0 \dot 2 _{(3)},\;\forall a_i\in\{0,2\}$，这样我们就可以取康托函数了
+\[
+\varPhi(x)=
+\begin{cases}
+	0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)}&,\ x \in \mathcal{C}\\
+	0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)}&,\ x \notin \mathcal{C}
+\end{cases}
+\]
+同理我们可以对 $1-x$ 取康托函数
+\[
+\varPhi(1-x)=
+\begin{cases}
+	0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}&,\ x \in \mathcal{C}\\
+	0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}&,\ x \notin \mathcal{C}
+\end{cases}
+\]
+现在可以求 $\varPhi(x) + \varPhi(1-x)$ 但也要分两种情况
+\[
+	\begin{aligned}
+		\mbox{如果} x\in\mathcal{C} &\\
+		\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}\\
+		& = 0.\dot 1_{(2)}\\
+		& = 1\\
+		\mbox{如果} x\notin\mathcal{C} &\\
+		\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}\\
+		& = 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\ 1_{(2)}\\
+		& = 1
+	\end{aligned}
+\]
+所以我们可知  $\varPhi(x) + \varPhi(1-x)$ 在定义域 $[0,1]$ 上是常值函数，积分为
+\[
+	\int_0^1 [\varPhi(x) + \varPhi(1-x)] dx = \int_0^1 1dx = 1 =\int_0^1 \varPhi(x) dx + \int_0^1 \varPhi(1-x) dx
+\]
+又因为 $\int_0^1 \varPhi(x) = \int_0^1 \varPhi(1-x) dx$，所以
+\[ \int_0^1 \varPhi(x) dx =1 \]
+
+% =====================================================================
+\subsection{一般的拓扑*}
 
 \subsubsection{拓扑空间}
 
+对于非空集合 $X$ ，有$X$ 的一子集簇 $\tau$ ( $\tau$ 由 $X$ 中所有开集组成)，我们定义 $(X,\tau)$ 为拓扑空间，称 $\tau$ 为拓扑，$\tau$ 满足以下条件
+\ITEMS
+	\item $\varnothing , X \in \tau$
+	\item 任意并封闭
+	\[
+		\forall \{ A_\alpha\}_{\alpha \in I} \subseteq \tau \Rightarrow \bigcup_{\alpha \in I} A_\alpha \in \tau
+	\]
+	\item 有限交封闭
+	\[
+		\forall A , B \in \tau \Rightarrow A \cup B \in \tau
+	\]
+\ITEME
+距离空间是特殊的拓扑空间
+
+\subsubsection{覆盖}
+
+对于集合 $X$ ，如果该集合的一子集簇 $\mathcal{A}=\{A_i\}_{i \in I}$ 满足 $X$ 中的每一个元素至少包含于 $\mathcal{A}$ 中的某一集合，即
+\[
+	X = \bigcup_{i \in I} A_i
+\]
+则称 $\mathcal{A}$ 为 $X$ 的一个覆盖
+\smallskip
+
+对于拓扑空间 $X$ ，若其某一覆盖 $\mathcal{A}$ 中的每一个集合都是开集，则称 $\mathcal{A}$ 是 $X$ 的一个开覆盖
+\smallskip
+
+对于拓扑空间 $X$ 与其一覆盖 $\mathcal{A}$ ，若存在集合 $\mathcal{B} \subseteq \mathcal{A}$ 仍是 $X$ 的覆盖，则称 $\mathcal{B}$ 是 $\mathcal{A}$ 的一个子覆盖，若 $\mathcal{B}$ 是有限集，则为有限子覆盖
+\subsubsection{紧集}
+
+我们称集合 $A$ 为紧集，当且仅当 $A$ 的任意开覆盖都有有限子覆盖
+
+在距离空间中紧集一定为有界闭集， $\text{紧集} \,\Rightarrow\,\text{有界闭集}$
+
+特别的，在 $\R^n$ 中紧集等价于有界闭集， $\text{紧集} \,\iff\,\text{有界闭集}$
+
+\subsubsection{泛函分析研究}
+
+对于由函数构成的线性空间 $X$ ，建立映射 $|\cdot|: X \to \mathbb{R}_{\ge 0}$ 满足如下条件
+\ITEMS
+	\item 正定性 \[|x| = 0 \iff x = 0\]
+	\item 齐次性 \[\quad|r x| = |r| |x|, \; \forall x \in X\]
+	\item 三角不定式 \[|x + y| \le |x| + |y|, \;\forall x, y \in X\]
+\ITEME
+我们称 $|\cdot|$ 为范（norm），并定义 $(X,|\cdot|)$ 为赋范空间，我们称完备（取极限封闭）的赋范空间为巴拿赫空间（Banach）
 
 
-% 勒贝格测度
+
+
+% 勒贝格测度 ===============
+\iffalse
 \chapter{勒贝格测度}
 
+我们希望建立如下映射 $M$
+\[
+	M:P(\R^n)\mapsto \R_{\ge0}
+\]
+满足以下条件
+\ITEMS
+	\item $M(\varnothing) = 0$
+	\item 平移不变性
+	\item $M([0,1]^n)=1$
+	\item 可数可加性（$\sigma$-可加性），即
+	\[
+		\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ M(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty M(E_i) 
+	\]
+\ITEME
+\fi
 \end{document}
 
 
