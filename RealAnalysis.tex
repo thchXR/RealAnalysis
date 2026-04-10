@@ -848,7 +848,7 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 对于集合 $X$ ，如果该集合的一子集簇 $\mathcal{A}=\{A_i\}_{i \in I}$ 满足 $X$ 中的每一个元素至少包含于 $\mathcal{A}$ 中的某一集合，即
 \[
-	X = \bigcup_{i \in I} A_i
+	X \subseteq \bigcup_{i \in I} A_i
 \]
 则称 $\mathcal{A}$ 为 $X$ 的一个覆盖
 \smallskip
@@ -879,7 +879,7 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 
 % 勒贝格测度 ===============
-\iffalse
+
 \chapter{勒贝格测度}
 
 我们希望建立如下映射 $M$
@@ -888,15 +888,101 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \]
 满足以下条件
 \ITEMS
-	\item $M(\varnothing) = 0$
-	\item 平移不变性
-	\item $M([0,1]^n)=1$
-	\item 可数可加性（$\sigma$-可加性），即
+	\item 非负性\quad 对于$\forall A \subseteq \R^n$ 都有 $M(A) \ge 0$ 且 $M(\varnothing) = 0$
+	\item 平移不变性\quad 对于 $A,B\subseteq \R^n$ 且 $A$ 平移得 $B$ ，那么 $M(A) = M(B)$
+	\item 规范性\quad $M([0,1]^n)=1$
+	\item 可数可加性（$\sigma$-可加性）\quad 
 	\[
 		\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ M(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty M(E_i) 
 	\]
+	我们在计算康托集的长度时使用了可数可加性
 \ITEME
-\fi
+
+\section{勒贝格外测度}
+
+\subsection{开矩体}
+
+\subsubsection{开矩体的定义}
+定义在 $\R^n$ 中的开矩体为
+\[
+	I = (a_1,b_1)\times(a_2,b_2)\times\cdots\times(a_n,b_n)
+\]
+开矩体 $I$ 的闭包为闭矩体 
+\[
+	\overline I = [a_1,b_1]\times[a_2,b_2]\times\cdots\times[a_n,b_n]
+\]
+定义如下形式为半开闭矩体
+\[
+\begin{aligned}
+	(a_1,b_1]\times(a_2,b_2]\times\cdots\times(a_n,b_n]\\
+	[a_1,b_1)\times[a_2,b_2)\times\cdots\times[a_n,b_n)	
+\end{aligned}
+\]
+开矩体的体积为 $\lvert I\rvert = \prod\limits_{i=1}^n (b_i-a_i)$
+
+\subsubsection{开矩体覆盖}
+
+若由开矩体组成的集合 $\{I_k\}_{k\ge1}$ 覆盖于集合 $A\subseteq \R^n$ ，当且仅当对于 $A$ 的任意元素，其总包含于集合 $\{I_k\}_{k\ge1}$ 中的一个开矩体 $I_k$ ，即
+\[
+	\bigcup_{k\ge 1} I_k \supseteq A
+\]
+
+\subsection{勒贝格外测度}
+
+对于 $\forall A\subseteq \R^n$ 的勒贝格外测度，定义为覆盖该集合 $A$ 的可数个开矩体 $\{I_k\}_{k\ge1}$ 的体积总和的下确界，外测度记作 $m^*: P(\R^n) \to \R_{\ge0} \cup \{+\infty\}$
+\[
+	m^*(A) = \inf_{A\subseteq\bigcup\limits_{k\ge1}I_k} \sum_{k\ge 1} \lvert I_k \rvert
+\]
+
+\ITEMS
+	\item 对于$\R^n$ 中任意有界集合，其外测度必有限
+	\item 当一个集合 $A$ 的外测度为 $+\infty$ ，当且仅当 $A$ 的任意可数开矩体覆盖，都有 $\sum\limits_{k\ge1}\lvert I_k \rvert = +\infty$
+\ITEME
+
+\EXP
+\ITEMS
+	\item 独点集的外测度等于 $0$
+	\item 低维子集的外测度等于 $0$
+	\[
+	A = \left\lbrace\begin{bmatrix} c\\ x_2 \\ \vdots\\ x_n\end{bmatrix}: x_2,\cdots,x_n\in\R\right\rbrace \subseteq \R^n \Rightarrow m^*(A) = 0
+	\]
+	\item 开矩体的外测度等于其体积和闭包的外测度
+	\[
+		m^*(I) = \lvert I\rvert = m^*(\overline I)
+	\]
+	\pro
+	\ITEMS
+		\item 显然 $\lvert I\rvert \ge m^*(\overline I)$ 成立
+		\item 对于 $\forall \varepsilon > 0$ ，存在 $I$ 的可数开矩体覆盖 $\{I_k\}_{k\ge 1}$ 使得
+		\[
+			\lvert I \rvert \le \sum_{k\ge1} \lvert I_k \rvert \le m^*(I) +\varepsilon
+		\]
+		对 $\varepsilon$ 取极限，使其趋近于 $0$
+		\[
+			\lvert I \rvert \le m^*(I) 
+		\]
+	\ITEME
+\ITEME
+
+\subsubsection{外测度的性质}
+
+\ITEMS
+	\item 非负性 \quad 对于 $\forall A \subseteq \R^n$ 都有 $m^*(A) \ge 0$ 且 $m^*(\varnothing) = 0$
+	\item 单调性 \quad 对于 $\forall A \subseteq B \subseteq \R^n$ 有 $m^*(A) \le m^*(B)$
+	\item 次可加性 \quad 对于 $\forall \{A_i\subseteq \R^n\}_{i\ge 1}$ 都有 
+	\[
+		m^*\left(\bigcup\limits_{i\ge 1} A_i\right) \le  \sum_{i \ge 1} m^*(A_i)
+	\]
+	注：即使 $A_i \cap A_j = \varnothing, \forall i \neq j$ 仍有可能取小于号
+	
+	\pro
+	\ITEMS
+		\item 若存在 $A_i$ 满足 $m^*(A_i)=+\infty$ 显然次可加性成立
+		\item 若 $m^*(A_i) , \forall i$ 都有限，
+	\ITEME
+\ITEME
+
+
 \end{document}
 
 
