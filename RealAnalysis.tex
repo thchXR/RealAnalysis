@@ -863,7 +863,7 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 在距离空间中紧集一定为有界闭集， $\text{紧集} \,\Rightarrow\,\text{有界闭集}$
 
-特别的，在 $\R^n$ 中紧集等价于有界闭集， $\text{紧集} \,\iff\,\text{有界闭集}$
+特别的，在 $\R^n$ 中紧集等价于有界闭集， $\text{紧集} \,\iff\,\text{有界闭集}$ （有限覆盖定理，博雷尔定理 Borel）
 
 \subsubsection{泛函分析研究}
 
@@ -978,12 +978,131 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 	\pro
 	\ITEMS
 		\item 若存在 $A_i$ 满足 $m^*(A_i)=+\infty$ 显然次可加性成立
-		\item 若 $m^*(A_i) , \forall i$ 都有限，
+		\item 若对于 $\forall i$ ， $m^*(A_i)$ 都有限，$\forall \varepsilon > 0$ ，$\exists A_i$ 的开矩体覆盖 $\{I_{ik}\}_{k\ge 1}$ 使得 
+		\[
+			\sum_{k\ge 1} \lvert I_{ik} \rvert < m^*(A_i) + \frac{\varepsilon}{2^i}
+		\] 
+		
+		注意到 $\{I_{ik}\}_{i\ge 1}^{k\ge 1}$ 是 $\bigcup\limits_{i\ge1}A_i$ 的开覆盖，可得
+		\[
+			m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}\sum_{k\ge1} \lvert I_k \rvert
+		\]
+		整合以上两式
+		\[
+			m^*\left(\bigcup_{i\ge1} A_i\right) < \sum_{i\ge1}m^*(A_i) + \varepsilon\sum_{i\ge1}\frac{1}{2^i}
+		\]
+		对 $\varepsilon$ 求极限使其趋近于 $0$
+		\[
+			m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}m^*(A_i)
+		\]
 	\ITEME
+	\item 平移不变形
 \ITEME
+
+\EXP 
+
+{\bf 康托集的外测度}
+
+对于康托集 $\mathcal{C}$ 有
+\[
+	\mathcal{C} \subseteq \bigcup_{k=1}^{2^n} F_{nk}
+\]
+对等式两边取外测度
+\[
+	m^*(\mathcal{C}) \le m^*\left(\bigcup_{k=1}^{2^n} F_{nk}\right)
+\]
+根据可数可加性
+\[
+	m^*\left(\bigcup_{k=1}^{2^n} F_{nk}\right) \le \sum_{k=1}^{2^n}m^*\left( F_{nk}\right) =\left(\frac{2}{3}\right)^n
+\]
+对 $n$ 取极限使其趋近于 $+\infty$ 可得
+\[
+	m^*(\mathcal{C}) = 0
+\]
+
+{\bf 有理数集的外测度}
+
+因为有理数集是可数的，可以写为可数无穷个独点集的并，即
+\[
+	m^*(\mathbb{Q}) \le \sum_{k\ge1}m^*(\{r_k\}) 
+\]
+显然 $m^*(\mathbb{Q}) = 0$
+
+\subsubsection{点集间距离}
+
+对于 $\forall A,B \subseteq \R^n$ ，定义其距离为
+\[
+	d(A,B) = \inf \{d(x,y):\forall x \in A ,y \in B\}
+\]
+注：即使 $A\cap B = \varnothing$ ，$d(A,B)$ 也可能为 $0$ 
+
+\subsubsection{距离可加性}
+
+对于 $\forall A,B \subseteq \R^n$ 若 $d(A,B) > 0$ 则
+\[
+	m^*(A\cup B) = m^*(A) + m^*(B) 
+\]
+
+\section{勒贝格测度}
+
+鉴于不存在一个测度可以同时做到测量 $\R^n$ 中的任意大小，有满足 $M(\cdot)$ 的四个性质，我们选择去除掉 $\R^n$ 中的不满足可数可加性的集合，仅保留满足可数可加性的集合
+
+\subsection{可测集}
+
+我们把在 $m^*(\cdot)$ 下满足可数可加性的所有子集的集合定义为可测集，否则为不可测集
+\smallskip
+
+\no {\bf 定义1：}
+
+$E \subseteq \R^n$ 称为可测集，当且仅当对任意开矩体 $I$ 都有
+\[
+	m^*(I) = m^*(I\cap E) + m^*(I\cap E^c)
+\]
+
+\no {\bf 定义2：}
+
+$E \subseteq \R^n$ 称为可测集，当且仅当对 $\forall T \subseteq \R^n$ 都有
+\[
+	m^*(T) = m^*(T\cap E) + m^*(T\cap E^c)
+\]
+
+\pro 
+
+	定义2 $\Rightarrow$ 定义1显然成立，这里证定义1 $\Rightarrow$ 定义2
+
+	根据次可加性
+	\[
+		m^*(T) \le m^*(T\cap E) + m^*(T\cap E^c)
+	\]
+	$\forall \varepsilon > 0$ 存在 $T$ 的一开矩体覆盖使得
+	\[
+		\sum \lvert I_k \rvert < m^*(T) +\varepsilon
+	\]
+	把 $T$ 替换成 $\bigcup\limits_k I_k$ ，由单调性可知
+	\[
+		 m^*(T\cap E) + m^*(T\cap E^c)\le m^*\left(\bigcup\limits_k I_k\cap E\right) + m^*\left(\bigcup\limits_k I_k\cap E^c\right)
+	\]
+	整理可得
+	\[
+		m^*(T\cap E) + m^*(T\cap E^c) \le \sum_{k\ge1}\left[m^*\left( I_k\cap E\right) + m^*\left( I_k\cap E^c\right)\right] = \sum_{k\ge 1}\lvert I_k \rvert < m^*(T) +\varepsilon 
+	\]
+	对 $\varepsilon$ 求极限，使其趋近于 $0$
+	\[
+		m^*(T) \ge m^*(T\cap E) + m^*(T\cap E^c)
+	\]
+	
+\subsubsection{零测集}
+
+若 $m^*(E) = 0$ 则 $E$ 为零测集，如 $\mathbb{Q}\ ,\ \mathcal{C}$ ，零测集必可测
+
+
+
+	
+\subsection{勒贝格可测集$\sigma$-代数}
 
 
 \end{document}
+
 
 
 
