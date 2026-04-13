@@ -141,7 +141,7 @@ $A$的下确界为$A$的最大下界，记作
 \subsubsection{基本集合}
 
 % 在课上的全集使用的是X 而空集是\Phi
-我们将用$X$表示全集，$\varnothing$表示空集
+我们将用$X$表示全集，$\Phi$表示空集
 
 \subsubsection{集合簇}
 
@@ -306,10 +306,10 @@ f(y) = B
 
 \subsubsection{关于基数的几个基本定理}
 \ITEMS
-\item 对任意集合 $A$ 和 $B$，若 $A\subseteq B$，则 $\lvert A \rvert \le \lvert B \rvert$。
-\item 设 $A$ 是可数集（有限集或可数无穷集），$B$ 是无穷集，则 $\lvert A\cup B \rvert= \lvert B \rvert$。
+	\item 对任意集合 $A$ 和 $B$，若 $A\subseteq B$，则 $\lvert A \rvert \le \lvert B \rvert$。
+	\item 设 $A$ 是可数集（有限集或可数无穷集），$B$ 是无穷集，则 $\lvert A\cup B \rvert= \lvert B \rvert$。
      （例：Hilbert旅馆）
-\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$，则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $。也就是说，可数个可数集的并集还是可数集。 （例：记 $\mathbb{Q}=$ 有理数集，则 $\lvert\mathbb{Q}\rvert=\aleph_0 $） 
+	\item 设集合列 $\{A_n\}_{n=1}^{\infty}$ 中每一 $A_n$ 的基数都是 $\aleph_0$，则 $\lvert \bigcup_{n=1}^\infty A_n \rvert=\aleph_0 $。也就是说，可数个可数集的并集还是可数集。 （例：记 $\mathbb{Q}=$ 有理数集，则 $\lvert\mathbb{Q}\rvert=\aleph_0 $） 
 \ITEME
 
 
@@ -357,13 +357,17 @@ f(y) = B
 
 \subsection{开集与闭集}
 
-\subsubsection{开球}
-
-我们把 $\R^n$ 上的开球定义为 % 这里定义开球所用的距离（模）是否需要提前定义，映射d
+\subsubsection{开球、邻域}
+\ITEMS
+	\item 我们把 $\R^n$ 上的开球定义为 % 这里定义开球所用的距离（模）是否需要提前定义，映射d
 \[
-	B(x;r)=\{y\in\R^n:\lvert y-x\rvert<r\}
+	B(x, r)=\{y\in\R^n:\lvert y-x\rvert<r\}
 \]
-也就是以 $x$ 为圆心，半径小于 $r$ 的所有点的集合。粗略地讲，对于$\R^n$ 中任一点 $x$ 附近的地形，我们用开小球 $B(x;r)$（ 半径  $r$ 很小）来刻画。
+也就是以 $x$ 为圆心，半径小于 $r$ 的所有点的集合。
+	\item 集合 $U\subseteq \R^n$ 称为 $x$ 的邻域如果存在开球 $B(x, r)\subseteq U$。
+\ITEME
+
+具体而言，对于 $\R^n$ 中任一点 $x$ 附近的地形，我们是用 $x$ 的邻域，本质上是用半径 $r$ 很小的开球 $B(x, r)$来刻画的。
 
 \subsubsection{开集与闭集的第 1 种定义}
 
@@ -394,13 +398,13 @@ f(y) = B
 	\[
 		\exists r > 0 \st B(x;r)\subseteq A
 	\]
-	我们把 $A$ 的所有内点构成的集合称为 $A$ 的内部，记为$\mathring{A}$ 。
+	我们把 $A$ 的所有内点构成的集合称为 $A$ 的内部，记为 $\mathring{A}$。
 	
 	\item {\bf 边界点} 点 $x\in \R^n$ 称为 $A$ 的边界点，如果 $x$ 既不是 $A$ 的内点也不是 $A^c$ 的内点，即
 	\[
 		\forall r > 0 \st B(x;r)\mbox{中既有}A\mbox{中的点，也有}A^c\mbox{中的点}
 	\]
-	我们把 $A$ 的所有边界点构成的集合称为 $A$ 的边界，记为 $\partial A$
+	我们把 $A$ 的所有边界点构成的集合称为 $A$ 的边界，记为 $\partial{A}$。
 
 	\item {\bf 聚点} 点 $x\in \R^n$ 称为 $A$ 的聚点（极限点），如果任意以 $x$ 为球心的开球都含 $A$ 内的非 $x$ 点，即	% 这一部分是根据课上第二种定义写的
 	\[
@@ -417,13 +421,27 @@ f(y) = B
 		\exists r>0 \st B(x;r)\cap A=\{x\}
 	\]
 	
-	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$  称为 $A$ 的闭包，如果 $\overline A = A \cup A'$。
+	\item {\bf 闭包} 集合 $\overline A\subseteq \R^n$  称为 $A$ 的闭包，如果{\bf 定义1：} $\overline A = A \cup A'$ 或者{\bf 定义2：} $\overline A = \mathring {A} \cup \partial {A}$ 。\\
+
+{\bf 注} 闭包的定义 $1$ 是从分析的角度来考虑问题的，就是希望任一点集在加入其所有的极限点后，所得集合在极限运算下封闭：即其内任何柯西序列的极限点必含于其中（事实确实如此，参见下面的例 $2$ ）。而闭包的定义 $2$，讲的则是从几何直观上，如何把任一点集给封闭起来。\\
+
+下面我们说说闭包这两种定义的等价性：
+\ITEMS
+	\item 一方面，对任意 $x \in A \cup A'$：若 $x \notin \mathring {A}$，由内点定义知，$x$ 的任一开球 $B(x; r)$ 必含 $A^c$ 中点，此时
+		\ITEMS
+			\item 若 $x \in A$，则 $B(x; r)$ 同时还含 $A$ 中点 $x$；
+			\item 若 $x \in A'$，则由聚点定义，$B(x; r)$ 同时必含 $A$ 中点。
+		\ITEME
+	这也就是说 $x$ 是边界点，即 $x \in \partial {A}$，从而 $A \cup A' \subseteq \mathring {A} \cup \partial {A}$
+	\item 另一方面，由边界点和聚点的定义不难看出：对任意非空集合 $A$，不在 $A$ 中的 $A$ 的边界点必为 $A$ 的聚点。从而 
+	$\mathring {A} \cup \partial {A} \subseteq A \cup A'$。
 	
+\ITEME
+
 \no {\bf 例 1} 在 $\R$ 中，$(0, 1]$ 的闭包 是 $[0, 1]$。\\
 
 \no {\bf 例 2} 证明：对 $\R^n$ 中任一子集 $A$，其闭包 $\overline A$ 的闭包仍是 $\overline A$，即 $\overline {\overline A} = \overline A$。该证明我们不作要求，大家可以试一下。\\
 
-\no {\bf 例 3} 证明：对 $\R^n$ 中任一子集 $A$，其闭包 $\overline A = \mathring A \cup \partial A$
 
 \ITEME
 
@@ -523,6 +541,7 @@ f(y) = B
 \[
 	\forall a \in X,\ \forall \varepsilon > 0,\ \exists \delta > 0\ \mbox{使得}\ \forall x\in X \st \ x\in B(a;\delta)\Rightarrow f(B(a;\delta)) \subseteq B(f(a);\varepsilon)
 \]
+这就是说：$f(x)$ 在 $x=a$ 处连续如果 $f(a)$ 的任一邻域在 $f$ 下的原像是 $a$ 的邻域。
 
 \bigskip
 
@@ -561,7 +580,7 @@ f(y) = B
 		\forall A_1,A_2,\cdots,A_n,\cdots\in S\ ,\ \bigcap_{n=1}^\infty A_i\in S
 	\]
 
-\no {\bf 注1} 显然空集 $\varnothing \in S$。\\	
+\no {\bf 注1} 显然空集 $\emptyset \in S$。\\	
 \no {\bf 注2} 根据 DeMorgan 定律和上述条件 2，条件 3 与下述条件等价：\\
 $S$ 对可数多个集合的并集运算封闭 ，即
 	\[
@@ -595,191 +614,283 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 	\item {\bf 对称性}\ $\forall x,y\in X , d(x,y) = d(y,x)$
 	\item {\bf 三角不等式}\ $d(x,y)+d(y,z) \ge d(z,x)$
 \ITEME
-我们称 $d$ 为 $X$ 上的一个距离（度量），称 $(X,d)$ 为一个距离空间（度量空间）
+我们称 $d$ 为 $X$ 上的一个距离（度量），称 $(X,d)$ 为一距离空间（度量空间）
 % 在距离空间中可以使用开球，因为开球的定义中要使用映射 $d$
 % \[
 % 	 B(x;r)=\{y\in\R^n:\ d(y,x)<r\} 
 % \]
 \bigskip
 
-\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数的集合。对于 $\forall f, g \in X$，我们定义
+\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数构成的集合。对于 $\forall f, g \in X$，我们定义
 \[
 	d(f,g) = \max_{a\le x\le b}\lvert f(x)-g(x)\rvert
 \]
 不难验证 $(X,d)$ 是一距离空间。
 
+\subsection{拓扑空间}
+
+\subsubsection{拓扑空间的定义}
+
+对于拓扑空间 $X$ ，以及 $X$ 的一子集簇 $\tau$，我们称 $(X,\tau)$ 为拓扑空间 ($\tau$ 为其开拓扑，$\tau$ 中子集为开集)，如果 $\tau$ 满足下述条件：
+\ITEMS
+\item $\varnothing , X \in \tau$
+\item 任意并封闭
+\[
+\forall \{ A_\alpha\}_{\alpha \in I} \subseteq \tau \Rightarrow \bigcup_{\alpha \in I} A_\alpha \in \tau
+\]
+\item 有限交封闭
+\[
+\forall A , B \in \tau \Rightarrow A \cap B \in \tau
+\]
+\ITEME
+
+{\bf 注1} 相应地，对于非空集合 $X$，我们也可以通过定义闭拓扑（即 $X$ 中所有闭集构成的集合） 来定义拓扑空间：只需把上面的 “任意并封闭” 改为 “任意交封闭”，“有限交封闭” 改为 “有限并封闭” 即可。\\
+
+{\bf 注2} 距离空间亦称度量空间是特殊的拓扑空间：只需类比 $\R^{n}$ 来定义其开球，再把开集定义为开球的任意并即可。
+
+\subsubsection{覆盖}
+
+设 $S$ 是拓扑空间 $X$ 的子集，我们称 $X$ 的子集簇 $\mathcal{A}=\{A_i\}_{i \in I}$ 是 $S$  的一个覆盖如果 
+\[
+S\subseteq \bigcup_{i \in I} A_i
+\]
+\smallskip
+
+特别地，若 $\mathcal{A}$ 中的每一元素都是开集，则称 $\mathcal{A}$ 是 $S$ 的一个开覆盖。
+\smallskip
+
+若存在 $\mathcal{A}$ 的子集 $\mathcal{B}$ 仍是 $S$ 的覆盖，则称 $\mathcal{B}$ 是 $\mathcal{A}$ 的一个子覆盖；若 $\mathcal{B}$ 是有限集，则称之为有限子覆盖。
+
+\subsubsection{紧集}
+
+设 $A$ 是拓扑空间 $X$ 的子集，我们称 $A$ 为紧集如果 $A$ 的任一开覆盖都有有限子覆盖。
+
+在距离空间中，紧集一定为有界闭集：$\text{紧集} \,\Rightarrow\,\text{有界闭集}$
+
+特别地，在 $\R^n$ 中紧集等价于有界闭集：$\text{紧集} \,\iff\,\text{有界闭集}$
+
+\subsection{赋范空间}
+
+对于线性空间 $X$ ，如果能建立映射 $\lVert\cdot\rVert: X \to \mathbb{R}_{\ge 0}$，使其满足如下条件
+\ITEMS
+\item 正定性 \[\lVert x\rVert = 0 \iff x =0 \]
+\item 齐次性 \[\quad\lVert r x\rVert = |r| \lVert x\rVert, \; \forall x \in X\]
+\item 三角不定式 \[\lVert x + y\rVert \le \lVert x\rVert + \lVert y\rVert, \;\forall x, y \in X\]
+\ITEME
+我们则称 $(X,\lVert\cdot\rVert)$ 为赋范空间，$\lVert\cdot\rVert$ 为 $X$ 上的范（norm）。对任意 $x \in X, \lVert x\rVert$ 称为 $x$ 的范数。\\
+
+{\bf 注1} 事实上，范就是类比于 $\R^n$ 中的向量长度（ 即 $\R^1$ 中的绝对值的推广） 而来的。当然类似于 $\R^n$，我们也可以自然而然地在任一赋范空间中定义距离，从而使其成为距离空间。\\
+
+{\bf 注2} 我们称完备（取极限封闭）的赋范空间为巴拿赫空间（Banach）。
+
+\bigskip
+
+\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数构成的集合。对于 $\forall f \in X$，定义 
+\[
+\lVert f \rVert = \max_{a\le x\le b}\lvert f(x)\rvert
+\]
+不难验证，如上定义的 $\lVert \cdot \rVert$ 是 $X$ 上的范。\\
+
+自然地，对任意 $f, g \in X$，我们定义其距离
+\[
+d(f,g) = \lVert f-g \rVert
+\]
+这样，就得到了我们在以前的例中所讨论的距离空间 $(X,d)$。
+
 \subsection{康托（Cantor） 三分集}
 
+从闭区间 $[0,1]$ 开始，我们按下述操作来构造康托（Cantor） 三分集:\\
 
+第 $1$ 步：把 $[0,1]$ 三等分，并去掉中间的开子区间 $I_{11}=\left(\frac13,\frac23\right)$，留下如下图所示个 $2$ 闭子区间 $F_{11}=\left[0,\frac13\right]$ 和 $F_{12}=\left[\frac23,1\right]$；\\
 
+第 $2$ 步：把上一步的 $2$ 个闭子区间 $F_{11}$ 和 $F_{12}$ 分别三等分，再把它们中间三分之一的 $2$ 个开子区间 $I_{21}=(\frac19,\frac29)$ 和 $I_{22}=(\frac79,\frac89)$ 都去掉，留下 $4$ 个闭子区间 $F_{21}, F_{22}, F_{23}, F_{24}$；\\
 
-从闭区间 $[0,1]$ 开始，我们把该区间三等分，并去掉中间的开区间 $I_{11} = \left(\frac13,\frac23\right)$，余下如图两个闭区间 $F_{11}=\left[0,\frac13\right]$ 和 $F_{2}=\left[\frac23,1\right]$，分别记为 $F_{11}$ 和 $F_{12}$。然后，再把这两个区间的中间三分之一都去掉，留下四个区间 $F_{21},F_{22},F_{23},F_{24}$ ，接下来不断重复以上过程
+$\vdots$
+
+第 $m$ 步：把上一步的 $2^{m-1}$ 个闭子区间 $F_{(m-1)1}, \cdots, F_{(m-1)2^{m-1}}$ 分别三等分，再把它们中间三分之一的 $2^{m-1}$ 个开子区间 $I_{m1}, \cdots, I_{m2^{m-1}}$ 都去掉，留下 $2^m$ 个闭子区间 $F_{m1}, \cdots, F_{m2^m}$；\\
+
+$\vdots$
+
+一直做下去......
+
 
 % 用grok生成的三分集图像，稍微修改了下
 \begin{figure}[h]
-\centering
-\begin{tikzpicture}
-	\draw[help lines, color=gray!20] (0,-5) grid (9,1);
-	\fill[black] (0,0) circle (1pt) node[below=1pt] {$0$};	
-	\fill[black] (9,0) circle (1pt) node[below=1pt] {$1$};
-
-  % 绘制各层康托尔集（从上到下越来越精细）
-  % 第0层（最上面）
-  \draw[thick] (0,0) -- (9,0);
-  % 第1层
-  \draw[thick] (0,-1) -- (3,-1)
-  	node[left=45pt,above=2pt] {$F_{11}$};
-  \draw[thick] (6,-1) -- (9,-1) 
-    node[left=45pt,above=2pt] {$F_{12}$};
-    \node[above] at (4.5,-1) {$I_{11}$};
-	\fill[black] (0,-1) circle (1pt) node[below=1pt] {$0$};	
-	\fill[black] (9,-1) circle (1pt) node[below=1pt] {$1$};
-	\fill[black] (3,-1) circle (1pt) node[below=1pt] {$\frac13$};	
-	\fill[black] (6,-1) circle (1pt) node[below=1pt] {$\frac23$};
-	
-  % 第2层
-  \draw[thick] (0,-2)   -- (1,-2)
-  	node[left=15pt,above=2pt] {$F_{21}$};
-  \draw[thick] (2,-2) -- (3,-2)
-  	node[left=15pt,above=2pt] {$F_{22}$};
-  \draw[thick] (6,-2) -- (7,-2)
-  	node[left=15pt,above=2pt] {$F_{23}$};
-  \draw[thick] (8,-2) -- (9,-2) 
-    node[left=15pt,above=2pt] {$F_{24}$};
-    \node[above] at (1.5,-2) {$I_{21}$};
-    \node[above] at (7.5,-2) {$I_{22}$};
-    \fill[black] (0,-2) circle (1pt) node[below=1pt] {$0$};	
-	\fill[black] (9,-2) circle (1pt) node[below=1pt] {$1$};
-	\fill[black] (3,-2) circle (1pt) node[below=1pt] {$\frac13$};	
-	\fill[black] (6,-2) circle (1pt) node[below=1pt] {$\frac23$};
-	\fill[black] (1,-2) circle (1pt) node[below=1pt] {$\frac19$};	
-	\fill[black] (2,-2) circle (1pt) node[below=1pt] {$\frac29$};
-	\fill[black] (7,-2) circle (1pt) node[below=1pt] {$\frac79$};	
-	\fill[black] (8,-2) circle (1pt) node[below=1pt] {$\frac89$};
-
-  % 第3层
-  \draw[thick] (0,-3)   -- (0.333,-3);
-  \draw[thick] (0.667,-3) -- (1,-3);
-  \draw[thick] (2,-3) -- (2.333,-3);
-  \draw[thick] (2.667,-3) -- (3,-3);
-  \draw[thick] (6,-3) -- (6.333,-3);
-  \draw[thick] (6.667,-3) -- (7,-3);
-  \draw[thick] (8,-3) -- (8.333,-3);
-  \draw[thick] (8.667,-3) -- (9,-3);
-
-  % 第4层（更精细）
-  \draw[thick] (0,-4)   -- (0.111,-4);
-  \draw[thick] (0.222,-4) -- (0.333,-4);
-  \draw[thick] (0.667,-4) -- (0.778,-4);
-  \draw[thick] (0.889,-4) -- (1,-4);
-  
-  \draw[thick] (2,-4) -- (2.111,-4);
-  \draw[thick] (2.222,-4) -- (2.333,-4);
-  \draw[thick] (2.667,-4) -- (2.778,-4);
-  \draw[thick] (2.889,-4) -- (3,-4);
-
-  \draw[thick] (6,-4) -- (6.111,-4);
-  \draw[thick] (6.222,-4) -- (6.333,-4);
-  \draw[thick] (6.667,-4) -- (6.778,-4);
-  \draw[thick] (6.889,-4) -- (7,-4);
-
-  \draw[thick] (8,-4) -- (8.111,-4);
-  \draw[thick] (8.222,-4) -- (8.333,-4);
-  \draw[thick] (8.667,-4) -- (8.778,-4);
-  \draw[thick] (8.889,-4) -- (9,-4);
-
-\end{tikzpicture}	
+	\centering
+	\begin{tikzpicture}
+		\draw[help lines, color=gray!20] (0,-5) grid (9,1);
+		\fill[black] (0,0) circle (2pt) node[below=2pt] {$0$};	
+		\fill[black] (9,0) circle (2pt) node[below=2pt] {$1$};
+		
+		% 绘制各层康托尔集（从上到下越来越精细）
+		% 第0层（最上面）
+		\draw[thick] (0,0) -- (9,0);
+		% 第1层
+		\draw[thick] (0,-1) -- (3,-1)
+		node[left=45pt,above=2pt] {$F_{11}$};
+		\draw[thick] (6,-1) -- (9,-1) 
+		node[left=45pt,above=2pt] {$F_{12}$};
+		\fill[black] (0,-1) circle (2pt) node[below=2pt] {$0$};	
+		\fill[black] (9,-1) circle (2pt) node[below=2pt] {$1$};
+		\fill[black] (3,-1) circle (2pt) node[below=2pt] {$\frac13$};	
+		\fill[black] (6,-1) circle (2pt) node[below=2pt] {$\frac23$};
+		
+		% 第2层
+		\draw[thick] (0,-2)   -- (1,-2)
+		node[left=15pt,above=2pt] {$F_{21}$};
+		\draw[thick] (2,-2) -- (3,-2)
+		node[left=15pt,above=2pt] {$F_{22}$};
+		\draw[thick] (6,-2) -- (7,-2)
+		node[left=15pt,above=2pt] {$F_{23}$};
+		\draw[thick] (8,-2) -- (9,-2) 
+		node[left=15pt,above=2pt] {$F_{24}$};
+		\fill[black] (0,-2) circle (2pt) node[below=2pt] {$0$};	
+		\fill[black] (9,-2) circle (2pt) node[below=2pt] {$1$};
+		\fill[black] (3,-2) circle (2pt) node[below=2pt] {$\frac13$};	
+		\fill[black] (6,-2) circle (2pt) node[below=2pt] {$\frac23$};
+		\fill[black] (1,-2) circle (2pt) node[below=2pt] {$\frac19$};	
+		\fill[black] (2,-2) circle (2pt) node[below=2pt] {$\frac29$};
+		\fill[black] (7,-2) circle (2pt) node[below=2pt] {$\frac79$};	
+		\fill[black] (8,-2) circle (2pt) node[below=2pt] {$\frac89$};
+		
+		% 第3层
+		\draw[thick] (0,-3)   -- (0.333,-3);
+		\draw[thick] (0.667,-3) -- (1,-3);
+		\draw[thick] (2,-3) -- (2.333,-3);
+		\draw[thick] (2.667,-3) -- (3,-3);
+		\draw[thick] (6,-3) -- (6.333,-3);
+		\draw[thick] (6.667,-3) -- (7,-3);
+		\draw[thick] (8,-3) -- (8.333,-3);
+		\draw[thick] (8.667,-3) -- (9,-3);
+		
+		% 第4层（更精细）
+		\draw[thick] (0,-4)   -- (0.111,-4);
+		\draw[thick] (0.222,-4) -- (0.333,-4);
+		\draw[thick] (0.667,-4) -- (0.778,-4);
+		\draw[thick] (0.889,-4) -- (1,-4);
+		
+		\draw[thick] (2,-4) -- (2.111,-4);
+		\draw[thick] (2.222,-4) -- (2.333,-4);
+		\draw[thick] (2.667,-4) -- (2.778,-4);
+		\draw[thick] (2.889,-4) -- (3,-4);
+		
+		\draw[thick] (6,-4) -- (6.111,-4);
+		\draw[thick] (6.222,-4) -- (6.333,-4);
+		\draw[thick] (6.667,-4) -- (6.778,-4);
+		\draw[thick] (6.889,-4) -- (7,-4);
+		
+		\draw[thick] (8,-4) -- (8.111,-4);
+		\draw[thick] (8.222,-4) -- (8.333,-4);
+		\draw[thick] (8.667,-4) -- (8.778,-4);
+		\draw[thick] (8.889,-4) -- (9,-4);
+		
+	\end{tikzpicture}	
 \end{figure}
 
 我们把经过上述所有过程后剩下的点构成的集合称为康托（ Cantor） 三分集，记作 $\mathcal{C}$，显然
 \[
-	\mathcal{C} = \bigcap_{i=1}^\infty\left(\bigcup_{j=1}^{2^i}F_{ij}\right)
+\mathcal{C} = \bigcap_{m=1}^\infty\left(\bigcup_{n=1}^{2^m}F_{mn}\right)
 \]
-不难看出，$\mathcal{C}$ 是非空闭集，因为上述每个闭区间 $I$ 的端点必然不会被去掉，从而必属于 $\mathcal{C}$。\\
- 
+不难看出，$\mathcal{C}$ 是非空闭集，因为上述每个闭区间 $F_{mn}$ 的端点必然不会被去掉，从而必属于 $\mathcal{C}$。\\
+
+\subsubsection{康托三分集是完全集}
+
+对任意 $x \in \mathcal{C}$，必有 $x\in \mbox{某个}F_{mn}, m=1, 2, \cdots$。注意到该闭区间 $F_{mn}$ 的长度为 $\frac{1}{3^m}$ 且 $\lim\limits_{m\to\infty}\frac{1}{3^m}=0$，因此对任意 $\epsilon > 0$，在 $m$ 足够大时，开球 $B(x,\epsilon)$ 必包含整个 $F_{mn}$，从而 $B(x,\epsilon)\cap \mathcal{C}$ 必含 $F_{mn}$ 的端点，这表明任意 $x \in \mathcal{C}$ 都是 $\mathcal{C}$ 的聚点，所以 $\mathcal{C}$ 是完全集。
+
 \subsubsection{康托三分集的基数}
 
 不难看出，康托三分集 $\mathcal{C}$ 中每一个数与三进制小数集 $\{0.a_1a_2a_3\cdots a_n\cdots: \mbox{每个 $a_n$ 是 $0$ 或 $2$}$\} 一一对应，所以
 \[
-	\lvert \mathcal{C}\rvert = 2^{\aleph_0}
+\lvert \mathcal{C}\rvert = 2^{\aleph_0}
 \]
 
 \subsubsection{康托三分集的“长度”}
 
-这里，康托三分集 $\mathcal{C}$ 的 “长度” 理解为总长度 1 减去所有移除的区间的长度。注意到第 $n$ 次移除 $2^{n-1}$ 开区间，每个长度均为 $\frac{1}{3^n}$，从而康托三分集 $\mathcal{C}$ 的 “长度” 等于
-	$$ 1-\sum_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}}=1-\frac{\frac{1}{3}}{1-\frac{2}{3}}=0 $$
+这里，康托三分集 $\mathcal{C}$ 的 “长度” 理解为总长度 1 减去所有移除的开区间 $I_{mn}$ 的长度。注意到第 $m$ 次移除 $2^{m-1}$ 开区间，每个长度均为 $\frac{1}{3^m}$，从而康托三分集 $\mathcal{C}$ 的 “长度” 等于
+$$ 1-\sum_{m=1}^{\infty}\frac {2^{m-1}}{3^{m}}=1-\frac{\frac{1}{3}}{1-\frac{2}{3}}=0 $$
 
 \subsubsection{$\varphi$ 映射}
 
 建立以下映射 $\varphi:\mathcal{C} \to [0,1]$ ，把康托集的三进制小数映射到二进制，将所有 $2$ 替换为 $1$
 \[
-	x =\ 0.a_1 a_2 a_3 \cdots\ \mapsto\ \varphi(x) =\ 0.b_1 b_2 b_3\cdots \quad \mbox{其中}\ b_i = \frac{a_i}{2}, \forall i \in \mathbb{N}
+x =\ 0.a_1 a_2 a_3 \cdots\ \mapsto\ \varphi(x) =\ 0.b_1 b_2 b_3\cdots \quad \mbox{其中}\ b_i = \frac{a_i}{2}, \forall i \in \mathbb{N}
 \]
 显然可知
 
 \ITEMS
-	\item $\varphi$ 是满射
-	\item $\varphi$ 非严格单调增（不减）
-	
-	\EXP $\varphi(\frac13) = \varphi(\frac23)$
-		
-	\item $\varphi$ 是连续的
+\item $\varphi$ 是满射
+\item $\varphi$ 非严格单调增（不减）
+
+\EXP $\varphi(\frac13) = \varphi(\frac23)=\frac12$
+
+\item $\varphi$ 连续
 \ITEME
 
-\subsubsection{康托函数}
+\subsubsection{康托函数 $\varPhi(x)$}
 
 建立以下映射 $\varPhi:[0,1] \to [0,1]$，有以下对应关系
 \[
-	\varPhi(x) = \begin{cases}
-		\varphi(x) &,x\in\mathcal{C}\\
-		\varphi(I_{mn}\mbox{的左端点}) &,x\in I_{mn}
-	\end{cases}
+\varPhi(x) = \begin{cases}
+	\varphi(x) &,x\in\mathcal{C}\\
+	\varphi(I_{mn}\mbox{的左端点})= \varphi(I_{mn}\mbox{的右端点}) &, x\in I_{mn}
+\end{cases}
 \]
-显然可知
+不难看出
 
 \ITEMS
-	\item $\varPhi$ 是满射
-	\item $\varPhi$ 非严格单调增（不减）
-	\item $\varPhi$ 不是常数函数，但其导数处处为 $0$
-	\[
-		\{ x\in [0,1] : \varPhi'(x) = 0 \} \supseteq \bigcup_{m=1}^\infty\bigcup_{n=1}^{2^{n-1}}I_{mn}
-	\] 
-	$\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{n-1}}I_{mn}$ 的长度为 $\sum\limits_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}} = 1$
-	\[
-		\{ x\in [0,1] : \varPhi'(x) \neq 0 \} \subseteq \mathcal{C}
-	\] 
-	$\mathcal{C}$ 的长度为 $0$
+\item $\varPhi$ 是满射
+\item $\varPhi$ 非严格单调增（不减）
+\item $\varPhi$ 连续
+\item 虽然 $\varPhi$ 在 $[0, 1] $ 上不是常数函数，但由于它在每一 $I_{mn}$ 上都是常数（因 $I_{mn}$ 不同而不同），所以其导数在 $[0, 1] $ 上几乎处处为 $0$
+\[
+\{ x\in [0,1] : \varPhi'(x) = 0 \} \supseteq \bigcup_{m=1}^\infty\bigcup_{n=1}^{2^{n-1}}I_{mn}
+\] 
+$\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{n-1}}I_{mn}$ 的长度为 $\sum\limits_{n=1}^{\infty}\frac {2^{n-1}}{3^{n}} = 1$
+\[
+\{ x\in [0,1] : \varPhi'(x) \neq 0 \} \subseteq \mathcal{C}
+\] 
+$\mathcal{C}$ 的长度为 $0$
 \ITEME
+
+\EXP 证明（参见 HW1）：对任意 $x\in [0,1]$，都有 $\varPhi(x) + \varPhi(1-x)=1$。
 
 \subsubsection{$\varPsi$ 映射}
 
-由于康托函数并不严格单调增，我们希望构建一严格单调增的函数，建立如下映射 $\varPsi:[0,1] \to [0,1]$
+在康托函数的基础上，我们构建一严格单调增的函数 $\varPsi:[0,1] \to [0,1]$
 \[
-	\varPsi(x) =  \frac{x+\varPhi(x)}{2}
+\varPsi(x) =  \frac{x+\varPhi(x)}{2}
 \]
+不难看出，$\varPsi$ 连续、双射。
 
-\subsubsection{康托函数的积分}
-根据课上写的朴素勒贝格积分思想，我们知道康托集的长度为 $0$ ，所以我们只需考虑在 $\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{n-1}}I_{mn}$ 上的积分，我们逐步分类
+\subsubsection{康托函数在 $[0, 1]$ 上的黎曼积分}
+
+注意到 $\varPhi(x) + \varPhi(1-x)=1$，对此式两边分别在 $[0, 1]$ 上取黎曼积分，得到
+$$\int_{0}^{1}\varPhi(x)\mathrm{d} x + \int_{0}^{1}\varPhi(1-x)\mathrm{d} x=1$$
+由区间重现定理，$\int_{0}^{1}\varPhi(x)\mathrm{d} x=\int_{0}^{1}\varPhi(1-x)\mathrm{d} x$，从而黎曼积分
+$$\int_{0}^{1}\varPhi(x)\mathrm{d} x=\frac12 $$
+
+\subsubsection{康托函数在 $[0, 1]$ 上的勒贝格积分}
+根据课上讲的朴素勒贝格积分思想，我们知道康托集的长度为 $0$ ，所以我们只需考虑在 $\bigcup\limits_{m=1}^\infty\bigcup\limits_{n=1}^{2^{m-1}}I_{mn}$ 上的积分，我们逐步分类
 \ITEMS
-	\item 考虑 $I_{11}$ 上的积分，其长度为 $\frac{1}{3}$，函数值为 $\varPhi(\frac13) = \frac12$ 积分值应为 $\frac13 \cdot \frac12$
-	\item 考虑 $I_{21}$ 和 $I_{22}$ 上的积分，其长度均为为 $\frac{1}{3^2}$，函数值分别为 $\varPhi(\frac19) = \frac14, \varPhi(\frac79) = \frac34$ 积分值应为 $\frac{1}{3^2} $
-	\item 考虑 $\bigcup\limits_{i=1}^{k^{i-1}} I_{ki}$ 上的积分，每段长度为 $\frac{1}{3^k}$，函数值之和为 $2^{k-2}$ ，积分值为 $\frac{2^{k-2}}{3^k} = \frac14 \left(\frac23\right)^k$
+\item 考虑 $I_{11}$ 上的积分，其长度为 $\frac{1}{3}$，函数值为 $\varPhi(\frac13) = \frac12$，积分值为 $\frac13 \cdot \frac12$
+\item 考虑 $I_{21}$ 和 $I_{22}$ 上的积分，其长度均为为 $\frac{1}{3^2}$，函数值分别为 $\varPhi(\frac19), \varPhi(\frac89)$，利用 $\varPhi(x) + \varPhi(1-x)=1$，其和为 $1$，积分值为 $\frac{1}{3^2}$
+\item 考虑 $\bigcup\limits_{n=1}^{2^{m-1}} I_{mn}$ 上的积分，每段长度为 $\frac{1}{3^m}$，多次利用 $\varPhi(x) + \varPhi(1-x)=1$，可知函数值之和为 $=\frac {2^{m-1}}{2}=2^{m-2}$，积分值为 $\frac{2^{m-2}}{3^m} = \frac14 \left(\frac23\right)^m$
 \ITEME
-显然可以把康托函数的积分写为如下几何级数的形式，并求出值
+从而康托函数在 $[0, 1]$ 上的勒贝格积分等于首项为 $\frac 16$，公比为 $\frac23$的几何级数，即
 
 \[
-	\int_{[0,1]} \varPhi(x) dx = \sum_{i=1}^\infty \frac14 \left(\frac23\right)^i = \frac{\frac16}{1-\frac23}=\frac12
+\int_{[0,1]} \varPhi(x) \mathrm{d} x = \sum_{m=1}^\infty \frac14 \left(\frac23\right)^m = \frac{\frac16}{1-\frac23}=\frac12
 \]
 
 % 这一部分是我想出来的课上作业的解法，不知道是否正确 =======================
-
+\iffalse
 \subsubsection{黎曼积分求康托函数}
 
 我一开始的想法是用几何意义求积分，不过最后直接求的函数和的积分。首先想到证明康托函数存在对称的关系，最后证明 $x$ 康托函数与 $1-x$ 的康托函数之和恒为 $1$
 
 对于任意 $x \in \left[ 0, \frac13\right]$ ，我们先把 $x$ 写成三进制
 \[
-	x = 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)},\;\forall a_i\in\{0,1,2\}
+x = 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)},\;\forall a_i\in\{0,1,2\}
 \]
 想到写出 $1-x$ 的三进制
 \[
@@ -807,96 +918,45 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \]
 现在可以求 $\varPhi(x) + \varPhi(1-x)$ 但也要分两种情况
 \[
-	\begin{aligned}
-		\mbox{如果} x\in\mathcal{C} &\\
-		\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}\\
-		& = 0.\dot 1_{(2)}\\
-		& = 1\\
-		\mbox{如果} x\notin\mathcal{C} &\\
-		\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}\\
-		& = 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\ 1_{(2)}\\
-		& = 1
-	\end{aligned}
+\begin{aligned}
+	\mbox{如果} x\in\mathcal{C} &\\
+	\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}\\
+	& = 0.\dot 1_{(2)}\\
+	& = 1\\
+	\mbox{如果} x\notin\mathcal{C} &\\
+	\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}\\
+	& = 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\ 1_{(2)}\\
+	& = 1
+\end{aligned}
 \]
 所以我们可知  $\varPhi(x) + \varPhi(1-x)$ 在定义域 $[0,1]$ 上是常值函数，积分为
 \[
-	\int_0^1 [\varPhi(x) + \varPhi(1-x)] dx = \int_0^1 1dx = 1 =\int_0^1 \varPhi(x) dx + \int_0^1 \varPhi(1-x) dx
+\int_0^1 [\varPhi(x) + \varPhi(1-x)] dx = \int_0^1 1dx = 1 =\int_0^1 \varPhi(x) dx + \int_0^1 \varPhi(1-x) dx
 \]
 又因为 $\int_0^1 \varPhi(x) = \int_0^1 \varPhi(1-x) dx$，所以
 \[ \int_0^1 \varPhi(x) dx =1 \]
 
 % =====================================================================
-\subsection{一般的拓扑*}
+\fi
 
-\subsubsection{拓扑空间}
-
-对于非空集合 $X$ ，有$X$ 的一子集簇 $\tau$ ( $\tau$ 由 $X$ 中所有开集组成)，我们定义 $(X,\tau)$ 为拓扑空间，称 $\tau$ 为拓扑，$\tau$ 满足以下条件
-\ITEMS
-	\item $\varnothing , X \in \tau$
-	\item 任意并封闭
-	\[
-		\forall \{ A_\alpha\}_{\alpha \in I} \subseteq \tau \Rightarrow \bigcup_{\alpha \in I} A_\alpha \in \tau
-	\]
-	\item 有限交封闭
-	\[
-		\forall A , B \in \tau \Rightarrow A \cup B \in \tau
-	\]
-\ITEME
-距离空间是特殊的拓扑空间
-
-\subsubsection{覆盖}
-
-对于集合 $X$ ，如果该集合的一子集簇 $\mathcal{A}=\{A_i\}_{i \in I}$ 满足 $X$ 中的每一个元素至少包含于 $\mathcal{A}$ 中的某一集合，即
-\[
-	X \subseteq \bigcup_{i \in I} A_i
-\]
-则称 $\mathcal{A}$ 为 $X$ 的一个覆盖
-\smallskip
-
-对于拓扑空间 $X$ ，若其某一覆盖 $\mathcal{A}$ 中的每一个集合都是开集，则称 $\mathcal{A}$ 是 $X$ 的一个开覆盖
-\smallskip
-
-对于拓扑空间 $X$ 与其一覆盖 $\mathcal{A}$ ，若存在集合 $\mathcal{B} \subseteq \mathcal{A}$ 仍是 $X$ 的覆盖，则称 $\mathcal{B}$ 是 $\mathcal{A}$ 的一个子覆盖，若 $\mathcal{B}$ 是有限集，则为有限子覆盖
-\subsubsection{紧集}
-
-我们称集合 $A$ 为紧集，当且仅当 $A$ 的任意开覆盖都有有限子覆盖
-
-在距离空间中紧集一定为有界闭集， $\text{紧集} \,\Rightarrow\,\text{有界闭集}$
-
-特别的，在 $\R^n$ 中紧集等价于有界闭集， $\text{紧集} \,\iff\,\text{有界闭集}$ （有限覆盖定理，博雷尔定理 Borel）
-
-\subsubsection{泛函分析研究}
-
-对于由函数构成的线性空间 $X$ ，建立映射 $|\cdot|: X \to \mathbb{R}_{\ge 0}$ 满足如下条件
-\ITEMS
-	\item 正定性 \[|x| = 0 \iff x = 0\]
-	\item 齐次性 \[\quad|r x| = |r| |x|, \; \forall x \in X\]
-	\item 三角不定式 \[|x + y| \le |x| + |y|, \;\forall x, y \in X\]
-\ITEME
-我们称 $|\cdot|$ 为范（norm），并定义 $(X,|\cdot|)$ 为赋范空间，我们称完备（取极限封闭）的赋范空间为巴拿赫空间（Banach）
-
-
-
-
-% 勒贝格测度 ===============
 
 \chapter{勒贝格测度}
 
-我们希望建立如下映射 $M$
+关于黎曼积分和勒贝格积分，勒贝格曾有一个形象的比喻：数一沓钱，黎曼积分是一张张的数，总钱数就是每一张的面值相加；而勒贝格积分则是先按面值分类，再分别去数每一面值的张数，然后再把每一面值乘上其相应的张数，最后再加起来就是总钱数。也就是说，我们所说的勒贝格积分就是先对积分函数（为便于研究，不妨先考虑非负函数，搞清楚后再一般化）按函数值，也就是所谓的 “高度” 进行分段，然后再测量每段对应的 “底” 的大小，最后再分别相乘再相加，得到所谓的总 “面积”。因此，我们首先希望能在 $\R^n$ 中引入一 “测度”，使得它是我们所熟悉的长度、面积、体积概念的推广，最好能测量 $\R^n$ 中任一子集的大小。也就是说，我们希望建立定义在 $\R^n$ 的幂集 $\mathcal {P} (\R^n) $ 上的广义非负实值函数 $\mathcal {M}$
 \[
-	M:P(\R^n)\mapsto \R_{\ge0}
+\mathcal {M}:\mathcal {P} (\R^n)\mapsto \R_{\ge0} \cup {+\infty}
 \]
-满足以下条件
+满足以下条件:
 \ITEMS
-	\item 非负性\quad 对于$\forall A \subseteq \R^n$ 都有 $M(A) \ge 0$ 且 $M(\varnothing) = 0$
-	\item 平移不变性\quad 对于 $A,B\subseteq \R^n$ 且 $A$ 平移得 $B$ ，那么 $M(A) = M(B)$
-	\item 规范性\quad $M([0,1]^n)=1$
-	\item 可数可加性（$\sigma$-可加性）\quad 
-	\[
-		\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ M(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty M(E_i) 
-	\]
-	我们在计算康托集的长度时使用了可数可加性
+	\item 非负性:\quad 对于$\forall A \subseteq \R^n$ 都有 $\mathcal {M} (A) \ge 0$ 且 $\mathcal {M}(\varnothing) = 0$
+	\item 平移不变性:\quad 对于 $A,B\subseteq \R^n$ 且 $A$ 平移得 $B$ ，那么 $\mathcal {M}(A) = \mathcal {M}(B)$
+	\item 规范性:\quad $\mathcal {M}([0,1]^n)=1$
+	\item 可数可加性（$\sigma$-可加性）:\quad 
+\[
+\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ \mathcal {M}(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty \mathcal {M}(E_i) 
+\]
 \ITEME
+{\bf 注} 如果把上述条件 $4$ 中 $\{E_i\}$ 的个数换成有限个，则称之为有限可加性。事实上，人们认识到：相较于有限可加性，可数可加性要有用得多。可数可加性也正是我们本章要讲的勒贝格测度的核心特征。大家不妨回顾一下，在上一章计算康托集的 “长度” 时，实际上是在计算所有去掉的开区间 $I_{mn}$ 的总长度时，我们事实上已经用到了 “长度” 的可数可加性。
 
 \section{勒贝格外测度}
 
@@ -905,11 +965,11 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \subsubsection{开矩体的定义}
 定义在 $\R^n$ 中的开矩体为
 \[
-	I = (a_1,b_1)\times(a_2,b_2)\times\cdots\times(a_n,b_n)
+I = (a_1,b_1)\times(a_2,b_2)\times\cdots\times(a_n,b_n)
 \]
 开矩体 $I$ 的闭包为闭矩体 
 \[
-	\overline I = [a_1,b_1]\times[a_2,b_2]\times\cdots\times[a_n,b_n]
+\overline I = [a_1,b_1]\times[a_2,b_2]\times\cdots\times[a_n,b_n]
 \]
 定义如下形式为半开闭矩体
 \[
@@ -920,111 +980,116 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \]
 开矩体的体积为 $\lvert I\rvert = \prod\limits_{i=1}^n (b_i-a_i)$
 
-\subsubsection{开矩体覆盖}
+\subsubsection{L-覆盖（可数开矩体覆盖）}
 
-若由开矩体组成的集合 $\{I_k\}_{k\ge1}$ 覆盖于集合 $A\subseteq \R^n$ ，当且仅当对于 $A$ 的任意元素，其总包含于集合 $\{I_k\}_{k\ge1}$ 中的一个开矩体 $I_k$ ，即
+设 $A\subseteq \R^n$。若 $\{I_k\}_{k\ge1}$ 是 $\R^n$ 中的可数个开矩体 使得
 \[
-	\bigcup_{k\ge 1} I_k \supseteq A
+\bigcup_{k\ge 1} I_k \supseteq A
 \]
+则称 $\{I_k\}_{k\ge1}$ 为 $A$ 的一个 $L$-覆盖。
 
 \subsection{勒贝格外测度}
 
-对于 $\forall A\subseteq \R^n$ 的勒贝格外测度，定义为覆盖该集合 $A$ 的可数个开矩体 $\{I_k\}_{k\ge1}$ 的体积总和的下确界，外测度记作 $m^*: P(\R^n) \to \R_{\ge0} \cup \{+\infty\}$
+下面我们来定义勒贝格外测度 $m^*: \mathcal {P}(\R^n) \to \R_{\ge0} \cup \{+\infty\}$。\\
+
+对于 $\forall A\subseteq \R^n$，其勒贝格外测度 $m^*(A)$ 定义为
 \[
-	m^*(A) = \inf_{A\subseteq\bigcup\limits_{k\ge1}I_k} \sum_{k\ge 1} \lvert I_k \rvert
+m^*(A) = \inf\{\sum_{k\ge 1} \lvert I_k \rvert: \mbox {$\{I_k\}_{k\ge1}$ 为 $A$ 的
+	 $L$-覆盖}\}
 \]
+也就是说，先计算 $A$ 的任一 $L$-覆盖 $\{I_k\}_{k\ge1}$ 的体积 $\sum_{k\ge 1} \lvert I_k \rvert$ （可以是 $+\infty$），然后所有这些体积的下确界，就是 $A$ 的勒贝格外测度 $m^*(A)$。
 
 \ITEMS
-	\item 对于$\R^n$ 中任意有界集合，其外测度必有限
-	\item 当一个集合 $A$ 的外测度为 $+\infty$ ，当且仅当 $A$ 的任意可数开矩体覆盖，都有 $\sum\limits_{k\ge1}\lvert I_k \rvert = +\infty$
+\item 对于$\R^n$ 中任意有界集合，其外测度必有限
+\item 当一个集合 $A$ 的外测度为 $+\infty$ ，当且仅当 $A$ 的任意可数开矩体覆盖，都有 $\sum\limits_{k\ge1}\lvert I_k \rvert = +\infty$
 \ITEME
 
 \EXP
 \ITEMS
-	\item 独点集的外测度等于 $0$
-	\item 低维子集的外测度等于 $0$
-	\[
-	A = \left\lbrace\begin{bmatrix} c\\ x_2 \\ \vdots\\ x_n\end{bmatrix}: x_2,\cdots,x_n\in\R\right\rbrace \subseteq \R^n \Rightarrow m^*(A) = 0
-	\]
-	\item 开矩体的外测度等于其体积和闭包的外测度
-	\[
-		m^*(I) = \lvert I\rvert = m^*(\overline I)
-	\]
-	\pro
-	\ITEMS
-		\item 显然 $\lvert I\rvert \ge m^*(\overline I)$ 成立
-		\item 对于 $\forall \varepsilon > 0$ ，存在 $I$ 的可数开矩体覆盖 $\{I_k\}_{k\ge 1}$ 使得
-		\[
-			\lvert I \rvert \le \sum_{k\ge1} \lvert I_k \rvert \le m^*(I) +\varepsilon
-		\]
-		对 $\varepsilon$ 取极限，使其趋近于 $0$
-		\[
-			\lvert I \rvert \le m^*(I) 
-		\]
-	\ITEME
+\item 独点集的外测度等于 $0$
+\item 低维子集的外测度等于 $0$
+\[
+A = \left\lbrace\begin{bmatrix} c\\ x_2 \\ \vdots\\ x_n\end{bmatrix}: x_2,\cdots,x_n\in\R\right\rbrace \subseteq \R^n \Rightarrow m^*(A) = 0
+\]
+\item 开矩体的外测度等于其体积，也等于其闭包的外测度
+\[
+m^*(I) = \lvert I\rvert = m^*(\overline I)
+\]
+\pro 这里只给出 $m^*(I) = \lvert I\rvert$ 的证明。
+\ITEMS
+	\item 显然 $\lvert I\rvert \ge m^*(I)$ 成立
+	\item 对于 $\forall \varepsilon > 0$ ，存在 $I$ 的可数开矩体覆盖 $\{I_k\}_{k\ge 1}$ 使得
+\[
+\lvert I \rvert \le \sum_{k\ge1} \lvert I_k \rvert \le m^*(I) +\varepsilon
+\]
+对 $\varepsilon$ 取极限，使其趋近于 $0$
+\[
+\lvert I \rvert \le m^*(I) 
+\]
+\ITEME
 \ITEME
 
 \subsubsection{外测度的性质}
 
 \ITEMS
-	\item 非负性 \quad 对于 $\forall A \subseteq \R^n$ 都有 $m^*(A) \ge 0$ 且 $m^*(\varnothing) = 0$
-	\item 单调性 \quad 对于 $\forall A \subseteq B \subseteq \R^n$ 有 $m^*(A) \le m^*(B)$
-	\item 次可加性 \quad 对于 $\forall \{A_i\subseteq \R^n\}_{i\ge 1}$ 都有 
-	\[
-		m^*\left(\bigcup\limits_{i\ge 1} A_i\right) \le  \sum_{i \ge 1} m^*(A_i)
-	\]
-	注：即使 $A_i \cap A_j = \varnothing, \forall i \neq j$ 仍有可能取小于号
-	
-	\pro
-	\ITEMS
-		\item 若存在 $A_i$ 满足 $m^*(A_i)=+\infty$ 显然次可加性成立
-		\item 若对于 $\forall i$ ， $m^*(A_i)$ 都有限，$\forall \varepsilon > 0$ ，$\exists A_i$ 的开矩体覆盖 $\{I_{ik}\}_{k\ge 1}$ 使得 
-		\[
-			\sum_{k\ge 1} \lvert I_{ik} \rvert < m^*(A_i) + \frac{\varepsilon}{2^i}
-		\] 
-		
-		注意到 $\{I_{ik}\}_{i\ge 1}^{k\ge 1}$ 是 $\bigcup\limits_{i\ge1}A_i$ 的开覆盖，可得
-		\[
-			m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}\sum_{k\ge1} \lvert I_k \rvert
-		\]
-		整合以上两式
-		\[
-			m^*\left(\bigcup_{i\ge1} A_i\right) < \sum_{i\ge1}m^*(A_i) + \varepsilon\sum_{i\ge1}\frac{1}{2^i}
-		\]
-		对 $\varepsilon$ 求极限使其趋近于 $0$
-		\[
-			m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}m^*(A_i)
-		\]
-	\ITEME
-	\item 平移不变形
+\item 非负性 \quad 对于 $\forall A \subseteq \R^n$ 都有 $m^*(A) \ge 0$ 且 $m^*(\varnothing) = 0$
+\item 单调性 \quad 对于 $\forall A \subseteq B \subseteq \R^n$ 有 $m^*(A) \le m^*(B)$
+\item 次可加性 \quad 对于 $\forall \{A_i\subseteq \R^n\}_{i\ge 1}$ 都有 
+\[
+m^*\left(\bigcup\limits_{i\ge 1} A_i\right) \le  \sum_{i \ge 1} m^*(A_i)
+\]
+注：即使 $A_i \cap A_j = \varnothing, \forall i \neq j$ 仍有可能取小于号
+
+\pro 1, 2 显然，下面给出次可加性的证明。
+\ITEMS
+	\item 若 $\sum\limits_{k ge1} m^*(A_i)=+\infty$，显然次可加性成立。
+	\item 设 $\sum\limits_{k ge1} m^*(A_i)$ 有限，则对于 $\forall i$，$m^*(A_i)$ 都有限。从而对 $\forall \varepsilon > 0$ ，$\exists A_i$ 的开矩体覆盖 $\{I_{ik}\}_{k\ge 1}$ 使得 
+\[
+\sum_{k\ge 1} \lvert I_{ik} \rvert < m^*(A_i) + \frac{\varepsilon}{2^i}
+\] 
+
+注意到 $\{I_{ik}\}_{i\ge 1}^{k\ge 1}$ 是 $\bigcup\limits_{i\ge1}A_i$ 的开覆盖，可得
+\[
+m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}\sum_{k\ge1} \lvert I_k \rvert
+\]
+整合以上两式
+\[
+m^*\left(\bigcup_{i\ge1} A_i\right) < \sum_{i\ge1}m^*(A_i) + \varepsilon\sum_{i\ge1}\frac{1}{2^i}=\sum_{i\ge1}m^*(A_i) + \varepsilon
+\]
+对 $\varepsilon$ 求极限使其趋近于 $0$
+\[
+m^*\left(\bigcup_{i\ge1} A_i\right) \le \sum_{i\ge1}m^*(A_i)
+\]
+\ITEME
+\item 平移不变形
 \ITEME
 
 \EXP 
 
-{\bf 康托集的外测度}
+{\bf 康托三分集的外测度}
 
-对于康托集 $\mathcal{C}$ 有
+对于任意 $m=1, 2, \cdots, $，康托三分集
 \[
-	\mathcal{C} \subseteq \bigcup_{k=1}^{2^n} F_{nk}
+\mathcal{C} \subseteq \bigcup_{n=1}^{2^m} F_{mn}
 \]
-对等式两边取外测度
+由勒贝格外测度 $m^*$ 的非负性、单调性和可数可加性，我们有
 \[
-	m^*(\mathcal{C}) \le m^*\left(\bigcup_{k=1}^{2^n} F_{nk}\right)
+0\le m^*(\mathcal{C}) \le m^*\left(\bigcup_{n=1}^{2^m} F_{mn}\right)\le \sum_{n=1}^{2^m}m^*\left( F_{mn}\right) =\left(\frac{2}{3}\right)^m
 \]
-根据可数可加性
+于是
 \[
-	m^*\left(\bigcup_{k=1}^{2^n} F_{nk}\right) \le \sum_{k=1}^{2^n}m^*\left( F_{nk}\right) =\left(\frac{2}{3}\right)^n
+0\le m^*(\mathcal{C}) \le \lim_{m \to \infty} \left(\frac{2}{3}\right)^m=0
 \]
-对 $n$ 取极限使其趋近于 $+\infty$ 可得
+从而
 \[
-	m^*(\mathcal{C}) = 0
+m^*(\mathcal{C}) = 0
 \]
 
 {\bf 有理数集的外测度}
 
-因为有理数集是可数的，可以写为可数无穷个独点集的并，即
+因为有理数集是可数的，可以写为可数无穷个独点集的并，由次可加性
 \[
-	m^*(\mathbb{Q}) \le \sum_{k\ge1}m^*(\{r_k\}) 
+m^*(\mathbb{Q}) \le \sum_{k\ge1}m^*(\{r_k\})=0 
 \]
 显然 $m^*(\mathbb{Q}) = 0$
 
@@ -1032,77 +1097,94 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 
 对于 $\forall A,B \subseteq \R^n$ ，定义其距离为
 \[
-	d(A,B) = \inf \{d(x,y):\forall x \in A ,y \in B\}
+d(A,B) = \inf \{d(x,y):\forall x \in A ,y \in B\}
 \]
-注：即使 $A\cap B = \varnothing$ ，$d(A,B)$ 也可能为 $0$ 
+{\bf 注} 即使 $A\cap B = \varnothing$ ，$d(A,B)$ 也可能为 $0$。
+
+\bigskip
+
+\EXP 设 $A$ 是 $\R^2$ 中双曲线 $xy=1$，$B$ 是 $\R^2$ 中的 $x$ 轴。显然 $A\cap B = \varnothing$，但 $d(A,B)=0$。 
 
 \subsubsection{距离可加性}
 
 对于 $\forall A,B \subseteq \R^n$ 若 $d(A,B) > 0$ 则
 \[
-	m^*(A\cup B) = m^*(A) + m^*(B) 
+m^*(A\cup B) = m^*(A) + m^*(B) 
 \]
 
 \section{勒贝格测度}
 
-鉴于不存在一个测度可以同时做到测量 $\R^n$ 中的任意大小，有满足 $M(\cdot)$ 的四个性质，我们选择去除掉 $\R^n$ 中的不满足可数可加性的集合，仅保留满足可数可加性的集合
+可以证明：不存在一个测度，既能测量 $\R^n$ 中的任意子集的大小，又兼具可数可加性。而可数可加性是我们想要的核心性质，有鉴于此，我们自然会想到：不妨把我们的研究对象限定为 $\R^n$ 中满足可数可加性的所有子集构成的集合。
 
 \subsection{可测集}
 
-我们把在 $m^*(\cdot)$ 下满足可数可加性的所有子集的集合定义为可测集，否则为不可测集
+不严格地讲，我们把在勒贝格外测度 $m^*(\cdot)$ 下，满足可数可加性的 $\R^n$ 中 的所有子集都称为可测集，否则为不可测集。注意到这一粗略定义在用来判断 $\R^n$ 中的任意子集是否为可测集时，根本不具备可操作性。自然地，我们想到通过最简单的情况：开方体上的有限可加性来定义可测集，希望以此来诱导出可数可加性。
+
 \smallskip
 
 \no {\bf 定义1：}
 
-$E \subseteq \R^n$ 称为可测集，当且仅当对任意开矩体 $I$ 都有
+$E \subseteq \R^n$ 称为可测集，如果对任意开矩体 $I$ 都有
 \[
-	m^*(I) = m^*(I\cap E) + m^*(I\cap E^c)
+m^*(I) = m^*(I\cap E) + m^*(I\cap E^c)
 \]
 
+为了使可测集的定义用起来更方便，我们希望把用来测试可测集的任意开矩体 $I$ 替换成任意子集 $T$，于是我们来到\\
 \no {\bf 定义2：}
 
-$E \subseteq \R^n$ 称为可测集，当且仅当对 $\forall T \subseteq \R^n$ 都有
+$E \subseteq \R^n$ 称为可测集，如果对 $\forall T \subseteq \R^n$ 都有
 \[
-	m^*(T) = m^*(T\cap E) + m^*(T\cap E^c)
+m^*(T) = m^*(T\cap E) + m^*(T\cap E^c)
 \]
+其中的 $T$ 称为试验集。
 
+下面我们证明这两种定义的等价性。\\
 \pro 
+定义2 $\Rightarrow$ 定义1: 显然。\\
+定义1 $\Rightarrow$ 定义2：
 
-	定义2 $\Rightarrow$ 定义1显然成立，这里证定义1 $\Rightarrow$ 定义2
+由次可加性
+\[
+m^*(T) \le m^*(T\cap E) + m^*(T\cap E^c)
+\]
+对 $\forall \varepsilon > 0$ 存在 $T$ 的 $L$-覆盖使得
+\[
+\sum \lvert I_k \rvert < m^*(T) +\varepsilon
+\]
+再由单调性易知
+\[
+m^*(T\cap E) + m^*(T\cap E^c)\le m^*\left(\left(\bigcup\limits_k I_k\right)\cap E\right) + m^*\left(\left(\bigcup\limits_k I_k\right)\cap E^c\right)=m^*\left(\bigcup\limits_k \left(I_k\cap E\right) \right)+ m^*\left(\bigcup\limits_k \left(I_k\cap E^c\right)\right)
+\]
+由次可加性并经整理可得
+\[
+\mbox{上式右边} \le \sum_{k\ge1}\left[m^*\left( I_k\cap E\right) + m^*\left( I_k\cap E^c\right)\right] = \sum_{k\ge 1}\lvert I_k \rvert < m^*(T) +\varepsilon 
+\]
+于是
+\[
+m^*(T\cap E) + m^*(T\cap E^c)\le m^*(T) +\varepsilon 
+\]
+对上式取极限，让 $\varepsilon$ 趋近于 $0$，即得
+\[
+m^*(T) \ge m^*(T\cap E) + m^*(T\cap E^c)
+\]
+{\bf 注} 定义 2 中用于判断 $E$ 可测的条件 $m^*(T) = m^*(T\cap E) + m^*(T\cap E^c)$ 称为 Caratheodory 条件。由次可加性易知，$m^*(T) \le m^*(T\cap E) + m^*(T\cap E^c)$ 永远成立。故欲证该条件成立，只需证明 $m^*(T) \ge m^*(T\cap E) + m^*(T\cap E^c)$ 即可。
 
-	根据次可加性
-	\[
-		m^*(T) \le m^*(T\cap E) + m^*(T\cap E^c)
-	\]
-	$\forall \varepsilon > 0$ 存在 $T$ 的一开矩体覆盖使得
-	\[
-		\sum \lvert I_k \rvert < m^*(T) +\varepsilon
-	\]
-	把 $T$ 替换成 $\bigcup\limits_k I_k$ ，由单调性可知
-	\[
-		 m^*(T\cap E) + m^*(T\cap E^c)\le m^*\left(\bigcup\limits_k I_k\cap E\right) + m^*\left(\bigcup\limits_k I_k\cap E^c\right)
-	\]
-	整理可得
-	\[
-		m^*(T\cap E) + m^*(T\cap E^c) \le \sum_{k\ge1}\left[m^*\left( I_k\cap E\right) + m^*\left( I_k\cap E^c\right)\right] = \sum_{k\ge 1}\lvert I_k \rvert < m^*(T) +\varepsilon 
-	\]
-	对 $\varepsilon$ 求极限，使其趋近于 $0$
-	\[
-		m^*(T) \ge m^*(T\cap E) + m^*(T\cap E^c)
-	\]
-	
-\subsubsection{零测集}
+\subsubsection{零测集是可测集}
 
-若 $m^*(E) = 0$ 则 $E$ 为零测集，如 $\mathbb{Q}\ ,\ \mathcal{C}$ ，零测集必可测
+若 $m^*(E) = 0$，则 $E$ 称为零测集。\\
+注意到，对任一零测集 $E$，由单调性易知 $ m^*(T\cap E) + m^*(T\cap E^c)\le m^*(E) +m^*(T)=m^*(T) $，从而 $E$ 是可测集。由此知 有理数集 $\mathbb{Q}$ 和康托三分集 $\mathcal{C}$ 均为可测集。
 
+\bigskip
 
+\EXP 设 $E_1, E_2$ 是 $\R^n$ 的子集。若 $E_1, E_2$ 能被 $\R^n$ 中一可测集 $E$ 分隔开 （即 $E_1, E_2$ 中一个含于 $E$  中，另一个含于 $E^c$ 中），则 $$m^*(E_1\cup E_2)=m^*(E_1)+m^*(E_2)$$ 特别地，若$E_1, E_2$ 是互不相交的可测集，则 $$m^*(E_1\cup E_2)=m^*(E_1)+m^*(E_2)$$
 
-	
-\subsection{勒贝格可测集$\sigma$-代数}
+\pro 不妨设 $E_1\subseteq E, E_2\subseteq E^c$。由 Caratheodory 条件，我们有
+$$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_1)+m^*(E_2)$$
+
+%\subsection{勒贝格可测集$\sigma$-代数}
 
 
 \end{document}
-
 
 
 
