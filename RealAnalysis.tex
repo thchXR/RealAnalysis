@@ -1181,7 +1181,70 @@ m^*(T) \ge m^*(T\cap E) + m^*(T\cap E^c)
 \pro 不妨设 $E_1\subseteq E, E_2\subseteq E^c$。由 Caratheodory 条件，我们有
 $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_1)+m^*(E_2)$$
 
-%\subsection{勒贝格可测集$\sigma$-代数}
+\subsection{勒贝格测度}
+
+我们把 $\R^n$ 中所有可测集组成的集合记作 $\mathcal{M}$ 或 $\mathcal{A}$ ，$\mathcal{M}$ 是一个 $\sigma$-代数，称之为勒贝格 $\sigma$-代数
+\smallskip
+
+我们称勒贝格外测度 $m^*$ 在 $\mathcal{M}$ 限制下得到的函数定义为勒贝格测度，记作 $m$
+\[
+	m = m^*|_\mathcal{M} 
+\]
+
+我们称 $(\R^n,\mathcal{M},m)$ 为测度空间
+
+\ITEMS
+	\item $\varnothing \in \mathcal{M}$
+	\item $\forall E\in \mathcal{M} \Rightarrow E^c\in \mathcal{M}$
+	\item $\forall A,B \in \mathcal{M} \Rightarrow \begin{cases} A \cap B \in \mathcal{M}\\ A \cup B \in \mathcal{M}\\ A \setminus B \in \mathcal{M}\end{cases}$
+	\item $\{E_k\}_{k\ge1} \subseteq \mathcal{M} \Rightarrow \bigcup\limits_{k\ge1} E_k \subseteq \mathcal{M}$ 
+	
+	特别的，对于 $\{E_k\}_{k\ge1} \subseteq \mathcal{M}$ 其中 $E_i \neq E_j,\forall i\neq j$ 则有
+	\[
+		m\left(\bigcup_{k=1}^\infty E_k\right) = \sum_{k=1}^\infty m\left( E_k\right)
+	\]
+\ITEME
+
+\subsubsection{勒贝格测度的上下连续性}
+\ITEMS
+	\item 对于任意 $\R^n$ 上可测集的渐升列 $E_1 \subseteq E_2 \subseteq \cdots \subseteq E_k \subseteq \cdots$ 有
+	\[
+		m\left(\lim_{k\to\infty} E_k\right) = \lim_{k\to\infty} m\left( E_k\right) 
+	\]
+	\item 对于任意 $\R^n$ 上可测集的渐降列 $E_1 \subseteq E_2 \subseteq \cdots \subseteq E_k \subseteq \cdots$ ，若 $m(E_1) < +\infty$ 则有
+	\[
+		m\left(\lim_{k\to\infty} E_k\right) = \lim_{k\to\infty} m\left( E_k\right) 
+	\]
+\ITEME
+
+\pro 性质1
+\ITEMS
+	\item 若有若干 $m(E_k) = +\infty$ 则显然成立
+	\item 若每个 $m(E_k)$ 都有限，设 $E_0 = \varnothing$ 显然有
+	\[
+		\bigcup_{k=1}^\infty E_k = \bigcup_{k=1}^\infty ( E_k\setminus E_{k-1})
+	\]
+	取勒贝格测度
+	\[
+		m\left(\bigcup_{k=1}^\infty E_k\right) = m\left(\bigcup_{k=1}^\infty ( E_k\setminus E_{k-1})\right)
+	\]
+	由可数可加性有
+	\[
+		m\left(\bigcup_{k=1}^\infty E_k\right) = \sum_{k=1}^\infty m\left(  E_k\setminus E_{k-1}\right)
+	\]
+	用极限表示无穷级数
+	\[
+		m\left(\bigcup_{k=1}^\infty E_k\right) = \lim_{N\to\infty}\sum_{k=1}^N m\left(  E_k\setminus E_{k-1}\right)
+	\]
+	使用裂项求和技巧
+	\[
+		m\left(\bigcup_{k=1}^\infty E_k\right) = \lim_{N\to\infty} \left(  m(E_N) - m(E_0)\right) =\lim_{N\to\infty} m(E_N)
+	\]
+\ITEME
+
+\subsection{可测集与Borel集的关系}
+
+
 
 
 \end{document}
