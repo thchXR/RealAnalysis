@@ -1250,7 +1250,6 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 \subsubsection{开矩体是可测集}
 在 $\R^n$ 上开矩体是可测集，即 $\R^n$ 上的任意开矩体 $I = (a_1,b_1) \times (a_2,b_2) \cdots \times (a_n,b_n) \in \mathcal{M}$
 
-% 这里写的是和课上不太一样的证明方法
 \pro $\R^n$ 上的任意开矩体 $I$ 都满足Carathéodory条件，即对于 $\forall T \subseteq \R^n$ 都有
 \[
 	m^*(T) = m^*(T\cap I) + m^*(T\cap I^c)
@@ -1261,42 +1260,56 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 \]
 我们构建一个新的开矩体 $I_\delta = (a_1 + \delta, b_1 - \delta) \times \cdots \times (a_n + \delta, b_n - \delta)$ ，有
 \[
-	I = I_\delta \cup (I \setminus I_\delta)
+	T \cap I \subseteq (T \cap I_\delta) \cup (T \cap (I \setminus I_\delta))
 \]
-其中 $I \setminus I_\delta$ 是 $2n$ 个闭矩体的并
-
-对于 $\forall \varepsilon > 0$ ，取得 $T$ 的一个可数开矩形族覆盖 $\{Q_k\}$ 使得
+显然 $T \cap I^c$ 与 $T \cap I_\delta$ 间距离为 $\delta$ ，由距离可加性可知
 \[
-	\sum_k |Q_k| < m^*(T) + \varepsilon
+	m^*(T) \ge m^*(T \cap I_\delta) + m^*(T \cap I^c) \tag{a}
 \]
-将所有的开矩体 $Q_k$ 根据以下三部分分为有限小开矩形 $R$
+其中 $I \setminus I_\delta$ 是 $2n$ 个闭矩体的并，设 $\eta = \max\limits_{1\le i\le n} (b_i-a_i)$ ，有
 \[
-	\sum_k |Q_k| = \sum_{R \subset I_\delta} |R| + \sum_{R \subset I \setminus I_\delta} |R| + \sum_{R \subset I^c} |R|
+	m^*(T\cap I) \ge m^*(T \cap I_\delta) + 2n \eta^{n-1} \delta
 \]
-显然
+对 $\delta$ 取极限，使其趋近于 $0$
 \[
-	\begin{aligned}
-		m^*(T \cap I_\delta) &\le \sum_{R \subset I_\delta} |R| \\
-		m^*(T \cap I^c) &\le \sum_{R \subset I^c} |R|\\
-		m(I \setminus I_\delta) &\ge \sum_{R \subset I \setminus I_\delta} |R|
-	\end{aligned}
+	m^*(T\cap I) \ge \lim_{\delta \to 0}m^*(T \cap I_\delta)
 \]
-所以
+显然可知
 \[
-	m^*(T \cap I_\delta) + m^*(T \cap I^c) \le \sum_k |Q_k| - \sum_{R \subset I \setminus I_\delta} |R| \le m^*(T) + \varepsilon
+	m^*(T\cap I) = \lim_{\delta \to 0}m^*(T \cap I_\delta)
 \]
-因为 $m(I \setminus I_\delta) < \delta\sum_{i} \prod_{j \neq i} (b_j - a_j)$
+对式 (a) 中的 $\delta$ 取极限，使其趋近于 $0$
 \[
-	m^*(T \cap I) \le m^*(T \cap I_\delta) + m(I \setminus I_\delta) \le m^*(T \cap I_\delta) + \delta\sum_{i} \prod_{j \neq i} (b_j - a_j)
+	m^*(T) \ge m^*(T\cap I) + m^*(T\cap I^c)
 \]
+证毕
 
 \subsubsection{开集是可测集}
 接下来，只要证明开集是可测集，自然就有 $\mathcal{B}(\R^n) \subseteq \mathcal{M}$
 
+\pro 显然根据开集的定义，对于开集 $U$ 有
+\[
+\forall x\in U\ \exists B(x,\delta x) \subseteq U
+\]
+
+\ITEMS
+	\item 若 $x$ 为有理点，取一有理数 $r_x <\delta x$ 使得开方体 $I(x,r_x) \subseteq B(x,\delta x) \subseteq U$
+	\item 若 $x$ 为无理点，取有理点 $y \in U$ ，有理数 $r_y <\delta x$ 使得
+	\[
+		x\in I(y,r_y) \subseteq B(x,\delta x) \subseteq U
+	\]
+\ITEME
+所以开集 $U$ 可以写成上述可数多个开方体 $I$ 的并
+\[
+	U = \bigcup_a I(a,r_a)
+\]
+显然可测
+
 \subsubsection{可测集与开闭集的关系}
-
-
-
+\ITEMS
+	\item 对于任意 $E\in \mathcal{M}$ ， 存在开集 $U\in \R^n$ ，$\forall \delta > 0$ 使得 $E \subseteq U$ 且 $m(U\setminus E) < \delta$
+	\item 对于任意 $E\in \mathcal{M}$ ， 存在闭集 $F\in \R^n$ ，$\forall \delta > 0$ 使得 $F \subseteq R$ 且 $m(E\setminus F) < \delta$
+\ITEME
 
 \end{document}
 
