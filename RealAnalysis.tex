@@ -1183,7 +1183,7 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 
 \subsection{勒贝格测度}
 
-我们把 $\R^n$ 中所有可测集组成的集合记作 $\mathcal{M}$ 或 $\mathcal{A}$ ，$\mathcal{M}$ 是一个 $\sigma$-代数，称之为勒贝格 $\sigma$-代数
+我们把 $\R^n$ 中所有可测集组成的集合称为可测集类，记作 $\mathcal{M}$ 或 $\mathcal{A}$ 
 \smallskip
 
 我们称勒贝格外测度 $m^*$ 在 $\mathcal{M}$ 限制下得到的函数定义为勒贝格测度，记作 $m$
@@ -1193,6 +1193,7 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 
 我们称 $(\R^n,\mathcal{M},m)$ 为测度空间
 
+\subsubsection{可测集类的性质}
 \ITEMS
 	\item $\varnothing \in \mathcal{M}$
 	\item $\forall E\in \mathcal{M} \Rightarrow E^c\in \mathcal{M}$
@@ -1204,6 +1205,8 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 		m\left(\bigcup_{k=1}^\infty E_k\right) = \sum_{k=1}^\infty m\left( E_k\right)
 	\]
 \ITEME
+
+由以上性质可知 $\mathcal{M}$ 是一个 $\sigma$-代数，也称之为勒贝格 $\sigma$-代数
 
 \subsubsection{勒贝格测度的上下连续性}
 \ITEMS
@@ -1243,6 +1246,54 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 \ITEME
 
 \subsection{可测集与Borel集的关系}
+
+\subsubsection{开矩体是可测集}
+在 $\R^n$ 上开矩体是可测集，即 $\R^n$ 上的任意开矩体 $I = (a_1,b_1) \times (a_2,b_2) \cdots \times (a_n,b_n) \in \mathcal{M}$
+
+% 这里写的是和课上不太一样的证明方法
+\pro $\R^n$ 上的任意开矩体 $I$ 都满足Carathéodory条件，即对于 $\forall T \subseteq \R^n$ 都有
+\[
+	m^*(T) = m^*(T\cap I) + m^*(T\cap I^c)
+\]
+由于次可加性，只需证
+\[
+	m^*(T) \ge m^*(T\cap I) + m^*(T\cap I^c)
+\]
+我们构建一个新的开矩体 $I_\delta = (a_1 + \delta, b_1 - \delta) \times \cdots \times (a_n + \delta, b_n - \delta)$ ，有
+\[
+	I = I_\delta \cup (I \setminus I_\delta)
+\]
+其中 $I \setminus I_\delta$ 是 $2n$ 个闭矩体的并
+
+对于 $\forall \varepsilon > 0$ ，取得 $T$ 的一个可数开矩形族覆盖 $\{Q_k\}$ 使得
+\[
+	\sum_k |Q_k| < m^*(T) + \varepsilon
+\]
+将所有的开矩体 $Q_k$ 根据以下三部分分为有限小开矩形 $R$
+\[
+	\sum_k |Q_k| = \sum_{R \subset I_\delta} |R| + \sum_{R \subset I \setminus I_\delta} |R| + \sum_{R \subset I^c} |R|
+\]
+显然
+\[
+	\begin{aligned}
+		m^*(T \cap I_\delta) &\le \sum_{R \subset I_\delta} |R| \\
+		m^*(T \cap I^c) &\le \sum_{R \subset I^c} |R|\\
+		m(I \setminus I_\delta) &\ge \sum_{R \subset I \setminus I_\delta} |R|
+	\end{aligned}
+\]
+所以
+\[
+	m^*(T \cap I_\delta) + m^*(T \cap I^c) \le \sum_k |Q_k| - \sum_{R \subset I \setminus I_\delta} |R| \le m^*(T) + \varepsilon
+\]
+因为 $m(I \setminus I_\delta) < \delta\sum_{i} \prod_{j \neq i} (b_j - a_j)$
+\[
+	m^*(T \cap I) \le m^*(T \cap I_\delta) + m(I \setminus I_\delta) \le m^*(T \cap I_\delta) + \delta\sum_{i} \prod_{j \neq i} (b_j - a_j)
+\]
+
+\subsubsection{开集是可测集}
+接下来，只要证明开集是可测集，自然就有 $\mathcal{B}(\R^n) \subseteq \mathcal{M}$
+
+\subsubsection{可测集与开闭集的关系}
 
 
 
