@@ -274,7 +274,7 @@ C_m = \inf_{n\ge m}\{A_n\} = \bigcap_{n\ge m} A_n
 \pro
 
 我们先证明 $\lvert A \rvert \le \lvert P(A) \rvert$：\\
-定义映射 $f:A\rightarrow P(A)$ 如下：
+定义映射 $g:A\rightarrow P(A)$ 如下：
 \[ 
 	g(x)=\{x\}, \forall x \in A
 \] 
@@ -515,10 +515,19 @@ f(y) = B
 \]
 \ITEME
 
-\subsection{稠密子集}
-\subsubsection{稠密子集}
+\subsection{稠密集、无处稠密集}
+\subsubsection{定义}
 
-集合 $A\subseteq\R^n$ 称为 $\R^n$ 的稠密子集，如果 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$\\
+对集合 $A\subseteq\R^n$，我们称
+\ITEMS 
+	\item $A$ 为 $\R^n$ 的稠密子集，如果 $A$ 的闭包是 $\R^n$ ，即 $\overline A = \R^n$；
+	\item $A$ 为 $\R^n$ 的无处稠密子集
+	（也称稀疏子集），如果 $A$ 的闭包的所有点都是边界点，也就是它没有内点，即 $\mathring {\overline A} = \emptyset$。
+\ITEME
+
+不难
+证明：$A$ 是 $\R^n$ 的无处稠密子集当且仅当 $A$ 的闭包的补集是 $\R^n$ 的稠密子集。
+
 \bigskip
 
 \EXP 有理数集 $\mathbb{Q}$ 是实数集 $\R$ 的一稠密子集因为 $\overline{\mathbb{Q}} = \R$。同理有 $\overline{\mathbb{Q}^n} = \R^n$，即 $\mathbb{Q}^n$ 是 $\R^n$ 的一稠密子集。
@@ -627,6 +636,34 @@ $S$ 对可数多个集合的并集运算封闭 ，即
 \]
 不难验证 $(X,d)$ 是一距离空间。
 
+\subsection{赋范空间}
+
+对于线性空间 $X$ ，如果能建立映射 $\lVert\cdot\rVert: X \to \mathbb{R}_{\ge 0}$，使其满足如下条件
+\ITEMS
+\item 正定性 \[\lVert x\rVert = 0 \iff x =0 \]
+\item 齐次性 \[\quad\lVert r x\rVert = |r| \lVert x\rVert, \; \forall x \in X\]
+\item 三角不定式 \[\lVert x + y\rVert \le \lVert x\rVert + \lVert y\rVert, \;\forall x, y \in X\]
+\ITEME
+我们则称 $(X,\lVert\cdot\rVert)$ 为赋范空间，$\lVert\cdot\rVert$ 为 $X$ 上的范（norm）。对任意 $x \in X, \lVert x\rVert$ 称为 $x$ 的范数。\\
+
+{\bf 注1} 事实上，范就是类比于 $\R^n$ 中的向量长度（ 即 $\R^1$ 中的绝对值的推广） 而来的。当然类似于 $\R^n$，我们也可以自然而然地在任一赋范空间 $(X,\lVert\cdot\rVert)$ 中定义距离 $d(x,y) = \lVert x-y \rVert$。根据 $\lVert\cdot\rVert$ 的性质，易验证 $d(x,y)$ 满足距离所要求的 $3$ 条性质，从而任一赋范空间都是距离空间。\\
+
+{\bf 注2} 我们称完备（取极限封闭）的赋范空间为巴拿赫空间（Banach）。
+
+\bigskip
+
+\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数构成的集合。对于 $\forall f \in X$，定义 
+\[
+\lVert f \rVert = \max_{a\le x\le b}\lvert f(x)\rvert
+\]
+不难验证，如上定义的 $\lVert \cdot \rVert$ 是 $X$ 上的范。\\
+
+自然地，对任意 $f, g \in X$，我们定义其距离
+\[
+d(f,g) = \lVert f-g \rVert
+\]
+正如上例所示。
+
 \subsection{拓扑空间}
 
 \subsubsection{拓扑空间的定义}
@@ -668,34 +705,6 @@ S\subseteq \bigcup_{i \in I} A_i
 在距离空间中，紧集一定为有界闭集：$\text{紧集} \,\Rightarrow\,\text{有界闭集}$
 
 特别地，在 $\R^n$ 中紧集等价于有界闭集：$\text{紧集} \,\iff\,\text{有界闭集}$
-
-\subsection{赋范空间}
-
-对于线性空间 $X$ ，如果能建立映射 $\lVert\cdot\rVert: X \to \mathbb{R}_{\ge 0}$，使其满足如下条件
-\ITEMS
-\item 正定性 \[\lVert x\rVert = 0 \iff x =0 \]
-\item 齐次性 \[\quad\lVert r x\rVert = |r| \lVert x\rVert, \; \forall x \in X\]
-\item 三角不定式 \[\lVert x + y\rVert \le \lVert x\rVert + \lVert y\rVert, \;\forall x, y \in X\]
-\ITEME
-我们则称 $(X,\lVert\cdot\rVert)$ 为赋范空间，$\lVert\cdot\rVert$ 为 $X$ 上的范（norm）。对任意 $x \in X, \lVert x\rVert$ 称为 $x$ 的范数。\\
-
-{\bf 注1} 事实上，范就是类比于 $\R^n$ 中的向量长度（ 即 $\R^1$ 中的绝对值的推广） 而来的。当然类似于 $\R^n$，我们也可以自然而然地在任一赋范空间中定义距离，从而使其成为距离空间。\\
-
-{\bf 注2} 我们称完备（取极限封闭）的赋范空间为巴拿赫空间（Banach）。
-
-\bigskip
-
-\EXP 设 $X = C[a,b]$ 是 从 $[a,b]$ 到 $\R$ 上的所有连续函数构成的集合。对于 $\forall f \in X$，定义 
-\[
-\lVert f \rVert = \max_{a\le x\le b}\lvert f(x)\rvert
-\]
-不难验证，如上定义的 $\lVert \cdot \rVert$ 是 $X$ 上的范。\\
-
-自然地，对任意 $f, g \in X$，我们定义其距离
-\[
-d(f,g) = \lVert f-g \rVert
-\]
-这样，就得到了我们在以前的例中所讨论的距离空间 $(X,d)$。
 
 \subsection{康托（Cantor） 三分集}
 
@@ -793,10 +802,12 @@ $\vdots$
 \]
 不难看出，$\mathcal{C}$ 是非空闭集，因为上述每个闭区间 $F_{mn}$ 的端点必然不会被去掉，从而必属于 $\mathcal{C}$。\\
 
-\subsubsection{康托三分集是完全集}
+\subsubsection{康托三分集是完全集和无处稠密集}
 
-对任意 $x \in \mathcal{C}$，必有 $x\in \mbox{某个}F_{mn}, m=1, 2, \cdots$。注意到该闭区间 $F_{mn}$ 的长度为 $\frac{1}{3^m}$ 且 $\lim\limits_{m\to\infty}\frac{1}{3^m}=0$，因此对任意 $\epsilon > 0$，在 $m$ 足够大时，开球 $B(x,\epsilon)$ 必包含整个 $F_{mn}$，从而 $B(x,\epsilon)\cap \mathcal{C}$ 必含 $F_{mn}$ 的端点，这表明任意 $x \in \mathcal{C}$ 都是 $\mathcal{C}$ 的聚点，所以 $\mathcal{C}$ 是完全集。
+对任意 $x \in \mathcal{C}$，必有 $x\in \mbox{某个} F_{mn}$。注意到该闭区间 $F_{mn}$ 的长度为 $\frac{1}{3^m}$ 且 $\lim\limits_{m\to\infty}\frac{1}{3^m}=0$，因此对任意 $\epsilon > 0$，在 $m$ 足够大时，开球 $B(x,\epsilon)$ 必包含整个 $F_{mn}$，从而 $B(x,\epsilon)\cap \mathcal{C}$ 必含 $F_{mn}$ 的端点，这表明任意 $x \in \mathcal{C}$ 都是 $\mathcal{C}$ 的聚点，所以 $\mathcal{C}$ 是完全集。 \\
 
+上述证明还说明：既然开球 $B(x,\epsilon)$ 必包含整个 $F_{mn}$，它当然包含 $F_{mn}$ 中将在下一步被移除的中间 $\frac 13$ 部分开区间。也就是说：任意 $x \in \mathcal{C}$ 必不是 $\mathcal{C}$ 的内点，注意到 $\mathcal{C}$ 是闭集，从而 $\mathcal{C}$ 是无处稠密集。
+ 
 \subsubsection{康托三分集的基数}
 
 不难看出，康托三分集 $\mathcal{C}$ 中每一个数与三进制小数集 $\{0.a_1a_2a_3\cdots a_n\cdots: \mbox{每个 $a_n$ 是 $0$ 或 $2$}$\} 一一对应，所以
@@ -882,78 +893,20 @@ $$\int_{0}^{1}\varPhi(x)\mathrm{d} x=\frac12 $$
 \int_{[0,1]} \varPhi(x) \mathrm{d} x = \sum_{m=1}^\infty \frac14 \left(\frac23\right)^m = \frac{\frac16}{1-\frac23}=\frac12
 \]
 
-% 这一部分是我想出来的课上作业的解法，不知道是否正确 =======================
-\iffalse
-\subsubsection{黎曼积分求康托函数}
-
-我一开始的想法是用几何意义求积分，不过最后直接求的函数和的积分。首先想到证明康托函数存在对称的关系，最后证明 $x$ 康托函数与 $1-x$ 的康托函数之和恒为 $1$
-
-对于任意 $x \in \left[ 0, \frac13\right]$ ，我们先把 $x$ 写成三进制
-\[
-x = 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)},\;\forall a_i\in\{0,1,2\}
-\]
-想到写出 $1-x$ 的三进制
-\[
-\begin{aligned}
-	1-x &= 0.\dot2_{(3)} - 0.0\, a_1\, a_2\, \cdots a_n \cdots_{(3)}\\
-	&=0.2\ (2-a_1)\ (2-a_2)\ \cdots (2-a_n) \cdots_{(3)}
-\end{aligned}
-\]
-我们再对 $x$ 和 $1-x$ 取康托函数，先考虑 $\varPhi(x)$ ，对于不属于康托集的点，即属于 $I_{mn}$ 的点，我们取 $I_{mn}$ 的左端点，显然对于不属于康托集的点存在 $a_i = 1$ ，不妨设 $k$ 为最小的使 $a_k$ 取 $1$ 的序数 % $k = \min\limits_{i\in I} i, \forall a_i = 1$	这里的符号表述反复修改有点不知道怎么写清楚
-，那么该左端点的三进制应为 $x = 0.0\, a_1\, a_2\, \cdots a_{k-1} 0 \dot 2 _{(3)},\;\forall a_i\in\{0,2\}$，这样我们就可以取康托函数了
-\[
-\varPhi(x)=
-\begin{cases}
-	0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)}&,\ x \in \mathcal{C}\\
-	0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)}&,\ x \notin \mathcal{C}
-\end{cases}
-\]
-同理我们可以对 $1-x$ 取康托函数
-\[
-\varPhi(1-x)=
-\begin{cases}
-	0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}&,\ x \in \mathcal{C}\\
-	0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}&,\ x \notin \mathcal{C}
-\end{cases}
-\]
-现在可以求 $\varPhi(x) + \varPhi(1-x)$ 但也要分两种情况
-\[
-\begin{aligned}
-	\mbox{如果} x\in\mathcal{C} &\\
-	\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_n}{2} \cdots_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_n}{2} \cdots_{(2)}\\
-	& = 0.\dot 1_{(2)}\\
-	& = 1\\
-	\mbox{如果} x\notin\mathcal{C} &\\
-	\varPhi(x) + \varPhi(1-x) &= 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\  0\  \dot 1_{(2)}\\
-	& = 0.0\, \frac{a_1}{2}\, \frac{a_2}{2}\, \cdots \frac{a_{k-1}}{2}\  0\  \dot 1_{(2)} + 0.1\, \frac{2-a_1}{2}\, \frac{2-a_2}{2}\, \cdots \frac{2-a_{k-1}}{2}\ 1_{(2)}\\
-	& = 1
-\end{aligned}
-\]
-所以我们可知  $\varPhi(x) + \varPhi(1-x)$ 在定义域 $[0,1]$ 上是常值函数，积分为
-\[
-\int_0^1 [\varPhi(x) + \varPhi(1-x)] dx = \int_0^1 1dx = 1 =\int_0^1 \varPhi(x) dx + \int_0^1 \varPhi(1-x) dx
-\]
-又因为 $\int_0^1 \varPhi(x) = \int_0^1 \varPhi(1-x) dx$，所以
-\[ \int_0^1 \varPhi(x) dx =1 \]
-
-% =====================================================================
-\fi
-
-
 \chapter{勒贝格测度}
 
-关于黎曼积分和勒贝格积分，勒贝格曾有一个形象的比喻：数一沓钱，黎曼积分是一张张的数，总钱数就是每一张的面值相加；而勒贝格积分则是先按面值分类，再分别去数每一面值的张数，然后再把每一面值乘上其相应的张数，最后再加起来就是总钱数。也就是说，我们所说的勒贝格积分就是先对积分函数（为便于研究，不妨先考虑非负函数，搞清楚后再一般化）按函数值，也就是所谓的 “高度” 进行分段，然后再测量每段对应的 “底” 的大小，最后再分别相乘再相加，得到所谓的总 “面积”。因此，我们首先希望能在 $\R^n$ 中引入一 “测度”，使得它是我们所熟悉的长度、面积、体积概念的推广，最好能测量 $\R^n$ 中任一子集的大小。也就是说，我们希望建立定义在 $\R^n$ 的幂集 $\mathcal {P} (\R^n) $ 上的广义非负实值函数 $\mathcal {M}$
+关于黎曼积分和勒贝格积分，勒贝格曾有一个形象的比喻：数一沓钱，黎曼积分是一张张的数，总钱数就是每一张的面值相加；而勒贝格积分则是先按面值分类，再分别去数每一面值的张数，然后再把每一面值乘上其相应的张数，最后再加起来就是总钱数。也就是说，我们所说的勒贝格积分就是先对积分函数（为便于研究，不妨先考虑非负函数，搞清楚后再一般化）按函数值，也就是所谓的 “高度” 进行分段，然后再测量每段对应的 “底” 的大小，最后再分别相乘再相加，得到所谓的总 “面积”。因此，我们首先希望能在 $\R^n$ 中引入一 “测度”，使得它是我们所熟悉的长度、面积、体积概念的推广，最好能测量 $\R^n$ 中任一子集的大小。也就是说，我们希望建立定义在 $\R^n$ 的幂集 $\mathcal {P} (\R^n) $ 上的广义非负实值函数 $\mathcal {\mu}$
 \[
-\mathcal {M}:\mathcal {P} (\R^n)\mapsto \R_{\ge0} \cup {+\infty}
+\mathcal {\mu}:\mathcal {P} (\R^n)\mapsto \R_{\ge0} \cup {+\infty}
 \]
 满足以下条件:
 \ITEMS
-	\item 非负性:\quad 对于$\forall A \subseteq \R^n$ 都有 $\mathcal {M} (A) \ge 0$ 且 $\mathcal {M}(\varnothing) = 0$
-	\item 平移不变性:\quad 对于 $A,B\subseteq \R^n$ 且 $A$ 平移得 $B$ ，那么 $\mathcal {M}(A) = \mathcal {M}(B)$
-	\item 规范性:\quad $\mathcal {M}([0,1]^n)=1$
+	\item 非负性:\quad 对于$\forall A \subseteq \R^n$ 都有 $\mathcal {\mu} (A) \ge 0$ 且 $\mathcal {\mu}(\varnothing) = 0$
+	\item 平移不变性:\quad 对于 $A,B\subseteq \R^n$ 且 $A$ 平移得 $B$ ，那么 $\mathcal {\mu}(A) = \mathcal {\mu}(B)$
+	\item 规范性:\quad $\mathcal {\mu}([0,1]^n)=1$
 	\item 可数可加性（$\sigma$-可加性）:\quad 
 \[
-\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ \mathcal {M}(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty \mathcal {M}(E_i) 
+\forall \{E_i\}_{i=1}^\infty \subseteq P(\R^n), \forall i\neq j,E_i\cap E_j =\varnothing \ \Rightarrow\ \mathcal {\mu}(\bigcup_{i=1}^\infty E_i) = \sum_{i=1}^\infty \mathcal {\mu}(E_i) 
 \]
 \ITEME
 {\bf 注} 如果把上述条件 $4$ 中 $\{E_i\}$ 的个数换成有限个，则称之为有限可加性。事实上，人们认识到：相较于有限可加性，可数可加性要有用得多。可数可加性也正是我们本章要讲的勒贝格测度的核心特征。大家不妨回顾一下，在上一章计算康托集的 “长度” 时，实际上是在计算所有去掉的开区间 $I_{mn}$ 的总长度时，我们事实上已经用到了 “长度” 的可数可加性。
@@ -1015,7 +968,7 @@ A = \left\lbrace\begin{bmatrix} c\\ x_2 \\ \vdots\\ x_n\end{bmatrix}: x_2,\cdots
 \[
 m^*(I) = \lvert I\rvert = m^*(\overline I)
 \]
-\pro 这里只给出 $m^*(I) = \lvert I\rvert$ 的证明。
+\pro 这里只给出 $m^*(I) = \lvert I\rvert$ 的证明，$m^*(\overline I)= m^*(I)$ 是 $HW1$ $4.1$ 的直接推论。
 \ITEMS
 	\item 显然 $\lvert I\rvert \ge m^*(I)$ 成立
 	\item 对于 $\forall \varepsilon > 0$ ，存在 $I$ 的可数开矩体覆盖 $\{I_k\}_{k\ge 1}$ 使得
@@ -1183,21 +1136,18 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 
 \subsection{勒贝格测度}
 
-我们把 $\R^n$ 中所有可测集组成的集合称为可测集类，记作 $\mathcal{M}$ 或 $\mathcal{A}$ 
-\smallskip
-
-我们称勒贝格外测度 $m^*$ 在 $\mathcal{M}$ 限制下得到的函数定义为勒贝格测度，记作 $m$
+我们把 $\R^n$ 中所有可测集构成的集合记作 $\mathcal{M}$；称勒贝格外测度 $m^*$ 在 $\mathcal{M}$ 上的限制为勒贝格测度，记作 $m$
 \[
 	m = m^*|_\mathcal{M} 
 \]
 
-我们称 $(\R^n,\mathcal{M},m)$ 为测度空间
+称 $(\R^n,\mathcal{M},m)$ 为一测度空间。
 
-\subsubsection{可测集类的性质}
+\subsubsection{$\mathcal{M}$ 的性质}
 \ITEMS
 	\item $\varnothing \in \mathcal{M}$
 	\item $\forall E\in \mathcal{M} \Rightarrow E^c\in \mathcal{M}$
-	\item $\forall A,B \in \mathcal{M} \Rightarrow \begin{cases} A \cap B \in \mathcal{M}\\ A \cup B \in \mathcal{M}\\ A \setminus B \in \mathcal{M}\end{cases}$
+	\item $\forall A,B \in \mathcal{M} \Rightarrow \begin{cases} A \cup B \in \mathcal{M}\\ A \cap B \in \mathcal{M}\\ A \setminus B \in \mathcal{M}\end{cases}$
 	\item $\{E_k\}_{k\ge1} \subseteq \mathcal{M} \Rightarrow \bigcup\limits_{k\ge1} E_k \subseteq \mathcal{M}$ 
 	
 	特别的，对于 $\{E_k\}_{k\ge1} \subseteq \mathcal{M}$ 其中 $E_i \neq E_j,\forall i\neq j$ 则有
@@ -1206,7 +1156,9 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 	\]
 \ITEME
 
-由以上性质可知 $\mathcal{M}$ 是一个 $\sigma$-代数，也称之为勒贝格 $\sigma$-代数
+\pro 课堂上我们给出了性质 $1, 2, 3$ 的证明，性质 $4$ 的证明参见 $HW2$ 的第一题。\\
+
+由以上性质可知 $\mathcal{M}$ 实际上是一 $\sigma$-代数，我们称之为勒贝格 $\sigma$-代数。
 
 \subsubsection{勒贝格测度的上下连续性}
 \ITEMS
@@ -1222,11 +1174,8 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 
 \pro 性质1
 \ITEMS
-	\item 若有若干 $m(E_k) = +\infty$ 则显然成立
-	\item 若每个 $m(E_k)$ 都有限，设 $E_0 = \varnothing$ 显然有
-	\[
-		\bigcup_{k=1}^\infty E_k = \bigcup_{k=1}^\infty ( E_k\setminus E_{k-1})
-	\]
+	\item 若存在某个 $m(E_k) = +\infty$， 结论显然成立。
+	\item 若每个 $m(E_k)$ 都有限：记 $E_0 = \varnothing$。不难看出对任意的 $n\ge 1$，都有 $E_n=\bigcup\limits_{k=1}^{n}( E_k\setminus E_{k-1})$，从而 $$\bigcup\limits_{k=1}^{\infty}E_k=\lim\limits_{n\to \infty} E_n=\lim\limits_{n\to \infty}\bigcup\limits_{k=1}^{n}( E_k\setminus E_{k-1})=\bigcup\limits_{k=1}^{\infty}( E_k\setminus E_{k-1})$$
 	取勒贝格测度
 	\[
 		m\left(\bigcup_{k=1}^\infty E_k\right) = m\left(\bigcup_{k=1}^\infty ( E_k\setminus E_{k-1})\right)
@@ -1239,77 +1188,85 @@ $$m^*(E_1\cup E_2)=m^*((E_1\cup E_2)\cap E) + m^*((E_1\cup E_2)\cap E^c)= m^*(E_
 	\[
 		m\left(\bigcup_{k=1}^\infty E_k\right) = \lim_{N\to\infty}\sum_{k=1}^N m\left(  E_k\setminus E_{k-1}\right)
 	\]
-	使用裂项求和技巧
+	注意到 $m\left( E_k\setminus E_{k-1}\right)= m(E_k)-m(E_{k-1})$ （为什么？），利用裂项求和技巧
 	\[
 		m\left(\bigcup_{k=1}^\infty E_k\right) = \lim_{N\to\infty} \left(  m(E_N) - m(E_0)\right) =\lim_{N\to\infty} m(E_N)
 	\]
 \ITEME
 
-\subsection{可测集与Borel集的关系}
+\section{可测集与Borel集的关系}
 
-\subsubsection{开矩体是可测集}
+\subsection{开矩体是可测集}
 在 $\R^n$ 上开矩体是可测集，即 $\R^n$ 上的任意开矩体 $I = (a_1,b_1) \times (a_2,b_2) \cdots \times (a_n,b_n) \in \mathcal{M}$
 
-\pro $\R^n$ 上的任意开矩体 $I$ 都满足Carathéodory条件，即对于 $\forall T \subseteq \R^n$ 都有
+\pro 要证 $\R^n$ 上的任意开矩体 $I$ 都满足Carathéodory条件，即对于 $\forall T \subseteq \R^n$ 都有
 \[
 	m^*(T) = m^*(T\cap I) + m^*(T\cap I^c)
 \]
-由于次可加性，只需证
+由 $m^*$ 的次可加性，$m^*(T) \le m^*(T\cap I) + m^*(T\cap I^c)$ 恒成立。因此只需证
 \[
 	m^*(T) \ge m^*(T\cap I) + m^*(T\cap I^c)
 \]
-我们构建一个新的开矩体 $I_\delta = (a_1 + \delta, b_1 - \delta) \times \cdots \times (a_n + \delta, b_n - \delta)$ ，有
+对任一非常小的正实数 $\delta$，我们构造一新的开矩体 $I_\delta = (a_1 + \delta, b_1 - \delta) \times \cdots \times (a_n + \delta, b_n - \delta)$，显然
 \[
-	T \cap I \subseteq (T \cap I_\delta) \cup (T \cap (I \setminus I_\delta))
+	T\supseteq (T \cap I_\delta) \cup (T \cap I^c)
 \]
-显然 $T \cap I^c$ 与 $T \cap I_\delta$ 间距离为 $\delta$ ，由距离可加性可知
+从而 
+\[
+m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
+\]
+注意到 $T \cap I^c$ 与 $T \cap I_\delta$ 间距离为 $\delta$ ，由 $m^*$ 的距离可加性可知
 \[
 	m^*(T) \ge m^*(T \cap I_\delta) + m^*(T \cap I^c) \tag{a}
 \]
-其中 $I \setminus I_\delta$ 是 $2n$ 个闭矩体的并，设 $\eta = \max\limits_{1\le i\le n} (b_i-a_i)$ ，有
+注意到 $I \setminus I_\delta$ 包含于 $2n$ 个闭矩体的并，设 $\eta = \max\limits_{1\le i\le n} (b_i-a_i)$ ，显然有
 \[
-	m^*(T\cap I) \ge m^*(T \cap I_\delta) + 2n \eta^{n-1} \delta
+ m^*(T \cap I_\delta) \le m^*(T\cap I) \le m^*(T \cap I_\delta) + 2n \eta^{n-1} \delta
 \]
-对 $\delta$ 取极限，使其趋近于 $0$
-\[
-	m^*(T\cap I) \ge \lim_{\delta \to 0}m^*(T \cap I_\delta)
-\]
-显然可知
+对上式取极限，让 $\delta$ 趋近于 $0$，即得
 \[
 	m^*(T\cap I) = \lim_{\delta \to 0}m^*(T \cap I_\delta)
 \]
-对式 (a) 中的 $\delta$ 取极限，使其趋近于 $0$
+对式 (a) 两边取极限，让 $\delta$ 趋近于 $0$，就得到
 \[
 	m^*(T) \ge m^*(T\cap I) + m^*(T\cap I^c)
 \]
-证毕
 
-\subsubsection{开集是可测集}
-接下来，只要证明开集是可测集，自然就有 $\mathcal{B}(\R^n) \subseteq \mathcal{M}$
+\subsection{Borel 集是可测集}
 
-\pro 显然根据开集的定义，对于开集 $U$ 有
+只需证明 $\mathbb{R}^n$ 中任一开集都是可测集，自然就有 $\mathcal{B}(\R^n) \subseteq \mathcal{M}$
+
+\pro 设 $U$ 是 $\mathbb{R}^n$ 中任一开集，$x$ 为 $U$ 内任一点。记 $I(x,r_x)$ 为 $\mathbb{R}^n$ 中的开方体，其中 $x$ 是其中心，$r_x$ 是中心 $x$ 到其各边的距离。\\
+
+由开集的定义，我们有
 \[
-\forall x\in U\ \exists B(x,\delta x) \subseteq U
+\forall x\in U\ \exists B(x,\delta_x) \subseteq U
 \]
 
 \ITEMS
-	\item 若 $x$ 为有理点，取一有理数 $r_x <\delta x$ 使得开方体 $I(x,r_x) \subseteq B(x,\delta x) \subseteq U$
-	\item 若 $x$ 为无理点，取有理点 $y \in U$ ，有理数 $r_y <\delta x$ 使得
+	\item 若 $x$ 为有理点，取一有理数 $r_x <\delta_x$ 使得开方体 $I(x,r_x) \subseteq B(x,\delta_x) \subseteq U$
+	\item 若 $x$ 为无理点，取一有理点 $y \in U$ ，和有理数 $r_y$，使得
 	\[
-		x\in I(y,r_y) \subseteq B(x,\delta x) \subseteq U
+		x\in I(y,r_y) \subseteq B(x,\delta_x) \subseteq U
 	\]
 \ITEME
-所以开集 $U$ 可以写成上述可数多个开方体 $I$ 的并
-\[
-	U = \bigcup_a I(a,r_a)
-\]
-显然可测
 
-\subsubsection{可测集与开闭集的关系}
+所以 $U$ 等于上述可数多个开方体 $I$ 的并，从而 $U$ 可测。
+
+\subsection{可测集与开、闭集的关系}
+对 $\R^n$ 中任意 $E\in \mathcal{M}$ 和任意实数 $\delta > 0$，我们总有
 \ITEMS
-	\item 对于任意 $E\in \mathcal{M}$ ， 存在开集 $U\in \R^n$ ，$\forall \delta > 0$ 使得 $E \subseteq U$ 且 $m(U\setminus E) < \delta$
-	\item 对于任意 $E\in \mathcal{M}$ ， 存在闭集 $F\in \R^n$ ，$\forall \delta > 0$ 使得 $F \subseteq R$ 且 $m(E\setminus F) < \delta$
+	\item 存在开集 $U$ ，使得 $U \supseteq E$ 且 $m(U\setminus E) < \delta$；
+	\item 存在闭集 $F$ ，使得 $F \subseteq E$ 且 $m(E\setminus F) < \delta$。
 \ITEME
+
+\pro  $1.$ 只对 $m(E)< + \infty $ 的情形给出证明，$m(E)= + \infty$ 时的证明留作思考题。\\
+
+由勒贝格外测度 $m^*$ 的定义易知：对任意实数 $\delta > 0$，存在 $E$ 的 $L$-覆盖 $\{I_k\}_{k\ge1}$ 满足
+$$\sum_{k\ge 1} \lvert I_k \rvert < m(E) + \delta $$
+令 $U=\bigcup\limits_{k\ge1} I_k$。显然 $U \supseteq E$ 且 $m(U)\le \sum\limits_{k\ge 1} \lvert I_k \rvert$。从而 
+$$m(U\setminus E)=m(U)-m(E) < \delta $$
+$2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 
 \end{document}
 
