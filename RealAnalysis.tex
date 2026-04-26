@@ -1292,6 +1292,27 @@ m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
 
 \subsubsection{构造非 Borel 集的可测集}
 
+在 1.3.9 中我们介绍了 $\psi$ 函数，其定义如下
+\[
+	\begin{aligned}
+		\psi: &[0,1]\to [0,1]\\
+		& x \mapsto \psi(x) = \frac{x+\phi(x)}{2}
+	\end{aligned}
+\]
+对于康托集上的开区间 $I_{mn}$ 有
+\[
+	m(\psi(I_{mn})) = \frac12\lvert I_{mn} \rvert
+\]
+对所有开区间的并有
+\[
+	m\left(\bigcup_{m,n} I_{mn}\right) = \frac12
+\]
+显然
+\[
+	m\left(\psi(\mathcal{C})\right) = \frac12
+\]
+存在 $w \subseteq \psi(\mathcal{C})$ 不可测，但 $\psi^{-1}(w) \subseteq \mathcal{C}$ ，因为康托集是零测集，显然 $\psi^{-1}(w)$ 也是可测集，但 $\psi^{-1}(w)$ 不是 Borel集
+
 \subsection{可测集与开、闭集的关系}
 对 $\R^n$ 中任意 $E\in \mathcal{M}$ 和任意实数 $\delta > 0$，我们总有
 \ITEMS
@@ -1306,15 +1327,147 @@ $$\sum_{k\ge 1} \lvert I_k \rvert < m(E) + \delta $$
 令 $U=\bigcup\limits_{k\ge1} I_k$。显然 $U \supseteq E$ 且 $m(U)\le \sum\limits_{k\ge 1} \lvert I_k \rvert$。从而 
 $$m(U\setminus E)=m(U)-m(E) < \delta $$
 $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
+\bigskip
 
-% 外正则性 内正则性
+\EXP 对于 $I = [0,1)$
+\ITEMS
+	\item $\R^n$ 中不存在开集 $U\supsetneqq I$ 使得 $m(U\setminus I) = 0$
+	\item $\R^n$ 中不存在闭集 $F\subsetneqq I$ 使得 $m(I\setminus F) = 0$
+\ITEME 
 
-% 两个推论
+\pro
+\ITEMS
+	\item 对于任一 $x \notin \overline I = [0,1]$ ，显然 $x$ 不是聚点，存在 $I_x$ 使得 $I_x \cap I = \varnothing$ 且 $I_x \subseteq U$ ，则 $U\setminus I \supseteq I_x$ ，即
+	\[
+		m(U\setminus I) \ge m(I_x) > 0
+	\]
+	\item 对于任一 $x \notin F, x \neq 0$ ，显然 $x$ 不是 $F$ 的聚点，存在 $I_x$ 使得 $I_x \cap F = \varnothing$ ，则 $I\setminus F \supseteq I_x$ ，即
+	\[
+		m(I\setminus F) \ge m(I_x) > 0
+	\]
+\ITEME 
+
+\subsubsection{推论 1}
+\ITEMS
+	\item 存在 $G_\delta$ 集使得 $G \supseteq E$ 且 $m(G\setminus E) = 0$
+	\item 存在 $F_\sigma$ 集使得 $F \subseteq E$ 且 $m(E\setminus F) = 0$
+\ITEME 
+
+\pro 
+
+对于 $\forall \delta_k = \frac1k, k\in \mathbb{N}_+$ ， $\exists \text{开集} U_k$ 使得 $U_k \ge E$ 且 $m(U_k \setminus E) < \frac1k$
+
+令 $G = \bigcap\limits_{k=1}^\infty U_k$ ，有
+\[
+	m(G\setminus E) \le m(U_k\setminus E) < \delta_k,\ \forall k\in\mathbb{N}_+
+\]
+可得
+\[
+	0 < m(G\setminus E) \le \lim_{k \to \infty} \frac1k = 0
+\]
+显然 2 可用德摩根律证明
+
+\no {\bf 注：}
+
+推论 1.2 中的 $F_\sigma$ 集 $F = \bigcup_{k=1}^\infty F_k$ 其中所有 $F_k$ 可以取成紧集
+
+上述推论中的集合 $G$ 为 $E$ 的一个等测包，集合 $F$ 为 $E$ 的一个等测核
+
+由推论 1.2可知，对于任意可测集 $E$ ，其都等于可数个紧集和零测集的并
+
+\subsubsection{推论 2}
+
+对于 $\forall E \in \mathcal{M}, \forall x\in \R^n$ ，有如下可测集
+\[
+	\{x+y : y \in E\}
+\] 
+
+\subsection{测度的推广}
+
+对于非空集合 $X$ ， $\mathcal{A}$ 是由 $X$ 的若干子集组成的 $\sigma$-代数，定义如下映射 $\mu$
+\[
+	\mu:\mathcal{A} \to \R_{\ge 0} \cup \{+\infty \}
+\]
+如果 $\mu$ 满足以下条件
+\ITEMS
+	\item $\mu(\varnothing) = 0$
+	\item 可数可加性，对于 $\forall\{A_i \in \mathcal{A}\}_{i=1}^\infty,\ A_i \cap A_j = \varnothing,\ i\neq j$ 有
+	\[
+		\mu\left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty\mu(A_i)
+	\]
+\ITEME 
+则称 $\mu$ 为 $(X,\mathcal{A})$ 上的一测度，并称 $(X,\mathcal{A},\mu)$ 为测度空间
+
+\subsubsection{测度的正则性}
+
+若测度 $\mu$ 对任意可测集 $E$ 满足
+\[
+	\mu(E) = \inf\{\mu(U):U\supseteq E,U\text{为开集}\}
+\]
+则称测度 $\mu$ 满足测度的外正则性 (Outer Regularity)
+
+相似的，若测度 $\mu$ 对任意可测集 $E$ 满足
+\[
+	\mu(E) = \sup\{\mu(K):K\subseteq E,K\text{为紧集}\}
+\]
+则称测度 $\mu$ 满足测度的内正则性 (Inner Regularity)
+
+\subsubsection{其他测度}
+
+\ITEMS
+	\item 对于测度空间 $(X,\mathcal{A},\mu)$ 若 $\mu(X) = 1$ 则其为概率空间
+	\item Borel 测度空间 $(\R^n,P(\R^n),\mu)$ 其中 $\mu(K) < +\infty$ ， $K$ 为任意紧集 
+\ITEME 
 
 \section{一个不可测集的例子}
 
-\section{测度的推广}
+\subsection{集合在等加关系中的划分}
 
+\subsubsection{等价关系}
+对于一个有二元关系 $x\mathcal{R} y$ 的非空集合 $X$ ，若满足以下条件
+\ITEMS
+	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
+	\item 对称性\quad 若 $x,y\in X , x\mathcal{R}y$ 则 $y\mathcal{R}x$
+	\item 传递性\quad 若 $x,y,z\in X , x\mathcal{R}y, y\mathcal{R}z$ 则 $x\mathcal{R}z$
+\ITEME 
+则称其为二元关系，记作 $x\sim y$
+
+\subsubsection{等价类}
+对于给定的 $(X,\sim)$ ，对于 $\forall x\in X$ 定义
+\[
+	[x] = \{y\in X:y\sim x\}
+\]
+为 $x$ 所在的等价类
+\smallskip
+
+由传递性显然有 $\forall [x],[y]$ ，要么有 $[x] \cap [y] = \varnothing$ 要么有 $[x] = [y]$
+
+
+\subsection{维塔利集}
+设 $I = [0,1]$ ，对于 $x,y \in I$ 若 $x-y \in \mathbb{Q}$ 则有 $x\sim y$ 等价关系易验证，由此等价关系可以将 $I$ 分成两两无交的等价类的并，由选择公理我们从上述每一等价类中恰好取一个作为代表，记作 $W$ ，则其为不可测集
+\smallskip
+
+\pro 设 $W$ 可测
+
+记 $Q = \mathbb{Q} \cap [-1,1] = \{r_1,r_2,\cdots,r_k\cdots\}$ ，对于平移后的集合簇 $\{r_k + W\}_{k=1}^\infty$ 其元素两两无交，因为若 $r_k + w_1 = r_k + w_2,\ r_i \neq r_j$ 可得 $w_1 \sim w_2$ 与 $W$ 集的定义矛盾
+
+对于 $\forall x \in [0,1], \ \exists w \in W \in \mathbb{Q} \cap [-1,1]$ 使得 $x \sim w$ ，则有
+\[
+	x-w \in \mathbb{Q} \cap [-1,1]
+\]
+由上式可得 $x \in r_k + W$ ，则可以得到以下关系
+\[
+	[0,1] \subseteq \bigcup_{k\ge 0} (r_k + W) \subseteq [-1,2]
+\]
+显然有
+\[
+	1 \le m^*\left(\bigcup_{k\ge 0} (r_k + W)\right) \le 3
+\]
+由可数可加性和平移不变性
+\[
+	1 \le \sum_{k=1}^\infty m^*(W) \le 3
+\]
+显然 $m^*(W)$ 要么无论取 $0$ 还是取其他值都与上式矛盾，则 $W$ 是不可测集
 
 
 \end{document}
