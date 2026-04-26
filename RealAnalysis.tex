@@ -1260,7 +1260,34 @@ m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
 	\[
 		\lvert B \rvert =\aleph_0 \times \aleph_0 = \aleph_0
 	\]
-	\item $\R^n$ 中任一开集都是 $B$ 集中的可数个开球的并，设 $\mathcal{U}$ 为 $\R^n$ 中所有的开集组成的集合
+	\item $\R^n$ 中任一开集都是 $B$ 集中的可数个开球的并，设 $\mathcal{U}$ 为 $\R^n$ 中所有的开集组成的集合簇，显然有
+	\[
+		\lvert \mathcal{U} \rvert \le \lvert P(B) \rvert = 2^{\aleph+0} = \aleph_1
+	\]
+	令 $I_r = (-\infty,r) \times \R^n-1, r\in \R$ ，显然 $I_r$ 是 $\R^n$ 中开集，两两不同，有
+	\[
+		\lvert \{ I_r \} r\in\R \rvert = \lvert \R \rvert = \aleph_1 \Rightarrow \lvert \mathcal{U} \rvert \ge \aleph_1
+	\]
+	综上可知
+	\[
+		\lvert \mathcal{U} \rvert = \aleph_1
+	\]
+	
+	\item Borel 集由 $\R^n$ 中所有开球求并，求可数并而得到，即
+	\[
+		\lvert B(\R^n) \rvert = \aleph_1 ^{\aleph_0} = (2^{\aleph_0})^{\aleph_0} = 2^{\aleph_0} = \aleph_1
+	\]
+	
+	\item 证 $\lvert M \rvert \ge 2^{\aleph_1} = \aleph_2$
+	
+	我们知道 $\mathcal{C}$ 是零测集， $\mathcal{C}$ 的任意子集鄙视零测集，而且零测集必可测，有
+	\[
+		\lvert P(\mathcal{C})\rvert = 2^{\lvert \mathcal{C}\rvert} = 2^{\aleph_1} = \aleph_2
+	\]
+	显然 $P(\mathcal{C}) \subseteq \mathcal{M}$ ，所以有
+	\[
+		\lvert \mathcal{M}\rvert \ge \aleph_2 > \lvert B(\R^n) \rvert
+	\]
 \ITEME
 
 \subsubsection{构造非 Borel 集的可测集}
