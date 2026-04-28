@@ -668,7 +668,7 @@ d(f,g) = \lVert f-g \rVert
 
 \subsubsection{拓扑空间的定义}
 
-对于拓扑空间 $X$ ，以及 $X$ 的一子集簇 $\tau$，我们称 $(X,\tau)$ 为拓扑空间 ($\tau$ 为其开拓扑，$\tau$ 中子集为开集)，如果 $\tau$ 满足下述条件：
+对于非空集合 $X$ ，以及 $X$ 的一子集簇 $\tau$，我们称 $(X,\tau)$ 为拓扑空间 ($\tau$ 为其开拓扑，$\tau$ 中子集为开集)，如果 $\tau$ 满足下述条件：
 \ITEMS
 \item $\varnothing , X \in \tau$
 \item 任意并封闭
@@ -1253,67 +1253,46 @@ m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
 
 所以 $U$ 等于上述可数多个开方体 $I$ 的并，从而 $U$ 可测。
 
-\subsubsection{Borel 集是可测集的真子集}
-接下来证明 Borel 集是可测集的真子集，即 $B(\R^n) \subseteq \mathcal{M}$
+\subsection{非 Borel 集的可测集的存在性}
+由上我们有 $\mathcal B(\R^n) \subseteq \mathcal{M}$，下面我们来证明 $\mathcal B(\R^n) \subsetneq \mathcal{M}$。
 \ITEMS
-	\item 令 $B = \{B(x,r_x):\R \text{中开球},x\text{为有理点},r_x\in\mathbb{Q}\}$ ，显然有
+	\item 令 $B = \{B(x,r_x):\R^n \text{中开球},x\text{为有理点},r_x\in\mathbb{Q}\}$。显然
 	\[
 		\lvert B \rvert =\aleph_0 \times \aleph_0 = \aleph_0
 	\]
-	\item $\R^n$ 中任一开集都是 $B$ 集中的可数个开球的并，设 $\mathcal{U}$ 为 $\R^n$ 中所有的开集组成的集合簇，显然有
+	\item 令 $\mathcal{U}$ 为 $\R^n$ 中所有的开集构成的集合簇。注意到 $\R^n$ 中任一开集都是 $B$ 中的可数个开球的并 （理由同上），显然
 	\[
-		\lvert \mathcal{U} \rvert \le \lvert P(B) \rvert = 2^{\aleph+0} = \aleph_1
+		\lvert \mathcal{U} \rvert \le \lvert \mathcal P(B) \rvert = 2^{\aleph_0} = \aleph_1
 	\]
-	令 $I_r = (-\infty,r) \times \R^n-1, r\in \R$ ，显然 $I_r$ 是 $\R^n$ 中开集，两两不同，有
+	另一方面，若令 $I_r = (-\infty,r) \times \R^{n-1}, \forall r\in \R$。显然 $I_r$ 是 $\R^n$ 中开集，两两不同，且
 	\[
-		\lvert \{ I_r \} r\in\R \rvert = \lvert \R \rvert = \aleph_1 \Rightarrow \lvert \mathcal{U} \rvert \ge \aleph_1
+		\lvert \{ I_r: r\in\R \}\rvert = \lvert \R \rvert = \aleph_1 \Rightarrow \lvert \mathcal{U} \rvert \ge \aleph_1
 	\]
 	综上可知
 	\[
 		\lvert \mathcal{U} \rvert = \aleph_1
 	\]
 	
-	\item Borel 集由 $\R^n$ 中所有开球求并，求可数并而得到，即
+	\item 注意到任一 Borel 集都是由 $\R^n$ 中的开集通过求补或/和求可数并所得，由此不难看出
 	\[
-		\lvert B(\R^n) \rvert = \aleph_1 ^{\aleph_0} = (2^{\aleph_0})^{\aleph_0} = 2^{\aleph_0} = \aleph_1
+		\lvert \mathcal B(\R^n) \rvert = \aleph_1 ^{\aleph_0} = (2^{\aleph_0})^{\aleph_0} = 2^{\aleph_0} = \aleph_1
 	\]
 	
-	\item 证 $\lvert M \rvert \ge 2^{\aleph_1} = \aleph_2$
+	\item 证 $\lvert \mathcal M \rvert = 2^{\aleph_1} = \aleph_2$
 	
-	我们知道 $\mathcal{C}$ 是零测集， $\mathcal{C}$ 的任意子集鄙视零测集，而且零测集必可测，有
+	一方面，$\lvert \mathcal M \rvert \le \lvert \mathcal P(\R^n) \rvert = 2^{\aleph_1} = \aleph_2$。\\
+	另一方面，我们知道 Cantor 三分集 $\mathcal{C}$ 是零测集， 其任意子集必为零测集，从而可测。于是
 	\[
-		\lvert P(\mathcal{C})\rvert = 2^{\lvert \mathcal{C}\rvert} = 2^{\aleph_1} = \aleph_2
+	\lvert \mathcal M \rvert \ge \lvert \mathcal P(\mathcal{C})\rvert = 2^{\lvert \mathcal{C}\rvert} = 2^{\aleph_1} = \aleph_2
 	\]
-	显然 $P(\mathcal{C}) \subseteq \mathcal{M}$ ，所以有
+    \item 鉴于
 	\[
-		\lvert \mathcal{M}\rvert \ge \aleph_2 > \lvert B(\R^n) \rvert
+		\lvert \mathcal{M}\rvert = \aleph_2 >\aleph_1= \lvert \mathcal B(\R^n) \rvert
 	\]
+	所以 $\mathcal B(\R^n) \subsetneq \mathcal{M}$。
 \ITEME
 
-\subsubsection{构造非 Borel 集的可测集}
-
-在 1.3.9 中我们介绍了 $\psi$ 函数，其定义如下
-\[
-	\begin{aligned}
-		\psi: &[0,1]\to [0,1]\\
-		& x \mapsto \psi(x) = \frac{x+\phi(x)}{2}
-	\end{aligned}
-\]
-对于康托集上的开区间 $I_{mn}$ 有
-\[
-	m(\psi(I_{mn})) = \frac12\lvert I_{mn} \rvert
-\]
-对所有开区间的并有
-\[
-	m\left(\bigcup_{m,n} I_{mn}\right) = \frac12
-\]
-显然
-\[
-	m\left(\psi(\mathcal{C})\right) = \frac12
-\]
-存在 $w \subseteq \psi(\mathcal{C})$ 不可测，但 $\psi^{-1}(w) \subseteq \mathcal{C}$ ，因为康托集是零测集，显然 $\psi^{-1}(w)$ 也是可测集，但 $\psi^{-1}(w)$ 不是 Borel集
-
-\subsection{可测集与开、闭集的关系}
+\subsection{可测集与开、闭集的关系、等测包、等测核}
 对 $\R^n$ 中任意 $E\in \mathcal{M}$ 和任意实数 $\delta > 0$，我们总有
 \ITEMS
 	\item 存在开集 $U$ ，使得 $U \supseteq E$ 且 $m(U\setminus E) < \delta$；
@@ -1329,25 +1308,19 @@ $$m(U\setminus E)=m(U)-m(E) < \delta $$
 $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 \bigskip
 
+上述事实表明：$\R^n$ 中的可测集和开/闭集的差距只不过是一测度任意小的可测集而已。下例说明，此差距一般而言不能改进到零测集。\\
+
 \EXP 对于 $I = [0,1)$
 \ITEMS
 	\item $\R^n$ 中不存在开集 $U\supsetneqq I$ 使得 $m(U\setminus I) = 0$
 	\item $\R^n$ 中不存在闭集 $F\subsetneqq I$ 使得 $m(I\setminus F) = 0$
 \ITEME 
 
-\pro
-\ITEMS
-	\item 对于任一 $x \notin \overline I = [0,1]$ ，显然 $x$ 不是聚点，存在 $I_x$ 使得 $I_x \cap I = \varnothing$ 且 $I_x \subseteq U$ ，则 $U\setminus I \supseteq I_x$ ，即
-	\[
-		m(U\setminus I) \ge m(I_x) > 0
-	\]
-	\item 对于任一 $x \notin F, x \neq 0$ ，显然 $x$ 不是 $F$ 的聚点，存在 $I_x$ 使得 $I_x \cap F = \varnothing$ ，则 $I\setminus F \supseteq I_x$ ，即
-	\[
-		m(I\setminus F) \ge m(I_x) > 0
-	\]
-\ITEME 
+本例的证明可参考 HW 2 的第 4 题。
 
-\subsubsection{推论 1}
+\subsubsection{推论 1：可测集的等测包和等测核}
+
+对 $\R^n$ 中任意可测集 $E$，我们总有
 \ITEMS
 	\item 存在 $G_\delta$ 集使得 $G \supseteq E$ 且 $m(G\setminus E) = 0$
 	\item 存在 $F_\sigma$ 集使得 $F \subseteq E$ 且 $m(E\setminus F) = 0$
@@ -1355,32 +1328,34 @@ $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 
 \pro 
 
-对于 $\forall \delta_k = \frac1k, k\in \mathbb{N}_+$ ， $\exists \text{开集} U_k$ 使得 $U_k \ge E$ 且 $m(U_k \setminus E) < \frac1k$
+$1.$ 对于 $\forall \delta_k = \frac1k, k\in \mathbb{N}_+$，$\exists \text{开集} U_k$ 使得 $U_k \supseteq E$ 且 $m(U_k \setminus E) < \delta_k$
 
-令 $G = \bigcap\limits_{k=1}^\infty U_k$ ，有
+令 $G = \bigcap\limits_{k=1}^\infty U_k$，于是
 \[
-	m(G\setminus E) \le m(U_k\setminus E) < \delta_k,\ \forall k\in\mathbb{N}_+
+	m(G\setminus E) \le m(U_k\setminus E) < \delta_k= \frac1k,\ \forall k\in\mathbb{N}_+
 \]
 可得
 \[
 	0 < m(G\setminus E) \le \lim_{k \to \infty} \frac1k = 0
 \]
-显然 2 可用德摩根律证明
+
+$2.$ 把 $1$ 的结论用到 $G^c$ 即得。
 
 \no {\bf 注：}
 
-推论 1.2 中的 $F_\sigma$ 集 $F = \bigcup_{k=1}^\infty F_k$ 其中所有 $F_k$ 可以取成紧集
+1. 上述推论中的 $F_\sigma$ 集 $F = \bigcup_{k=1}^\infty F_k$，其中所有 $F_k$ 都可以取成紧集，只需用 $F_k\cap \overline {B(0,k)}$ 取代 $F_k$ 即可，这里 $\overline {B(0,k)}$ 表示闭球。也就是说：任意可测集 $E$ 都等于可数个紧集和某个零测集的并。\\
 
-上述推论中的集合 $G$ 为 $E$ 的一个等测包，集合 $F$ 为 $E$ 的一个等测核
+2. 上述推论中的 $G_\delta$ 集 $G$ 称为 $E$ 的一个等测包，$F_\sigma$ 集 $F$ 为 $E$ 的一个等测核。
 
-由推论 1.2可知，对于任意可测集 $E$ ，其都等于可数个紧集和零测集的并
+\subsubsection{推论 2 ：可测集的平移是可测集}
 
-\subsubsection{推论 2}
-
-对于 $\forall E \in \mathcal{M}, \forall x\in \R^n$ ，有如下可测集
+对于 $\forall E \in \mathcal{M}, \forall x\in \R^n$ ，记集合
 \[
-	\{x+y : y \in E\}
+	x+E=\{x+y : y \in E\}
 \] 
+则 $x+E$ 可测，且 $m(e)=m(x+E)$。\\
+
+此推论的证明见课堂笔记。
 
 \subsection{测度的推广}
 
@@ -1391,12 +1366,12 @@ $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 如果 $\mu$ 满足以下条件
 \ITEMS
 	\item $\mu(\varnothing) = 0$
-	\item 可数可加性，对于 $\forall\{A_i \in \mathcal{A}\}_{i=1}^\infty,\ A_i \cap A_j = \varnothing,\ i\neq j$ 有
+	\item 可数可加性，对于 $\forall\{A_i \in \mathcal{A}\}_{i=1}^\infty$，两两无交，则
 	\[
 		\mu\left( \bigcup_{i=1}^\infty A_i \right) = \sum_{i=1}^\infty\mu(A_i)
 	\]
 \ITEME 
-则称 $\mu$ 为 $(X,\mathcal{A})$ 上的一测度，并称 $(X,\mathcal{A},\mu)$ 为测度空间
+则称 $\mu$ 为 $(X,\mathcal{A})$ 上的一个测度，相应地，称 $(X,\mathcal{A},\mu)$ 为测度空间。
 
 \subsubsection{测度的正则性}
 
@@ -1410,65 +1385,111 @@ $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 \[
 	\mu(E) = \sup\{\mu(K):K\subseteq E,K\text{为紧集}\}
 \]
-则称测度 $\mu$ 满足测度的内正则性 (Inner Regularity)
+则称测度 $\mu$ 满足测度的内正则性 (Inner Regularity)。 \\
+
+由上面那个关于可测集与开/闭集关系的命题，易知勒贝格测度是外正则的。其内正则的证明，在注意到该命题中的闭集 $F$ 可以写成 $F = \bigcup_{k=1}^\infty \left(F\cap \overline {B(0,k)}\right)$ 后，剩下的细节留给大家补充。
+
+
 
 \subsubsection{其他测度}
 
 \ITEMS
-	\item 对于测度空间 $(X,\mathcal{A},\mu)$ 若 $\mu(X) = 1$ 则其为概率空间
-	\item Borel 测度空间 $(\R^n,P(\R^n),\mu)$ 其中 $\mu(K) < +\infty$ ， $K$ 为任意紧集 
+	\item 对于测度空间 $(X,\mathcal{A},\mu)$ 若 $\mu(X) = 1$，则 $\mu$ 称为概率测度，相应地，$(X,\mathcal{A},\mu)$ 为概率空间。
+	\item 对测度空间 $(\R^n,\mathcal B(\R^n),\mu)$，若对任意紧集 $K$，都有 $\mu(K) < +\infty$， 则称 $\mu$ 为 $\R^n$ 上的一个 Borel 测度。显然，勒贝格测度限制到 $\mathcal B(\R^n)$ 就是一 Borel 测度。
+	\item 可以证明，$\R^n$ 上的任一具有平移不变性的 Borel 测度必是勒贝格测度乘上某个正实数。
 \ITEME 
 
 \section{一个不可测集的例子}
 
-\subsection{集合在等加关系中的划分}
+\subsection{集合在等价关系下的划分}
 
 \subsubsection{等价关系}
-对于一个有二元关系 $x\mathcal{R} y$ 的非空集合 $X$ ，若满足以下条件
+对于一非空集合 $X$，若其上的一个二元关系 $x\mathcal{R} y$ 满足以下条件
 \ITEMS
 	\item 自反性\quad $\forall x\in X \Rightarrow x\mathcal{R}x$
 	\item 对称性\quad 若 $x,y\in X , x\mathcal{R}y$ 则 $y\mathcal{R}x$
 	\item 传递性\quad 若 $x,y,z\in X , x\mathcal{R}y, y\mathcal{R}z$ 则 $x\mathcal{R}z$
 \ITEME 
-则称其为二元关系，记作 $x\sim y$
+则称该二元关系为一等价关系，记作 $x\sim y$。
 
 \subsubsection{等价类}
-对于给定的 $(X,\sim)$ ，对于 $\forall x\in X$ 定义
-\[
-	[x] = \{y\in X:y\sim x\}
-\]
-为 $x$ 所在的等价类
+对于具有等价关系的 $(X,\sim)$，及 $\forall x\in X$ 定义: $[x] = \{y\in X:y\sim x\}$。我们称
+$[x]$ 为 $x$ 所在的等价类。
+
 \smallskip
 
-由传递性显然有 $\forall [x],[y]$ ，要么有 $[x] \cap [y] = \varnothing$ 要么有 $[x] = [y]$
+由传递性显然有 $\forall [x],[y]$ ，要么有 $[x] \cap [y] = \varnothing$ 要么有 $[x] = [y]$。由此易知，$X$ 等于其两两无交的等价类的并。
 
+\EXP 记 $X$ 是所有三角形构成的集合，$\sim$ 三角形的相似关系，易见 $\sim$ 是 $X$ 上的等价关系。
 
-\subsection{维塔利集}
-设 $I = [0,1]$ ，对于 $x,y \in I$ 若 $x-y \in \mathbb{Q}$ 则有 $x\sim y$ 等价关系易验证，由此等价关系可以将 $I$ 分成两两无交的等价类的并，由选择公理我们从上述每一等价类中恰好取一个作为代表，记作 $W$ ，则其为不可测集
+\subsection{维塔利（Vitali） 不可测集}
+记 $I = [0,1]$。定义 $I$ 上的一个二元关系 $\sim$ 如下：
+对于 $\forall x,y \in I$，若 $x-y \in \mathbb{Q}$，则称 $x\sim y$。\\
+不难验证，$\sim$ 是等价关系。由此可将 $I$ 分成两两无交的等价类的并，由选择公理，我们可以从上述每一等价类中恰好取一个元素作为代表，所得集合记作 $W$。我们断言，$W$ 必为不可测集。
 \smallskip
 
 \pro 设 $W$ 可测
 
-记 $Q = \mathbb{Q} \cap [-1,1] = \{r_1,r_2,\cdots,r_k\cdots\}$ ，对于平移后的集合簇 $\{r_k + W\}_{k=1}^\infty$ 其元素两两无交，因为若 $r_k + w_1 = r_k + w_2,\ r_i \neq r_j$ 可得 $w_1 \sim w_2$ 与 $W$ 集的定义矛盾
+记 $Q = \mathbb{Q} \cap [-1,1] = \{r_1,r_2,\cdots,r_k\cdots\}$。对于平移后的集合簇 $\{r_k + W\}_{k=1}^\infty$ 其元素两两无交，因为若 $r_k + w_1 = r_k + w_2,\ r_i \neq r_j$，可得 $w_1 \sim w_2$，这与 $W$ 的定义矛盾。
 
-对于 $\forall x \in [0,1], \ \exists w \in W \in \mathbb{Q} \cap [-1,1]$ 使得 $x \sim w$ ，则有
-\[
-	x-w \in \mathbb{Q} \cap [-1,1]
-\]
-由上式可得 $x \in r_k + W$ ，则可以得到以下关系
+\ITEMS 
+	\item 先证明 $[0,1] \subseteq \bigcup_{k\ge 0} (r_k + W)$。\\
+    注意到对于 $\forall x \in [0,1], \ \exists w \in W$ 使得 $x \sim w$，从而 $x-w \in \mathbb{Q} \cap [-1,1]$，
+即 $x \in \mbox{某个}r_k + W$。
+	\item 不难看出 $\bigcup_{k\ge 0} (r_k + W) \subseteq [-1,2]$。
+\ITEME
+综上即得	
 \[
 	[0,1] \subseteq \bigcup_{k\ge 0} (r_k + W) \subseteq [-1,2]
 \]
-显然有
+由勒贝格外测度的单调性，易得
 \[
 	1 \le m^*\left(\bigcup_{k\ge 0} (r_k + W)\right) \le 3
 \]
-由可数可加性和平移不变性
+由可测集平移后仍可测，及勒贝格测度的可数可加性，我们有
 \[
-	1 \le \sum_{k=1}^\infty m^*(W) \le 3
+	1 \le \sum_{k=1}^\infty m(W) \le 3
 \]
-显然 $m^*(W)$ 要么无论取 $0$ 还是取其他值都与上式矛盾，则 $W$ 是不可测集
+显然 $m(W)$ 无论是取 $0$ 还是其他任何正数都会与上式相矛盾。所以 $W$ 是不可测集。\\
 
+{\bf 注1} 该例亦可以用来说明勒贝格外测度不具备可数可加性。\\
+
+{\bf 注2} 类似地，我们可以证明：对 $\R^n$ 中的任一可测集 $E$，若 $m(E)>0$，则 $E$ 中必含不可测的子集。
+
+\section{构造一个非 Borel 集的可测集}
+
+我们已经证明了非 Borel 集的可测集的存在性，下面我们将构造一个非 Borel 集的可测集。\\
+
+首先注意到一个事实：Borel 集在连续映射下的原像是 Borel 集。这是因为：
+\ITEMS
+\item 在连续映射下，开集的原像是开集；
+\item 任一 Borel 集都是由开集通过求补或/和求可数并所得；
+\item 求原像与求并和求补可交换。
+\ITEME
+
+回忆我们在 1.3.9 中定义的 $\psi$ 函数：
+\[
+\begin{aligned}
+	\psi: &[0,1]\to [0,1]\\
+	& x \mapsto \psi(x) = \frac{x+\phi(x)}{2}
+\end{aligned}
+\]
+$\psi$ 严格单增连续，易知其反函数 $\psi^{-1}$ 亦严格单增连续。
+
+对于在构造康托三分集 $\mathcal{C}$ 时所移除的所有开区间 $I_{mn}$，不难看出 $\psi(I_{mn})$ 也是开区间，它们两两无交，且
+\[
+m(\psi(I_{mn})) = \frac12\lvert I_{mn} \rvert
+\]
+
+由勒贝格测度的可数可加性，我们有
+\[
+m\left( \psi \left(\bigcup_{m,n} I_{mn}\right) \right) =\Sigma m(\psi(I_{mn}))=\Sigma \frac12\lvert I_{mn} \rvert = \frac12
+\]
+于是
+\[
+m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right) \right) = \frac12
+\]
+由于 $\psi(\mathcal{C})$ 非零测集，它必含有不可测的子集，设 $w \subseteq \psi(\mathcal{C})$ 不可测，注意到 $\psi^{-1}(w)$ 是零测集 $\mathcal{C}$ 的子集，从而亦是零测集，于是 $\psi^{-1}(w)$ 是可测集。但 $\psi^{-1}(w)$ 不是 Borel 集，否则它在连续映射 $\psi^{-1}$ 下的原像 $w$ 也是 Borel 集，从而可测，矛盾。
 
 \end{document}
 
