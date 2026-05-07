@@ -893,6 +893,8 @@ $$\int_{0}^{1}\varPhi(x)\mathrm{d} x=\frac12 $$
 \int_{[0,1]} \varPhi(x) \mathrm{d} x = \sum_{m=1}^\infty \frac14 \left(\frac23\right)^m = \frac{\frac16}{1-\frac23}=\frac12
 \]
 
+% ======== Chapter 1 ends here ==========
+
 \chapter{勒贝格测度}
 
 关于黎曼积分和勒贝格积分，勒贝格曾有一个形象的比喻：数一沓钱，黎曼积分是一张张的数，总钱数就是每一张的面值相加；而勒贝格积分则是先按面值分类，再分别去数每一面值的张数，然后再把每一面值乘上其相应的张数，最后再加起来就是总钱数。也就是说，我们所说的勒贝格积分就是先对积分函数（为便于研究，不妨先考虑非负函数，搞清楚后再一般化）按函数值，也就是所谓的 “高度” 进行分段，然后再测量每段对应的 “底” 的大小，最后再分别相乘再相加，得到所谓的总 “面积”。因此，我们首先希望能在 $\R^n$ 中引入一 “测度”，使得它是我们所熟悉的长度、面积、体积概念的推广，最好能测量 $\R^n$ 中任一子集的大小。也就是说，我们希望建立定义在 $\R^n$ 的幂集 $\mathcal {P} (\R^n) $ 上的广义非负实值函数 $\mathcal {\mu}$
@@ -1490,6 +1492,128 @@ m\left( \psi \left(\bigcup_{m,n} I_{mn}\right) \right) =\Sigma m(\psi(I_{mn}))=\
 m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right) \right) = \frac12
 \]
 由于 $\psi(\mathcal{C})$ 非零测集，它必含有不可测的子集，设 $w \subseteq \psi(\mathcal{C})$ 不可测，注意到 $\psi^{-1}(w)$ 是零测集 $\mathcal{C}$ 的子集，从而亦是零测集，于是 $\psi^{-1}(w)$ 是可测集。但 $\psi^{-1}(w)$ 不是 Borel 集，否则它在连续映射 $\psi^{-1}$ 下的原像 $w$ 也是 Borel 集，从而可测，矛盾。
+
+% ======== Chapter 2 ends here ==========
+
+\chapter{可测函数}
+
+\section{可测函数}
+
+\subsection{可测函数的定义}
+
+\subsubsection{广义实值函数}
+
+对于可测集 $E \subseteq \R^n$ 定义如下函数为广义实值函数 
+\[
+	f:E\to\R\cup\{+\infty\}\cup\{-\infty\}
+\]
+
+对于无穷的加法与乘法有如下定义
+\ITEMS
+	\item 
+	$0\cdot\pm \infty= 0$
+	\item
+	$\infty + \infty = +\infty$
+	\item
+	$-\infty - \infty = -\infty$
+	\item
+	$\infty - \infty$ 无定义
+	\item
+	对于 $a \in \R$ ， $a\cdot\pm\infty = \pm\infty$
+\ITEME 
+
+\subsubsection{几乎处处}
+若性质 $P$ 在除了一个零测集外都成立，就称该性质 $P$ 几乎处处成立（$a.e.$）
+
+\EXP 对于康托函数 $\Phi$ 有 $\Phi'(x) = 0\ a.e.\ x\in[0,1]$
+
+\subsubsection{可测函数}
+
+对于 $\R^n$ 上的可测集 $E$ ， $f$ 是 $E$ 上的广义实值函数，称 $f$ 为 $E$ 上的可测函数，如果对于 $\forall c \in\R$ ， $f$ 满足以下任一条件
+\ITEMS
+	\item 集合 $E_1 = \{x\in E : f(x) > c\}$ 可测
+	\item 集合 $E_2 = \{x\in E : f(x) \le c\}$ 可测
+	\item 集合 $E_3 = \{x\in E : f(x) < c\}$ 可测
+	\item 集合 $E_4 = \{x\in E : f(x) \ge c\}$ 可测
+\ITEME 
+
+\pro 证明以上条件的等价性
+
+\no$1\Rightarrow2$
+
+显然由 $E_2 = E\setminus E_1$ 可知 $E_2$ 可测
+\smallskip
+
+\no$2\Rightarrow3$
+
+集合$E_3$ 可以写为
+\[\bigcup\limits_{k=1} ^\infty \{ x\in E: f(x) \le c-\frac1k\}\]
+
+其中集合 $\{ x\in E: f(x) \le c-\frac1k\}$ 由条件2可知是可测集，所以 $E_3$ 为可测集
+\smallskip
+
+\no$3\Rightarrow4$
+
+显然由 $E_4 = E\setminus E_3$ 可知 $E_4$ 可测
+\smallskip
+
+\no$4\Rightarrow1$
+
+集合$E_1$ 可以写为
+\[\bigcup\limits_{k=1} ^\infty \{ x\in E: f(x) \ge c+\frac1k\}\]
+
+其中集合 $\{ x\in E: f(x) \ge c+\frac1k\}$ 由条件4可知是可测集，所以 $E_1$ 为可测集
+
+\subsection{可测函数的性质}
+
+\subsubsection{一般性质}
+
+对于可测集 $E$ 上的可测函数 $f$ 有如下性质
+\ITEMS
+	\item 对于 $\forall a,b \in \R$ 集合 $E_{ab}=\{x\in E : a\le f(x) \le b\}$ 可测
+	\item 对于 $\forall a \in \R$ 集合 $E_{a}=\{x\in E : f(x) = a\}$ 可测
+	\item 集合 $\{x\in E : f(x) < +\infty\}$ 可测，因为
+	\[
+		\{x\in E : f(x) < +\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) < k\}
+	\]
+	\item 集合 $\{x\in E : f(x) > -\infty\}$ 可测，因为
+	\[
+		\{x\in E : f(x) > -\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) > -k\}
+	\]
+	\item 集合 $\{x\in E : f(x) = +\infty\}$ 可测，因为
+	\[
+		\{x\in E : f(x) = +\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) > k\}
+	\]
+	\item 集合 $\{x\in E : f(x) = -\infty\}$ 可测，因为
+	\[
+		\{x\in E : f(x) = -\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) < -k\}
+	\]
+	\item 集合 $\{x\in E : f(x) \le +\infty\},\ \{x\in E : f(x) \ge -\infty\}$ 均可测
+\ITEME
+
+\no {\bf 注：}
+
+\no {\bf 事实：}
+
+\EXP 特征函数
+
+\EXP 符号函数
+
+\subsubsection{代数性质}
+对于可测集 $E$ 上的可测函数 $f,g$ 有如下性质
+\ITEMS
+	\item 函数 $f + g$ 在 $E$ 上可测
+	\item 对于 $\forall c\in \R$ ，函数 $c\cdot f$ 在 $E$ 上可测
+	\item 函数 $f \cdot g$ 在 $E$ 上可测
+\ITEME
+
+\subsubsection{极限性质}
+\ITEMS
+	\item
+\ITEME
+
+\subsection{简单函数与解题函数}
+
 
 \end{document}
 
