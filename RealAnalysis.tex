@@ -1916,8 +1916,32 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 	
 	证明对于有界函数，上述收敛是一致收敛
 	
-	\item 
+	若 $f(x)$ 是有界函数，可知 $f_+(x),f_-(x)$ 均有界，则有
+	\[
+	0\le f_+(x),f_-(x) \le M \in \mathbb{N}
+	\]
+	对于 $\forall k > M$
+	\[
+		\lvert \varphi_k(x) - f_+(x)\rvert \le \frac{1}{2^k}\qquad \lvert\psi_k(x) - f_-(x)\rvert \le \frac{1}{2^k}
+	\]
+	对于先前证明中的 $\phi_k(x)$ 有
+	\[
+	\begin{aligned}
+		|\phi_k(x) - f(x)| &= |(\varphi_k(x) - \psi_k(x)) - (f_+(x) - f_-(x))| \\
+		&\le |\varphi_k(x) - f_+(x)| + |\psi_k(x) - f_-(x)| \\
+		&\le \frac{1}{2^{k-1}}
+		\end{aligned}	
+	\]
+	$\frac{1}{2^{k-1}}$ 与 $x$ 无关，可证一致收敛
 	
+	\item 对于 $\forall x \in E$ ， $\exists K \in \mathbb{N}_+$ 使得
+	\[
+		h_k(x) = \varphi_k(x)\cdot \chi_{\overline{B(0,K)}}(x)
+	\] 
+	注意到 $k \ge K$ 时都有 $\chi_{\overline{B(0,K)}}(x)$ 则有
+	\[
+		h_k(x) = \varphi_k(x)
+	\]
 	
 \ITEME
 
@@ -1927,7 +1951,11 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 
 设 $f(x) , f_1(x) , f_2(x) ,\cdots, f_k(x), \cdots$ 是定义在 $E\subseteq \R^n$ 上的广义实质函数，我们称 $\{f_k(x)\}_{k=1}^\infty$ 在 $E$ 上几乎处处收敛于 $f(x)$ 记为
 \[
-	f_k(x) \to f(x) \;a.e.\; x \in E
+	f_k \to f \;a.e.\; x \in E
+\]
+或
+\[
+	f_k \xrightarrow{a.e.} f
 \]
 如果 $\{x\in E :\lim\limits_{k\to \infty}f_k(x) \neq f(x)\}$ 是 $E$ 中的零测集
 \subsection{叶戈罗夫定理（Egorov）}
@@ -1940,22 +1968,49 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 	\]
 	且
 	\[
-		f_k(x) \to f(x) \;a.e.\; x \in E
+		f_k \to f \;a.e.\; x \in E
 	\]
 \ITEME
-则对于 $\forall\delta > 0,\exists E_\delta \subseteq E$ 满足 $m(E_\delta) < \delta$ 使得在 $E\setminus E_\delta$ 上 $f_k(x) \to f(x)$ 一致收敛
+则对于 $\forall\delta > 0,\exists E_\delta \subseteq E$ 满足 $m(E_\delta) < \delta$ 使得在 $E\setminus E_\delta$ 上 $f_k \to f$ 一致收敛
 
 % 证明略
 
 \EXP 
 
+取 $I = [0,1]$ 定义如下集合
+\[
+	I_{mn} = \left[\frac{n-1}{2^{m-1}},\frac{n}{2^{m-1}}\right], \quad  m,n \in \mathbb{N}_+ ,\; n\le 2^{m-1}
+\]
+由该集合定义可得如下函数列
+\[
+	f_{1} = \chi_{I_{11}}, f_{21} = \chi_{I_{21}}, f_{22} = \chi_{I_{22}}, f_{31} = \chi_{I_{31}}, \cdots , f_{mn} = \chi_{I_{mn}}, \cdots
+\]
+对于任意点 $x \in I$ 会无限次落在这些区间上，无限次为 $1$ ，无限次为 $0$ ，在 $I$ 上几乎处处不收敛
+
 \subsection{依测度收敛}
 
-\subsection{里斯定理（Reisz）}
+我们发现上例中，对于给定的 $m$ ，函数列 $\{f_{mi}\}_{2^{m-1}\ge i \ge 1}$ 中几乎全部都取为 $0$ ，我们做出以下定义
+
+对于可测集 $E$ 上的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$ ，我们称 $\{f_k(x)\}_{k\ge 1}$ 依测度收敛于 $f(x)$ ，即 $f_k \xrightarrow{m} f$，如果对于 $\forall \varepsilon > 0$ 有
+\[
+	E_k(\varepsilon) := \{x\in E:\lvert f_k(x) - f(x)\rvert \ge \varepsilon\}
+\]
+有 $\lim\limits_{k\to\infty} m(E_k(\varepsilon)) = 0$
+
+\subsection{几乎处处收敛与依测度收敛}
+
+\ITEMS
+	\item 对于可测集 $E \subseteq \R^n$ 且 $m(E) < +\infty$
+	\item 在 $E$ 上几乎处处有限的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$
+\ITEME 
+若 $f_k \to f \; a.e. \; x\in E$ 则 $f_k \xrightarrow{m} f$
+
+%证明略，使用Egorov定理
+\subsubsection{里斯定理（Reisz）}
 
 设有可测集 $E \subseteq \R^n$ ，若 $E$ 上几乎处处有限的可测函数列 $\{f_k(x)\}$ 依测度收敛于 $f(x)$ ，则有子列 $\{f_{k_j}\}$ 使得
 \[
-	f_{k_j}(x) \to f(x) \;a.e.\; x \in E
+	f_{k_j} \to f \;a.e.\; x \in E
 \]
 
 \section{可测函数与连续函数的关系}
