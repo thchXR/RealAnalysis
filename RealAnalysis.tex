@@ -2006,6 +2006,7 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 若 $f_k \to f \; a.e. \; x\in E$ 则 $f_k \xrightarrow{m} f$
 
 %证明略，使用Egorov定理
+
 \subsubsection{里斯定理（Reisz）}
 
 设有可测集 $E \subseteq \R^n$ ，若 $E$ 上几乎处处有限的可测函数列 $\{f_k(x)\}$ 依测度收敛于 $f(x)$ ，则有子列 $\{f_{k_j}\}$ 使得
@@ -2040,6 +2041,44 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 	\varphi_k(x) \to f(x) \;a.e.\; x \in E
 \]
 
+% =====================================================================================
+
+\section{复合函数的可测性}
+
+
+
+% ======== Chapter 3 ends here ==========
+
+\chapter{勒贝格积分}
+
+\section{非负可测函数的勒贝格积分}
+
+\subsection{非负可测简单函数的勒贝格积分}
+
+设 $h(x)$ 为 $\R^n$ 上的非负可测简单函数
+\[
+	h(x) = \sum_{i=1} ^p a_i \chi_{E_i} (x),\quad  E_i \mbox{为可测集}, a_i \ge 0
+\]
+对于 $\R^n$ 中的可测集 $E$ ，有
+\[
+	h(x)|_E = \sum_{i=1} ^p a_i\, \chi_{(E_i\cap E)} (x)
+\]
+定义 $h(x)$ 在 $E$ 上的勒贝格积分为
+\[
+	\int_{E}h(x)dx = \sum_{i=1} ^p a_i\, m(E_i\cap E)
+\]
+
+\subsubsection{非负可测简单函数勒贝格积分的性质}
+\subsubsection{线性性质}
+
+\subsubsection{极限性质}
+
+\subsection{非负可测函数的勒贝格积分}
+\subsubsection{非负可测函数勒贝格积分的性质}
+
+\subsection{列维单调收敛定理（Levi）}
+
+\subsection{法图引理（Fatom）}
 \end{document}
 
 
