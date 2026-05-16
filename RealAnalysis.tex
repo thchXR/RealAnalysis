@@ -1495,6 +1495,7 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 % ======== Chapter 2 ends here ==========
 
+
 \chapter{可测函数}
 
 \section{可测函数}
@@ -1505,21 +1506,21 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于可测集 $E \subseteq \R^n$ 定义如下函数为广义实值函数 
 \[
-	f:E\to\R\cup\{+\infty\}\cup\{-\infty\}
+f:E\to\R\cup\{+\infty\}\cup\{-\infty\}
 \]
 
 对于无穷的加法与乘法有如下定义
 \ITEMS
-	\item 
-	$0\cdot\pm \infty= 0$
-	\item
-	$\infty + \infty = +\infty$
-	\item
-	$-\infty - \infty = -\infty$
-	\item
-	$\infty - \infty$ 无定义
-	\item
-	对于 $a \in \R$ ， $a\cdot\pm\infty = \pm\infty$
+\item 
+$0\cdot\pm \infty= 0$
+\item
+$\infty + \infty = +\infty$
+\item
+$-\infty - \infty = -\infty$
+\item
+$\infty - \infty$ 无定义
+\item
+对于 $a \in \R$ ， $a\pm\infty = \pm\infty$
 \ITEME 
 
 \subsubsection{几乎处处}
@@ -1531,10 +1532,10 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于 $\R^n$ 上的可测集 $E$ ， $f$ 是 $E$ 上的广义实值函数，称 $f$ 为 $E$ 上的可测函数，如果对于 $\forall c \in\R$ ， $f$ 满足以下任一条件
 \ITEMS
-	\item 集合 $E_1 = \{x\in E : f(x) > c\}$ 可测
-	\item 集合 $E_2 = \{x\in E : f(x) \le c\}$ 可测
-	\item 集合 $E_3 = \{x\in E : f(x) < c\}$ 可测
-	\item 集合 $E_4 = \{x\in E : f(x) \ge c\}$ 可测
+\item 集合 $E_1 = \{x\in E : f(x) > c\}$ 可测
+\item 集合 $E_2 = \{x\in E : f(x) \le c\}$ 可测
+\item 集合 $E_3 = \{x\in E : f(x) < c\}$ 可测
+\item 集合 $E_4 = \{x\in E : f(x) \ge c\}$ 可测
 \ITEME 
 
 \pro 证明以上条件的等价性
@@ -1570,48 +1571,47 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于可测集 $E$ 上的可测函数 $f$ 有如下性质
 \ITEMS
-	\item 对于 $\forall a,b \in \R$ 集合 $E_{ab}=\{x\in E : a\le f(x) \le b\}$ 可测
-	\item 对于 $\forall a \in \R$ 集合 $E_{a}=\{x\in E : f(x) = a\}$ 可测
-	\item 集合 $\{x\in E : f(x) < +\infty\}$ 可测，因为
-	\[
-		\{x\in E : f(x) < +\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) < k\}
-	\]
-	\item 集合 $\{x\in E : f(x) > -\infty\}$ 可测，因为
-	\[
-		\{x\in E : f(x) > -\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) > -k\}
-	\]
-	\item 集合 $\{x\in E : f(x) = +\infty\}$ 可测，因为
-	\[
-		\{x\in E : f(x) = +\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) > k\}
-	\]
-	\item 集合 $\{x\in E : f(x) = -\infty\}$ 可测，因为
-	\[
-		\{x\in E : f(x) = -\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) < -k\}
-	\]
-	\item 集合 $\{x\in E : f(x) \le +\infty\},\ \{x\in E : f(x) \ge -\infty\}$ 均可测
+\item 对于 $\forall a,b \in \R$ 集合 $E_{ab}=\{x\in E : a\le f(x) \le b\}$ 可测
+\item 对于 $\forall a \in \R$ 集合 $E_{a}=\{x\in E : f(x) = a\}$ 可测
+\item 集合 $\{x\in E : f(x) < +\infty\}$ 可测，因为
+\[
+\{x\in E : f(x) < +\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) < k\}
+\]
+\item 集合 $\{x\in E : f(x) > -\infty\}$ 可测，因为
+\[
+\{x\in E : f(x) > -\infty\} = \bigcup_{k=1}^\infty\{x\in E: f(x) > -k\}
+\]
+\item 集合 $\{x\in E : f(x) = +\infty\}$ 可测，因为
+\[
+\{x\in E : f(x) = +\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) > k\}
+\]
+\item 集合 $\{x\in E : f(x) = -\infty\}$ 可测，因为
+\[
+\{x\in E : f(x) = -\infty\} = \bigcap_{k=1}^\infty\{x\in E: f(x) < -k\}
+\]
+\item 集合 $\{x\in E : f(x) \le +\infty\},\ \{x\in E : f(x) \ge -\infty\}$ 均可测
 \ITEME
 
 \no {\bf 注：}
 
 对于如下函数
 \[
-	f:E \to \R = (\R, B(\R), m|_{B(\R)})
+f:E \to \R = (\R, B(\R), m|_{B(\R)})
 \]
 
-该函数 $f$ 可测，当且仅当 $\R$ 中的 Borel 集在函数 $f$ 上的原像是可测集
+由上述关于可测函数的讨论，不难看出：函数 $f$ 可测，当且仅当 $\R$ 中的开集在 $f$ 下的原像是可测集；这显然等价于
+当且仅当 $\R$ 中的 Borel 集在 $f$ 下的原像是可测集。也就是说，在把 $\R$ 看成测度空间 $(\R, B(\R), m|_{B(\R)})$ 的情况下，$f$ 可测，当且仅当 $\R$ 中的可测集 (Borel 集) 在 $f$ 下的原像是可测集。
 
-该函数 $f$ 可测，当且仅当  $\R$ 中的开集在函数 $f$ 上的原像是可测集
-
-由函数连续的定义可知，连续函数一定可测
+由函数连续的定义：开集的原像是开集，易知连续函数一定可测。
 
 \no {\bf 事实：}
 \ITEMS
-	\item 函数 $f$ 在可测集 $E_1, E_2$ 上均可测，则 $f$ 在 $E_1 \cup E_2$ 上可测
-	
-	\pro 对于 $\forall c \in \R$ 集合 $\{x\in E_1\cup E_2 :  f(x) > c\} = \{x\in E_1 : f(x) > c\} \cup \{x\in E_2 :f(x) > c\}$ 
-	\item 对于可测集 $E$ 若 $A \subseteq E$ ，函数 $f$ 在 $E$ 上可测，则 $f$ 在 $A$ 上亦可测
-	
-	\pro $\{x\in A :f(x) > c\} = \{x\in E :f(x) > c\} \cap A$
+\item 函数 $f$ 在可测集 $E_1, E_2$ 上均可测，则 $f$ 在 $E_1 \cup E_2$ 上可测
+
+\pro 对于 $\forall c \in \R$ 集合 $\{x\in E_1\cup E_2 :  f(x) > c\} = \{x\in E_1 : f(x) > c\} \cup \{x\in E_2 :f(x) > c\}$ 
+\item 对于可测集 $E$ 若 $A \subseteq E$ ，函数 $f$ 在 $E$ 上可测，则 $f$ 在 $A$ 上亦可测
+
+\pro $\{x\in A :f(x) > c\} = \{x\in E :f(x) > c\} \cap A$
 \ITEME
 
 
@@ -1619,13 +1619,13 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于任意集合 $E \subseteq \R^n$ ，定义 $E$ 上的特征函数为
 \[
-	\chi_E : \R^n \to \{0,1\}
+\chi_E : \R^n \to \{0,1\}
 \]
 \[
-	\chi_E (x) := \begin{cases}
-		1,&x\in E\\
-		0,&x\notin E
-	\end{cases}
+\chi_E (x) := \begin{cases}
+	1,&x\in E\\
+	0,&x\notin E
+\end{cases}
 \]
 若集合 $E$ 是可测集，则 $\chi_E$ 是可测函数
 
@@ -1633,14 +1633,14 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于 $\forall c \in \R$ 有 
 \[
-	E_c = \{ x\in E : \chi _E (x) > c\}
+E_c = \{ x\in E : \chi _E (x) > c\}
 \]
 对 $c$ 的取值进行分类讨论
 
 \ITEMS
-	\item $c \ge 1 \Rightarrow E_c = \varnothing$
-	\item $1 > c \ge 0 \Rightarrow E_c = E$
-	\item $0 \ge c \Rightarrow E_c = \R^n$
+\item $c \ge 1 \Rightarrow E_c = \varnothing$
+\item $1 > c \ge 0 \Rightarrow E_c = E$
+\item $c<0 \Rightarrow E_c = \R^n$
 \ITEME 
 显然无论 $c$ 的取值， $E_c$ 均为可测集
 
@@ -1650,10 +1650,11 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于可测集 $E$ 上的可测函数 $f$ ，定义符号函数为
 \[
-	\operatorname{sgn}_f(x) = \begin{cases}
-		1, &f(x) \ge 0\\
-		-1, &f(x) < 0
-	\end{cases}
+\operatorname{sgn}_f(x) = \begin{cases}
+	1, &f(x)> 0\\
+	0, &f(x)= 0\\
+	-1, &f(x) < 0
+\end{cases}
 \]
 则符号函数 $\operatorname{sgn}_f(x)$ 可测
 
@@ -1661,33 +1662,35 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 令
 \[
-	\begin{aligned}
-		E_+ = \{x\in E : f(x) \ge 0\}\\
-		E_- = \{x\in E : f(x) < 0\}
-	\end{aligned}
+\begin{aligned}
+	E_+ = \{x\in E : f(x) > 0\}\\
+	E_0 = \{x\in E : f(x) = 0\}\\
+	E_- = \{x\in E : f(x) < 0\}
+\end{aligned}
 \]
-显然在可测集 $E_+,E_-$ 上 $\operatorname{sgn}_f(x)$ 均为可测函数，符号函数可以写为
+由于 $f$ 是可测函数，所以 $E_+, E_0, E_-$ 均为可测集。符号函数可以写为
 \[
-	\operatorname{sgn}_f(x) = \begin{cases}
-		1, &x\in E_+\\
-		-1, &x \in E_- 
-	\end{cases}
+\operatorname{sgn}_f(x) = \begin{cases}
+	1, &x\in E_+\\
+	0, &x\in E_0\\
+	-1, &x \in E_- 
+\end{cases}
 \]
-显然 $\operatorname{sgn}_f(x)$ 在 $E_+ \cup E_- = E$ 上是可测函数
+显然，$\operatorname{sgn}_f(x)$ 在 $E_+, E_0, E_-$ 上  均为可测函数，从而 $\operatorname{sgn}_f(x)$ 在 $E_+ \cup E_0\cup E_- = E$ 上是可测函数
 
 \subsubsection{代数性质}
 对于可测集 $E$ 上的可测函数 $f,g$ 有如下性质
 \ITEMS
-	\item 函数 $f + g$ 在 $E$ 上可测
-	\item 对于 $\forall c\in \R$ ，函数 $c\cdot f$ 在 $E$ 上可测
-	\item 函数 $f \cdot g$ 在 $E$ 上可测
+\item 函数 $f + g$ 在 $E$ 上可测
+\item 对于 $\forall c\in \R$ ，函数 $c\cdot f$ 在 $E$ 上可测
+\item 函数 $f \cdot g$ 在 $E$ 上可测
 \ITEME
 
 \no {\bf 推论：}
 
 对于可测函数 $f$ 有 $\lvert f \rvert$ 可测
 \[
-	\lvert f(x) \rvert = f(x) \cdot \operatorfont{sgn}_f(x)
+\lvert f(x) \rvert = f(x) \cdot \operatorfont{sgn}_f(x)
 \]
 
 \no {\bf 推论：}
@@ -1695,10 +1698,10 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 对于可测函数 $f,g$ 有$\max (f,g), \min(f,g)$ 均可测
 
 \[
-	\begin{aligned}
-		\max (f,g) &= \frac{|f-g| + (f+g)}{2}\\
-		\min (f,g) &= -\max (-f,-g)
-	\end{aligned}
+\begin{aligned}
+	\max (f,g) &= \frac{|f-g| + (f+g)}{2}\\
+	\min (f,g) &= -\max (-f,-g)
+\end{aligned}
 \]
 
 
@@ -1707,46 +1710,48 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 对于可测集 $E$ 上的可测函数列 $\{f_k (x)\}_{k=1}^\infty$ ，下列函数可测
 
 \ITEMS
-	\item 函数列的上确界
-	\[
-		\sup_{k \ge n} f_k (x) , n\in \mathbb{N}_+
-	\]
-	\item 函数列的下确界
-	\[
-		\inf_{k \ge n} f_k (x) , n\in \mathbb{N}_+
-	\]
-	\item 函数列的上极限
-	\[
-		\varlimsup\limits_{k\to\infty} f_k(x)
-	\]
-	\item 函数列的下极限
-	\[
-		\varliminf\limits_{k\to\infty} f_k(x)
-	\]
+\item 函数列的上确界
+\[
+\sup_{k \ge n} \{f_k (x)\} , n\in \mathbb{N}_+
+\]
+\item 函数列的下确界
+\[
+\inf_{k \ge n} \{f_k (x)\} , n\in \mathbb{N}_+
+\]
+\item 函数列的上极限
+\[
+\varlimsup\limits_{k\to\infty} f_k(x)
+\]
+\item 函数列的下极限
+\[
+\varliminf\limits_{k\to\infty} f_k(x)
+\]
 \ITEME
 
 \pro 
 
 对于性质 1 有
 \[
-	\{x\in E: \sup\{f_k(x)\}_{k\ge n} > c\} = \bigcup_{k\ge n} \{x\in E : f_k(x) > c\}
+\{x\in E: \sup_{k\ge n}\{f_k(x)\} > c\} = \bigcup_{k\ge n} \{x\in E : f_k(x) > c\}
 \]
 显然其中 $\{x\in E : f_k(x) > c\}$ 可测
 
 对于性质 2 有
 \[
-	\inf_{k \ge n} f_k (x) = -\sup_{k \ge n} -f_k (x)
+\inf_{k \ge n} \{f_k (x)\} = -\sup_{k \ge n}\{ -f_k (x)\}
 \]
 
 对于性质 3 有
 \[
-	\varlimsup\limits_{k\to\infty} f_k(x) = \inf_{m \ge 1}\left( \sup_{n \ge m} f_k (x)\right)
+\varlimsup\limits_{k\to\infty} f_k(x) = \inf_{m \ge 1}\left( \sup_{k \ge m} \{f_k (x)\} \right)
 \]
-
+5
 对于性质 4 有
 \[
-	\varliminf\limits_{k\to\infty} f_k(x) = -\varlimsup\limits_{k\to\infty} -f_k(x) 
+\varliminf\limits_{k\to\infty} f_k(x) = -\varlimsup\limits_{k\to\infty} (-f_k(x))
 \]
+\no {\bf 注：} 由上易知，若可测集上的可测函数列 $\{f_k (x)\}_{k=1}^\infty$ 收敛，则 $\lim\limits_{k\to\infty} f_k(x)$ 可测。 
+
 
 \subsection{简单函数逼近定理}
 
@@ -1756,23 +1761,23 @@ m\left(\psi(\mathcal{C})\right) =1-m\left( \psi \left(\bigcup_{m,n} I_{mn}\right
 
 对于简单函数 $f$ ,可以将其值域写为
 \[
-	\{f(x):x\in E\} = \bigcup_{k=1}^m C_k
+\{f(x):x\in E\} = \{c_1, c_2, \cdots, c_m\}
 \]
-令 $E_k = \{x\in E : f(x) = C_k\}$ ，则
+令 $E_k = \{x\in E : f(x) = c_k\}$ ，则
 \[
-	f(x) = c_1 \chi_{E_1} + c_2 \chi_{E_2} + \cdots + c_m \chi_{E_m} = \sum_{k=1}^m c_k \chi_{E_k}
+f(x) = c_1 \chi_{E_1} + c_2 \chi_{E_2} + \cdots + c_m \chi_{E_m} = \sum_{k=1}^m c_k \chi_{E_k}
 \]
-若上式中的 $E_k$ 均可测则 $f$ 为简单可测函数，特别地，如果 $E_k$ 均为开矩体，则 $f$ 为阶梯函数
+不难看出，$f$ 可测当且仅当上述 $E_k$ 均为可测集。特别地，如果 $E_k$ 均为矩体，则称 $f$ 为阶梯函数。
 \bigskip 
 
 \EXP 不连续的可测函数
 
 对于处处不连续的狄利克雷函数 $D(x)$
 \[
-	D(x) = \begin{cases}
-		1, & x\in\mathbb{Q} \cap [0,1]\\
-		0, & x\in[0,1] \setminus \mathbb{Q}
-	\end{cases}
+D(x) = \begin{cases}
+	1, & x\in\mathbb{Q} \cap [0,1]\\
+	0, & x\in[0,1] \setminus \mathbb{Q}
+\end{cases}
 \]
 令 $E_1 = \mathbb{Q} \cap [0,1], E_2 = x\in[0,1] \setminus \mathbb{Q}$ ，显然 $E_1,E_2$ 均可测，且有
 \[
@@ -1785,18 +1790,18 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 
 对于在集合 $E$ 上的广义实值函数 $f$ ，定义其正部函数为
 \[
-	f_+(x) := \max_{x \in E} (f(x),0)
+f_+(x) := \max_{x \in E} (f(x),0)
 \]
 类似的有负部函数
 \[
-	f_-(x) := \max_{x \in E} (-f(x),0)
+f_-(x) := \max_{x \in E} (-f(x),0)
 \]
 显然有
 \[
-	\begin{aligned}
-		f(x) = f_+(x) - f_-(x)\\
-		\lvert f(x)\rvert = f_+(x) + f_-(x)
-	\end{aligned}
+\begin{aligned}
+	f(x) = f_+(x) - f_-(x)\\
+	\lvert f(x)\rvert = f_+(x) + f_-(x)
+\end{aligned}
 \]
 如果 $f(x)$ 在 $E$ 上可测，则 $f_+(x),f_-(x),\lvert f(x)\rvert$ 均可测，但若 $\lvert f(x)\rvert$ 可测 $f(x)$ 不一定可测
 \bigskip
@@ -1805,241 +1810,238 @@ D(x) = 1\cdot \chi_{E_1} + 0\cdot \chi_{E_2}
 
 对于维塔利集 $W \subseteq [0,1]$ ，定义如下函数
 \[
-	f(x) := \begin{cases}
-		1, &x\in W\\
-		-1, &x\in[0,1]\setminus W
-	\end{cases}
+f(x) := \begin{cases}
+	1, &x\in W\\
+	-1, &x\in[0,1]\setminus W
+\end{cases}
 \]
 对于此函数有如下结论
 \ITEMS
-	\item $f(x)$ 在 $[0,1]$ 上不可测， $\{x\in[0,1]: f(x) = 1\} = W$ 为不可测集
-	\item $\lvert f(x) \rvert = 1$ 在 $[0,1]$ 上可测
+\item $f(x)$ 在 $[0,1]$ 上不可测，因为 $\{x\in[0,1]: f(x) = 1\} = W$ 为不可测集
+\item $\lvert f(x) \rvert = 1$ 在 $[0,1]$ 上可测
 \ITEME 
 
-\subsection{简单可测函数构成的线性空间}
+\subsection{可测简单函数构成的线性空间}
 
-对于如下的简单可测函数
+任一可测集 $E$ 上所有可测简单函数构成线性空间。因为：\\
+
+1 可测简单函数的倍数显然是可测简单函数；\\
+
+2 可测简单函数的和是可测简单函数：对 $E$ 上的可测简单函数
 \[
-	\begin{aligned}
-		\varphi (x) = \sum_{i=1}^m a_i \chi_{E_i} (x)\\
-		\psi (x) = \sum_{j=1}^n b_j \chi_{F_j} (x)
-	\end{aligned}
+\begin{aligned}
+	\varphi (x) = \sum_{i=1}^m a_i \chi_{E_i} (x)\\
+	\psi (x) = \sum_{j=1}^n b_j \chi_{F_j} (x)
+\end{aligned}
 \]
 设 $\phi(x) = \varphi(x) + \psi(x)$ ，则有
 \[
-	\phi(x) = \sum_{i=1}^m \sum_{j=1}^n (a_i + b_j) \chi_{E_i \cap F_j}(x) + \sum_{i=1}^m \sum_{j=1}^n a_i \chi_{E_i \setminus F_j}(x) + \sum_{i=1}^m \sum_{j=1}^n b_j \chi_{F_j \setminus E_i}(x)
+\phi(x) = \sum_{i=1}^m \sum_{j=1}^n (a_i + b_j) \chi_{E_i \cap F_j}(x)
 \]
-右边是有限个可测集上的常值函数的线性组合，所以 $\phi(x)$ 是简单可测函数
+显然 $\phi(x)$ 是可测简单函数
 
 \subsubsection{支集}
 
 对于在集合 $E$ 上的函数 $f$ ，其支集为
 \[
-	\operatorname{supp}(f) := \{ x \in X : f(x) \ne 0 \}
+\operatorname{supp}(f) := \{ x \in E : f(x) \ne 0 \}
 \]
-也就是所有使函数值非零的点构成的集合，如果函数的支集是一个紧集，则称函数有紧支集
+也就是所有使函数值非零的点构成的集合。如果 $\operatorname{supp}(f)$ 是一个有界集（等价于 $\operatorname{supp}(f)$ 的闭包是有界闭集，即 $\R^n$ 中紧集），则称函数 $f$ 具有紧支集。
 
 \subsubsection{简单函数逼近定理}
 对于可测集 $E \subseteq \R ^n$ 有
 \ITEMS
-	\item 对于 $E$ 上任意非负的可测函数 $f$ ，都存在一个非负简单函数的渐升列 $\{\varphi_k(x)\}_{k=1} ^\infty$ 满足
-	\[
-		\lim_{k\to\infty} \varphi_k(x) = f(x)
-	\]
-	
-	\item 对于 $E$ 上任意的可测函数 $f$ ，都存在可测简单函数列 $\{\varphi_k(x)\}_{k=1} ^\infty$ 满足
-	\[
-		\lim_{k\to\infty} \varphi_k(x) = f(x)
-	\]
-	若 $f(x)$ 在 $E$ 上有界，则上述收敛可以是一致收敛
-	
-	\item 上述可测简单函数 $\varphi_k(x)$ 都可以取为有紧支集的函数 % 若 f 本身具有紧支集
+\item 对于 $E$ 上任意非负可测函数 $f$ ，都存在一个非负可测简单函数的渐升列 $\{\varphi_k(x)\}_{k=1} ^\infty$ 满足
+\[
+\lim_{k\to\infty} \varphi_k(x) = f(x)
+\]
+
+\item 对于 $E$ 上任意的可测函数 $f$ ，都存在可测简单函数列 $\{\varphi_k(x)\}_{k=1} ^\infty$ 满足
+\[
+\lim_{k\to\infty} \varphi_k(x) = f(x)
+\]
+若 $f(x)$ 在 $E$ 上有界，则上述收敛可以是一致收敛
+
+\item 1，2 中的 $\varphi_k(x)$ 都可以取为具有紧支集 
 \ITEME 
 
 \pro 
 
-首先我们要先构造一个函数，对于某一给定的 $k \in \mathbb{N} _+$ ，我们将区间 $[0,k)$ 等分为 $k \cdot 2^k$ 个长度为 $2^{-k}$ 的部分，并取其下限做近似，做出如下定义
-	\[
-	\varphi_k(x) = \begin{cases}
-		\frac{j}{2^k}, & \frac{j}{2^k} \ge x < \frac{j+1}{2^k} ,(j = 1,2,\cdots, k2^k -1)\\
-		k , &x \ge k 
-	\end{cases}
-	\]
-	记集合 $E_j = \{x\in E: \frac{j}{2^k} \ge x < \frac{j+1}{2^k}\}$ 其中 $j = 1,2,\cdots, k2^k -1$ ，则该函数可以写为
-	\[
-		\varphi_k(x) = \sum_{j = 1} ^k \frac{j}{2^k} E_j
-	\]
-	可知函数 $\varphi_k(x)$ 是简单可测函数
-	
-	显然函数列 $\{\varphi_k(x)\}_{k\ge 0}$ 单调不减，即
-	\[
-		\varphi_1(x) \le \varphi_2(x) \le \cdots \le \varphi_k(x) \le \cdots
-	\]
-	而且，对于 $\forall k \in \mathbb{N}_+$ 都有 $\varphi_k(x) \le f(x)$
+我们首先构造非负可测简单函数列$\{\varphi_k(x)\}_{k=1} ^\infty$：对于任一 $k \in \mathbb{N} _+$ ，我们将区间 $[0,k)$ 等分为 $k \cdot 2^k$ 个长度为 $2^{-k}$ 的部分，并取其下限做近似，做出如下定义
+\[
+\varphi_k(x) = \begin{cases}
+	\frac{j}{2^k}, & \frac{j}{2^k} \le f(x) < \frac{j+1}{2^k} ,(j = 0,1,\cdots, k2^k -1)\\
+	k , &f(x) \ge k 
+\end{cases}
+\]
+记集合 $E_j = \{x\in E: \frac{j}{2^k} \le f(x) < \frac{j+1}{2^k}\}$ 其中 $j = 0,1,\cdots, k2^k -1$，$E_{k2^k} = \{x\in E: f(x) \ge k\}$ 则该函数可以写为
+\[
+\varphi_k(x) = \sum_{j = 0} ^{k2^k} \frac{j}{2^k} E_j
+\]
+可知函数 $\varphi_k(x)$ 是非负简单可测函数
+
+显然函数列 $\{\varphi_k(x)\}_{k\ge 0}$ 单调不减，即
+\[
+\varphi_1(x) \le \varphi_2(x) \le \cdots \le \varphi_k(x) \le \cdots
+\]
+而且，对于 $\forall k \in \mathbb{N}_+$ 都有 $\varphi_k(x) \le f(x)$
 
 \ITEMS
-	\item 证明对于非负函数 $f$ 有 $\lim\limits_{k\to\infty} \varphi_k(x) = f(x)$
-	\ITEMS
-		\item 若在 $x$ 处 $f(x) = +\infty$ ，则总有 $f(x) \ge k$ ， $\varphi_k(x) = k$ ，令 $k \to \infty$ 可得
-		\[
-			\lim\limits_{k\to\infty} \varphi_k(x) = +\infty  = f(x) \qquad\quad
-		\]
-		
-		\item 若在 $x$ 处 $f(x) < +\infty$ ，则可以取得 $N$ 满足 $f(x) \le \in \mathbb{N}_+$ 对于 $k \ge N$ 有
-		\[
-			0 \le f(x) - \varphi_k(x) \le \frac{1}{2^k}\qquad
-		\]
-		令 $k \to \infty$ 可得
-		\[
-			0 \le f(x) - \lim\limits_{k\to\infty} \varphi_k(x) \le 0 \qquad
-		\]
-		由极限的迫敛性显然
-		\[
-			\lim\limits_{k\to\infty} \varphi_k(x) = f(x) \qquad\quad
-		\]		
-	\ITEME 
-	
-	\item 先证明一般情况下 $\lim\limits_{k\to\infty} \varphi_k(x) = f(x)$
-	
-	由于 $f(x) = f_+(x) - f_-(x)$ 其中正负部函数都是非负可测函数，由已证明的 1 可知正负部函数都可以用简单可测函数逼近，即
-	\[
-		\begin{aligned}
-			\exists \{\varphi_k(x)\}_{k\ge 1} \st \lim_{k\to\infty}\varphi_k (x) = f_+(x)\\
-			\exists \{\psi_k(x)\}_{k\ge 1} \st \lim_{k\to\infty}\psi_k (x) = f_-(x)
-		\end{aligned}
-	\]
-	因为简单可测函数可以构成线形空间，所以存在简单可测函数列 $\{\phi_k(x)\}_{k\ge 1} = \{\varphi_k(x) - \psi_k(x) \}_{k\ge 1}$ 满足
-	\[
-		\lim\limits_{k\to\infty} \phi_k(x) = f(x)
-	\]
-	\smallskip
-	
-	证明对于有界函数，上述收敛是一致收敛
-	
-	若 $f(x)$ 是有界函数，可知 $f_+(x),f_-(x)$ 均有界，则有
-	\[
-	0\le f_+(x),f_-(x) \le M \in \mathbb{N}
-	\]
-	对于 $\forall k > M$
-	\[
-		\lvert \varphi_k(x) - f_+(x)\rvert \le \frac{1}{2^k}\qquad \lvert\psi_k(x) - f_-(x)\rvert \le \frac{1}{2^k}
-	\]
-	对于先前证明中的 $\phi_k(x)$ 有
-	\[
-	\begin{aligned}
-		|\phi_k(x) - f(x)| &= |(\varphi_k(x) - \psi_k(x)) - (f_+(x) - f_-(x))| \\
-		&\le |\varphi_k(x) - f_+(x)| + |\psi_k(x) - f_-(x)| \\
-		&\le \frac{1}{2^{k-1}}
-		\end{aligned}	
-	\]
-	$\frac{1}{2^{k-1}}$ 与 $x$ 无关，可证一致收敛
-	
-	\item 对于 $\forall x \in E$ ， $\exists K \in \mathbb{N}_+$ 使得
-	\[
-		h_k(x) = \varphi_k(x)\cdot \chi_{\overline{B(0,K)}}(x)
-	\] 
-	注意到 $k \ge K$ 时都有 $\chi_{\overline{B(0,K)}}(x)$ 则有
-	\[
-		h_k(x) = \varphi_k(x)
-	\]
-	
+\item 下面证明 $\lim\limits_{k\to\infty} \varphi_k(x) = f(x)$
+\ITEMS
+\item 若在 $x$ 处 $f(x) = +\infty$ ，则总有 $f(x) \ge k$ ， $\varphi_k(x) = k$ ，令 $k \to \infty$ 可得
+\[
+\lim\limits_{k\to\infty} \varphi_k(x) = +\infty \qquad\quad
+\]
+
+\item 若在 $x$ 处 $f(x) < +\infty$ ，则可以取得 $N$ 满足 $f(x) \le \in \mathbb{N}_+$ 对于 $k \ge N$ 有
+\[
+0 \le f(x) - \varphi_k(x) \le \frac{1}{2^k}\qquad
+\]
+令 $k \to \infty$ 可得
+\[
+0 \le f(x) - \lim\limits_{k\to\infty} \varphi_k(x) \le 0 \qquad
+\]
+由极限的迫敛性显然
+\[
+\lim\limits_{k\to\infty} \varphi_k(x) = f(x) \qquad\quad
+\]		
+\ITEME 
+
+\item 先证明一般情况下 $\lim\limits_{k\to\infty} \varphi_k(x) = f(x)$
+
+由于 $f(x) = f_+(x) - f_-(x)$ 其中正负部函数都是非负可测函数，由已证明的 1 可知正负部函数都可以用非负可测简单函数逼近，即
+\[
+\begin{aligned}
+	\exists \{h_k(x)\}_{k\ge 1} \st \lim_{k\to\infty}h_k(x) = f_+(x)\\
+	\exists \{g_k(x)\}_{k\ge 1} \st \lim_{k\to\infty}g_k(x) = f_-(x)
+\end{aligned}
+\]
+因为可测简单函数可以构成线形空间，所以存在可测简单函数列 $\{\varphi_k(x)\}_{k\ge 1} = \{h_k(x) - g_k(x) \}_{k\ge 1}$ 满足
+\[
+\lim\limits_{k\to\infty} \varphi_k(x) = f(x)
+\]
+\smallskip
+
+证明对于有界函数，上述收敛是一致收敛
+
+若 $f(x)$ 是有界函数，可知 $f_+(x),f_-(x)$ 均有界，则有
+\[
+0\le f_+(x),f_-(x) \le M \in \mathbb{N}
+\]
+对于 $\forall k > M$
+\[
+\lvert h_k(x) - f_+(x)\rvert \le \frac{1}{2^k}\qquad \lvert g_k(x) - f_-(x)\rvert \le \frac{1}{2^k}
+\]
+对于先前证明中的 $\phi_k(x)$ 有
+\[
+\begin{aligned}
+	|\varphi_k(x) - f(x)| &= |(h_k(x) - g_k(x)) - (f_+(x) - f_-(x))| \\
+	&\le |h_k(x) - f_+(x)| + |g_k(x) - f_-(x)| \\
+	&\le \frac{1}{2^{k-1}}
+\end{aligned}	
+\]
+$\frac{1}{2^{k-1}}$ 与 $x$ 无关，可证一致收敛
+
+\item 对于 $\forall x_0 \in E$ ， $\exists K \in \mathbb{N}_+$ 使得 $x_0 \in \overline{B(0,K)}$。于是对任意 $k\ge K$，都有
+\[
+\varphi_k(x_0)=\varphi_k(x_0)\cdot \chi_{\overline{B(0,k)}}(x_0)
+\] 
+从而，在 1，2 中 用 $\{\varphi_k(x)\chi_{\overline{B(0,k)}}(x)\}_{k=1} ^\infty$ 代替 $\{\varphi_k(x)\}_{k=1} ^\infty$，结论依然成立。
 \ITEME
 
-\section{函数列的收敛情况}
+\section{函数列的收敛}
 
 \subsection{几乎处处收敛}
 
-设 $f(x) , f_1(x) , f_2(x) ,\cdots, f_k(x), \cdots$ 是定义在 $E\subseteq \R^n$ 上的广义实质函数，我们称 $\{f_k(x)\}_{k=1}^\infty$ 在 $E$ 上几乎处处收敛于 $f(x)$ 记为
+设 $f(x) , f_1(x) , f_2(x) ,\cdots, f_k(x), \cdots$ 是定义在 $E\subseteq \R^n$ 上的广义实值函数，我们称 $\{f_k(x)\}_{k=1}^\infty$ 在 $E$ 上几乎处处收敛于 $f(x)$，记为
 \[
-	f_k \to f \;a.e.\; x \in E
+f_k \to f \quad a.e.\; \mbox {或}\quad f_k \xrightarrow{a.e.} f
 \]
 或
 \[
-	f_k \xrightarrow{a.e.} f
+\lim\limits_{k\to \infty} f_k(x) = f(x) \quad a.e.
 \]
 如果 $\{x\in E :\lim\limits_{k\to \infty}f_k(x) \neq f(x)\}$ 是 $E$ 中的零测集
 \subsection{叶戈罗夫定理（Egorov）}
 
 \ITEMS
-	\item 可测集 $E \subseteq \R^n$ 且 $m(E) \le +\infty$
-	\item $E$ 上几乎处处有限的可测函数的 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$ 满足
-	\[
-		m(\{x\in E: (f_k(x) = +\infty) \vee (f_k(x) = -\infty)\}) = 0
-	\]
-	且
-	\[
-		f_k \to f \;a.e.\; x \in E
-	\]
+\item 可测集 $E \subseteq \R^n$ 且 $m(E) < +\infty$
+\item $E$ 上几乎处处有限的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$，即
+\[
+m(\{x\in E: \lvert f(x)\rvert = +\infty \}) = 0 \quad \mbox {且} \quad m(\{x\in E: \lvert f_k(x)\rvert = +\infty \}) = 0, k=1, 2, \cdots 
+\]
+\item $\lim\limits_{k\to \infty} f_k(x) = f(x) \quad a.e.$	
 \ITEME
-则对于 $\forall\delta > 0,\exists E_\delta \subseteq E$ 满足 $m(E_\delta) < \delta$ 使得在 $E\setminus E_\delta$ 上 $f_k \to f$ 一致收敛
-
+则对于 $\forall\delta > 0,\exists E_\delta \subseteq E$ 满足 $m(E_\delta) < \delta$ 使得在 $E\setminus E_\delta$ 上 $f_k \to f$ 一致收敛。\\
 % 证明略
 
 \EXP 
 
-取 $I = [0,1]$ 定义如下集合
+令 $I = [0,1)$。对任意正整数 $m$，我们对 $I$ 进行 $2^m$ 等分，所得子区间依次记为
 \[
-	I_{mn} = \left[\frac{n-1}{2^{m-1}},\frac{n}{2^{m-1}}\right], \quad  m,n \in \mathbb{N}_+ ,\; n\le 2^{m-1}
+I_{mn} = \left[\frac{n-1}{2^{m}},\frac{n}{2^{m}}\right), \quad  m\in \mathbb{N}_+ ,\; n=1, 2, \cdots 2^{m}
 \]
-由该集合定义可得如下函数列
-\[
-	f_{1} = \chi_{I_{11}}, f_{21} = \chi_{I_{21}}, f_{22} = \chi_{I_{22}}, f_{31} = \chi_{I_{31}}, \cdots , f_{mn} = \chi_{I_{mn}}, \cdots
-\]
-对于任意点 $x \in I$ 会无限次落在这些区间上，无限次为 $1$ ，无限次为 $0$ ，在 $I$ 上几乎处处不收敛
+则函数列 $\{f_{mn}:= \chi_{I_{mn}}\}$ 在 $I$ 上处处不收敛。事实上，对任意 $x_0 \in I = [0,1)$ 和任意正整数 $m$，函数 $f_{m1}, f_{m2}, \cdots, f_{m2^m}$ 中，必有一个在 $x_0$ 处的值是 $1$，其他在 $x_0$ 处的值均是 $0$，于是数列 $\{f_{mn}(x_0)\}$ 是由无穷多个 $0$ 和 无穷多个 $1$ 构成，从而不可能收敛。\\
+
+从上例我们还可以看出：尽管函数列 $\{f_{mn}:= \chi_{I_{mn}}\}$ 在 $I= [0,1)$ 上处处不收敛，但 $f_{mn}$ 只在长度仅为 $\frac{1}{2^m}$ 的小区间上取 $1$，其他地方均取 $0$，并且 $\lim\limits_{m\to \infty}\frac{1}{2^m}=0$。 也就是说，从测度的角度看，$\{f_{mn}:= \chi_{I_{mn}}\}$ 在 $I= [0,1)$ 上近乎处处收敛到 $f(x)=0$。为描述此种现象，我们引入：
 
 \subsection{依测度收敛}
 
-我们发现上例中，对于给定的 $m$ ，函数列 $\{f_{mi}\}_{2^{m-1}\ge i \ge 1}$ 中几乎全部都取为 $0$ ，我们做出以下定义
-
-对于可测集 $E$ 上的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$ ，我们称 $\{f_k(x)\}_{k\ge 1}$ 依测度收敛于 $f(x)$ ，即 $f_k \xrightarrow{m} f$，如果对于 $\forall \varepsilon > 0$ 有
+{\bf 定义} 对于可测集 $E$ 上的几乎处处有限的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$，我们称 $\{f_k(x)\}_{k\ge 1}$ 在 $E$ 上依测度收敛于 $f(x)$ ，记为 $f_k \xrightarrow{m} f$ 或 $\lim\limits_{k\to \infty}f_k(x)=f(x)\quad \mbox{in measure}$，如果对于 $\forall \varepsilon > 0$，点集列
 \[
-	E_k(\varepsilon) := \{x\in E:\lvert f_k(x) - f(x)\rvert \ge \varepsilon\}
+E_k(\varepsilon) := \{x\in E:\lvert f_k(x) - f(x)\rvert \ge \varepsilon\}, k=1, 2, \cdots 
 \]
-有 $\lim\limits_{k\to\infty} m(E_k(\varepsilon)) = 0$
+满足性质： $\lim\limits_{k\to\infty} m(E_k(\varepsilon)) = 0$。
 
 \subsection{几乎处处收敛与依测度收敛}
 
-\ITEMS
-	\item 对于可测集 $E \subseteq \R^n$ 且 $m(E) < +\infty$
-	\item 在 $E$ 上几乎处处有限的可测函数 $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$
-\ITEME 
-若 $f_k \to f \; a.e. \; x\in E$ 则 $f_k \xrightarrow{m} f$
+下述定理告诉我们，在一定情况下，依测度收敛是几乎处处收敛的推广。
 
-%证明略，使用Egorov定理
+\subsubsection{定理}
+\ITEMS
+\item $E$ 是 $\R^n$ 中可测集且 $m(E) < +\infty$
+\item $f(x),f_1(x),f_2(x),\cdots,f_k(x),\cdots$ 是 $E$ 上几乎处处有限的可测函数
+\item $f_k \to f \ a.e.,\ x\in E$
+\ITEME 
+则 $f_k \xrightarrow{m}f,\ x\in E$。
+
+反过来，下述里斯定理在某种程度上可以理解成上述定理的逆定理。
 
 \subsubsection{里斯定理（Reisz）}
 
-设有可测集 $E \subseteq \R^n$ ，若 $E$ 上几乎处处有限的可测函数列 $\{f_k(x)\}$ 依测度收敛于 $f(x)$ ，则有子列 $\{f_{k_j}\}$ 使得
+设 $E$ 是 $\R^n$ 中可测集。若 $E$ 上几乎处处有限的可测函数列 $\{f_k(x)\}_{k=1}^{\infty}$ 依测度收敛于 $f(x)$ ，则存在子列 $\{f_{k_j}\}_{j=1}^{\infty}$ 使得
 \[
-	f_{k_j} \to f \;a.e.\; x \in E
+f_{k_j} \to f \;a.e.\; x \in E
 \]
 
 \section{可测函数与连续函数的关系}
 
 \subsection{卢津定理（Lusin）}
 
-设有可测集 $E \subseteq \R^n$ , $f(x)$ 为 $E$ 上的可测函数，对于 $\delta > 0$ ， 存在闭集 $F \subseteq R$ 满足
+设 $E$ 是 $\R^n$ 中可测集，$f(x)$ 是 $E$ 上的几乎处处有限的可测函数。则对于任意 $\delta > 0$，存在 $\R^n$ 中闭集 $F$ 满足
 \ITEMS
-	\item $f(x)$ 在 $F$ 上连续
-	\item $m(E \setminus F) < \delta$
+\item $F\subseteq E$ 且 $m(E \setminus F) < \delta$
+\item $f(x)$ 在 $F$ 上连续	
 \ITEME
 
 
 \no{\bf 注：}
 
-根据连续函数的延拓性，可以得到强化的卢津定理，设有可测集 $E \subseteq \R^n$ , $f(x)$ 为 $E$ 上的可测函数，则存在 $E$ （$\R^n$） 上的连续函数 $g(x)$ 满足对于 $E$ 中闭集 $F$ 和 $\forall \delta > 0$有
+根据连续函数的延拓定理，可以得到强化版的卢津定理：设 $E$ 是 $\R^n$ 中可测集，$f(x)$ 是 $E$ 上的几乎处处有限的可测函数。则对于任意 $\delta > 0$，存在 $\R^n$ 中闭集 $F$ 和 $\R^n$ 上的连续函数 $g(x)$，满足
 \ITEMS
-	\item $m(E\setminus F) < \delta$
-	\item $g(x) = f|_F (x)$	
-	\item $\sup\limits_{x\in E} (g(x)) \le \sup\limits_{x\in E} (f(x))$
+\item $F\subseteq E$ 且 $m(E \setminus F) < \delta$
+\item $g(x) = f(x), \forall x \in F$	
+\item $\sup\limits_{x\in \R^n} \{g(x)\} \le \sup\limits_{x\in E} \{f(x)\}$
 \ITEME
 
 \subsubsection{推论}
 
-设有可测集 $E \subseteq \R^n$ , $f(x)$ 为 $E$ 上的可测函数，则存在 $\R^n$ 上的连续函数列 $\{\varphi_k(x)\}_{k\ge 1}$ 满足
+设 $E$ 是 $\R^n$ 中可测集，$f(x)$ 是 $E$ 上的几乎处处有限的可测函数。则存在 $\R^n$ 上的连续函数列 $\{\varphi_k(x)\}_{k\ge 1}$ 满足
 \[
-	\varphi_k(x) \to f(x) \;a.e.\; x \in E
+\varphi_k(x) \to f(x) \ a.e., x \in E
 \]
+
 
 % =====================================================================================
 
