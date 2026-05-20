@@ -2042,12 +2042,62 @@ f_{k_j} \to f \;a.e.\; x \in E
 \varphi_k(x) \to f(x) \ a.e., x \in E
 \]
 
-
-% =====================================================================================
-
 \section{复合函数的可测性}
 
+\ITEMS
+	\item 对于可测集 $E \subseteq \R^n$ 可测函数 $f$ 和连续函数 $g$ 有
+	\[
+		E \xrightarrow{\;f\;} \R^1\xrightarrow{\;g\;} \R^1
+	\]
+	$g\circ f$ 是 $E$ 上的可测函数，因为对于开集 $I$ 有
+	\[
+		f^{-1}(g^{-1}(x)) \xleftarrow{\;f^{-1}\;} g^{-1}(I) \xleftarrow{\;g^{-1}\;} I
+	\]
+	其中 $f^{-1}(g^{-1}(x))$ 是可测集， $g^{-1}(I)$ 是开集
+	\item 对于可测函数 $f$ 和连续函数 $g$ 有
+	\[
+		\R^n \xrightarrow{\;g\;} \R^1\xrightarrow{\;f\;} \R^1
+	\]
+	$f\circ g$ 不一定是可测函数
+\ITEME 
 
+\EXP 对于如下函数
+\[
+	\begin{aligned}
+		\varPsi:&[0,1] \to [0,1]\\
+		&x \mapsto \frac{x+\varPhi(x)}{2}
+	\end{aligned}
+\]
+其中 $\varPhi$ 是康托函数，显然 $\varPsi,\varPsi^{-1}$ 是严格单调连续函数，函数的定义域为 $[0,1]$， 根据康托集 $\mathcal{C}$ 的定义有
+\[
+	[0,1] = \mathcal{C} \cup \left(\bigcup_{m,n}I_{mn}\right)
+\]
+显然
+\[
+	m(\varPsi(I_{mn})) = \frac12\lvert I_{mn} \rvert
+\]
+其中 $\varPsi(I_{mn})$ 两两无交，有
+\[
+	\sum_{m,n} m( \varPsi (I_{mn}) ) = m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) = \frac12
+\]
+可得
+\[
+	m(\varPsi(\mathcal{C})) = m([0,1]) - m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) = \frac12 > 0
+\]
+设 $W$ 是 $\varPsi(\mathcal{C})$ 的一不可测子集，有如下复合函数
+\[
+	\begin{aligned}
+		&[0,1] \xrightarrow{\varPsi^{-1}} [0,1] \xrightarrow{\chi_{\varPsi^{-1}(W)}} \R^1\\
+		&W \; \longmapsto\; \varPsi^{-1}(W)\; \longmapsto\; 1
+	\end{aligned}
+\]
+\[
+	\chi_{\varPsi^{-1}(W)} \circ \varPsi^{-1} (x) = \begin{cases}
+		1, & x\in W\\
+		0, & [0,1]\setminus W\ni x
+	\end{cases}
+\]
+显然这是一个不可测函数
 
 % ======== Chapter 3 ends here ==========
 
@@ -2072,13 +2122,178 @@ f_{k_j} \to f \;a.e.\; x \in E
 
 \subsubsection{非负可测简单函数勒贝格积分的性质}
 \subsubsection{线性性质}
+\ITEMS
+	\item 对于 $\forall c\ge 0$ 与可测集 $E$ 上的一非负可测简单函数 $h(x)$ 有
+	\[
+		\int_E c\cdot h(x) dx = c  \int_E h(x) dx 
+	\]
+	\item 对于可测集 $E$ 上的非负可测简单函数 $h(x),g(x)$ 有
+	\[
+		\int_E(h(x) + g(x)) dx = \int_E h(x)dx + \int_E g(x) dx 
+	\]
+\ITEME
+
+\pro 线性性质 2
+
+对于非负可测简单函数 $h(x),g(x)$
+\[
+	\begin{aligned}
+		h(x) = \sum_{i=1}^p a_i \chi_{E_i}\\
+		g(x) = \sum_{j=1}^q b_j \chi_{F_j}
+	\end{aligned}
+\]
+则
+\[
+	h(x) + g(x)= \sum_{i=1}^p \sum_{j=1}^q (a_i + b_j) \chi_{E_i\cap F_j}
+\]
+\[
+	h(x) + g(x)= \sum_{i=1}^p a_i \sum_{j=1}^q \chi_{E_i\cap F_j} + \sum_{j=1}^q b_j \sum_{i=1}^p \chi_{E_i\cap F_j}
+\]
+对其求勒贝格积分有
+\[
+\begin{aligned}
+	\int_E(h(x) + g(x))dx &=  \sum_{i=1}^p a_i \sum_{j=1}^q m(E\cap E_i\cap F_j) + \sum_{j=1}^q b_j \sum_{i=1}^p m(E \cap F_j\cap E_i)\\
+	&= \sum_{i=1}^p a_i m(E\cap E_i) + \sum_{j=1}^q b_j  m(E \cap F_j)\\
+	&= \int_E h(x)dx + \int_E g(x) dx 
+\end{aligned}
+\]
 
 \subsubsection{极限性质}
+对于 $\R^n$ 中渐升的可测集列 $\{E_k\}_{k = 1}^\infty$ ，设 $E = \bigcup\limits_{k=1}^\infty E_k = \lim\limits_{k\to\infty} E_k$ 
 
+对于 $E$ 上的任意非负可测简单函数 $h(x)$ 有
+\[
+	\int_E h(x) dx = \int_{\lim\limits_{k\to\infty} E_k} h(x) dx =  \lim\limits_{k\to\infty}\int_{E_k} h(x)dx
+\]
+
+\pro 
+
+设有非负可测简单函数 $h(x) = \sum\limits_{i=1}^p a_i \chi_{F_i}$ 根据勒贝格积分的定义，有
+\[
+	\lim_{k\to\infty} \int_{E_k} h(x) dx = \lim_{k\to \infty} \sum_{i=1}^p a_i m(F_i\cap E_k)
+\]
+其中 $F_i\cap E_k$ 为渐升列，则有
+\[
+	\lim_{k\to\infty} \int_{E_k} h(x) dx = \sum_{i=1}^p a_i \lim_{k\to\infty} m(F_i\cap E_k)
+\]
+根据勒贝格测度上的连续性有
+\[
+	\begin{aligned}
+		&= \sum_{i=1}^p a_i m(\lim_{k\to\infty} F_i\cap E_k)\\
+		&= \sum_{i=1}^p a_i m(\bigcup_{k=1}^\infty F_i\cap E_k)\\
+		&= \sum_{i=1}^p a_i m(F_i\cap E)\\
+		&= \int_E h(x) dx
+	\end{aligned}
+\]
 \subsection{非负可测函数的勒贝格积分}
+
+对于可测集 $E$ 上的非负可测函数 $f(x)$ 我们有以下定义
+\[
+	\int_E f(x)dx := \sup_{h(x)\le f(x)\text{ on }E} \left\{\int_Eh(x)dx : h(x) \mbox{为非负可测简单函数}\right\}
+\]
+非负可测函数的勒贝格积分有如下取值
+\ITEMS
+	\item 积分无限 $\int_E f(x) dx = +\infty$
+	\item 积分有限 $0 \le \int_E f(x) dx \le +\infty$
+\ITEME 
+以上两种情况勒贝格积分均有定义，但只有积分有限的情况称 $f(x)$ 在 $E$ 上可积
+
 \subsubsection{非负可测函数勒贝格积分的性质}
 
+\ITEMS
+	\item 对于在可测集 $E$ 上的非负可测函数 $f(x),g(x)$ 有 $f(x) \le g(x)$ ，则 	
+	\[
+		\int_E f(x) dx \le \int_E g(x) dx
+	\]
+	
+	\item 对于可测集 $E$ 和其可测子集 $A \subseteq E$ ，若函数 $f(x)$ 在 $E$ 上非负可测，则
+	\[
+		\int_A f(x) dx = \int_E f(x) \chi_{A}(x) dx
+	\]
+	
+	\item 若非负可测函数 $f(x)$ 在 $E$ 上几乎处处为零，则
+	\[
+		\int_E f(x) dx = 0
+	\]
+	反之亦然
+	\item 若可测集 $E$ 上的非负可测函数 $f(x)$ 有
+	\[
+		\int_E f(x) dx < +\infty
+	\]
+	则函数 $f(x)$ 在 $E$ 上几乎处处有限
+		
+	\item 若可测集 $E$ 上的非负可测函数 $f(x)$ 有
+	\[
+		\int_E f(x) dx < +\infty
+	\]
+	则存在非负可测简单函数 $h(x)$ 对于 $\forall \varepsilon > 0$ 满足
+	\[
+		0 < \int_E f(x) dx - \int_E h(x) dx <\varepsilon
+	\]
+\ITEME
+
 \subsection{列维单调收敛定理（Levi）}
+
+对于可测集 $E \subseteq \R^n$ 上的非负可测函数渐升列 $\{ f_k(x) \}_{k=1}^\infty$ ，即
+\[
+	f_1(x) \le f_2(x) \le f_3(x) \le \cdots \le f_k(x) \le \cdots
+\]
+记 $\lim\limits_{k\to\infty} f_k(x) = f(x)$ 则
+\[
+	\int_E f(x) dx = \int_E \lim_{k\to\infty} f_k (x) dx = \lim_{k\to\infty} \int_E f_k(x) dx
+\]
+
+\pro 
+
+先证明 $\lim\limits_{k\to\infty} \int_E f_k(x) dx \le \int_E f(x) dx$ 根据函数列极限的定义
+\[
+	f(x) = \lim\limits_{k\to\infty} f_k(x) = \sup \{ f_k(x) \}_{k=1}^\infty
+\]
+显然 $f_k(x) \le f(x)$ 有
+\[
+\int_E f_k(x) dx \le \int_E f(x) dx
+\]
+令 $k\to\infty$ 有
+\[
+\lim\limits_{k\to\infty} \int_E f_k(x) dx \le \int_E f(x) dx
+\]
+
+下面证明 $\lim\limits_{k\to\infty} \int_E f_k(x) dx \ge \int_E f(x) dx$ 
+
+\no 对于 $\forall c\in (0,1)$ ，对于 $E$ 上的非负可测简单函数 $\forall h(x) \le f(x)$ ，令 $E_k =\{x\in E : f_k(x)\ge c\cdot h(x)\}$ 其中 $k\in\mathbb{N}_+$ 有
+\ITEMS
+	\item $E_1 \subseteq E_2 \subseteq E_3 \subseteq \cdots \subseteq E_k \subseteq \cdots$
+	\item $\lim\limits_{k\ge 1}E_k = \bigcup\limits_{k\to\infty} E_k = E$
+	
+	因为对于 $\forall x_0 \in E$ ，注意到 $f(x_0)$ 是 $h(x_0)$ 的上确界
+	\[
+		c\cdot h(x_0) < h(x_0) \le f(x_0)
+	\]
+	存在 $K$ 满足 $f_K (x_0) >c\cdot h(x_0) \Rightarrow x_0 \in E_K \Rightarrow E \subseteq \bigcup\limits_{k \ge 1} E_k$ 
+\ITEME
+显然
+\[
+	\int_E h(x) dx = \lim_{k\to\infty} \int_{E_k} h(x) dx
+\]
+\[
+	\int_E h(x) dx \ge \int_{E_k} h(x) dx \ge \int_{E_k} c\cdot h(x) dx = c\int_{E_k} h(x) dx 
+\]
+令 $k \to \infty$
+\[
+	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge c\lim_{k\to\infty}\int_{E_k} h(x) dx = c\int_{E} h(x) dx
+\]
+令 $c \to 1$
+\[
+	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge \int_{E} h(x) dx
+\]
+因为 $h(x)$ 的上确界为 $f(x)$
+\[
+	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge \sup\left\{\int_{E} h(x) dx\right\} = \int_{E} f(x) dx
+\]
+
+\subsubsection{非负可测函数积分的线性性质}
+
+
 
 \subsection{法图引理（Fatom）}
 \end{document}
