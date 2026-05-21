@@ -2273,18 +2273,18 @@ f_{k_j} \to f \;a.e.\; x \in E
 \ITEME
 显然
 \[
-	\int_E h(x) dx = \lim_{k\to\infty} \int_{E_k} h(x) dx
+	\int_E h = \lim_{k\to\infty} \int_{E_k} h 
 \]
 \[
-	\int_E h(x) dx \ge \int_{E_k} h(x) dx \ge \int_{E_k} c\cdot h(x) dx = c\int_{E_k} h(x) dx 
+	\int_E h \ge \int_{E_k} h \ge \int_{E_k} c\cdot h = c\int_{E_k} h 
 \]
 令 $k \to \infty$
 \[
-	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge c\lim_{k\to\infty}\int_{E_k} h(x) dx = c\int_{E} h(x) dx
+	\lim_{k\to\infty}\int_{E_k} h \ge c\lim_{k\to\infty}\int_{E_k} h = c\int_{E} h
 \]
 令 $c \to 1$
 \[
-	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge \int_{E} h(x) dx
+	\lim_{k\to\infty}\int_{E_k} h\ge \int_{E} h
 \]
 因为 $h(x)$ 的上确界为 $f(x)$
 \[
@@ -2293,9 +2293,165 @@ f_{k_j} \to f \;a.e.\; x \in E
 
 \subsubsection{非负可测函数积分的线性性质}
 
+对于可测集 $E$ 上的非负可测函数 $f(x),g(x)$ 有
+\ITEMS
+	\item 对于 $\forall c \ge 0$ 有
+	\[
+		\int_E c f(x) dx = c\int_E f(x) dx
+	\]
+	\item 对于积分 $\int_E [f(x) + g(x)] dx$ 有
+	\[
+		\int_E [f(x) + g(x)] dx = \int_E f(x) dx + \int_E g(x) dx
+	\]
+\ITEME 
 
+\pro 性质2
+
+我们用非负可测简单函数列 $\{\varphi_k(x)\}_{k\ge 1},\{\psi_k(x)\}_{k\ge 1}$ 逼近非负可测函数 $f(x),g(x)$ 则有
+\[
+	\int_E [f(x) + g(x)] dx = \int_E \left[\lim_{k\to\infty} \varphi_k(x) + \lim_{k\to\infty} \psi_k(x)\right] dx
+\]
+根据列维定理
+\[
+	\begin{aligned}
+		\int_E \left[\lim_{k\to\infty} \varphi_k(x) + \lim_{k\to\infty} \psi_k(x)\right] dx &= \lim_{k\to\infty} \int_E\left[ \varphi_k(x) + \psi_k(x)\right] dx\\
+		&= \lim_{k\to\infty} \int_E \varphi_k(x) dx + \lim_{k\to\infty} \int_E\psi_k(x) dx\\
+		&= \int_E f(x) dx + \int_E g(x) dx
+	\end{aligned}
+\]
+
+\subsubsection{勒贝格积分的逐项积分}
+
+对于可测集 $E$ 上的非负可测函数列 $\{ f_k(x) \}_{k=1}^\infty$ 有
+\[
+	\int_E \sum_{k=1}^\infty f_k(x) dx = \sum_{k=1}^\infty \int_E f_k(x) dx
+\]
+
+\pro
+
+设有函数列 $S_m(x) = \sum\limits_{k=1}^m f_k(x)$ ，则
+\[
+	\sum\limits_{k=1}^\infty f_k(x) = \lim_{m\to\infty} S_m(x)
+\]
+显然 $\{S_m(x)\}_{m=1}^\infty$ 是一个非负可测函数列
+\[
+	\begin{aligned}
+		\int_E \sum_{k=1}^\infty f_k(x) dx &= \int_E\lim_{m\to\infty} S_m(x) dx \\
+		&= \lim_{m\to\infty} \int_E S_m(x) dx\\
+		&= \lim_{m\to\infty} \sum\limits_{k=1}^\infty \int_E f_k(x) dx\\
+		&= \sum_{k=1}^\infty \int_E f_k(x) dx
+	\end{aligned}
+\]
+
+\subsubsection{非负可测函数积分区域的可数可加性}
+
+对于 $\R^n$ 中两两无交的可测集列 $\{E_k\}_{k=1}^\infty$ ,设 $E = \bigcup\limits_{k=1}^\infty E_k$ ，有在 $E$ 上的非负可测函数 $f$ ，则
+\[
+	\int_E f(x) dx = \sum_{k=1}^\infty \int_{E_k} f(x)dx
+\]
+
+\pro
+\[
+	\begin{aligned}
+		\sum_{k=1}^\infty \int_{E_k} f(x)dx &= \sum_{k=1}^\infty \int_{E} f(x) \chi_{E_k}dx\\
+		&= \int_{E} f(x) \sum_{k=1}^\infty \chi_{E_k}dx\\
+		&= \int_{E} f(x) \chi_{E}dx\\
+	\end{aligned}
+\]
+特别地，若 $f(x) = \chi_{E}$ ，则
+\[
+	\int_E f(x) dx = \sum_{k=1}^\infty m(E_k) = m(E)
+\]
+
+
+\EXP 
+
+设有区间 $[0,1]$ 上的可测集列 $\{E_k\}_{k=1}^n$ ，若对于 $\forall x \in [0,1]$ ， $x$ 都至少包含于 $\{E_k\}_{k=1}^n$ 中的 $m$ 个可测集， $1\le m \le n$ ，则 $\{E_k\}_{k=1}^n$ 中至少存在一个 $E_l$ 满足
+\[
+	m(E_l) \ge \frac{m}{n}
+\]
+
+\pro 
+
+设函数 $f$ 为 $x$ 属于可测集列 $\{E_k\}_{k=1}^n$ 中的集合个数 
+\[
+	f(x) = \sum\limits_{k=1}^n \chi_{E_k}(x)
+\]
+显然对于 $\forall x \in [0,1]$ 都有 $f(x) \ge m$ ，对函数 $f$ 求勒贝格积分，有
+\[
+	\int_{[0,1]} f(x) dx = \sum_{k=1}^n m(E_k) \ge \int_{[0,1]} m dx = m
+\]
+根据抽屉原理（将 $m$ 个物体分为 $n$ 组，至少有一组大于等于 $\frac{m}{n}$），存在 $1\le l \le n$ 使得 
+\[
+	E_l \ge \frac{m}{n}
+\]
 
 \subsection{法图引理（Fatom）}
+% 判断函数是否可积
+对于可测集 $E$ 上的非负可测函数列 $\{f_k(x)\}_{k=1}^\infty$ ，则
+\[
+	\int_E \varliminf_{k\to\infty} f_k(x) dx \le \varliminf_{k\to\infty} \int_E f_k(x) dx 
+\]
+
+\pro 
+
+设有如下函数列 $\{g_k(x)\}_{k = 1}^\infty$ ，其中 $k \in \mathbb{N}_+$
+\[
+	g_k(x) = \inf\{f_k(x)\}_{j\ge k}
+\]
+显然 $\{f_k(x)\}_{k=1}^\infty$ 是非负可测渐升列，有
+\[
+	\int_E \varliminf_{k\to\infty} f_k(x) dx = \int_E \liminf_{k\to\infty} f_k(x) dx =  \int_E \lim_{k\to\infty} g_k(x) dx
+\]
+根据列维定理有
+\[
+	\begin{aligned}
+		\int_E \varliminf_{k\to\infty} f_k(x) dx &= \lim_{k\to\infty} \int_E g_k(x) dx\\
+		&= \varliminf_{k\to\infty} \int_E g_k(x) dx\\
+		&\le \varliminf_{k\to\infty} \int_E f_k(x) dx
+	\end{aligned}
+\]
+
+\EXP 
+
+设函数列 $\{f_k(x)\}_{k=1}^\infty$ 在可测集 $E$ 上非负可测，一致收敛，其中 $m(E) < +\infty$ ，且
+\[
+	\exists M > 0 \st 0\le f_k(x) \le M \ \forall k \in \mathbb{N}_+
+\]
+则 $\lim\limits_{k\to\infty} f_k(x)$ 在 $E$ 上可积，因为
+\[
+	\int_E \varliminf_{k\to\infty} f_k(x) \le \varliminf_{k\to\infty} \int_E f_k(x) \le M \cdot m(E)
+\]
+
+\EXP 法图引理取小于号的情况
+
+定义如下函数列 $\{f_k(x)\}_{k=1}^\infty$ 
+\[
+	f_k(x) = \begin{cases}
+		0,& x = 0\\
+		k,& 0 < x < \frac1k\\
+		0,& \frac1k < x < 1
+	\end{cases}
+\]
+显然有
+\[
+	\lim_{k\to\infty} f_k(x) = 0 \Rightarrow \int_{[0,1]} \lim_{k\to\infty} f_k(x) dx = 0
+\]
+\[
+	\int_{[0,1]} f_k(x) dx = k\frac1k = 1 \Rightarrow \lim_{k\to\infty} \int_{[0,1]} f_k(x) dx = 1
+\]
+即
+\[
+	\int_E \varliminf_{k\to\infty} f_k(x) dx < \varliminf_{k\to\infty} \int_E f_k(x) dx
+\]
+
+
+\section{一般可测函数的勒贝格积分}
+
+\subsection{一般可测函数的勒贝格积分}
+
+\subsection{一般可测函数的勒贝格积分的性质}
+
 \end{document}
 
 
