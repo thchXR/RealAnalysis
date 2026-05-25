@@ -16,7 +16,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\st}{\mathrm{\quad s.t.\quad }}
 \newcommand{\nae}{\mathrm{\quad a.e.\; }}
-%\newcommand{\st}{\mathrm{\ s.t.\ }}
+
 
 \newcommand{\ITEMS}{\begin{enumerate}[leftmargin=4em]}
 \newcommand{\ITEME}{\end{enumerate}}
@@ -894,8 +894,6 @@ $$\int_{0}^{1}\varPhi(x)\mathrm{d} x=\frac12 $$
 \int_{[0,1]} \varPhi(x) \mathrm{d} x = \sum_{m=1}^\infty \frac14 \left(\frac23\right)^m = \frac{\frac16}{1-\frac23}=\frac12
 \]
 
-% ======== Chapter 1 ends here ==========
-
 \chapter{勒贝格测度}
 
 关于黎曼积分和勒贝格积分，勒贝格曾有一个形象的比喻：数一沓钱，黎曼积分是一张张的数，总钱数就是每一张的面值相加；而勒贝格积分则是先按面值分类，再分别去数每一面值的张数，然后再把每一面值乘上其相应的张数，最后再加起来就是总钱数。也就是说，我们所说的勒贝格积分就是先对积分函数（为便于研究，不妨先考虑非负函数，搞清楚后再一般化）按函数值，也就是所谓的 “高度” 进行分段，然后再测量每段对应的 “底” 的大小，最后再分别相乘再相加，得到所谓的总 “面积”。因此，我们首先希望能在 $\R^n$ 中引入一 “测度”，使得它是我们所熟悉的长度、面积、体积概念的推广，最好能测量 $\R^n$ 中任一子集的大小。也就是说，我们希望建立定义在 $\R^n$ 的幂集 $\mathcal {P} (\R^n) $ 上的广义非负实值函数 $\mathcal {\mu}$
@@ -1257,7 +1255,7 @@ m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
 所以 $U$ 等于上述可数多个开方体 $I$ 的并，从而 $U$ 可测。
 
 \subsection{非 Borel 集的可测集的存在性}
-由上我们有 $\mathcal B(\R^n) \subseteq \mathcal{M}$，下面我们来证明 $\mathcal B(\R^n) \subsetneq \mathcal{M}$。
+由上我们有 $\mathcal B(\R^n) \subseteq \mathcal{M}$，下面我们来证明 $\mathcal B(\R^n) \subsetneqq \mathcal{M}$。
 \ITEMS
 	\item 令 $B = \{B(x,r_x):\R^n \text{中开球},x\text{为有理点},r_x\in\mathbb{Q}\}$。显然
 	\[
@@ -1292,7 +1290,7 @@ m^*(T) \ge m^*((T \cap I_\delta) \cup (T \cap I^c))
 	\[
 		\lvert \mathcal{M}\rvert = \aleph_2 >\aleph_1= \lvert \mathcal B(\R^n) \rvert
 	\]
-	所以 $\mathcal B(\R^n) \subsetneq \mathcal{M}$。
+	所以 $\mathcal B(\R^n) \subsetneqq \mathcal{M}$。
 \ITEME
 
 \subsection{可测集与开、闭集的关系、等测包、等测核}
@@ -1319,7 +1317,13 @@ $2.$ 把 $1$ 的结论用到 $E^c$ 即得。
 	\item $\R^n$ 中不存在闭集 $F\subsetneqq I$ 使得 $m(I\setminus F) = 0$
 \ITEME 
 
-本例的证明可参考 HW 2 的第 4 题。
+\pro
+
+\ITEMS
+	\item 设开集 $U\supsetneqq I$，则 $0$ 必是 $U$ 的内点，从而存在开球 $(-\epsilon,\epsilon )$ 含于 $U$，于是 $m(U\setminus I)\ge m((-\epsilon,0)) =\epsilon> 0$。
+	\item 设闭集 $F\subsetneqq I$，则 $F$ 不能包含 $\mathring I = (0,1)$，从而 $\mathring I\setminus F$ 必为非空开集，其测度必大于 $0$，因为非空开集必含半径大于 $0$ 的开球。自然地，$m(I\setminus F) \ge m(\mathring I\setminus F) > 0$。
+\ITEME 
+
 
 \subsubsection{推论 1：可测集的等测包和等测核}
 
@@ -1356,9 +1360,9 @@ $2.$ 把 $1$ 的结论用到 $G^c$ 即得。
 \[
 	x+E=\{x+y : y \in E\}
 \] 
-则 $x+E$ 可测，且 $m(e)=m(x+E)$。\\
+则 $x+E$ 可测，且 $m(E)=m(x+E)$。\\
 
-此推论的证明见课堂笔记。
+\pro 设 $G_\delta$ 集 $G= \bigcap\limits_{k=1}^\infty U_k$ 是 $E$ 的一个等测包。不难看出任意开集的平移仍是开集，所以每一 $x+U_k$ 是开集；同时不难验证 $x+G= \bigcap\limits_{k=1}^\infty (x+U_k)$，从而 $x+G$ 亦是 $G_\delta$ 集，可测。我们还注意到 $(x+G \setminus x+E)$ 是零测集因为它是零测集 $G \setminus E$ 的平移。于是 $x+E$ 是 $G_\delta$ 与零测集的差，所以是可测集。至于 $m(E)=m(x+E)$，由勒贝格外测度的平移不变性即得。
 
 \subsection{测度的推广}
 
@@ -1879,7 +1883,7 @@ f(x) := \begin{cases}
 \[
 \varphi_k(x) = \sum_{j = 0} ^{k2^k} \frac{j}{2^k} E_j
 \]
-可知函数 $\varphi_k(x)$ 是非负简单可测函数
+可知函数 $\varphi_k(x)$ 是非负可测简单函数
 
 显然函数列 $\{\varphi_k(x)\}_{k\ge 0}$ 单调不减，即
 \[
@@ -2046,59 +2050,57 @@ f_{k_j} \to f \nae x \in E
 \section{复合函数的可测性}
 
 \ITEMS
-	\item 对于可测集 $E \subseteq \R^n$ 可测函数 $f$ 和连续函数 $g$ 有
-	\[
-		E \xrightarrow{\;f\;} \R^1\xrightarrow{\;g\;} \R^1
-	\]
-	$g\circ f$ 是 $E$ 上的可测函数，因为对于开集 $I$ 有
-	\[
-		f^{-1}(g^{-1}(x)) \xleftarrow{\;f^{-1}\;} g^{-1}(I) \xleftarrow{\;g^{-1}\;} I
-	\]
-	其中 $f^{-1}(g^{-1}(x))$ 是可测集， $g^{-1}(I)$ 是开集
-	\item 对于可测函数 $f$ 和连续函数 $g$ 有
-	\[
-		\R^n \xrightarrow{\;g\;} \R^1\xrightarrow{\;f\;} \R^1
-	\]
-	$f\circ g$ 不一定是可测函数
+\item  设 $E$ 是 $\R^n$ 中任意可测集，$f$ 是 $E$ 上的任意可测函数，$g$ 为 $\R^1$ 中的连续函数，则复合函数
+\[
+g\circ f: E \xrightarrow{\;f\;} \R^1\xrightarrow{\;g\;} \R^1
+\]
+是 $E$ 上的可测函数。因为对于 $\R^1$ 中任意开集 $I$，其在 $g\circ f$ 下的原像 $(g\circ f)^{-1}(I)=f^{-1}(g^{-1}(I))$。如下图所示 
+\[
+f^{-1}(g^{-1}(I)) \xleftarrow{\;f^{-1}\;} g^{-1}(I) \xleftarrow{\;g^{-1}\;} I
+\]
+由 $g$ 的连续性，$I$ 在 $g$ 下的原像 $g^{-1}(I)$ 是开集；再由 $f$ 的可测性，开集 $g^{-1}(I)$ 在 $f$ 下的原像 $f^{-1}(g^{-1}(I))$ 是可测集。
+\item 对于可测函数 $f$ 和连续函数 $g$，复合函数
+\[
+f\circ g: \R^n \xrightarrow{\;g\;} \R^1\xrightarrow{\;f\;} \R^1
+\]
+则不一定是可测函数，示例如下。
 \ITEME 
 
 \EXP 对于如下函数
 \[
-	\begin{aligned}
-		\varPsi:&[0,1] \to [0,1]\\
-		&x \mapsto \frac{x+\varPhi(x)}{2}
-	\end{aligned}
+\begin{aligned}
+	\varPsi:&[0,1] \to [0,1]\\
+	&x \mapsto \frac{x+\varPhi(x)}{2}
+\end{aligned}
 \]
-其中 $\varPhi$ 是康托函数，显然 $\varPsi,\varPsi^{-1}$ 是严格单调连续函数，函数的定义域为 $[0,1]$， 根据康托集 $\mathcal{C}$ 的定义有
+其中 $\varPhi$ 是康托函数。注意到 $\varPsi,\varPsi^{-1}$ 是严格单增双射连续函数。由康托集 $\mathcal{C}$ 的定义有
 \[
-	[0,1] = \mathcal{C} \cup \left(\bigcup_{m,n}I_{mn}\right)
+[0,1] = \mathcal{C} \cup \left(\bigcup_{m,n}I_{mn}\right)
 \]
-显然
+不难看出
 \[
-	m(\varPsi(I_{mn})) = \frac12\lvert I_{mn} \rvert
+m(\varPsi(I_{mn})) = \frac12\lvert I_{mn} \rvert
 \]
-其中 $\varPsi(I_{mn})$ 两两无交，有
+且 $\varPsi(I_{mn})$ 两两无交。于是
 \[
-	\sum_{m,n} m( \varPsi (I_{mn}) ) = m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) = \frac12
+m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) =m\left(\bigcup_{m,n} \varPsi (I_{mn})\right) =\sum_{m,n} m( \varPsi (I_{mn}) ) =  \frac12
 \]
-可得
+从而
 \[
-	m(\varPsi(\mathcal{C})) = m([0,1]) - m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) = \frac12 > 0
+m(\varPsi(\mathcal{C})) = m([0,1]) - m\left(\varPsi\left(\bigcup_{m,n} I_{mn}\right)\right) = \frac12 > 0
 \]
-设 $W$ 是 $\varPsi(\mathcal{C})$ 的一不可测子集，有如下复合函数
+由此，可设 $W$ 是 $\varPsi(\mathcal{C})$ 的一不可测子集。考虑如下复合函数
 \[
-	\begin{aligned}
-		&[0,1] \xrightarrow{\varPsi^{-1}} [0,1] \xrightarrow{\chi_{\varPsi^{-1}(W)}} \R^1\\
-		&W \; \longmapsto\; \varPsi^{-1}(W)\; \longmapsto\; 1
-	\end{aligned}
+\chi_{\varPsi^{-1}(W)} \circ \varPsi^{-1}: [0,1] \xrightarrow{\varPsi^{-1}} [0,1] \xrightarrow{\chi_{\varPsi^{-1}(W)}} \R^1\\
 \]
+注意到 $\varPsi^{-1}(W)\subseteq\varPsi^{-1}(\varPsi(\mathcal{C})=\mathcal{C}$，由此 $\varPsi^{-1}(W)$ 是零测集，所以可测。显然
 \[
-	\chi_{\varPsi^{-1}(W)} \circ \varPsi^{-1} (x) = \begin{cases}
-		1, & x\in W\\
-		0, & [0,1]\setminus W\ni x
-	\end{cases}
+\chi_{\varPsi^{-1}(W)} \circ \varPsi^{-1} (x) = \begin{cases}
+	1, & x\in W\\
+	0, & x\in [0,1]\setminus W
+\end{cases}
 \]
-显然这是一个不可测函数
+由于 $W$ 不可测，$\chi_{\varPsi^{-1}(W)} \circ \varPsi^{-1}$ 不是可测函数。
 
 % ======== Chapter 3 ends here ==========
 
@@ -2110,52 +2112,48 @@ f_{k_j} \to f \nae x \in E
 
 设 $h(x)$ 为 $\R^n$ 上的非负可测简单函数
 \[
-	h(x) = \sum_{i=1} ^p a_i \chi_{E_i} (x),\quad  E_i \mbox{为可测集}, a_i \ge 0
+h(x) = \sum_{i=1} ^p a_i \chi_{E_i} (x),\quad  E_i \mbox{为可测集}, a_i \ge 0
 \]
 对于 $\R^n$ 中的可测集 $E$ ，有
 \[
-	h(x)|_E = \sum_{i=1} ^p a_i\, \chi_{(E_i\cap E)} (x)
+h(x)|_E = \sum_{i=1} ^p a_i\, \chi_{(E_i\cap E)} (x)
 \]
 定义 $h(x)$ 在 $E$ 上的勒贝格积分为
 \[
-	\int_{E}h(x)dx = \sum_{i=1} ^p a_i\, m(E_i\cap E)
+\int_{E}h(x)dx = \sum_{i=1} ^p a_i\, m(E_i\cap E)
 \]
 
 \subsubsection{非负可测简单函数勒贝格积分的性质}
 \subsubsection{线性性质}
 \ITEMS
-	\item 对于 $\forall c\ge 0$ 与可测集 $E$ 上的一非负可测简单函数 $h(x)$ 有
-	\[
-		\int_E c\cdot h(x) dx = c  \int_E h(x) dx 
-	\]
-	\item 对于可测集 $E$ 上的非负可测简单函数 $h(x),g(x)$ 有
-	\[
-		\int_E(h(x) + g(x)) dx = \int_E h(x)dx + \int_E g(x) dx 
-	\]
+\item 对于 $\forall c\ge 0$ 与可测集 $E$ 上的一非负可测简单函数 $h(x)$ 有
+\[
+\int_E c\cdot h(x) dx = c  \int_E h(x) dx 
+\]
+\item 对于可测集 $E$ 上的非负可测简单函数 $h(x),g(x)$ 有
+\[
+\int_E(h(x) + g(x)) dx = \int_E h(x)dx + \int_E g(x) dx 
+\]
 \ITEME
 
 \pro 线性性质 2
 
 对于非负可测简单函数 $h(x),g(x)$
 \[
-	\begin{aligned}
-		h(x) = \sum_{i=1}^p a_i \chi_{E_i}\\
-		g(x) = \sum_{j=1}^q b_j \chi_{F_j}
-	\end{aligned}
+\begin{aligned}
+	h(x) = \sum_{i=1}^p a_i \chi_{E_i}\\
+	g(x) = \sum_{j=1}^q b_j \chi_{F_j}
+\end{aligned}
 \]
-则
+不难看出
 \[
-	h(x) + g(x)= \sum_{i=1}^p \sum_{j=1}^q (a_i + b_j) \chi_{E_i\cap F_j}
-\]
-\[
-	h(x) + g(x)= \sum_{i=1}^p a_i \sum_{j=1}^q \chi_{E_i\cap F_j} + \sum_{j=1}^q b_j \sum_{i=1}^p \chi_{E_i\cap F_j}
+h(x) + g(x)= \sum_{i=1}^p \sum_{j=1}^q (a_i + b_j) \chi_{E_i\cap F_j}
 \]
 对其求勒贝格积分有
 \[
 \begin{aligned}
-	\int_E(h(x) + g(x))dx &=  \sum_{i=1}^p a_i \sum_{j=1}^q m(E\cap E_i\cap F_j) + \sum_{j=1}^q b_j \sum_{i=1}^p m(E \cap F_j\cap E_i)\\
-	&= \sum_{i=1}^p a_i m(E\cap E_i) + \sum_{j=1}^q b_j  m(E \cap F_j)\\
-	&= \int_E h(x)dx + \int_E g(x) dx 
+	\int_E(h(x) + g(x))dx &= \sum_{i=1}^p \sum_{j=1}^q (a_i + b_j) m{(E\cap E_i\cap F_j)}= \sum_{i=1}^p a_i \sum_{j=1}^q m((E\cap E_i)\cap F_j) + \sum_{j=1}^q b_j \sum_{i=1}^p m((E\cap F_j)\cap E_i)\\
+	&= \sum_{i=1}^p a_i m(E\cap E_i) + \sum_{j=1}^q b_j  m(E \cap F_j)= \int_E h(x)dx + \int_E g(x) dx 
 \end{aligned}
 \]
 
@@ -2164,91 +2162,90 @@ f_{k_j} \to f \nae x \in E
 
 对于 $E$ 上的任意非负可测简单函数 $h(x)$ 有
 \[
-	\int_E h(x) dx = \int_{\lim\limits_{k\to\infty} E_k} h(x) dx =  \lim\limits_{k\to\infty}\int_{E_k} h(x)dx
+\int_E h(x) dx = \int_{\lim\limits_{k\to\infty} E_k} h(x) dx =  \lim\limits_{k\to\infty}\int_{E_k} h(x)dx
 \]
 
 \pro 
 
 设有非负可测简单函数 $h(x) = \sum\limits_{i=1}^p a_i \chi_{F_i}$ 根据勒贝格积分的定义，有
 \[
-	\lim_{k\to\infty} \int_{E_k} h(x) dx = \lim_{k\to \infty} \sum_{i=1}^p a_i m(F_i\cap E_k)
+\lim_{k\to\infty} \int_{E_k} h(x) dx = \lim_{k\to \infty} \sum_{i=1}^p a_i m(F_i\cap E_k)= \sum_{i=1}^p a_i \lim_{k\to\infty} m(F_i\cap E_k)
 \]
-其中 $F_i\cap E_k$ 为渐升列，则有
+注意到 $F_i\cap E_k$ 为渐升列，由勒贝格测度的上连续性，上式
 \[
-	\lim_{k\to\infty} \int_{E_k} h(x) dx = \sum_{i=1}^p a_i \lim_{k\to\infty} m(F_i\cap E_k)
-\]
-根据勒贝格测度上的连续性有
-\[
-	\begin{aligned}
-		&= \sum_{i=1}^p a_i m(\lim_{k\to\infty} F_i\cap E_k)\\
-		&= \sum_{i=1}^p a_i m(\bigcup_{k=1}^\infty F_i\cap E_k)\\
-		&= \sum_{i=1}^p a_i m(F_i\cap E)\\
-		&= \int_E h(x) dx
-	\end{aligned}
+\begin{aligned}
+	&= \sum_{i=1}^p a_i m(\lim_{k\to\infty} (F_i\cap E_k))\\
+	&= \sum_{i=1}^p a_i m(\bigcup_{k=1}^\infty (F_i\cap E_k))\\
+	&= \sum_{i=1}^p a_i m(F_i\cap E)\\
+	&= \int_E h(x) dx
+\end{aligned}
 \]
 \subsection{非负可测函数的勒贝格积分}
 
-对于可测集 $E$ 上的非负可测函数 $f(x)$ 我们有以下定义
+对于可测集 $E$ 上的非负可测函数 $f(x)$，其在 $E$ 上的勒贝格积分定义如下：
 \[
-	\int_E f(x)dx := \sup_{h(x)\le f(x)\text{ on }E} \left\{\int_Eh(x)dx : h(x) \mbox{为非负可测简单函数}\right\}
+\int_E f(x)dx := \sup_{h(x)\le f(x)\text{ on }E} \left\{\int_Eh(x)dx : h(x) \mbox{为非负可测简单函数}\right\}
 \]
 非负可测函数的勒贝格积分有如下取值
 \ITEMS
-	\item 积分无限 $\int_E f(x) dx = +\infty$
-	\item 积分有限 $0 \le \int_E f(x) dx \le +\infty$
+\item 积分无限 $\int_E f(x) dx = +\infty$
+\item 积分有限 $0 \le \int_E f(x) dx < +\infty$
 \ITEME 
-以上两种情况勒贝格积分均有定义，但只有积分有限的情况称 $f(x)$ 在 $E$ 上可积
+以上两种情况勒贝格积分均有定义，但只有在积分有限的情况下，我们称 $f(x)$ 在 $E$ 上可积。
 
 \subsubsection{非负可测函数勒贝格积分的性质}
 
 \ITEMS
-	\item 对于在可测集 $E$ 上的非负可测函数 $f(x),g(x)$ 有 $f(x) \le g(x)$ ，则 	
-	\[
-		\int_E f(x) dx \le \int_E g(x) dx
-	\]
-	
-	\item 对于可测集 $E$ 和其可测子集 $A \subseteq E$ ，若函数 $f(x)$ 在 $E$ 上非负可测，则
-	\[
-		\int_A f(x) dx = \int_E f(x) \chi_{A}(x) dx
-	\]
-	
-	\item 若非负可测函数 $f(x)$ 在 $E$ 上几乎处处为零，则
-	\[
-		\int_E f(x) dx = 0
-	\]
-	反之亦然
-	\item 若可测集 $E$ 上的非负可测函数 $f(x)$ 有
-	\[
-		\int_E f(x) dx < +\infty
-	\]
-	则函数 $f(x)$ 在 $E$ 上几乎处处有限
-		
-	\item 若可测集 $E$ 上的非负可测函数 $f(x)$ 有
-	\[
-		\int_E f(x) dx < +\infty
-	\]
-	则存在非负可测简单函数 $h(x)$ 对于 $\forall \varepsilon > 0$ 满足
-	\[
-		0 < \int_E f(x) dx - \int_E h(x) dx <\varepsilon
-	\]
+\item 对于在可测集 $E$ 上的非负可测函数 $f(x),g(x)$ 有 $f(x) \le g(x)$ ，则 	
+\[
+\int_E f(x) dx \le \int_E g(x) dx
+\]
+
+\item 对于可测集 $E$ 和其可测子集 $A \subseteq E$ ，若函数 $f(x)$ 在 $E$ 上非负可测，则
+\[
+\int_A f(x) dx = \int_E f(x) \chi_{A}(x) dx
+\]
+
+\item 若非负可测函数 $f(x)$ 在 $E$ 上几乎处处为零，则
+\[
+\int_E f(x) dx = 0
+\]
+反之亦然
+\item 若可测集 $E$ 上的非负可测函数 $f(x)$ 有
+\[
+\int_E f(x) dx < +\infty
+\]
+则函数 $f(x)$ 在 $E$ 上几乎处处有限
+
+\pro  对 $\forall k=1,2,\cdots$，记 $E_k=\{x\in E: f(x)>k\}$ 和 $E_{\infty}=\{x\in E: f(x)=\infty\}$。不难看出
+$$km(E_k)=\int_{E_k} k dx\le\int_{E_k} f(x) dx\le\int_E f(x) dx<\infty$$
+从而 $\lim\limits_{k\to \infty}m(E_k)=0$。\\
+又注意到 $\forall k, E_{\infty}\subseteq E_k$，于是 $\forall k, m(E_{\infty})\le m(E_k)$。令 $k\to \infty$，即得 $m(E_{\infty})\le\lim\limits_{k\to \infty} m(E_k)=0$。
+\item 若 $f(x)$ 是可测集 $E$ 上的非负可测函数且
+\[
+\int_E f(x) dx < +\infty
+\]
+则对于 $\forall \varepsilon > 0$，存在 $E$ 上的非负可测简单函数 $\varphi(x)$ 满足 $\varphi(x) \le f(x)$ 且
+\[
+0 < \int_E (f(x) - \varphi(x))dx <\varepsilon
+\]
 \ITEME
 
-\subsection{列维单调收敛定理（Levi）}
-
+\subsection{列维单调收敛定理（Levi's Monotone  Convergence Theorem）}
 对于可测集 $E \subseteq \R^n$ 上的非负可测函数渐升列 $\{ f_k(x) \}_{k=1}^\infty$ ，即
 \[
-	f_1(x) \le f_2(x) \le f_3(x) \le \cdots \le f_k(x) \le \cdots
+f_1(x) \le f_2(x) \le f_3(x) \le \cdots \le f_k(x) \le \cdots
 \]
 记 $\lim\limits_{k\to\infty} f_k(x) = f(x)$ 则
 \[
-	\int_E f(x) dx = \int_E \lim_{k\to\infty} f_k (x) dx = \lim_{k\to\infty} \int_E f_k(x) dx
+\int_E f(x) dx = \int_E \lim_{k\to\infty} f_k (x) dx = \lim_{k\to\infty} \int_E f_k(x) dx
 \]
 
 \pro 
 
 先证明 $\lim\limits_{k\to\infty} \int_E f_k(x) dx \le \int_E f(x) dx$ 根据函数列极限的定义
 \[
-	f(x) = \lim\limits_{k\to\infty} f_k(x) = \sup \{ f_k(x) \}_{k=1}^\infty
+f(x) = \lim\limits_{k\to\infty} f_k(x) = \sup \{ f_k(x) \}_{k=1}^\infty
 \]
 显然 $f_k(x) \le f(x)$ 有
 \[
@@ -2259,344 +2256,333 @@ f_{k_j} \to f \nae x \in E
 \lim\limits_{k\to\infty} \int_E f_k(x) dx \le \int_E f(x) dx
 \]
 
-下面证明 $\lim\limits_{k\to\infty} \int_E f_k(x) dx \ge \int_E f(x) dx$ 
+下面证明 $\lim\limits_{k\to\infty} \int_E f_k(x) dx \ge \int_E f(x) dx$\\ 
 
-\no 对于 $\forall c\in (0,1)$ ，对于 $E$ 上的非负可测简单函数 $\forall h(x) \le f(x)$ ，令 $E_k =\{x\in E : f_k(x)\ge c\cdot h(x)\}$ 其中 $k\in\mathbb{N}_+$ 有
+对于 $\forall c\in (0,1)$ 和 $E$ 上的任意非负可测简单函数 $h(x) \le f(x)$ 。令 
+$$E_k =\{x\in E : f_k(x)\ge c\cdot h(x)\}, k\in\mathbb{N}_+$$ 我们有
 \ITEMS
-	\item $E_1 \subseteq E_2 \subseteq E_3 \subseteq \cdots \subseteq E_k \subseteq \cdots$
-	\item $\lim\limits_{k\ge 1}E_k = \bigcup\limits_{k\to\infty} E_k = E$
-	
-	因为对于 $\forall x_0 \in E$ ，注意到 $f(x_0)$ 是 $h(x_0)$ 的上确界
-	\[
-		c\cdot h(x_0) < h(x_0) \le f(x_0)
-	\]
-	存在 $K$ 满足 $f_K (x_0) >c\cdot h(x_0) \Rightarrow x_0 \in E_K \Rightarrow E \subseteq \bigcup\limits_{k \ge 1} E_k$ 
+\item $E_1 \subseteq E_2 \subseteq \cdots \subseteq E_k \subseteq \cdots$
+\item $\lim\limits_{k\to \infty}E_k = \bigcup\limits_{k\ge1} E_k = E$: 这是因为对于 $\forall x_0 \in E$，$f(x_0)$ 是 $\{f_k(x_0)\}_{k\ge1}$ 的上确界，且$c\cdot h(x_0) < h(x_0) \le f(x_0)$，故
+存在 $K$ 满足 $f_K (x_0) >c\cdot h(x_0) \Rightarrow x_0 \in E_K \Rightarrow E \subseteq \bigcup\limits_{k \ge 1} E_k$ 
 \ITEME
-显然
+注意到
 \[
-	\int_E h = \lim_{k\to\infty} \int_{E_k} h 
+\int_E h \mathrm{d}x = \int_{\lim_{k\to\infty} E_k} h\mathrm{d}x= \lim_{k\to\infty} \int_{E_k} h\mathrm{d}x 
 \]
 \[
-	\int_E h \ge \int_{E_k} h \ge \int_{E_k} c\cdot h = c\int_{E_k} h 
+\int_E f_k \mathrm{d}x\ge \int_{E_k} f_k \ge \int_{E_k} c\cdot h\mathrm{d}x = c\int_{E_k} h \mathrm{d}x
 \]
 令 $k \to \infty$
 \[
-	\lim_{k\to\infty}\int_{E_k} h \ge c\lim_{k\to\infty}\int_{E_k} h = c\int_{E} h
+\lim_{k\to\infty}\int_{E_k} f_k \mathrm{d}x\ge c\lim_{k\to\infty}\int_{E_k} h = c\int_{E} h\mathrm{d}x
 \]
 令 $c \to 1$
 \[
-	\lim_{k\to\infty}\int_{E_k} h\ge \int_{E} h
+\lim_{k\to\infty}\int_{E_k} f_k \mathrm{d}x\ge \int_{E} h \mathrm{d}x
 \]
-因为 $h(x)$ 的上确界为 $f(x)$
+从而
 \[
-	\lim_{k\to\infty}\int_{E_k} h(x) dx \ge \sup\left\{\int_{E} h(x) dx\right\} = \int_{E} f(x) dx
+\lim_{k\to\infty}\int_{E_k} f_k \mathrm{d}x \ge \sup\left\{\int_{E} h \mathrm{d}x\right\} = \int_{E} f \mathrm{d}x
 \]
 
 \subsubsection{非负可测函数积分的线性性质}
 
 对于可测集 $E$ 上的非负可测函数 $f(x),g(x)$ 有
 \ITEMS
-	\item 对于 $\forall c \ge 0$ 有
-	\[
-		\int_E c f(x) dx = c\int_E f(x) dx
-	\]
-	\item 对于积分 $\int_E [f(x) + g(x)] dx$ 有
-	\[
-		\int_E [f(x) + g(x)] dx = \int_E f(x) dx + \int_E g(x) dx
-	\]
+\item 对于 $\forall c \ge 0$ 有
+\[
+\int_E c f(x) \mathrm {d}x = c\int_E f(x) \mathrm {d}x
+\]
+\item 对于积分 $\int_E [f(x) + g(x)] \mathrm {d}x$ 有
+\[
+\int_E [f(x) + g(x)] \mathrm {d}x = \int_E f(x) \mathrm {d}x + \int_E g(x) \mathrm {d}x
+\]
 \ITEME 
 
 \pro 性质2
 
-我们用非负可测简单函数列 $\{\varphi_k(x)\}_{k\ge 1},\{\psi_k(x)\}_{k\ge 1}$ 逼近非负可测函数 $f(x),g(x)$ 则有
+我们分别用非负可测简单函数渐升列 $\{\varphi_k(x)\}_{k\ge 1},\{\psi_k(x)\}_{k\ge 1}$ 逼近非负可测函数 $f(x),g(x)$，则有
 \[
-	\int_E [f(x) + g(x)] dx = \int_E \left[\lim_{k\to\infty} \varphi_k(x) + \lim_{k\to\infty} \psi_k(x)\right] dx
+\int_E [f(x) + g(x)] \mathrm {d}x = \int_E \left[\lim_{k\to\infty} \varphi_k(x) + \lim_{k\to\infty} \psi_k(x)\right] \mathrm {d}x=\int_E \lim_{k\to\infty}\{\left[ \varphi_k(x) + \psi_k(x)\right]\} \mathrm {d}x
 \]
 根据列维定理
 \[
-	\begin{aligned}
-		\int_E \left[\lim_{k\to\infty} \varphi_k(x) + \lim_{k\to\infty} \psi_k(x)\right] dx &= \lim_{k\to\infty} \int_E\left[ \varphi_k(x) + \psi_k(x)\right] dx\\
-		&= \lim_{k\to\infty} \int_E \varphi_k(x) dx + \lim_{k\to\infty} \int_E\psi_k(x) dx\\
-		&= \int_E f(x) dx + \int_E g(x) dx
-	\end{aligned}
+\begin{aligned}
+	\int_E \lim_{k\to\infty}\{\left[ \varphi_k(x) + \psi_k(x)\right]\} \mathrm {d}x &= \lim_{k\to\infty} \int_E\left[ \varphi_k(x) + \psi_k(x)\right] \mathrm {d}x\\
+	&= \lim_{k\to\infty} \int_E \varphi_k(x) \mathrm {d}x + \lim_{k\to\infty} \int_E\psi_k(x) \mathrm {d}x\\
+	&= \int_E f(x) dx + \int_E g(x) \mathrm {d}x
+\end{aligned}
 \]
 
-\subsubsection{勒贝格积分的逐项积分}
+\subsubsection{非负可测函数可逐项积分}
 
 对于可测集 $E$ 上的非负可测函数列 $\{ f_k(x) \}_{k=1}^\infty$ 有
 \[
-	\int_E \sum_{k=1}^\infty f_k(x) dx = \sum_{k=1}^\infty \int_E f_k(x) dx
+\int_E \sum_{k=1}^\infty f_k(x) dx = \sum_{k=1}^\infty \int_E f_k(x) dx
 \]
 
 \pro
 
-设有函数列 $S_m(x) = \sum\limits_{k=1}^m f_k(x)$ ，则
+令函数列 $S_m(x) = \sum\limits_{k=1}^m f_k(x), m=1, 2, \cdots$，则
 \[
-	\sum\limits_{k=1}^\infty f_k(x) = \lim_{m\to\infty} S_m(x)
+\sum\limits_{k=1}^\infty f_k(x) = \lim_{m\to\infty} S_m(x)
 \]
-显然 $\{S_m(x)\}_{m=1}^\infty$ 是一个非负可测函数列
+显然 $\{S_m(x)\}_{m=1}^\infty$ 是非负可测函数渐升列，由列维定理
 \[
-	\begin{aligned}
-		\int_E \sum_{k=1}^\infty f_k(x) dx &= \int_E\lim_{m\to\infty} S_m(x) dx \\
-		&= \lim_{m\to\infty} \int_E S_m(x) dx\\
-		&= \lim_{m\to\infty} \sum\limits_{k=1}^\infty \int_E f_k(x) dx\\
-		&= \sum_{k=1}^\infty \int_E f_k(x) dx
-	\end{aligned}
+\begin{aligned}
+	\int_E \sum_{k=1}^\infty f_k(x) dx &= \int_E\lim_{m\to\infty} S_m(x) dx \\
+	&= \lim_{m\to\infty} \int_E S_m(x) dx\\
+	&= \lim_{m\to\infty} \sum\limits_{k=1}^m \int_E f_k(x) dx\\
+	&= \sum_{k=1}^\infty \int_E f_k(x) dx
+\end{aligned}
 \]
 
 \subsubsection{非负可测函数积分区域的可数可加性}
 
-对于 $\R^n$ 中两两无交的可测集列 $\{E_k\}_{k=1}^\infty$ ,设 $E = \bigcup\limits_{k=1}^\infty E_k$ ，有在 $E$ 上的非负可测函数 $f$ ，则
+对于 $\R^n$ 中两两无交的可测集列 $\{E_k\}_{k=1}^\infty$，设 $E = \bigcup\limits_{k=1}^\infty E_k$，有在 $E$ 上的非负可测函数 $f$，则
 \[
-	\int_E f(x) dx = \sum_{k=1}^\infty \int_{E_k} f(x)dx
+\int_E f(x) dx = \sum_{k=1}^\infty \int_{E_k} f(x)dx
 \]
 
 \pro
 \[
-	\begin{aligned}
-		\sum_{k=1}^\infty \int_{E_k} f(x)dx &= \sum_{k=1}^\infty \int_{E} f(x) \chi_{E_k}dx\\
-		&= \int_{E} f(x) \sum_{k=1}^\infty \chi_{E_k}dx\\
-		&= \int_{E} f(x) \chi_{E}dx\\
-	\end{aligned}
+\begin{aligned}
+	\sum_{k=1}^\infty \int_{E_k} f(x)dx &= \sum_{k=1}^\infty \int_{E} f(x) \chi_{E_k}dx\\
+	&= \int_{E} f(x) \sum_{k=1}^\infty \chi_{E_k}dx\\
+	&= \int_{E} f(x) \chi_{E}dx\\
+\end{aligned}
 \]
 特别地，若 $f(x) = \chi_{E}$ ，则
 \[
-	\int_E f(x) dx = \sum_{k=1}^\infty m(E_k) = m(E)
+m(E)=\int_E f(x) dx=\sum_{k=1}^\infty \int_{E_k} f(x)dx = \sum_{k=1}^\infty m(E_k) 
 \]
-
+这就是勒贝格测度的可数可加性。
 
 \EXP 
 
-设有区间 $[0,1]$ 上的可测集列 $\{E_k\}_{k=1}^n$ ，若对于 $\forall x \in [0,1]$ ， $x$ 都至少包含于 $\{E_k\}_{k=1}^n$ 中的 $m$ 个可测集， $1\le m \le n$ ，则 $\{E_k\}_{k=1}^n$ 中至少存在一个 $E_l$ 满足
+设 $\{E_k\}_{k=1}^n$ 为区间 $[0,1]$ 上的可测集列。若对于 $\forall x \in [0,1]$，$x$ 都至少含于 $\{E_k\}_{k=1}^n$ 其中的 $m$ 个，则 $\{E_k\}_{k=1}^n$ 中至少存在一个 $E_l$ 满足
 \[
-	m(E_l) \ge \frac{m}{n}
+m(E_l) \ge \frac{m}{n}
 \]
 
 \pro 
 
-设函数 $f$ 为 $x$ 属于可测集列 $\{E_k\}_{k=1}^n$ 中的集合个数 
+设函数 $f$ 为 $x$ 属于可测集列 $\{E_k\}_{k=1}^n$ 中的集合个数，即 
 \[
-	f(x) = \sum\limits_{k=1}^n \chi_{E_k}(x)
+f(x) = \sum\limits_{k=1}^n \chi_{E_k}(x)
 \]
-显然对于 $\forall x \in [0,1]$ 都有 $f(x) \ge m$ ，对函数 $f$ 求勒贝格积分，有
+由题设，对于 $\forall x \in [0,1]$ 都有 $f(x) \ge m$。于是
 \[
-	\int_{[0,1]} f(x) dx = \sum_{k=1}^n m(E_k) \ge \int_{[0,1]} m dx = m
+\sum_{k=1}^n m(E_k) = \sum_{k=1}^n \int_{[0,1]} \chi_{E_k}(x) dx= \int_{[0,1]} \sum_{k=1}^n\chi_{E_k}(x) dx= \int_{[0,1]} f(x) dx \ge \int_{[0,1]} m dx = m
 \]
 根据抽屉原理（将 $m$ 个物体分为 $n$ 组，至少有一组大于等于 $\frac{m}{n}$），存在 $1\le l \le n$ 使得 
 \[
-	E_l \ge \frac{m}{n}
+m(E_l) \ge \frac{m}{n}
 \]
 
-\subsection{法图引理（Fatom）}
+\subsection{法图引理（Fatou）}
 % 判断函数是否可积
 对于可测集 $E$ 上的非负可测函数列 $\{f_k(x)\}_{k=1}^\infty$ ，则
 \[
-	\int_E \varliminf_{k\to\infty} f_k(x) dx \le \varliminf_{k\to\infty} \int_E f_k(x) dx 
+\int_E \varliminf_{k\to\infty} f_k(x) dx \le \varliminf_{k\to\infty} \int_E f_k(x) dx 
 \]
 
 \pro 
 
-设有如下函数列 $\{g_k(x)\}_{k = 1}^\infty$ ，其中 $k \in \mathbb{N}_+$
+定义函数列 $\{g_k(x): = \inf\{f_j(x)\}_{j\ge k}\}_{k = 1}^\infty$，显然 $\{g_k(x)\}_{k=1}^\infty$ 是非负可测函数渐升列，并且
 \[
-	g_k(x) = \inf\{f_k(x)\}_{j\ge k}
-\]
-显然 $\{f_k(x)\}_{k=1}^\infty$ 是非负可测渐升列，有
-\[
-	\int_E \varliminf_{k\to\infty} f_k(x) dx = \int_E \liminf_{k\to\infty} f_k(x) dx =  \int_E \lim_{k\to\infty} g_k(x) dx
+\int_E \varliminf_{k\to\infty} f_k(x) dx = \int_E \liminf_{k\to\infty} f_k(x) dx =  \int_E \lim_{k\to\infty} g_k(x) dx
 \]
 根据列维定理有
 \[
-	\begin{aligned}
-		\int_E \varliminf_{k\to\infty} f_k(x) dx &= \lim_{k\to\infty} \int_E g_k(x) dx\\
-		&= \varliminf_{k\to\infty} \int_E g_k(x) dx\\
-		&\le \varliminf_{k\to\infty} \int_E f_k(x) dx
-	\end{aligned}
+\begin{aligned}
+	\int_E \lim_{k\to\infty} g_k(x) dx&= \lim_{k\to\infty} \int_E g_k(x) dx\\
+	&= \varliminf_{k\to\infty} \int_E g_k(x) dx\\
+	&\le \varliminf_{k\to\infty} \int_E f_k(x) dx
+\end{aligned}
 \]
 
 \EXP 
 
-设函数列 $\{f_k(x)\}_{k=1}^\infty$ 在可测集 $E$ 上非负可测，一致收敛，其中 $m(E) < +\infty$ ，且
+设函数列 $\{f_k(x)\}_{k=1}^\infty$ 在可测集 $E$ 上非负可测，且 $\int_E f_k(x)dx \le M$，
+则 $\varliminf\limits_{k\to\infty} f_k(x)$ 在 $E$ 上可积: 因为
 \[
-	\exists M > 0 \st 0\le f_k(x) \le M \ \forall k \in \mathbb{N}_+
+\int_E \varliminf_{k\to\infty} f_k(x)dx \le \varliminf\limits_{k\to\infty} \int_E f_k(x)dx\le M 
 \]
-则 $\lim\limits_{k\to\infty} f_k(x)$ 在 $E$ 上可积，因为
-\[
-	\int_E \varliminf_{k\to\infty} f_k(x) \le \varliminf_{k\to\infty} \int_E f_k(x) \le M \cdot m(E)
-\]
-
-\EXP 法图引理取小于号的情况
+\EXP {\bf 法图引理中可以取小于号}
 
 定义如下函数列 $\{f_k(x)\}_{k=1}^\infty$ 
 \[
-	f_k(x) = \begin{cases}
-		0,& x = 0\\
-		k,& 0 < x < \frac1k\\
-		0,& \frac1k < x < 1
-	\end{cases}
+f_k(x) = \begin{cases}
+	0,& x = 0\\
+	k,& 0 < x \le \frac1k\\
+	0,& \frac1k < x \le 1
+\end{cases}
 \]
-显然有
+不难看出
 \[
-	\lim_{k\to\infty} f_k(x) = 0 \Rightarrow \int_{[0,1]} \lim_{k\to\infty} f_k(x) dx = 0
+\lim_{k\to\infty} f_k(x) = 0 \Rightarrow \int_{[0,1]} \lim_{k\to\infty} f_k(x) dx = 0
 \]
 \[
-	\int_{[0,1]} f_k(x) dx = k\frac1k = 1 \Rightarrow \lim_{k\to\infty} \int_{[0,1]} f_k(x) dx = 1
+\int_{[0,1]} f_k(x) dx = k\frac1k = 1 \Rightarrow \lim_{k\to\infty} \int_{[0,1]} f_k(x) dx = 1
 \]
-即
+从而
 \[
-	\int_E \varliminf_{k\to\infty} f_k(x) dx < \varliminf_{k\to\infty} \int_E f_k(x) dx
+\int_E \varliminf_{k\to\infty} f_k(x) dx < \varliminf_{k\to\infty} \int_E f_k(x) dx
 \]
 
 \section{一般可测函数的勒贝格积分}
 
 \subsection{一般可测函数的勒贝格积分}
 
-对于在可测集 $E \subseteq \R^n$ 上的可测函数 $f$ ，有如下定义
+设 $E$ 是 $\R^n$ 中可测集，$f$ 是 $E$ 上的可测函数，则 $f$ 在 $E$ 上勒贝格积分 $\int_E f(x) \mathrm{d}x$ （亦可简记为 $\int_E f$），其定义如下：
 \[
-	\int_E f(x) dx =\int_E f_+(x) dx - \int_E f_-(x) dx 
+\int_E f(x) \mathrm{d}x: =\int_E f_+(x)\mathrm{d}x- \int_E f_-(x)\mathrm{d}x
 \]
 \ITEMS
-	\item 若正负部函数 $f_+,f_-$ 的积分均为正无穷，则称积分 $\int_E f(x) dx$ 无定义
-	\item 以下为积分有定义的情况下
-	\begin{itemize}
-		\item 若正部 $f_+$ 的积分为正无穷，负部 $f_-$ 的积分有限，则积分 $\int_E f(x) dx = +\infty$ 
-		\item 若正部 $f_+$ 的积分有限，负部 $f_-$ 的积分为正无穷，则积分 $\int_E f(x) dx = -\infty$ 
-		\item 若正负部函数的积分均有限，则积分 $\int_E f(x) dx$ 有限，称其勒贝格可积
-	\end{itemize}
+\item 若正负部函数 $f_+,f_-$ 的积分均为正无穷，则称积分 $\int_E f(x) \mathrm{d}x$ 无定义
+\item 以下为积分有定义的情况
+\begin{itemize}
+	\item 若正部 $f_+$ 的积分为正无穷，负部 $f_-$ 的积分有限，则积分 $\int_E f(x) \mathrm{d}x = +\infty$ 
+	\item 若正部 $f_+$ 的积分有限，负部 $f_-$ 的积分为正无穷，则积分 $\int_E f(x) \mathrm{d}x = -\infty$ 
+	\item 若正负部函数的积分均有限，则积分 $\int_E f(x) \mathrm{d}x$ 有限，称 $f$ 在 $E$ 其勒贝格可积
+\end{itemize}
 \ITEME 
-因为对于函数的绝对值有 $\lvert f\rvert = f_+ + f_-$ 所以
+注意到 $\lvert f\rvert = f_+ + f_-$，所以
 \[
-	\int_E f \ \mbox{有限} \iff \int_E \lvert f\rvert\ \mbox{有限} \iff \text{ $f$ 在 $E$ 上可积} \iff \text{ $\lvert f\rvert$ 在 $E$ 上可积}
+\int_E f \mbox{有限} \iff \int_E \lvert f\rvert\ \mbox{有限} \iff \text{ $f$ 在 $E$ 上可积} \iff \text{ $\lvert f\rvert$ 在 $E$ 上可积}
 \]
 
-\subsubsection{勒贝格可积空间}
-我们将可测集 $E$ 上的所有可积函数组成的集合，记为 $L(x)$ 或 $L^1(x)$
+\subsubsection{$L^p$ 空间}
+我们将可测集 $E$ 上的所有可积函数构成的集合，记为 $L(E)$ 或 $L^1(E)$，即
 \[
-	L(x) :=  \left\{ f : (f \text{在 $E$ 上可测}) \land \left(\int_E |f| < \infty\right) \right\}
+L(E) :=  \left\{ f : f \text{是 $E$ 上可测函数且} \int_E |f(x)|\mathrm{d}x < \infty \right\}
 \]
-更一般的，我们记
+更一般地，记
 \[
-	L^p(E) := \left\{ f : (f \text{在 $E$ 上可测}) \land \left(\int_E |f|^p < \infty\right) \right\} ,\ p\in[0,+\infty)
+L^p(E) := \left\{ f : f \text{是 $E$ 上可测函数且} \int_E |f(x)|^p\mathrm{d}x < \infty \right\} ,\ p\in[1,+\infty)
 \]
+能够证明，$L^p(E)$ 是线性空间。
 
 \subsection{一般可测函数的勒贝格积分的性质}
 
 \subsubsection{性质I}
 
 \ITEMS
-	\item {\bf 线性性质} 
-	
-	对于可测集 $E$ 与函数 $f \in L(E)$
-	\ITEMS
-		\item 对 $\forall c \in\R$ 有
-		\[
-			\int_E c\cdot f = c\int_E f
-		\]
-		\item 对函数 $\forall g \in L(E)$ 有
-		\[
-			\int_E f + \int_E g = \int_E (f+g)
-		\]
-	\ITEME 
-	\item {\bf 简单函数逼近} 
-	
-	设有可测集 $E$ 与函数 $f \in L(E)$ ，对于 $\forall \varepsilon > 0$ ，存在 $E$ 上可积的简单函数 $\varphi$ 满足
-	\[
-		\int_E \lvert f(x) - \varphi(x)\rvert dx < \varepsilon
-	\]
-	
-	\item 对于可测集 $E$ 与函数 $f \in L(E)$ ，显然 $f$ 几乎处处有限，可知正负部函数 $f_+ , f_-$ 均几乎处处有限，则函数 $\lvert f\rvert$ 也几乎处处有限
+\item {\bf 线性性质} 
+
+对于可测集 $E$ 与函数 $f \in L(E)$
+\ITEMS
+\item 对 $\forall c \in\R$ 有
+\[
+\int_E c\cdot f = c\int_E f
+\]
+\item 对函数 $\forall g \in L(E)$ 有
+\[
+\int_E f + \int_E g = \int_E (f+g)
+\]
+\ITEME 
+\item {\bf 简单函数逼近} 
+
+对于可测集 $E$，若函数 $f \in L(E)$ ，则对于 $\forall \varepsilon > 0$ ，存在 $E$ 上可积的简单函数 $\varphi$ 满足
+\[
+\int_E \lvert f(x) - \varphi(x)\rvert dx < \varepsilon
+\]
+
+\item 对于可测集 $E$，若函数 $f \in L(E)$ ，则 $f$ 在 $E$ 上几乎处处有限。这是因为其正负部函数 $f_+ , f_-$ 在 $E$ 上均几乎处处有限，故函数 $\lvert f\rvert$ 也几乎处处有限。
 \ITEME
 
 
 \subsubsection{性质II}
 
 \ITEMS
-	\item {\bf 绝对连续性}
-	
-	设有可测集 $E$ 与函数 $\forall f\in L(E)$ ，对于 $\forall \epsilon > 0$ ， $\exists \delta > 0$ 使得 
-	\[
-		\left\lvert\int_{E_\delta} f(x) dx \right\rvert  \le \int_{E_\delta} \lvert f(x)\rvert dx < \varepsilon
-	\]
-	其中 $E_\delta$ 为 $E$ 的任意可测子集，满足 $m(E_\delta) < \delta$
-	
-	\pro 
-	
-	不妨设 $f(x) > 0$ ，因为有简单函数逼近性质，对于 $\forall \varepsilon > 0$ ，存在 $E$ 上的非负可测简单函数 $\varphi$ 满足
-	\[
-		\int_E \lvert f(x) -\varphi(x)\rvert dx < \frac\varepsilon2
-	\]
-	对于简单函数 $\varphi$ ，设 $M$ 为简单可测函数在 $E_\delta$ 上的最大值
-	\[
-		\int_E \varphi (x) dx = \sum_{i=1}^\infty a_i m(E_i \cap E_\delta) \le M m(E_\delta) \le M\delta
-	\]
-	令 $\delta < \frac{\varepsilon}{2M}$ 则
-	\[
-		\int_E \varphi (x) dx < \frac{\varepsilon}{2}
-	\]
-	考虑积分 $\int_{E_\delta} f(x) dx$ 有
-	\[
-		\int_{E_\delta} \lvert f \rvert = \int_{E_\delta} f \le \int_{E_\delta} (f - \varphi)  \ +\int_{E_\delta} \varphi < \varepsilon
-	\]
-	
-	\item {\bf 积分区域的可数可加性}
-	
-	若 $\{E_k\}_{k=1}^\infty$ 是两两无交的可测函数列，$E = \bigcup\limits_{k=1}^\infty E_k$ ，$f$ 是 $E$ 上的可积函数，则
-	\[
-		\int_E f = \int_{\bigcup\limits_{k=1}^\infty E_k} f = \sum\limits_{k=1}^\infty \int_{E_k} f
-	\]
-	
-	\item $L(\R^n)$ {\bf 上积分的平移不变性}
-	 
-	对于 $\forall f \in L(\R^n)$ ，则对 $\forall y \in \R^n$ 有
-	\[
-		\int_{\R^n} f(x+y) dx = \int_{\R^n} f(x) dx
-	\]
-	
-	\pro 使用自举法（bootstraping）证明
-	
-	\ITEMS
-		\item 先考虑最好分析的特征函数 $\chi_{E}$ ，其中 $E \subseteq \R^n$ 可测，显然成立
-		\[
-			\int_{\R^n} \chi_{E} (x+y) dx = m(E) = \int_{\R^n} \chi_{E}(x) dx
-		\] 
-		
-		\item 考虑非负可测简单函数 $f$ ，根据其线性运算性质，显然平移不变性成立
-		
-		\item 考虑非负可测函数 $f$ ，有简单函数列 $\varphi_k$ 满足
-		\[
-			f = \lim_{k\to\infty}\varphi_k
-		\]
-		根据列维定理有
-		\[
-			\begin{aligned}
-				\int_{\R^n} f (x) &= \lim_{k\to\infty} \int_{\R^n} \varphi_k (x)\\
-				\int_{\R^n} f (x+y) &= \lim_{k\to\infty} \int_{\R^n} \varphi_k (x+y)
-			\end{aligned}
-		\]
-		根据简单函数的平移不变性，平移不变性显然成立
-		
-		\item 考虑一般可测函数 $f$ ，都有 $f = f_+ - f_-$ 由于非负可测函数满足该条件，所以其正负部均满足平移不变性，所以一般可测函数平移不变性成立
-		
-		
-	\ITEME
+\item {\bf 绝对连续性}
+
+对于可测集 $E$，若函数 $f \in L(E)$ ，则对于 $\forall \epsilon > 0$ ， $\exists \delta > 0$ 使得 
+\[
+\left\lvert\int_{E_\delta} f(x) dx \right\rvert  \le \int_{E_\delta} \lvert f(x)\rvert dx < \varepsilon
+\]
+其中 $E_\delta$ 为 $E$ 的任意可测子集，满足 $m(E_\delta) < \delta$
+
+\pro 
+
+不妨设 $f(x) > 0$。由于 $f \in L(E)$ ，故对于 $\forall \varepsilon > 0$ ，存在 $E$ 上的非负可测简单函数 $\varphi(x)=\sum\limits_{i=1}^{m}a_i\chi_{E_i}$ 满足 $\varphi(x)\le f(x)$ 且
+\[
+\int_E ( f(x) -\varphi(x))dx < \frac\varepsilon2
+\]
+记 $M$ 为 $\{a_i\}_{i=1}^{m}$ 中的最大值，$\delta < \frac{\varepsilon}{2M}$，$E_\delta$ 为 $E$ 的任意可测子集满足 $m(E_\delta) < \delta$，则
+\[
+\int_{E_{\delta}} f(x) dx =\int_{E_{\delta}}( f(x) -\varphi(x))dx + \int_{E_{\delta}} \varphi(x) dx \le \int_E( f(x) -\varphi(x))dx+ M m(E_\delta)< \frac\varepsilon2+\frac\varepsilon2=\varepsilon
+\]
+
+\item {\bf 积分区域的可数可加性}
+
+设 $\{E_k\}_{k=1}^\infty$ 是两两无交的可测集列，记 $E = \bigcup\limits_{k=1}^\infty E_k$ ，设 $f$ 是 $E$ 上的可积函数，则
+\[
+\int_E f = \int_{\bigcup\limits_{k=1}^\infty E_k} f = \sum\limits_{k=1}^\infty \int_{E_k} f
+\]
+
+\item $L(\R^n)$ {\bf 上积分的平移不变性}
+
+对于 $\forall f \in L(\R^n)$ ，则对 $\forall y \in \R^n$ 有
+\[
+\int_{\R^n} f(x+y) \mathrm{d}x  = \int_{\R^n} f(x) \mathrm{d}x 
+\]
+
+\pro 使用自举法（Bootstraping）证明
+
+\ITEMS
+\item 先考虑最好分析的特征函数 $\chi_{E}$ ，其中 $E \subseteq \R^n$ 可测，显然成立
+\[
+\int_{\R^n} \chi_{E} (x+y) \mathrm{d}x  = m(E) = \int_{\R^n} \chi_{E}(x) \mathrm{d}x 
+\] 
+
+\item 考虑非负可测简单函数 $f$ ，根据积分的线性性质，显然平移不变性成立
+
+\item 考虑非负可测函数 $f$ ，由逼近定理，存在非负可测简单函数渐升列 $\varphi_k$ 满足
+\[
+f = \lim_{k\to\infty}\varphi_k
+\]
+根据列维定理有
+\[
+\begin{aligned}
+	\int_{\R^n} f (x)\mathrm{d}x &= \lim_{k\to\infty} \int_{\R^n} \varphi_k (x)\mathrm{d}x \\
+	\int_{\R^n} f (x+y)\mathrm{d}x  &= \lim_{k\to\infty} \int_{\R^n} \varphi_k (x+y)\mathrm{d}x 
+\end{aligned}
+\]
+根据 $\R^n$ 上简单函数积分的平移不变性，所以有 $\int_{\R^n} f (x)\mathrm{d}x  =\int_{\R^n} f (x+y)\mathrm{d}x $。
+
+\item 最后考虑一般可测函数 $f$：由于 $f = f_+ - f_-$ ，再根据 $\R^n$ 上非负可测函数积分的平移不变性，易知 $\R^n$ 上一般可测函数的积分亦具有平移不变性。
+
+
+\ITEME
 \ITEME
 
 \EXP
 
-对于 $f\in L((a,b])$ 了，若对 $\forall c \in (a,b]$ 都有
-\[
-	\int_{(a,c]}f = 0\ \Rightarrow\ f(x) = 0 \nae ,x\in(a,b]
-\]
+设 $f\in L([a,b])$。若对 $\forall c \in [a,b]$ 都有 $\int_{[a,c]}f = 0$，则 $f(x) = 0 \nae ,x\in[a,b]$。\\
 
-\no {\bf 引理}
+\no {\bf 引理1}
 
-$\R^1$ 中的任意开集必为可数个形如 $(a,b)$ 这种开区间的并，开区间两两无交，其中 $a$ 可以是 $-\infty$ ， $b$ 可以是 $+\infty$ ，即
-\[
-U = \bigcup_{\alpha \in A} (a_\alpha, b_\alpha), \quad (a_\alpha, b_\alpha) \cap (a_\beta, b_\beta) = \varnothing \ (\alpha\ne\beta)
-\]
+$\R^1$ 中的任意非空开集必为可数个两两无交的开区间 $(a,b)$ 的并，这里 $a$ 可以是 $-\infty$ ，$b$ 可以是 $+\infty$。\\
+我们在课堂上图示过该引理的证明，此处证明略。\\
+
+\no {\bf 引理2}
+
+若 $f\in L(E)$ 且 $m(E)>0, f(x)>0, \forall x\in E$，则 $\int_Ef(x)\mathrm{d}x>0$。\\
+\pro 注意到 $E=\{x\in E: f(x)>0\}=\bigcup_{k\ge1}\{x\in E: f(x)>\frac1k\}$。由于 $m(E)>0$，故必存在 $k$，使得 $E_k: =\{x\in E: f(x)>\frac1k\}$ 具有正测度，从而
+$$\int_Ef(x)\mathrm{d}x\ge \int_{E_k}f(x)\mathrm{d}x\ge \int_{E_k}\frac 1k\mathrm{d}x=\frac1k m(E_k)>0$$
+
+下面我们来证明上述例题。\\
+
+\pro （反证法）
+设 $\{x\in [a,b]: f(x)\ne 0\}=\{x\in [a,b]: f(x)> 0\}\cup \{x\in [a,b]: f(x)< 0\}$ 的测度大于 $0$。不妨设 $E_+=\{x\in [a,b]: f(x)> 0\}$ 的测度大于 $0$ （为什么？），由勒贝格测度的内正则性知，必存在含于 $E_+$ 的闭集 $F$，其测度亦大于 $0$。注意到开集 $(a,b)\setminus F$ 必非空，否则 $\int_{[a,b]}f =\int_{E_+}f >0$，这与题设 $\int_{[a,b]}f =0$
+矛盾。由引理 1，存在包含于 $(a,b)$ 内的可数个两两无交的开区间 $(a_k,b_k)$，使得 $(a,b)\setminus F=\bigcup_{k\ge1}(a_k,b_k)$。\\
+我们同时还注意到 
+$$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \ge 1}\int_{(a_k,b_k)}f$$
+由引理 2，$\int_{F}f>0$。从而必存在某个 $\int_{(a_k,b_k)}f\ne 0$。另一方面，$0=\int_{[a,b_k]}f=\int_{[a,a_k]}f +\int_{(a_k,b_k)}f=0+\int_{(a_k,b_k)}f=\int_{(a_k,b_k)}f$，矛盾。
 
 \end{document}
-
-
 
 
 
