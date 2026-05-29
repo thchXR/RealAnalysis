@@ -2583,14 +2583,77 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 由引理 2，$\int_{F}f>0$。从而必存在某个 $\int_{(a_k,b_k)}f\ne 0$。另一方面，$0=\int_{[a,b_k]}f=\int_{[a,a_k]}f +\int_{(a_k,b_k)}f=0+\int_{(a_k,b_k)}f=\int_{(a_k,b_k)}f$，矛盾。
 
 
-\subsection{范数}
-\subsubsection{依范数收敛}
+\subsection{$L(E)$ 上的范数}
+
+范数是线性代数中向量范数在函数空间中的推广，我们定义在 $L^1(E)$ 上的范数 $\Vert\cdot\Vert$ 为
+\[
+\begin{aligned}
+	\Vert\cdot\Vert: L^1(E) &\to \R_{\ge0}\\
+	f\in L^1(E) &\mapsto \int_E |f| dx
+\end{aligned}
+\]
+我们可以通过范数定义函数 $f,g$ 间的距离如下
+\[
+	d(x,y) := \Vert f - g \Vert = \int_E |f-g| dx
+\]
+类似的，我们可以定义在 $L^p(E)$ 上的范数 $\Vert\cdot\Vert_p$ 为
+\[
+\begin{aligned}
+	\Vert\cdot\Vert_p: L^p(E) &\to \R_{\ge0}\\
+	f\in L^p(E) &\mapsto \left(\int_E |f|^p dx\right)^{1/p}
+\end{aligned}
+\]
+\subsubsection{范数的性质}
+\ITEMS
+	\item 正定性
+	\[
+		\forall f\in L(E) \Rightarrow \Vert f \Vert = \int_E |f| dx \ge 0
+	\]
+	\[
+		\Vert f \Vert = 0 \iff f = 0 \nae
+	\]
+	\item 齐次性
+	
+	对于 $\forall r \in \R, \forall f \in L(E)$ 有
+	\[
+		\Vert rf \Vert = \int_E |rf| dx = |r| \cdot \Vert f \Vert 
+	\]
+	\item 三角不等式
+	\[
+		\forall f,g\in L(E) \Rightarrow \Vert f + g\Vert \le \Vert f \Vert + \Vert g\Vert
+	\]
+\ITEME 
+
+\subsubsection{$L(E)$ 上的等价关系}
+
+对于函数 $f,g\in L(E)$ ，称两函数对等 $f\sim g$ ，如果 $f = g \nae$
+
+\subsubsection{依范数收敛（强收敛）}
+
 \subsection{勒贝格控制收敛定理}
+对于函数列 $\{f_k\in L(E)\}_{k-1}^\infty$ ，如果
+\ITEMS
+	\item 
+	
+\ITEME 
+
+\subsubsection{推论 1}
+
+\subsubsection{推论 2}
+
+\subsubsection{推论 3}
 
 \subsection{求导与积分的次序交换}
 
 \section{$L^1(E)$ 上的勒贝格积分}
 
+\subsubsection{定理 1}
+
+\subsubsection{定理 2}
+
+\subsubsection{定理 3}
+
+\subsubsection{定理 4}
 
 \section{勒贝格积分和黎曼积分的关系}
 
