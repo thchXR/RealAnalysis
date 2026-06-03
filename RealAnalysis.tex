@@ -2634,19 +2634,48 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	f_k \to f \; \text{on norm}\quad\mbox{或}\quad f_k \xrightarrow{\Vert\cdot\Vert} f
 \]
+如果
+\[
+	\lim_{k\to\infty} d(f_k,f) = 0 \iff \lim_{k\to\infty} \Vert f_k - f \Vert = 0 \iff \lim_{k\to\infty} \int_E \lvert f_k - f \rvert = 0
+\]
 
 \subsection{勒贝格控制收敛定理}
 对于函数列 $\{f_k\in L(E)\}_{k-1}^\infty$ ，如果
 \ITEMS
-	\item 
-	
+	\item 函数列 $f_k$ 在 $E$ 上几乎处处收敛于 $f$
+	\item 对于任意正整数 $k$ ，存在控制函数 $F(x)\in L(E)$ 满足
+	\[
+		\lvert f_k \rvert \le F
+	\]
 \ITEME 
+则
+\[
+	\lim_{k\to\infty} \int_E f_k = \int_E \lim_{k\to\infty} f_k  =\int_E f
+\]
+注：
+\[
+	\lim_{k\to\infty} \left(\int_E f_k + \int_E  f\right) = 0 \iff \lim_{k\to\infty} \int_E \left(f_k + f\right) = 0 \iff \lim_{k\to\infty} \left\lvert \int_E \left(f_k + f\right) \right\rvert = 0
+\]
+我们可以证明一个更强的结论
 
-\subsubsection{推论 1}
+因为
+\[
+	\left\lvert \int_E (f_k - f) \right\rvert \le \int_E \lvert f_k - f\rvert
+\]
+且
+\[
+	\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0
+\]
+所以
+\[
+	\lim_{k\to\infty}\left\lvert \int_E (f_k - f) \right\rvert = 0
+\]
+
+\subsubsection{推论 1  有界收敛定理}
 
 \subsubsection{推论 2}
 
-\subsubsection{推论 3}
+\subsubsection{推论 3  依测度控制收敛定理}
 
 \subsection{求导与积分的次序交换}
 
