@@ -2670,14 +2670,96 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	\lim_{k\to\infty}\left\lvert \int_E (f_k - f) \right\rvert = 0
 \]
+即几乎处处收敛某一函数且有控制函数的函数列，则其也强收敛于该函数
+
+\EXP 证明：
+\[
+	\forall k , \, \lvert f_k \rvert \le F(x) \Rightarrow \lim_{k\to\infty} \lvert f_k \rvert\le F(x) \Rightarrow \lvert\lim_{k\to\infty} f_k\rvert\le F(x) \Rightarrow \lvert f \rvert\ \mbox{可积}\ f\ \mbox{可积}
+\]
+
+令 $\{ g_k = \lvert f_k - f \rvert \}_{k=1}^\infty$ ，有
+\[
+	\begin{cases}
+		\lim\limits_{k\to\infty} g_k = 0  \nae x\in E\\
+		0\le g_k \le 2F
+	\end{cases}
+\]
+考虑积分 $\int_E \lim\limits_{k\to\infty} (2F - g_k)$ ，根据法图引理
+\[
+	\int_E \varliminf\limits_{k\to\infty} (2F - g_k) \le \varliminf\limits_{k\to\infty} \int_E  (2F - g_k)
+\]
+有
+\[
+	2\int_E F \le \varliminf_{k\to\infty} (2\int_E F  - \int_E g_k)
+\]
+因为 $\varliminf\{-a_k\} = - \varlimsup\{a_k\}$ 有
+\[
+\begin{aligned}
+	2\int_E F &\le 2\int_E F - \varlimsup_{k\to\infty} \int_E g_k \\
+	0 &\ge \varlimsup_{k\to\infty} \int_E g_k
+\end{aligned}
+\]
+显然 $\varlimsup\limits_{k\to\infty}\int_E g_k \ge 0$ ，则
+\[
+	\begin{aligned}
+		\varlimsup\limits_{k\to\infty}\int_E g_k = 0\\
+		\varlimsup\limits_{k\to\infty}\int_E \lvert f_k - f \rvert = 0
+	\end{aligned}
+\]
 
 \subsubsection{推论 1  有界收敛定理}
+\ITEMS
+	\item $\{f_k\}_{k>1}$ 是 $E$ 上的可测函数列，且 $m(E) < +\infty$
+	\item $\exists M > 0$ 使得 $\lvert f_k \rvert \le M , \forall k$
+	\item $f_k \to f \nae x\in E$
+\ITEME 
+则
+\[
+	\lim_{k\to\infty} \int_E f_k =\int_E \lim_{k\to\infty} f_k = \int_E f
+\]
 
 \subsubsection{推论 2}
 
+设 $\{f_k\}_{k\ge 1}$ 为可测集 $E$ 上的非负可测递减函数列
+\ITEMS
+	\item $f_1 \ge f_2 \ge \cdots \ge f_k \ge \cdots$
+	\item $f_1$ 在 $E$ 上可积，即 $\int_E \lim_{k\to\infty} \lvert f_k\rvert  < +\infty$ 
+\ITEME 
+则
+\[
+	\lim_{k\to\infty}\int_E f_k  = \int_E \lim_{k\to\infty} f_k 
+\]
+
 \subsubsection{推论 3  依测度控制收敛定理}
 
+设 $\{f_k\}_{k\ge 1}$ 为可测集 $E$ 上的可测函数列
+\ITEMS
+	\item $f_k \xrightarrow{m} f$
+	\item 对于 $\forall k$ 有 $\lvert f_k \rvert \le F$ 和 $\int_E F < +\infty$
+\ITEME 
+则
+\[
+	f_k \to f \; \text{on norm}
+\]
+
+\EXP 逐项积分 $\sum\limits_{k=1}^\infty f_k$ ，其中 $f_k$ 是可测集 $E$ 上的可测函数，若 $\sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty$ ，则
+\[
+	\int_E \sum\limits_{k=1}^\infty f_k = \sum\limits_{k=1}^\infty \int_E f_k 
+\]
+因为
+\[
+\int_E \sum\limits_{k=1}^\infty \lvert f_k\rvert = \sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty
+\]
+其中 $\int_E \sum\limits_{k=1}^\infty \lvert f_k\rvert$ 为控制函数，对 $\forall n$ 有
+\[
+	\left\lvert \sum\limits_{k=1}^\infty f_k \right\rvert\le \sum\limits_{k=1}^\infty \lvert f_k\rvert
+\]
+
 \subsection{求导与积分的次序交换}
+
+\ITEMS
+	\item
+\ITEME
 
 \section{$L^1(E)$ 上的勒贝格积分}
 
@@ -2687,7 +2769,7 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \subsubsection{定理 3}
 
-\subsubsection{定理 4}
+\subsubsection{定理 4  $L(\R^n)$ 上的平均连续性}
 
 \section{勒贝格积分和黎曼积分的关系}
 
