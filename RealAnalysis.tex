@@ -2739,7 +2739,7 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \ITEME 
 则
 \[
-	f_k \to f \; \text{on norm}
+	f_k \xrightarrow{\Vert\cdot\Vert} f
 \]
 
 \EXP 逐项积分 $\sum\limits_{k=1}^\infty f_k$ ，其中 $f_k$ 是可测集 $E$ 上的可测函数，若 $\sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty$ ，则
@@ -2758,23 +2758,140 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \subsection{求导与积分的次序交换}
 
 \ITEMS
-	\item
+	\item 集合 $E$ 是 $\R^n$ 中的可测集，若函数 $f(x \in \R^n,y \in \R)$ 是 $E \times [a,b]$ 上的可测函数
+	\item 对于任意给定的 $y \in [a,b]$ 有， $f(x,y)$ 是关于 $x$ 的在 $E$ 上可积的函数
+	\item 对于任意给定的 $x \in E$ 有， $f(x,y)$ 是关于 $y$ 的在 $[a,b]$ 上可微的函数，且存在 $E$ 上的可积函数 $F(x)$ 满足
+	\[
+		\left\lvert \frac{d}{dy} f(x,y) \right\rvert \le F(x)
+	\]
 \ITEME
+则
+\[
+	\frac{d}{dy} \int_E f(x,y) dx = \int_E \frac{d}{dy} f(x,y) dx
+\]
 
+\pro 
+
+根据导函数的定义
+\[
+	\frac{d}{dy} f(x,y) = \lim_{k\to\infty} \frac{f(x,y+h_k)-f(x,y)}{h_k}
+\]
+取 $\{h_k\}_{k = 1}^\infty$ 使得 $\lim\limits_{h\to\infty} h_k = 0$，对 $\forall k$ 根据拉格朗日中值定理有 $t\in(y,y+h_k)$ 满足
+\[
+	\left\lvert \frac{f(x,y+h_k) - f(x,y)}{h_k} \right\rvert = \left\lvert \frac{f_y(x,t)\cdot h_k}{h_k} \right\rvert = \lvert f_y(x,t) \rvert \le F(x)
+\]
+根据勒贝格控制收敛定理
+\[
+\begin{aligned}
+	\int_R \frac{d}{dy} f(x,y) dx &= \int_E \lim_{k\to\infty}\frac{f(x,y+h_k) - f(x,y)}{h_k}dx\\
+	&= \lim_{k\to\infty} \int_E \frac{f(x,y+h_k) - f(x,y)}{h_k}dx\\
+	&= \lim_{k\to\infty}  \frac{\int_E f(x,y+h_k) dx - \int_E f(x,y) dx}{h_k}\\
+	&= \frac{d}{dy} \int_E f(x,y) dx
+\end{aligned}
+\]
 \section{$L^1(E)$ 上的勒贝格积分}
 
 \subsubsection{定理 1}
 
+设有可测集 $E$ 与 $\forall f\in L(E)$ ，对于 $\forall \varepsilon > 0$ 存在 $E$ 上可积的简单函数 $\varphi$ 满足
+\[
+	\int_E \left\lvert f-\varphi \right\rvert  < \varepsilon
+\]
+
+注：取 $\varepsilon_k =\frac1k$ 其中 $k = 1,2,\cdots$ 有
+\[
+	\int_E |f - \varphi_k| < \frac1k
+\]
+令 $k\to\infty$ 可得
+\[
+	\lim_{k\to\infty}\int_E |f - \varphi_k| < 0
+\]
+即对 $\forall f\in L(E)$ 存在 $\{\varphi_k \in L(E)\}_{k=1}^\infty$ 使得
+\[
+	\varphi_k \xrightarrow{\Vert\cdot\Vert} f
+\]
+
 \subsubsection{定理 2}
+
+对可测集 $E$ 与 $\forall f\in L(E)$ ，存在具有紧支集的连续函数列 $\{\varphi_k\in L(E)\}_{k=1}^\infty$ 使得
+\[
+	\varphi_k \xrightarrow{\Vert\cdot\Vert} f
+\]
 
 \subsubsection{定理 3}
 
+对可测集 $E$ 与 $\forall f\in L(E)$ ，存在具有紧支集的阶梯函数列 $\{\varphi_k\in L(E)\}_{k=1}^\infty$ 使得
+\[
+	\varphi_k \xrightarrow{\Vert\cdot\Vert} f
+\]
+
 \subsubsection{定理 4  $L(\R^n)$ 上的平均连续性}
+
+对可测集 $E$ 与 $\forall f\in L(E)$ 都有
+\[
+	\begin{aligned}
+		\lim_{h\to0} \int_{\R^n} \lvert f(x+h) - f(x) \rvert dx &= 0\\
+		\lim_{h\to0} d( f(x+h) , f(x) ) &= 0
+	\end{aligned}
+\]
 
 \section{勒贝格积分和黎曼积分的关系}
 
+\subsection{通常的黎曼积分}
+
+我们先通常的黎曼积分 $\int_a^b f(x) dx$ ，即 $a,b$ 有限，$f(x)$ 在 $[a,b]$ 上有界
+
+\subsubsection{定理 1}
+
+设 $f$ 是在 $[a,b]$ 上的有界函数， $f$ 是在 $[a,b]$ 上黎曼可积的充要条件是 $f$ 在 $[a,b]$ 区间上几乎处处连续（不连续点为零测集）
+
+\subsubsection{定理 2}
+
+若一函数 $f$ 在 $[a,b]$ 上黎曼可积，则其必然也勒贝格可积，且
+\[
+	\int_a^b f(x) dx = \int_{[a,b]} f(x) dx
+\]
+
+\subsection{反常黎曼积分}
+
+\subsubsection{定理 1}
+设有
+\ITEMS 
+	\item 集合列 $\{E_k\}_{k\ge 1}$ 为可测集的渐升列
+	\item 集合 $E = \lim\limits_{k\to\infty} E_k = \bigcup\limits_{k\ge 1} E_k$
+	\item 设 $f$ 是 $E$ 上的可测函数
+\ITEME
+如果以下条件有一个成立，则
+\[
+	\int_E f = \lim_{k\to\infty} \int_{E_k} f
+\]
+\ITEMS 
+	\item 函数 $f$ 在 $E$ 上非负，即
+	\[
+		f \ge 0 ,\;x\in E
+	\]
+	\item 函数 $f$ 在 $E$ 上勒贝格可积，即
+	\[
+		\int_E |f| < +\infty
+	\]
+\ITEME
+
+\pro 
+
+先证明条件 1 
+
+\subsubsection{定理 2}
 
 \end{document}
+
+
+
+
+
+
+
+
+
 
 
 
