@@ -2878,9 +2878,169 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \pro 
 
-先证明条件 1 
+先证明条件 1 ：
 
+显然
+\[
+	\lim_{k\to\infty} \int_{E_k} f = \lim_{k\to\infty} \int_{E} f \chi_{E_k}
+\]
+由条件 1 可知 $\{f \chi_{E_k}\}$ 是 $E$ 上的非负可测函数渐升列，由列维定理可知
+\[
+	\lim_{k\to\infty} \int_{E} f \chi_{E_k} = \int_{E} \lim_{k\to\infty} f \chi_{E_k} = \int_{E} f \chi_{E} = \int_{E} f
+\]
+
+下面证明条件 2 ：
+
+考虑 $E$ 上的函数列 $\{f \chi_{E_k}\}_{k\ge1}$ ，在 $E$ 上有
+\ITEMS
+	\item $f \chi_{E_k} \to f$
+	\item $|f \chi_{E_k}| \le |f|$
+\ITEME 
+因为条件 2 为 $f$ 可积，有勒贝格控制收敛定理有
+\[
+	\lim_{k\to\infty} \int_{E} f \chi_{E_k} = \int_{E} \lim_{k\to\infty} f \chi_{E_k} = \int_E f
+\]
 \subsubsection{定理 2}
+
+对于反常黎曼积分（无穷积分或瑕积分） $\int_a^b f(x) dx$ ，则
+\ITEMS
+	\item 对于区间 $[a,b]$ ，其中 $a,b$ 可取无穷
+	\[
+		\int_a^b \lvert f(x)\rvert dx = \int_{[a,b]} \lvert f\rvert
+	\]
+	\item 若 $\int_{[a,b]} \lvert f\rvert < + \infty$ 则
+	\[
+		\int_a^b f(x)dx = \int_{[a,b]} f
+	\]
+	\item 若 $\int_{[a,b]} \lvert f\rvert = + \infty$ 则
+	\[
+		f\notin L([a,b])
+	\]
+\ITEME 
+
+\pro 
+
+\ITEMS
+	\item 先考虑无穷积分（第一类反常积分）的情况
+	根据无穷积分的定义有
+	\[
+		\int_a^{+\infty}\lvert f(x) \rvert dx = \lim_{A \to \infty}\int_a^A \lvert f(x)\rvert dx
+	\]
+	令 $A = a + n$ 
+	\[
+		\lim_{A \to \infty}\int_a^A \lvert f(x) \rvert dx = \lim_{n \to \infty}\int_a^{a+n} \lvert f(x) \rvert dx
+	\]
+	其中 $\int_a^{a+n} f(x) dx$ 是一般的黎曼积分，我们可以将其变为勒贝格积分
+	\[
+	\begin{aligned}
+		&\Rightarrow \lim_{n \to \infty}\int_{[a,a+n]} \lvert f \rvert\\
+		&= \int_{[a,\infty)} \lvert f \rvert
+	\end{aligned}
+	\]
+	
+	接下来考虑瑕积分（第二类反常积分）的情况
+	设 $b$ 为瑕点，根据瑕积分的定义有
+	\[
+	\begin{aligned}
+		\int_a^{b} \lvert f(x) \rvert dx &= \lim_{\varepsilon \to 0}\int_a^{b-\varepsilon} \lvert f(x) \rvert dx \\
+		&= \lim_{n\to\infty} \int_a^{b-\frac1n} \lvert f(x) \rvert dx\\
+		&= \lim_{n\to\infty} \int_{\left[a,b-\frac1n\right]} \lvert f \rvert \\
+		&= \int_{\left[a,b\right]} \lvert f \rvert 
+	\end{aligned}
+	\]
+	
+	\item 考虑无穷积分的情况
+	\[
+		\lim_{n \to \infty}\int_{[a,a+n]} f = \lim_{n \to \infty}\int_{[a,+\infty)} f \chi_{[a,a+n]}
+	\]
+	考虑如下函数列 $\{f \chi_{[a,a+n]}\}_{n\ge 1}$ 有
+	\ITEMS
+		\item $\lim\limits_{n\to\infty}f \chi_{[a,a+n]} = f \chi_{[a,+\infty)} = f$
+		\item $\lvert f \chi_{[a,a+n]} \rvert \le \lvert f \chi_{[a,+\infty)} \rvert = \lvert f \rvert$ 
+	\ITEME 
+	由条件 $\int_{[a,b]} \lvert f\rvert < + \infty$ ，根据勒贝格控制收敛定理
+	\[
+		\lim_{n \to \infty}\int_{[a,+\infty)} f \chi_{[a,a+n]} =  \int_{[a,+\infty)} \lim_{n \to \infty} f \chi_{[a,a+n]} = \int_{[a,+\infty)} f
+	\]
+
+	
+\ITEME
+
+\EXP 考虑如下反常积分
+\[
+	\int_0^{+\infty} \frac{\sin x}{x} dx
+\]
+因为
+\[
+	\int_0^{+\infty} \left\lvert\frac{\sin x}{x}\right\rvert dx = +\infty
+\]
+由可数可加性可得
+\[
+	\int_0^{+\infty} \frac{\left\lvert\sin x\right\rvert}{x} dx = \sum_{k=1}^\infty \int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx
+\]
+对于
+\[
+	\int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx \ge \frac{1}{k\pi}\int_{k\pi}^{(k-1)\pi} \lvert\sin x\rvert dx
+\]
+所以
+\[
+	\sum_{k=1}^{\infty} \int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx \ge 2 \sum_{k=1}^{\infty} \frac{1}{k\pi} = \frac{2}{\pi} \sum_{k=1}^{\infty}\frac{1}{k} = +\infty
+\]
+所以 $\frac{\sin x}{x}$ 在 $[0,+\infty)$ 上不是勒贝格可积的，但却是黎曼可积的，黎曼积分为 $\frac{\pi}{2}$
+\bigskip
+	
+\EXP 考虑如下反常积分的勒贝格积分
+\[
+	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx
+\]
+该反常积分既是第一类也是第二类反常积分，注意到
+\[
+\begin{aligned}
+	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx &= \int_{(0,1)\cup(1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
+	&= \int_{(0,1)} \frac{\log x}{x^2 - 1} dx + \int_{(1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
+	&= \int_{[0,1]} \frac{\log x}{x^2 - 1} dx + \int_{[1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
+	&= \int_0^1 \frac{\log x}{x^2 - 1} dx + \int_1^{+\infty} \frac{\log x}{x^2 - 1} dx
+\end{aligned}
+\]
+对于 $\int_1^{+\infty} \frac{\log x}{x^2 - 1} dx$ ，令 $y = \frac1x$ 可得
+\[
+	\int_1^{+\infty} \frac{\log x}{x^2 - 1} dx = \int_0^{1} \frac{\log y}{y^2 - 1} dx
+\]
+即
+\[
+	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx = 2 \int_0^1 \frac{\log x}{x^2 - 1} dx 
+\]
+注意到 $\frac{1}{1-x^2} = \sum\limits_{n=0}^\infty x^{2n}$
+\[
+	\begin{aligned}
+		&\Rightarrow 2\int_{(0,1)} (-\log x) \sum_{n=0}^\infty x^{2n}\, dx\\
+		&= 2\int_{[0,1]} \sum_{n=0}^{\infty} (- x^{2n} \log x)\, dx\\
+		&= -2 \sum_{n=0}^{\infty} \int_0^1 x^{2n} \log x\, dx\\
+	\end{aligned}
+\]
+使用分部积分法
+\[
+	\begin{aligned}
+		&= -2 \sum_{n=0}^{\infty} \int_0^1  \log x\, d\left(\frac{x^{2n+1}}{2n+1} \right)\\
+		&= \left[\log x \frac{x^{2n+1}}{2n+1}\right]_0^1 - \int_0^1 \frac{x^{2n+1}}{2n+1} \frac{d(\log x)}{\frac1x dx}\\
+		&= 2\sum_{n=0}^\infty \frac{1}{(2n+1)^2}
+	\end{aligned}
+\]
+著名的巴塞尔问题告诉我们所有平方数的导数和为 $\frac{\pi^2}{6}$ ，即
+\[
+	\sum _{n=1}^{\infty }\frac{1}{n^{2}} = \frac{\pi^2}{6}
+\]
+显然	
+\[
+	\sum _{n=1}^{\infty }\frac{1}{n^{2}} = \sum_{n=0}^\infty \frac{1}{(2n+1)^2} + \sum_{n=1}^\infty \frac{1}{4n^2}
+\]
+因为 $\sum_{n=1}^\infty\limits\frac{1}{4n^2} = \frac{1}{4}\sum_{n=1}^\infty\limits\frac{1}{n^2} = \frac{1}{4}\cdot \frac{\pi^2}{6}$ 可得	
+\[
+	2\sum_{n=0}^\infty \frac{1}{(2n+1)^2} = \frac{\pi^2}{4}
+\]
+
+
+
 
 \end{document}
 
