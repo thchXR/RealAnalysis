@@ -2585,25 +2585,21 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \subsection{$L(E)$ 上的范数}
 
-范数是线性代数中向量范数在函数空间中的推广，我们定义在 $L^1(E)$ 上的范数 $\Vert\cdot\Vert$ 为
+回顾下，$L(E)$ 或 $L^1(E)$ 表示可测集 $E$ 上所有可积函数的集合。
+
+对于函数 $f,g\in L(E)$ ，称两函数对等，记作 $f\sim g$ ，如果 $f = g \nae$
+
+对于 $L(E)$ 中对等的函数，我们不做区分。也就是说，我们对集合 $L(E)$ 在函数对等这一等价关系下，进行等价类的划分，其所有等价类构成的集合，为符号的简便，仍记作 $L(E)$ 
+
+我们定义 $L^1(E)$ 上的映射 $\Vert\cdot\Vert$ 如下：
 \[
 \begin{aligned}
 	\Vert\cdot\Vert: L^1(E) &\to \R_{\ge0}\\
 	f\in L^1(E) &\mapsto \int_E |f| dx
 \end{aligned}
 \]
-我们可以通过范数定义函数 $f,g$ 间的距离如下
-\[
-	d(x,y) := \Vert f - g \Vert = \int_E |f-g| dx
-\]
-类似的，我们可以定义在 $L^p(E)$ 上的范数 $\Vert\cdot\Vert_p$ 为
-\[
-\begin{aligned}
-	\Vert\cdot\Vert_p: L^p(E) &\to \R_{\ge0}\\
-	f\in L^p(E) &\mapsto \left(\int_E |f|^p dx\right)^{1/p}
-\end{aligned}
-\]
-\subsubsection{范数的性质}
+
+不难验证，映射 $\Vert\cdot\Vert$ 具有下述性质：
 \ITEMS
 	\item 正定性
 	\[
@@ -2623,61 +2619,68 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 		\forall f,g\in L(E) \Rightarrow \Vert f + g\Vert \le \Vert f \Vert + \Vert g\Vert
 	\]
 \ITEME 
-
-\subsubsection{$L(E)$ 上的等价关系}
-
-对于函数 $f,g\in L(E)$ ，称两函数对等 $f\sim g$ ，如果 $f = g \nae$
+由此可见，$L^1(E)$ 是线性空间，$\Vert\cdot\Vert$ 是 $L^1(E)$ 上的范。从而我们可以通过范数定义 $L^1(E)$ 上的距离函数如下：对任意 $f,g \in L(E)$，定义
+\[
+d(f,g) := \Vert f - g \Vert = \int_E |f-g| dx
+\]
 
 \subsubsection{依范数收敛（强收敛）}
 
-对于 $\{f_k \in L(E)\}_{k=1}^\infty$ ， $f(x)\in L(E)$ ，我们称函数列 $f_k$ 依范数收敛于 $f$ ，记作
+对于 $\{f_k \in L(E)\}_{k=1}^\infty$ ， $f(x)\in L(E)$ ，我们称函数列 $f_k$ 依范数收敛（亦称强收敛）于 $f$ ，记作
 \[
-	f_k \to f \; \text{on norm}\quad\mbox{或}\quad f_k \xrightarrow{\Vert\cdot\Vert} f
+	f_k \to f \; \text{in norm}\quad\mbox{或}\quad f_k \xrightarrow{\Vert\cdot\Vert} f
 \]
 如果
 \[
 	\lim_{k\to\infty} d(f_k,f) = 0 \iff \lim_{k\to\infty} \Vert f_k - f \Vert = 0 \iff \lim_{k\to\infty} \int_E \lvert f_k - f \rvert = 0
 \]
 
+{\bf 注} 类似地，我们可以定义 $L^p(E)$ 上的范数 $\Vert\cdot\Vert_p$ 如下：
+\[
+\begin{aligned}
+	\Vert\cdot\Vert_p: L^p(E) &\to \R_{\ge0}\\
+	f\in L^p(E) &\mapsto \left(\int_E |f|^p dx\right)^{1/p}
+\end{aligned}
+\]
+
 \subsection{勒贝格控制收敛定理}
-对于函数列 $\{f_k\in L(E)\}_{k-1}^\infty$ ，如果
+设 $E$ 是 $\R^n$ 中可测集，$\{f_k\}_{k=1}^\infty$ 是 $E$ 上可测函数列，$f$ 是 $E$ 上的广义实值函数。若
 \ITEMS
 	\item 函数列 $f_k$ 在 $E$ 上几乎处处收敛于 $f$
-	\item 对于任意正整数 $k$ ，存在控制函数 $F(x)\in L(E)$ 满足
+	\item 存在函数 $F(x)\in L(E)$，使得对于任意正整数 $k$ ，都有
 	\[
 		\lvert f_k \rvert \le F
 	\]
 \ITEME 
 则
 \[
-	\lim_{k\to\infty} \int_E f_k = \int_E \lim_{k\to\infty} f_k  =\int_E f
+	\int_E f=\int_E \lim_{k\to\infty} f_k=\lim_{k\to\infty} \int_E f_k
 \]
-注：
+\pro 首先指出，我们通常称上述 $F(x)$ 为控制函数。\\
+注意到
+\ITEMS
+	\item 
 \[
-	\lim_{k\to\infty} \left(\int_E f_k + \int_E  f\right) = 0 \iff \lim_{k\to\infty} \int_E \left(f_k + f\right) = 0 \iff \lim_{k\to\infty} \left\lvert \int_E \left(f_k + f\right) \right\rvert = 0
+	\int_E f=\lim_{k\to\infty} \int_E f_k\iff \lim_{k\to\infty} \left(\int_E f_k - \int_E  f\right) = 0 \iff \lim_{k\to\infty} \int_E \left(f_k - f\right) = 0 \iff \lim_{k\to\infty} \left\lvert \int_E \left(f_k - f\right) \right\rvert = 0
 \]
-我们可以证明一个更强的结论
-
-因为
+	\item
 \[
 	\left\lvert \int_E (f_k - f) \right\rvert \le \int_E \lvert f_k - f\rvert
 \]
-且
+\ITEME
+我们将证明一个更强的结论：
 \[
-	\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0
+	\varlimsup_{k\to\infty}\int_E \lvert f_k - f\rvert = 0
 \]
-所以
+由此易知： 
+$$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$ 
+此更强版本的勒贝格控制收敛定理表明：可测集上具有控制函数的可测函数列，如果几乎处处收敛于某函数，则该函数列在 $L^1$ 中依范数收敛于同一函数。即：几乎处处收敛 $+$ 控制 $\Rightarrow$ $L^1$ 中依范数收敛。\\
+不难看出
 \[
-	\lim_{k\to\infty}\left\lvert \int_E (f_k - f) \right\rvert = 0
-\]
-即几乎处处收敛某一函数且有控制函数的函数列，则其也强收敛于该函数
-
-\EXP 证明：
-\[
-	\forall k , \, \lvert f_k \rvert \le F(x) \Rightarrow \lim_{k\to\infty} \lvert f_k \rvert\le F(x) \Rightarrow \lvert\lim_{k\to\infty} f_k\rvert\le F(x) \Rightarrow \lvert f \rvert\ \mbox{可积}\ f\ \mbox{可积}
+	\forall k , \, \lvert f_k \rvert \le F(x) \Rightarrow \lim_{k\to\infty} \lvert f_k \rvert\le F(x) \Rightarrow \lvert\lim_{k\to\infty} f_k=f\rvert\le F(x) \Rightarrow \lvert f \rvert\ \mbox{可积}\ \Rightarrow f\ \mbox{可积}
 \]
 
-令 $\{ g_k = \lvert f_k - f \rvert \}_{k=1}^\infty$ ，有
+令 $\{ g_k = \lvert f_k - f \rvert \}_{k=1}^\infty$ ，显然
 \[
 	\begin{cases}
 		\lim\limits_{k\to\infty} g_k = 0  \nae x\in E\\
@@ -2688,18 +2691,18 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	\int_E \varliminf\limits_{k\to\infty} (2F - g_k) \le \varliminf\limits_{k\to\infty} \int_E  (2F - g_k)
 \]
-有
+从而
 \[
 	2\int_E F \le \varliminf_{k\to\infty} (2\int_E F  - \int_E g_k)
 \]
-因为 $\varliminf\{-a_k\} = - \varlimsup\{a_k\}$ 有
+因为 $\varliminf\{-a_k\} = - \varlimsup\{a_k\}$，于是
 \[
 \begin{aligned}
 	2\int_E F &\le 2\int_E F - \varlimsup_{k\to\infty} \int_E g_k \\
 	0 &\ge \varlimsup_{k\to\infty} \int_E g_k
 \end{aligned}
 \]
-显然 $\varlimsup\limits_{k\to\infty}\int_E g_k \ge 0$ ，则
+显然 $\varlimsup\limits_{k\to\infty}\int_E g_k \ge 0$ ，从而
 \[
 	\begin{aligned}
 		\varlimsup\limits_{k\to\infty}\int_E g_k = 0\\
@@ -2718,12 +2721,12 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 	\lim_{k\to\infty} \int_E f_k =\int_E \lim_{k\to\infty} f_k = \int_E f
 \]
 
-\subsubsection{推论 2}
+\subsubsection{推论 2 非负可测函数递减列收敛定理}
 
 设 $\{f_k\}_{k\ge 1}$ 为可测集 $E$ 上的非负可测递减函数列
 \ITEMS
 	\item $f_1 \ge f_2 \ge \cdots \ge f_k \ge \cdots$
-	\item $f_1$ 在 $E$ 上可积，即 $\int_E \lim_{k\to\infty} \lvert f_k\rvert  < +\infty$ 
+	\item $f_1$ 在 $E$ 上可积，即 $\int_E \lvert f_1\rvert  < +\infty$ 
 \ITEME 
 则
 \[
@@ -2732,35 +2735,46 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \subsubsection{推论 3  依测度控制收敛定理}
 
-设 $\{f_k\}_{k\ge 1}$ 为可测集 $E$ 上的可测函数列
+设 $E$ 是 $\R^n$ 中可测集，$\{f_k\}_{k=1}^\infty$ 是 $E$ 上可测函数列，$f$ 是 $E$ 上的广义实值函数。若
 \ITEMS
-	\item $f_k \xrightarrow{m} f$
-	\item 对于 $\forall k$ 有 $\lvert f_k \rvert \le F$ 和 $\int_E F < +\infty$
+\item 函数列 $f_k$ 在 $E$ 上依测度收敛于 $f$
+\item 存在函数 $F(x)\in L(E)$，使得对于任意正整数 $k$ ，都有
+\[
+\lvert f_k \rvert \le F
+\]
 \ITEME 
 则
 \[
-	f_k \xrightarrow{\Vert\cdot\Vert} f
+\int_E f=\int_E \lim_{k\to\infty} f_k=\lim_{k\to\infty} \int_E f_k
 \]
+{\bf 注} 实际上，类似于上面勒贝格控制收敛定理的证明，我们亦有更强的结论，即：依测度收敛 $+$ 控制 $\Rightarrow$ $L^1$ 中依范数收敛。反过来，我们可以证明：$L^1$ 中依范数收敛 $\Rightarrow$ 依测度收敛。\\
 
-\EXP 逐项积分 $\sum\limits_{k=1}^\infty f_k$ ，其中 $f_k$ 是可测集 $E$ 上的可测函数，若 $\sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty$ ，则
+\subsection{一般可测函数的逐项积分定理}
+ 设 $\{f_k\}_{k=1}^\infty$ 是可测集 $E$ 上的可测函数，若 $\sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty$ ，则
 \[
 	\int_E \sum\limits_{k=1}^\infty f_k = \sum\limits_{k=1}^\infty \int_E f_k 
 \]
-因为
+\pro
+令 $S_n=\sum\limits_{k=1}^n f_k$。显然 
+\[
+\int_E \sum\limits_{k=1}^\infty f_k = \int_E \lim_{n \to \infty}S_n, \quad \lim_{n \to \infty}\int_E S_n=\sum\limits_{k=1}^\infty \int_E f_k 
+\]
+同时由 Levi's MCT，易知
 \[
 \int_E \sum\limits_{k=1}^\infty \lvert f_k\rvert = \sum\limits_{k=1}^\infty \int_E \lvert f_k\rvert < +\infty
 \]
-其中 $\int_E \sum\limits_{k=1}^\infty \lvert f_k\rvert$ 为控制函数，对 $\forall n$ 有
+注意到对任意 $n$，都有
 \[
-	\left\lvert \sum\limits_{k=1}^\infty f_k \right\rvert\le \sum\limits_{k=1}^\infty \lvert f_k\rvert
+\lvert S_n \rvert = \left\lvert \sum\limits_{k=1}^n f_k \right\rvert\le \sum\limits_{k=1}^\infty \lvert f_k\rvert
 \]
+从而 $\sum\limits_{k=1}^\infty \lvert f_k\rvert$ 为 $\{S_n\}_{n=1}^\infty$ 的控制函数。再由 Lebesgue's DCT 即得证。
 
 \subsection{求导与积分的次序交换}
 
 \ITEMS
-	\item 集合 $E$ 是 $\R^n$ 中的可测集，若函数 $f(x \in \R^n,y \in \R)$ 是 $E \times [a,b]$ 上的可测函数
-	\item 对于任意给定的 $y \in [a,b]$ 有， $f(x,y)$ 是关于 $x$ 的在 $E$ 上可积的函数
-	\item 对于任意给定的 $x \in E$ 有， $f(x,y)$ 是关于 $y$ 的在 $[a,b]$ 上可微的函数，且存在 $E$ 上的可积函数 $F(x)$ 满足
+	\item $E$ 是 $\R^n$ 中的可测集，$f(x,y)$ 是 $E \times [a,b]$ 上的可测函数。
+	\item 对于任意给定的 $y \in [a,b]$， $f(x,y)$ 作为 $x$ 的函数在 $E$ 上可积。
+	\item 对于任意给定的 $x \in E$， $f(x,y)$ 作为 $y$ 的函数在 $[a,b]$ 上可微，且存在 $E$ 上的可积函数 $F(x)$ 满足
 	\[
 		\left\lvert \frac{d}{dy} f(x,y) \right\rvert \le F(x)
 	\]
@@ -2772,11 +2786,11 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \pro 
 
-根据导函数的定义
+取 $\{h_k\}_{k = 1}^\infty$ 使得 $\lim\limits_{h\to\infty} h_k = 0$。根据导函数的定义
 \[
 	\frac{d}{dy} f(x,y) = \lim_{k\to\infty} \frac{f(x,y+h_k)-f(x,y)}{h_k}
 \]
-取 $\{h_k\}_{k = 1}^\infty$ 使得 $\lim\limits_{h\to\infty} h_k = 0$，对 $\forall k$ 根据拉格朗日中值定理有 $t\in(y,y+h_k)$ 满足
+对 $\forall k$ 根据拉格朗日中值定理有 $t\in(y,y+h_k)$ 满足
 \[
 	\left\lvert \frac{f(x,y+h_k) - f(x,y)}{h_k} \right\rvert = \left\lvert \frac{f_y(x,t)\cdot h_k}{h_k} \right\rvert = \lvert f_y(x,t) \rvert \le F(x)
 \]
@@ -2789,11 +2803,11 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 	&= \frac{d}{dy} \int_E f(x,y) dx
 \end{aligned}
 \]
-\section{$L^1(E)$ 上的勒贝格积分}
+\section{关于 $L^1(E)$ 的一些结论}
 
 \subsubsection{定理 1}
 
-设有可测集 $E$ 与 $\forall f\in L(E)$ ，对于 $\forall \varepsilon > 0$ 存在 $E$ 上可积的简单函数 $\varphi$ 满足
+设有可测集 $E$ 与 $\forall f\in L(E)$。对于 $\forall \varepsilon > 0$，存在 $E$ 上可积的简单函数 $\varphi$ 满足
 \[
 	\int_E \left\lvert f-\varphi \right\rvert  < \varepsilon
 \]
@@ -2804,9 +2818,9 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \]
 令 $k\to\infty$ 可得
 \[
-	\lim_{k\to\infty}\int_E |f - \varphi_k| < 0
+	\lim_{k\to\infty}\int_E |f - \varphi_k| = 0
 \]
-即对 $\forall f\in L(E)$ 存在 $\{\varphi_k \in L(E)\}_{k=1}^\infty$ 使得
+也就是说：对 $\forall f\in L(E)$，存在简单函数列 $\{\varphi_k \in L(E)\}_{k=1}^\infty$ 使得
 \[
 	\varphi_k \xrightarrow{\Vert\cdot\Vert} f
 \]
@@ -2827,19 +2841,14 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \subsubsection{定理 4  $L(\R^n)$ 上的平均连续性}
 
-对可测集 $E$ 与 $\forall f\in L(E)$ 都有
-\[
-	\begin{aligned}
-		\lim_{h\to0} \int_{\R^n} \lvert f(x+h) - f(x) \rvert dx &= 0\\
-		\lim_{h\to0} d( f(x+h) , f(x) ) &= 0
-	\end{aligned}
-\]
+对可测集 $E$ 与 $\forall f\in L(\R^n)$ 都有
+\[	\lim_{h\to0} \int_{\R^n} \lvert f(x+h) - f(x) \rvert dx =\lim_{h\to0} d( f(x+h) , f(x) )= 0 \]
 
 \section{勒贝格积分和黎曼积分的关系}
 
 \subsection{通常的黎曼积分}
 
-我们先通常的黎曼积分 $\int_a^b f(x) dx$ ，即 $a,b$ 有限，$f(x)$ 在 $[a,b]$ 上有界
+我们先讲通常的黎曼积分 $\int_a^b f(x) dx$ ，即 $a,b$ 均有限，且 $f(x)$ 在 $[a,b]$ 上有界。
 
 \subsubsection{定理 1}
 
@@ -2847,11 +2856,11 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 
 \subsubsection{定理 2}
 
-若一函数 $f$ 在 $[a,b]$ 上黎曼可积，则其必然也勒贝格可积，且
+若函数 $f$ 在 $[a,b]$ 上黎曼可积，则其必然也勒贝格可积，且
 \[
 	\int_a^b f(x) dx = \int_{[a,b]} f(x) dx
 \]
-
+上式左侧为黎曼积分（R-积分），右侧为勒贝格积分（L-积分）。
 \subsection{反常黎曼积分}
 
 \subsubsection{定理 1}
@@ -2900,6 +2909,13 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	\lim_{k\to\infty} \int_{E} f \chi_{E_k} = \int_{E} \lim_{k\to\infty} f \chi_{E_k} = \int_E f
 \]
+
+下面的定理告诉我们：
+\ITEMS
+	\item 若反常黎曼积分是绝对收敛的，则该黎曼积分等于其勒贝格积分；
+	\item 若反常黎曼积分不是绝对收敛的，则该函数不是勒贝格可积的。
+\ITEME
+
 \subsubsection{定理 2}
 
 对于反常黎曼积分（无穷积分或瑕积分） $\int_a^b f(x) dx$ ，则
@@ -2996,8 +3012,7 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 该反常积分既是第一类也是第二类反常积分，注意到
 \[
 \begin{aligned}
-	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx &= \int_{(0,1)\cup(1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
-	&= \int_{(0,1)} \frac{\log x}{x^2 - 1} dx + \int_{(1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
+	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx 
 	&= \int_{[0,1]} \frac{\log x}{x^2 - 1} dx + \int_{[1,+\infty)} \frac{\log x}{x^2 - 1} dx\\
 	&= \int_0^1 \frac{\log x}{x^2 - 1} dx + \int_1^{+\infty} \frac{\log x}{x^2 - 1} dx
 \end{aligned}
@@ -3010,10 +3025,10 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx = 2 \int_0^1 \frac{\log x}{x^2 - 1} dx 
 \]
-注意到 $\frac{1}{1-x^2} = \sum\limits_{n=0}^\infty x^{2n}$
+注意到 $\frac{1}{1-x^2} = \sum\limits_{n=0}^\infty x^{2n}, 0<x<1$，上式
 \[
 	\begin{aligned}
-		&\Rightarrow 2\int_{(0,1)} (-\log x) \sum_{n=0}^\infty x^{2n}\, dx\\
+		&=2\int_{(0,1)} (-\log x) \sum_{n=0}^\infty x^{2n}\, dx\\
 		&= 2\int_{[0,1]} \sum_{n=0}^{\infty} (- x^{2n} \log x)\, dx\\
 		&= -2 \sum_{n=0}^{\infty} \int_0^1 x^{2n} \log x\, dx\\
 	\end{aligned}
@@ -3026,7 +3041,7 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 		&= 2\sum_{n=0}^\infty \frac{1}{(2n+1)^2}
 	\end{aligned}
 \]
-著名的巴塞尔问题告诉我们所有平方数的导数和为 $\frac{\pi^2}{6}$ ，即
+著名的巴塞尔问题告诉我们所有平方数的倒数和为 $\frac{\pi^2}{6}$ ，即
 \[
 	\sum _{n=1}^{\infty }\frac{1}{n^{2}} = \frac{\pi^2}{6}
 \]
@@ -3034,7 +3049,9 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 \[
 	\sum _{n=1}^{\infty }\frac{1}{n^{2}} = \sum_{n=0}^\infty \frac{1}{(2n+1)^2} + \sum_{n=1}^\infty \frac{1}{4n^2}
 \]
-因为 $\sum_{n=1}^\infty\limits\frac{1}{4n^2} = \frac{1}{4}\sum_{n=1}^\infty\limits\frac{1}{n^2} = \frac{1}{4}\cdot \frac{\pi^2}{6}$ 可得	
+所以
+  $$\sum_{n=0}^\infty \frac{1}{(2n+1)^2}=\sum_{n=1}^\infty\limits\frac{1}{n^2}-\sum_{n=1}^\infty\limits\frac{1}{4n^2} = (1-\frac{1}{4})\cdot \frac{\pi^2}{6}=\frac{\pi^2}{8}$$
+从而
 \[
 	2\sum_{n=0}^\infty \frac{1}{(2n+1)^2} = \frac{\pi^2}{4}
 \]
