@@ -3057,6 +3057,46 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 \]
 
 
+\section{重积分和累次积分}
+
+\subsection{托内利定理（Tonelli）}
+
+设 $f(x,y)$ 是 $\R^n$ 上的非负可测函数，其中 $x\in\R^p,y\in\R^q$ 且 $p+q=n$ ，则
+\ITEMS
+	\item 对几乎所有 $x\in\R^p$ ， $f(x,y)$ 在 $\R^q$ 上是关于 $y$ 的非负可测函数
+	\item $\int_{\R^q}f(x,y) \,dy$ 在 $\R^p$ 上是关于 $x$ 的非负可测函数
+	\item 积分可以写为累次积分
+	\[
+	\int_{\R^n} f(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\, dy\, dx
+	\]
+\ITEME
+
+\subsection{富比尼定理（Fubini）}
+
+设 $f(x,y)$ 是 $\R^n$ 上的可积函数，其中 $x\in\R^p,y\in\R^q$ 且 $p+q=n$ ，则
+\ITEMS
+	\item 对几乎所有 $x\in\R^p$ ， $f(x,y)$ 在 $\R^q$ 上是关于 $y$ 的可积函数
+	\item $\int_{\R^q}f(x,y) \,dy$ 在 $\R^p$ 上是关于 $x$ 的可积函数
+	\item 积分可以写成累次积分
+	\[
+	\int_{\R^n} f(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\, dy\, dx
+	\]
+\ITEME
+
+\no{\bf 推论：}
+
+设 $E_1,E_2$ 分别是 $\R^p,\R^q$ 中的可测集，则 $E_1 \times E_2$ 是 $\R^{p+q=n}$ 中的可测集，且 $m(E_1\times E_2) = m(E_1) m(E_2)$ ，对于特征函数 $\chi_{E_1\times E_2}$ 有
+\[
+	\int_{\R^n}\chi_{E_1\times E_2}\, dx\, dy = \int_{\R^p}\int_{\R^q} \chi_{E_1\times E_2}\, dy\, dx = m(E_1) m(E_2)
+\]
+
+\subsection{勒贝格积分的几何意义}
+
+\subsubsection{定理 1}
+
+
+
+\subsubsection{定理 2}
 
 
 \end{document}
