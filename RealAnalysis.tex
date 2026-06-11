@@ -3056,7 +3056,6 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 	2\sum_{n=0}^\infty \frac{1}{(2n+1)^2} = \frac{\pi^2}{4}
 \]
 
-
 \section{重积分和累次积分}
 
 \subsection{托内利定理（Tonelli）}
@@ -3087,17 +3086,81 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 
 设 $E_1,E_2$ 分别是 $\R^p,\R^q$ 中的可测集，则 $E_1 \times E_2$ 是 $\R^{p+q=n}$ 中的可测集，且 $m(E_1\times E_2) = m(E_1) m(E_2)$ ，对于特征函数 $\chi_{E_1\times E_2}$ 有
 \[
-	\int_{\R^n}\chi_{E_1\times E_2}\, dx\, dy = \int_{\R^p}\int_{\R^q} \chi_{E_1\times E_2}\, dy\, dx = m(E_1) m(E_2)
+\begin{aligned}
+	\int_{\R^n}\chi_{E_1\times E_2}\, dx\, dy &= \int_{\R^p}\int_{\R^q} \chi_{E_1\times E_2}\, dy\, dx \\
+	&= m(E_1) m(E_2)
+\end{aligned}
 \]
 
 \subsection{勒贝格积分的几何意义}
 
-\subsubsection{定理 1}
+\subsubsection{定理 1 （黎曼积分截面法的推广）}
 
+设 $E$ 为 $\R^n$ 中的可测集，由富比尼定理有
+\[
+	m(E) = \int_{\R^n} \chi_E (x,y) \,dx\,dy = \int_{\R^p}\int_{\R^q} \chi_{E}(x,y)\, dy\, dx 
+\]
+其中 $x,y$ 分别属于 $\R^p,\R^q$ ，设 $E(x)$ 是 $E$ 在 $x$ 处的截面，即 $E(x) = \{y\in\R^q:(x,y)\in E\}$ 则
+\[
+	\int_{\R^p}\int_{\R^q} \chi_{E}(x,y)\, dy\, dx = \int_{\R^p} m(E(x)) dx
+\]
+即
+\ITEMS
+	\item 对几乎所有 $x\in E$， $E(x)$ 是 $\R^q$ 中的可测集
+	\item $m(E) = \int_{\R^p} m(E(x)) dx$
+\ITEME 
 
-
+\newpage
 \subsubsection{定理 2}
 
+设 $f$ 是 $E\subseteq \R^n$ 上的非负实质函数
+
+
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=1.15]
+
+\def\a{0.5}   
+\def\b{5.5}   
+\pgfmathsetmacro{\va}{0.05 *(\a - 3)^4 + 0.05 *(\a - 3)^3 + 0.5 * \a}
+\pgfmathsetmacro{\vb}{0.05 *(\b - 3)^4 + 0.05 *(\b - 3)^3 + 0.5 * \b}
+
+\draw[->, thick] (0,0) -- (5.8,0) node[below right] {$\R^n$};
+\draw[->, thick] (0,0) -- (0,5.8) node[above left] {$\R^1$};
+
+\node[left, font=\small] at (5, 5) {$G_f$};
+\node[above, font=\small] at (3.5, 0.5) {$\underline{G_f}$};
+
+% 刻度
+\fill[opacity=0.2] 
+    plot[domain=\a:\b, samples=100] (\x,{0.05 *(\x - 3)^4 + 0.05 *(\x - 3)^3 + 0.5 * \x}) 
+    -- (\b,0) -- (\a,0) -- cycle;
+
+\draw[thick, black, smooth, samples=120, domain=0.5:5.5] 
+    plot (\x,{0.05 *(\x - 3)^4 + 0.05 *(\x - 3)^3 + 0.5 * \x});
+    
+\draw[dashed, thick] (\a,0) -- (\a,\va);
+\draw[dashed, thick] (\b,0) -- (\b,\vb);
+\fill (\a,\va) circle (2pt);
+\fill (\b,\vb) circle (2pt);
+
+\end{tikzpicture}
+\end{figure}
+
+如图 $G_f$ 是函数 $f$ 在 $\R^{n+1}$ 上的图像，即 
+\[
+	G_f = \{(x,y):x\in E,y=f(x)\} 
+\]
+显然 $G_f$ 是 $\R^n$ 上的图形，则 $m(G_f)=0$。定义 $\underline{G_f}$ 是 $G_f$ 下的面积，即 
+\[
+	\underline{G_f} = \{(x,y):x\in E, 0\ge y\le f(x)\}
+\]
+
+若 $E$ 是 $\R^n$ 中可测集，则
+\ITEMS
+	\item 若 $f(x)$ 可测，则 $\underline{G_f}$ 是 $\R^{n+1}$ 上的可测集，且 $m(G_f) = \int_E f$
+	\item 若 $\underline{G_f}$ 在 $\R^{n+1}$ 中可测，则 $f$ 可测，且 $m(\underline{G_f}) = \int_E f$
+\ITEME
 
 \end{document}
 
