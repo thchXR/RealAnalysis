@@ -2013,7 +2013,7 @@ E_k(\varepsilon) := \{x\in E:\lvert f_k(x) - f(x)\rvert \ge \varepsilon\}, k=1, 
 
 反过来，下述里斯定理在某种程度上可以理解成上述定理的逆定理。
 
-\subsubsection{里斯定理（Reisz）}
+\subsection{里斯定理（Reisz）}
 
 设 $E$ 是 $\R^n$ 中可测集。若 $E$ 上几乎处处有限的可测函数列 $\{f_k(x)\}_{k=1}^{\infty}$ 依测度收敛于 $f(x)$ ，则存在子列 $\{f_{k_j}\}_{j=1}^{\infty}$ 使得
 \[
@@ -2314,7 +2314,7 @@ $$E_k =\{x\in E : f_k(x)\ge c\cdot h(x)\}, k\in\mathbb{N}_+$$ 我们有
 \end{aligned}
 \]
 
-\subsubsection{非负可测函数可逐项积分}
+\subsection{非负可测函数的逐项积分定理}
 
 对于可测集 $E$ 上的非负可测函数列 $\{ f_k(x) \}_{k=1}^\infty$ 有
 \[
@@ -2337,7 +2337,7 @@ $$E_k =\{x\in E : f_k(x)\ge c\cdot h(x)\}, k\in\mathbb{N}_+$$ 我们有
 \end{aligned}
 \]
 
-\subsubsection{非负可测函数积分区域的可数可加性}
+\subsection{非负可测函数积分"区域"的可数可加性}
 
 对于 $\R^n$ 中两两无交的可测集列 $\{E_k\}_{k=1}^\infty$，设 $E = \bigcup\limits_{k=1}^\infty E_k$，有在 $E$ 上的非负可测函数 $f$，则
 \[
@@ -2466,37 +2466,33 @@ L^p(E) := \left\{ f : f \text{是 $E$ 上可测函数且} \int_E |f(x)|^p\mathrm
 
 \subsection{一般可测函数的勒贝格积分的性质}
 
-\subsubsection{性质I}
-
 \ITEMS
-\item {\bf 线性性质} 
+	\item {\bf 线性性质} 
 
 对于可测集 $E$ 与函数 $f \in L(E)$
-\ITEMS
-\item 对 $\forall c \in\R$ 有
+	\ITEMS
+		\item 对 $\forall c \in\R$ 有
 \[
 \int_E c\cdot f = c\int_E f
 \]
-\item 对函数 $\forall g \in L(E)$ 有
+		\item 对函数 $\forall g \in L(E)$ 有
 \[
 \int_E f + \int_E g = \int_E (f+g)
 \]
-\ITEME 
-\item {\bf 简单函数逼近} 
+	\ITEME 
+	\item {\bf 简单函数逼近} 
 
 对于可测集 $E$，若函数 $f \in L(E)$ ，则对于 $\forall \varepsilon > 0$ ，存在 $E$ 上可积的简单函数 $\varphi$ 满足
 \[
 \int_E \lvert f(x) - \varphi(x)\rvert dx < \varepsilon
 \]
 
-\item 对于可测集 $E$，若函数 $f \in L(E)$ ，则 $f$ 在 $E$ 上几乎处处有限。这是因为其正负部函数 $f_+ , f_-$ 在 $E$ 上均几乎处处有限，故函数 $\lvert f\rvert$ 也几乎处处有限。
+	\item 对于可测集 $E$，若函数 $f \in L(E)$ ，则 $f$ 在 $E$ 上几乎处处有限。这是因为其正负部函数 $f_+ , f_-$ 在 $E$ 上均几乎处处有限，故函数 $\lvert f\rvert$ 也几乎处处有限。
 \ITEME
 
 
-\subsubsection{性质II}
 
-\ITEMS
-\item {\bf 绝对连续性}
+\subsection {勒贝格积分的绝对连续性}
 
 对于可测集 $E$，若函数 $f \in L(E)$ ，则对于 $\forall \epsilon > 0$ ， $\exists \delta > 0$ 使得 
 \[
@@ -2515,14 +2511,14 @@ L^p(E) := \left\{ f : f \text{是 $E$ 上可测函数且} \int_E |f(x)|^p\mathrm
 \int_{E_{\delta}} f(x) dx =\int_{E_{\delta}}( f(x) -\varphi(x))dx + \int_{E_{\delta}} \varphi(x) dx \le \int_E( f(x) -\varphi(x))dx+ M m(E_\delta)< \frac\varepsilon2+\frac\varepsilon2=\varepsilon
 \]
 
-\item {\bf 积分区域的可数可加性}
+\subsection {勒贝格积分积分"区域"的可数可加性}
 
 设 $\{E_k\}_{k=1}^\infty$ 是两两无交的可测集列，记 $E = \bigcup\limits_{k=1}^\infty E_k$ ，设 $f$ 是 $E$ 上的可积函数，则
 \[
 \int_E f = \int_{\bigcup\limits_{k=1}^\infty E_k} f = \sum\limits_{k=1}^\infty \int_{E_k} f
 \]
 
-\item $L(\R^n)$ {\bf 上积分的平移不变性}
+\subsection {$\R^n$ 上勒贝格积分的平移不变性}
 
 对于 $\forall f \in L(\R^n)$ ，则对 $\forall y \in \R^n$ 有
 \[
@@ -2556,7 +2552,7 @@ f = \lim_{k\to\infty}\varphi_k
 
 
 \ITEME
-\ITEME
+
 
 \EXP
 
@@ -2583,7 +2579,7 @@ $$0=\int_{(a,b)}f=\int_{F}f+\int_{(a,b)\setminus F}f=\int_{F}f+\sum\limits_{k \g
 由引理 2，$\int_{F}f>0$。从而必存在某个 $\int_{(a_k,b_k)}f\ne 0$。另一方面，$0=\int_{[a,b_k]}f=\int_{[a,a_k]}f +\int_{(a_k,b_k)}f=0+\int_{(a_k,b_k)}f=\int_{(a_k,b_k)}f$，矛盾。
 
 
-\subsection{$L(E)$ 上的范数}
+\subsection{$L^1(E)$ 上的范数}
 
 回顾下，$L(E)$ 或 $L^1(E)$ 表示可测集 $E$ 上所有可积函数的集合。
 
@@ -2643,7 +2639,7 @@ d(f,g) := \Vert f - g \Vert = \int_E |f-g| dx
 \end{aligned}
 \]
 
-\subsection{勒贝格控制收敛定理}
+\subsection{勒贝格控制收敛定理 (Lebesgue's Dominated Convergence Theorem)}
 设 $E$ 是 $\R^n$ 中可测集，$\{f_k\}_{k=1}^\infty$ 是 $E$ 上可测函数列，$f$ 是 $E$ 上的广义实值函数。若
 \ITEMS
 	\item 函数列 $f_k$ 在 $E$ 上几乎处处收敛于 $f$
@@ -2846,7 +2842,7 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 
 \section{勒贝格积分和黎曼积分的关系}
 
-\subsection{通常的黎曼积分}
+\subsection{通常黎曼积分}
 
 我们先讲通常的黎曼积分 $\int_a^b f(x) dx$ ，即 $a,b$ 均有限，且 $f(x)$ 在 $[a,b]$ 上有界。
 
@@ -3056,15 +3052,15 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 	2\sum_{n=0}^\infty \frac{1}{(2n+1)^2} = \frac{\pi^2}{4}
 \]
 
-\section{重积分和累次积分}
+\section{勒贝格重积分和累次积分}
 
 \subsection{托内利定理（Tonelli）}
 
 设 $f(x,y)$ 是 $\R^n$ 上的非负可测函数，其中 $x\in\R^p,y\in\R^q$ 且 $p+q=n$ ，则
 \ITEMS
-	\item 对几乎所有 $x\in\R^p$ ， $f(x,y)$ 在 $\R^q$ 上是关于 $y$ 的非负可测函数
-	\item $\int_{\R^q}f(x,y) \,dy$ 在 $\R^p$ 上是关于 $x$ 的非负可测函数
-	\item 积分可以写为累次积分
+	\item 对几乎所有 $x\in\R^p$ ， $f(x,y)$ 作为 $y$ 的函数是 $\R^q$ 上的非负可测函数；
+	\item $\int_{\R^q}f(x,y) \,dy$ 作为 $x$ 的函数是 $\R^p$ 上的非负可测函数；
+	\item 对于 $f(x,y)$ 在 $\R^n$ 上的勒贝格积分（一般称为重积分），有下述累次积分转换公式
 	\[
 	\int_{\R^n} f(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\, dy\, dx
 	\]
@@ -3074,17 +3070,30 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 
 设 $f(x,y)$ 是 $\R^n$ 上的可积函数，其中 $x\in\R^p,y\in\R^q$ 且 $p+q=n$ ，则
 \ITEMS
-	\item 对几乎所有 $x\in\R^p$ ， $f(x,y)$ 在 $\R^q$ 上是关于 $y$ 的可积函数
-	\item $\int_{\R^q}f(x,y) \,dy$ 在 $\R^p$ 上是关于 $x$ 的可积函数
-	\item 积分可以写成累次积分
+	\item 对几乎所有 $x\in\R^p$ ，$f(x,y)$ 作为 $y$ 的函数是 $\R^q$ 上的可积函数；
+	\item $\int_{\R^q}f(x,y) \,dy$ 作为 $x$ 的函数是 $\R^p$ 上的可积函数；
+	\item 对于 $f(x,y)$ 在 $\R^n$ 上的勒贝格积分（一般称为重积分），有下述累次积分转换公式
 	\[
 	\int_{\R^n} f(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\, dy\, dx
 	\]
 \ITEME
 
+{\bf 注} 在上面的 Tonelli 和 Fubini 定理中:
+\ITEMS
+	\item 若交换 $x$ 和 $y$ 的次序结论同样成立。所以我们有
+	$$ \int_{\R^n} f(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\, dy\, dx= \int_{\R^q}\int_{\R^p} f(x,y)\, dx\, dy$$
+	\item 若 $f(x,y)$ 定义在 $\R^n$ 中可测集 $E$ 上，只需用 $f(x,y)\chi_E(x,y)$ 代替 $f(x,y)$ 即可。即：
+	$$\int_{E} f(x,y)\,dx\,dy=\int_{\R^n} f(x,y)\chi_E(x,y)\,dx\,dy = \int_{\R^p}\int_{\R^q} f(x,y)\chi_E(x,y)\, dy\, dx$$
+\ITEME
+
 \no{\bf 推论：}
 
-设 $E_1,E_2$ 分别是 $\R^p,\R^q$ 中的可测集，则 $E_1 \times E_2$ 是 $\R^{p+q=n}$ 中的可测集，且 $m(E_1\times E_2) = m(E_1) m(E_2)$ ，对于特征函数 $\chi_{E_1\times E_2}$ 有
+设 $E_1,E_2$ 分别是 $\R^p,\R^q$ 中的可测集，则 $E_1 \times E_2$ 是 $\R^{p+q=n}$ 中的可测集，且 $m(E_1\times E_2) = m(E_1) m(E_2)$。
+\pro 
+\ITEMS
+	\item 证明 $E_1 \times E_2$ 是 $\R^{p+q=n}$ 中的可测集 （略）。
+	\item 在 Tonelli 定理中取 $f(x,y)=\chi_{E_1 \times E_2}(x,y)$，即
+\ITEME
 \[
 \begin{aligned}
 	\int_{\R^n}\chi_{E_1\times E_2}\, dx\, dy &= \int_{\R^p}\int_{\R^q} \chi_{E_1\times E_2}\, dy\, dx \\
@@ -3096,24 +3105,20 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 
 \subsubsection{定理 1 （黎曼积分截面法的推广）}
 
-设 $E$ 为 $\R^n$ 中的可测集，由富比尼定理有
-\[
-	m(E) = \int_{\R^n} \chi_E (x,y) \,dx\,dy = \int_{\R^p}\int_{\R^q} \chi_{E}(x,y)\, dy\, dx 
-\]
-其中 $x,y$ 分别属于 $\R^p,\R^q$ ，设 $E(x)$ 是 $E$ 在 $x$ 处的截面，即 $E(x) = \{y\in\R^q:(x,y)\in E\}$ 则
-\[
-	\int_{\R^p}\int_{\R^q} \chi_{E}(x,y)\, dy\, dx = \int_{\R^p} m(E(x)) dx
-\]
-即
+设 $E$ 为 $\R^n=\R^p\times \R^q$ 中的可测集，对任意 $x\in \R^p$，令
+$$E(x) = \{y\in\R^q:(x,y)\in E\}$$
+称之为 $E$ 在 $x$ 处的截断集（或截面）。则
 \ITEMS
-	\item 对几乎所有 $x\in E$， $E(x)$ 是 $\R^q$ 中的可测集
+	\item 对几乎所有 $x\in E$， $E(x)$ 是 $\R^q$ 中的可测集；
+	\item $m(E(x))$ 是 $\R^p$ 上的可测函数；
 	\item $m(E) = \int_{\R^p} m(E(x)) dx$
 \ITEME 
 
-\newpage
+\pro 在 Tonelli 定理中取 $f(x,y)=\chi_E(x,y)$ 即可。
+
 \subsubsection{定理 2}
 
-设 $f$ 是 $E\subseteq \R^n$ 上的非负实质函数
+设 $f$ 是 $E\subseteq \R^n$ 上的非负实值函数
 
 
 \begin{figure}[h]
@@ -3151,15 +3156,17 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 \[
 	G_f = \{(x,y):x\in E,y=f(x)\} 
 \]
-显然 $G_f$ 是 $\R^n$ 上的图形，则 $m(G_f)=0$。定义 $\underline{G_f}$ 是 $G_f$ 下的面积，即 
+注意到 $G_f$ 是 在 $\R^n$ 上的图形，不难理解它在 $\R^{n+1}$ 中的测度为 $0$，即 $m(G_f)=0$。\\
+
+定义 $\underline{G_f}$ 是 $G_f$ 下的面积，即 
 \[
-	\underline{G_f} = \{(x,y):x\in E, 0\ge y\le f(x)\}
+	\underline{G_f} = \{(x,y):x\in E, 0\le y\le f(x)\}
 \]
 
 若 $E$ 是 $\R^n$ 中可测集，则
 \ITEMS
-	\item 若 $f(x)$ 可测，则 $\underline{G_f}$ 是 $\R^{n+1}$ 上的可测集，且 $m(G_f) = \int_E f$
-	\item 若 $\underline{G_f}$ 在 $\R^{n+1}$ 中可测，则 $f$ 可测，且 $m(\underline{G_f}) = \int_E f$
+	\item 若 $f(x)$ 可测，则 $\underline{G_f}$ 是 $\R^{n+1}$ 上的可测集，且 $m(G_f) = \int_E f$；
+	\item 若 $\underline{G_f}$ 在 $\R^{n+1}$ 中可测，则 $f$ 可测，且 $m(\underline{G_f}) = \int_E f$。
 \ITEME
 
 \end{document}
