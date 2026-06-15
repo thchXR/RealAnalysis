@@ -1826,7 +1826,7 @@ f(x) := \begin{cases}
 \item $\lvert f(x) \rvert = 1$ 在 $[0,1]$ 上可测
 \ITEME 
 
-\subsection{可测简单函数构成的线性空间}
+\subsubsection{可测简单函数构成线性空间}
 
 任一可测集 $E$ 上所有可测简单函数构成线性空间。因为：\\
 
@@ -2768,9 +2768,9 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 \subsection{求导与积分的次序交换}
 
 \ITEMS
-	\item $E$ 是 $\R^n$ 中的可测集，$f(x,y)$ 是 $E \times [a,b]$ 上的可测函数。
-	\item 对于任意给定的 $y \in [a,b]$， $f(x,y)$ 作为 $x$ 的函数在 $E$ 上可积。
-	\item 对于任意给定的 $x \in E$， $f(x,y)$ 作为 $y$ 的函数在 $[a,b]$ 上可微，且存在 $E$ 上的可积函数 $F(x)$ 满足
+	\item $E$ 是 $\R^n$ 中的可测集，$f(x,y)$ 是 $E \times (a,b)$ 上的函数；
+	\item 对于任意给定的 $y \in (a,b)$， $f(x,y)$ 作为 $x$ 的函数在 $E$ 上可积；
+	\item 对于任意给定的 $x \in E$， $f(x,y)$ 作为 $y$ 的函数在 $(a,b)$ 上可微，且存在 $E$ 上的可积函数 $F(x)$ 满足
 	\[
 		\left\lvert \frac{d}{dy} f(x,y) \right\rvert \le F(x)
 	\]
@@ -2908,21 +2908,21 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 
 下面的定理告诉我们：
 \ITEMS
-	\item 若反常黎曼积分是绝对收敛的，则该黎曼积分等于其勒贝格积分；
+	\item 若反常黎曼积分是绝对收敛的，则该黎曼积分 $(R-\mbox {积分})$ 等于其勒贝格积分 $(L-\mbox {积分})$；
 	\item 若反常黎曼积分不是绝对收敛的，则该函数不是勒贝格可积的。
 \ITEME
 
 \subsubsection{定理 2}
 
-对于反常黎曼积分（无穷积分或瑕积分） $\int_a^b f(x) dx$ ，则
+对于反常黎曼积分（无穷积分或瑕积分） $\int_a^b f(x) dx$ ，我们有
 \ITEMS
 	\item 对于区间 $[a,b]$ ，其中 $a,b$ 可取无穷
 	\[
-		\int_a^b \lvert f(x)\rvert dx = \int_{[a,b]} \lvert f\rvert
+	(R-\mbox {积分})\int_a^b \lvert f(x)\rvert dx = (L-\mbox {积分})\int_{[a,b]} \lvert f\rvert 
 	\]
 	\item 若 $\int_{[a,b]} \lvert f\rvert < + \infty$ 则
 	\[
-		\int_a^b f(x)dx = \int_{[a,b]} f
+	(R-\mbox {积分})\int_a^b f(x)dx = (L-\mbox {积分})\int_{[a,b]} f 
 	\]
 	\item 若 $\int_{[a,b]} \lvert f\rvert = + \infty$ 则
 	\[
@@ -2974,38 +2974,39 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 	\[
 		\lim_{n \to \infty}\int_{[a,+\infty)} f \chi_{[a,a+n]} =  \int_{[a,+\infty)} \lim_{n \to \infty} f \chi_{[a,a+n]} = \int_{[a,+\infty)} f
 	\]
-
+	\item 只需注意到 $f$ 勒贝格可积当且仅当 $|f|$ 勒贝格可积即可。
 	
 \ITEME
 
-\EXP 考虑如下反常积分
+\EXP 众所周知
 \[
-	\int_0^{+\infty} \frac{\sin x}{x} dx
+	(R-\mbox {积分}) \int_0^{+\infty} \frac{\sin x}{x} dx=\frac{\pi}{2}
 \]
-因为
+下面我们将证明 $\frac{\sin x}{x}$ 在 $[0,\infty)$ 上不是勒贝格可积的。\\
+
+\pro 只需证明
 \[
 	\int_0^{+\infty} \left\lvert\frac{\sin x}{x}\right\rvert dx = +\infty
 \]
-由可数可加性可得
+注意到
 \[
-	\int_0^{+\infty} \frac{\left\lvert\sin x\right\rvert}{x} dx = \sum_{k=1}^\infty \int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx
+	\int_0^{+\infty} \left\lvert\frac{\sin x}{x}\right\rvert dx = \sum_{k=1}^\infty \int_{(k-1)\pi}^{k\pi} \frac{\lvert\sin x\rvert}{x} dx
 \]
-对于
+且
 \[
-	\int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx \ge \frac{1}{k\pi}\int_{k\pi}^{(k-1)\pi} \lvert\sin x\rvert dx
+	\int_{(k-1)\pi}^{k\pi} \frac{\lvert\sin x\rvert}{x} dx \ge \frac{1}{k\pi}\int_{(k-1)\pi}^{k\pi} \lvert\sin x\rvert dx
 \]
 所以
 \[
-	\sum_{k=1}^{\infty} \int_{k\pi}^{(k-1)\pi} \frac{\lvert\sin x\rvert}{x} dx \ge 2 \sum_{k=1}^{\infty} \frac{1}{k\pi} = \frac{2}{\pi} \sum_{k=1}^{\infty}\frac{1}{k} = +\infty
+	\sum_{k=1}^{\infty} \int_{(k-1)\pi}^{k\pi} \frac{\lvert\sin x\rvert}{x} dx \ge 2 \sum_{k=1}^{\infty} \frac{1}{k\pi} = \frac{2}{\pi} \sum_{k=1}^{\infty}\frac{1}{k} = +\infty
 \]
-所以 $\frac{\sin x}{x}$ 在 $[0,+\infty)$ 上不是勒贝格可积的，但却是黎曼可积的，黎曼积分为 $\frac{\pi}{2}$
 \bigskip
 	
-\EXP 考虑如下反常积分的勒贝格积分
+\EXP 计算积分
 \[
 	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx
 \]
-该反常积分既是第一类也是第二类反常积分，注意到
+{\bf 解} 注意到
 \[
 \begin{aligned}
 	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx 
@@ -3013,11 +3014,11 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 	&= \int_0^1 \frac{\log x}{x^2 - 1} dx + \int_1^{+\infty} \frac{\log x}{x^2 - 1} dx
 \end{aligned}
 \]
-对于 $\int_1^{+\infty} \frac{\log x}{x^2 - 1} dx$ ，令 $y = \frac1x$ 可得
+对于 $\int_1^{+\infty} \frac{\log x}{x^2 - 1} dx$ ，作换元 $y = \frac1x$ 可得
 \[
 	\int_1^{+\infty} \frac{\log x}{x^2 - 1} dx = \int_0^{1} \frac{\log y}{y^2 - 1} dx
 \]
-即
+所以
 \[
 	\int_0^{+\infty} \frac{\log x}{x^2 - 1} dx = 2 \int_0^1 \frac{\log x}{x^2 - 1} dx 
 \]
@@ -3051,6 +3052,19 @@ $$\lim_{k\to\infty}\int_E \lvert f_k - f\rvert = 0$$
 \[
 	2\sum_{n=0}^\infty \frac{1}{(2n+1)^2} = \frac{\pi^2}{4}
 \]
+
+\EXP 证明 $$\int_0^{\infty} e^{-x^2}\cos(2xy)\mathrm d x=\frac{\sqrt \pi}{2}e^{-y^2}$$
+\pro 令 $I(y)=\int_0^{\infty} e^{-x^2}\cos(2xy)\mathrm d x$。注意到
+\ITEMS
+	\item 对任意 $y\in \R$，$e^{-x^2}\cos(2xy)$ 作为 $x$ 的函数在 $[0,\infty]$ 上可积：因为 $\lvert e^{-x^2}\cos(2xy)\rvert\le e^{-x^2}$ 且 $\int_0^{\infty} e^{-x^2}\mathrm d x=\frac{\sqrt \pi}{2}$。
+	\item 对任意 $y\in \R$，$\lvert \frac {\partial}{\partial y}(e^{-x^2}\cos(2xy))\rvert=\lvert-2xe^{-x^2}\sin(2xy)\rvert\le\lvert2xe^{-x^2}\rvert$ 且 $\int_0^{\infty} 2xe^{-x^2}\mathrm d x=1$。	
+\ITEME
+所以有 $$\frac {\mathrm d}{\mathrm{d} y}I(y)=\int_0^{\infty} \frac {\partial}{\partial y} (e^{-x^2}\cos(2xy))\mathrm d x=\int_0^{\infty} -2xe^{-x^2}\sin(2xy)\mathrm d x$$
+分部积分，不难得出 $$\int_0^{\infty} -2xe^{-x^2}\sin(2xy)\mathrm d x=\int_0^{\infty}\sin(2xy)\mathrm d (e^{-x^2})=e^{-x^2}\sin(2xy)\lvert_0^{\infty}-2y\int_0^{\infty} e^{-x^2}\cos(2xy)\mathrm d x=-2yI(y)$$
+最后利用分离变量法，易得到微分方程 $\frac {\mathrm d}{\mathrm{d} y}I(y)=-2yI(y)$ 的解为 
+$$I(y)=I(0) e^{-y^2}=\frac{\sqrt \pi}{2}e^{-y^2}$$
+
+{\bf 注} 在上述三个例子中，凡是未明确标明 $(R-\mbox {积分})$ 或 $(L-\mbox {积分})$ 的，根据黎曼积分与勒贝格积分的关系，可以看出它作为黎曼积分或勒贝格积分是相等的，因此，可根据我们的方便，进行两者间的随意切换。
 
 \section{勒贝格重积分和累次积分}
 
@@ -3116,6 +3130,7 @@ $$E(x) = \{y\in\R^q:(x,y)\in E\}$$
 
 \pro 在 Tonelli 定理中取 $f(x,y)=\chi_E(x,y)$ 即可。
 
+\newpage
 \subsubsection{定理 2}
 
 设 $f$ 是 $E\subseteq \R^n$ 上的非负实值函数
@@ -3156,7 +3171,7 @@ $$E(x) = \{y\in\R^q:(x,y)\in E\}$$
 \[
 	G_f = \{(x,y):x\in E,y=f(x)\} 
 \]
-注意到 $G_f$ 是 在 $\R^n$ 上的图形，不难理解它在 $\R^{n+1}$ 中的测度为 $0$，即 $m(G_f)=0$。\\
+若 $E$ 是可测集，$f$ 是 $E$ 上 可测函数，注意到 $G_f$ 是 在 $\R^n$ 上的图形，不难理解它在 $\R^{n+1}$ 中的测度为 $0$，即 $m(G_f)=0$。\\
 
 定义 $\underline{G_f}$ 是 $G_f$ 下的面积，即 
 \[
@@ -3168,6 +3183,17 @@ $$E(x) = \{y\in\R^q:(x,y)\in E\}$$
 	\item 若 $f(x)$ 可测，则 $\underline{G_f}$ 是 $\R^{n+1}$ 上的可测集，且 $m(G_f) = \int_E f$；
 	\item 若 $\underline{G_f}$ 在 $\R^{n+1}$ 中可测，则 $f$ 可测，且 $m(\underline{G_f}) = \int_E f$。
 \ITEME
+
+\EXP 计算积分 $\int_{x>0}\int_{y>0}\frac {1}{(1+y)(1+x^2y)}\mathrm dx\mathrm dy$。\\
+
+{\bf 解} 由 Tonelli 定理
+\[
+	\begin{aligned}
+	\int_{x>0}\int_{y>0}\frac {1}{(1+y)(1+x^2y)}\mathrm dx\mathrm dy&=\int_{y>0}\int_{x>0}\frac {1}{(1+y)(1+x^2y)}\mathrm dx\mathrm dy=\int_{y>0} \frac {1}{\sqrt y(1+y)}\arctan {(x\sqrt y)}\lvert_{x=0}^{\infty}\mathrm dy\\
+	&=\frac{\pi}{2}\int_{y>0} \frac {1}{\sqrt y(1+y)}\mathrm dy=\pi \int_{y>0} \frac {1}{(1+(\sqrt y)^2)}\mathrm d(\sqrt y)=\pi \arctan {(\sqrt y)}\lvert_{y=0}^{\infty}\\
+	&=\frac{\pi^2}{2}
+	\end{aligned}
+\]
 
 \end{document}
 
